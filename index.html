@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quero Peças – Distribuidora de Autopeças</title>
+  <link rel="stylesheet" href="css/home-style.css"/>
+</head>
+<body>
+
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+  <span>📧 compras@queropecas.com</span>
+  <span class="center">Mais de <span>55 mil</span> peças disponíveis</span>
+  <div class="right">
+    <span>🌐 PT</span>
+    <div class="divider"></div>
+    <span>USD</span>
+    <div class="divider"></div>
+    <span>☀</span>
+  </div>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="images/logopreta.png" alt="Quero Peças" class="navbar-logo-img"/>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">Início ▾</a>
+    <a href="#loja">Loja ▾</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <div class="nav-actions" id="nav-actions">
+    <a href="login.html" class="btn-coral">🔑 Login</a>
+    
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>
+      Compre Peças?
+      <span class="highlight">Você está no lugar certo.</span>
+    </h1>
+    <p>Encontre peças originais e alternativas para seu veículo com entrega em todo o Brasil.</p>
+    <div class="hero-btns">
+      <button class="btn-hero-main" onclick="location.href='busca.html'">Ver catálogo →</button>
+      <button class="btn-hero-sec" onclick="location.href='busca.html'">Faça seu Orçamento</button>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge">✅ Mais de 55 mil peças</div>
+      <div class="hero-badge">🚚 Entrega rápida</div>
+      <div class="hero-badge">🔒 Compra segura</div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="images/amortecedor.png"     alt="Amortecedor"   class="hero-img hero-slide active"/>
+    <img src="images/pistao com anel.png" alt="Pistão"        class="hero-img hero-slide"/>
+    <img src="images/peçasfiltros.png"    alt="Filtros"       class="hero-img hero-slide"/>
+    <img src="images/Fraslepasti.png"     alt="Frasle Pastil" class="hero-img hero-slide"/>
+  </div>
+</section>
+
+
+
+
+<!-- ── MARCAS PREMIUM ── -->
+<section class="section section-gray" id="loja">
+  <div class="section-title">Marcas Premium</div>
+  <div class="section-sub">Trabalhamos com as melhores marcas do mercado</div>
+  <div class="marcas-grid">
+    <div class="marca-logo-card"><img src="images/gates.png" alt="Gates"/></div>
+    <div class="marca-logo-card"><img src="images/frasle.png" alt="Frasle"/></div>
+    <div class="marca-logo-card"><img src="images/ngk.png" alt="NGK"/></div>
+    <div class="marca-logo-card"><img src="images/sabo.png" alt="Sabó"/></div>
+    <div class="marca-logo-card"><img src="images/sachs.png" alt="Sachs"/></div>
+    <div class="marca-logo-card"><img src="images/metalleve.png" alt="Metalleve"/></div>
+    <div class="marca-logo-card"><img src="images/cofap.png" alt="Cofap"/></div>
+  </div>
+</section>
+
+<!-- ── OFERTAS (renderizadas via JS) ── -->
+<div id="ofertas-container"></div>
+
+<!-- ── DEPOIMENTOS ── -->
+<section class="section section-white">
+  <div class="section-header">
+    <div>
+      <div class="section-title">O que eles dizem sobre nós?</div>
+      <div class="section-sub">Clientes satisfeitos em todo o Brasil</div>
+    </div>
+  </div>
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-texto">"Excelente atendimento! Recebi as peças no prazo e com ótima qualidade. Recomendo a todos da minha oficina."</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👤</div>
+        <div>
+          <div class="dep-nome">Carlos Mendes</div>
+          <div class="dep-cargo">Mecânico – Brasília</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-texto">"Trabalho com frotas há 10 anos e a Quero Peças é minha parceira principal. Preços justos e entrega garantida."</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👤</div>
+        <div>
+          <div class="dep-nome">Ana Lima</div>
+          <div class="dep-cargo">Gestora de Frota – SP</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★☆</div>
+      <p class="dep-texto">"Peças de qualidade e atendimento rápido. A busca por placa economiza muito tempo no meu dia a dia."</p>
+      <div class="dep-autor">
+        <div class="dep-avatar">👤</div>
+        <div>
+          <div class="dep-nome">João Pedro Silva</div>
+          <div class="dep-cargo">Proprietário de Oficina</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BANNER CONTATO ── -->
+<section class="banner-contato" id="contato">
+  <div>
+    <h2>Entre em contato</h2>
+    <p>Nossa equipe está pronta para te ajudar a encontrar a peça certa.</p>
+    <button class="btn-coral" style="padding:13px 26px;font-size:14px;">Fale conosco →</button>
+  </div>
+  <div class="banner-img">
+    <div class="carro-wrap">
+      <div class="carro-corpo">🚗</div>
+      <div class="carro-road">
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORMULÁRIO + MAPA ── -->
+<div class="contato-section">
+  <div>
+    <div class="section-title" style="margin-bottom:24px;">Entre em contato</div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">Nome completo</label>
+        <input class="form-input" type="text" placeholder="Seu nome" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-mail</label>
+        <input class="form-input" type="email" placeholder="seu@email.com" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefone</label>
+        <input class="form-input" type="tel" placeholder="(61) 99999-9999"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Assunto</label>
+        <input class="form-input" type="text" placeholder="Como podemos ajudar?"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensagem</label>
+        <textarea class="form-textarea" placeholder="Digite sua mensagem..."></textarea>
+      </div>
+      <button class="btn-enviar" type="submit">Enviar mensagem →</button>
+    </form>
+  </div>
+  <div class="mapa-placeholder">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.4!2d-47.9292!3d-15.8267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUUkgMjUgTG90ZSAxODAwLCBCcmFzw61saWEsIERG!5e0!3m2!1spt-BR!2sbr!4v1"
+      width="100%"
+      height="100%"
+      style="border:0; border-radius:12px;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localização Quero Peças">
+    </iframe>
+  </div>
+  <div class="localizacao">
+    <h3>Nossa Localização</h3>
+    <div class="footer-loc">
+      <div class="footer-loc-item">📍 QI 25 Lote 1800 A 1890</div>
+      <div class="footer-loc-item">🕐 Horário: 8:00 – 17:00, Seg – Sexta</div>
+      <div class="footer-loc-item">✉ suporte@queropecas.com</div>
+    </div>
+    <div class="footer-tel">+55 61 3356 1515</div>
+  </div>
+</div>
+
+<!-- ── APP SECTION ── -->
+<section class="app-section">
+  <div class="app-content">
+    <h2>Quero Peças Distribuidora</h2>
+    <p>Baixe nosso app e acesse o catálogo completo no celular. Gerencie pedidos, acompanhe entregas e muito mais.</p>
+    <div class="app-btns">
+      <a href="#" class="btn-app">▶ Google Play</a>
+      <a href="#" class="btn-app"> App Store</a>
+    </div>
+  </div>
+  <div class="app-carros">
+    <img src="images/amortecedor.png"     alt="Amortecedor"   class="app-slide active"/>
+    <img src="images/pistao com anel.png" alt="Pistão"        class="app-slide"/>
+    <img src="images/peçasfiltros.png"    alt="Filtros"       class="app-slide"/>
+    <img src="images/Fraslepasti.png"     alt="Frasle Pastil" class="app-slide"/>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<div class="newsletter">
+  <p>Assine para ver ofertas secretas e receber descontos assim que se inscrever!</p>
+  <div class="newsletter-form">
+    <input class="newsletter-input" type="email" placeholder="📧 Digite seu e-mail"/>
+    <button class="btn-inscrever" onclick="handleNewsletter()">Inscrever-se →</button>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-main">Quero <span>PEÇAS</span></div>
+      <div class="footer-logo-sub">Distribuidora de Autopeças</div>
+      <div class="footer-loc">
+        <div class="footer-loc-item">📍 QI 25 Lote 1800 A 1890</div>
+        <div class="footer-loc-item">🕐 Horário: 8:00 – 17:00, Seg – Sexta</div>
+        <div class="footer-loc-item">✉ suporte@queropecas.com</div>
+      </div>
+      <p style="margin-top:12px;font-size:12px;">Precisa de ajuda? Ligue para nós:</p>
+      <div class="footer-tel">+55 61 3356 1515</div>
+    </div>
+    <div>
+      <h4>Links rápidos</h4>
+      <ul class="footer-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Destaques</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Depoimentos</a></li>
+        <li><a href="#">Fale conosco</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <ul class="footer-links">
+        <li><a href="#">Sobre nós</a></li>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Trabalhe conosco</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Siga</h4>
+      <div class="social-links">
+        <a href="#" class="social-link">▶ YouTube</a>
+        <a href="#" class="social-link">■ Facebook</a>
+        <a href="#" class="social-link">◈ Instagram</a>
+        <a href="#" class="social-link">✕ Twitter / X</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 QueroPeças Inc. All rights reserved.</span>
+    <span>Desenvolvido com ❤ no Brasil</span>
+  </div>
+</footer>
+
+<script src="js/utils/auth.js"></script>
+<script src="js/models/home.model.js"></script>
+<script src="js/views/home.view.js"></script>
+<script src="js/controllers/home.controller.js"></script>
+</body>
+</html>

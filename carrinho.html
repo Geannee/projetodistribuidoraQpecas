@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QUERO PEÇAS – Carrinho</title>
+  <link rel="stylesheet" href="css/carrinho-style.css"/>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>📞 +55 61 3356 1515</span>
+  <span class="center">Mais de <span>55 mil</span> peças disponíveis</span>
+  <span>🌐 PT | BRL</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="images/logopreta.png" alt="Quero Peças" class="navbar-logo-img"/>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="#">Destaques</a>
+    <a href="#">Loja</a>
+    <a href="#">Contato</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-cart btn-cart-active" onclick="location.href='carrinho.html'">
+      🛒
+      <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
+    <button class="btn-back" onclick="location.href='busca.html'">← Continuar comprando</button>
+  </div>
+</nav>
+
+<!-- SPLIT LAYOUT -->
+<div class="split-layout">
+
+  <!-- ══════════════════════════════════════════════════════
+       PAINEL ESQUERDO — Itens do carrinho
+       ══════════════════════════════════════════════════════ -->
+  <div class="panel-left">
+
+    <div class="pl-header">
+      <div class="pl-badge">🛒 Carrinho de peças</div>
+      <div class="pl-header-row">
+        <h2>Seus itens<br>selecionados</h2>
+        <button class="btn-limpar" id="btnLimpar" onclick="limparCarrinho()">🗑 Limpar tudo</button>
+      </div>
+      <p id="cartCountLabel">0 itens</p>
+    </div>
+
+    <!-- Lista de itens (renderizada pelo JS via localStorage) -->
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- Estado vazio -->
+    <div class="cart-empty" id="cartEmpty" style="display:none;">
+      <div class="ce-icon">🛒</div>
+      <p>Carrinho vazio</p>
+      <button class="btn-search-full" onclick="location.href='busca.html'">Buscar peças →</button>
+    </div>
+
+    <!-- Subtotal no rodapé do painel -->
+    <div class="cart-footer" id="cartFooter">
+      <div>
+        <div class="cf-label">Subtotal dos itens</div>
+        <div class="cf-count" id="cfCount">3 itens</div>
+      </div>
+      <div class="cf-total" id="cfTotal">R$ 353,30</div>
+    </div>
+
+  </div><!-- fim panel-left -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PAINEL DIREITO — Resumo, ações e status
+       ══════════════════════════════════════════════════════ -->
+  <div class="panel-right">
+
+    <!-- Resumo do pedido -->
+    <div class="order-summary">
+      <div class="os-title">Resumo do pedido</div>
+      <div class="os-row">
+        <span class="os-label">Subtotal (3 itens)</span>
+        <span class="os-value" id="summarySubtotal">R$ 353,30</span>
+      </div>
+      <div class="os-row">
+        <span class="os-label">Frete estimado</span>
+        <span class="os-value os-frete">A calcular</span>
+      </div>
+      <div class="os-row os-row-discount" style="display:none;">
+        <span class="os-label">Desconto</span>
+        <span class="os-value os-discount">− R$ 0,00</span>
+      </div>
+      <div class="os-row os-total">
+        <span>Total estimado</span>
+        <span id="summaryTotal">R$ 353,30</span>
+      </div>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="action-buttons">
+      <button class="btn-finalizar" onclick="finalizarPedido()">
+        ✅ Finalizar Pedido
+      </button>
+      <div class="action-row">
+        <button class="btn-action-sec" onclick="gerarPedido()">
+          📋 Gerar Pedido
+        </button>
+        <button class="btn-action-sec" onclick="gerarPDF()">
+          📄 Gerar PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Status do Pedido ── -->
+    <div class="order-status" id="orderStatus">
+      <div class="ost-header">
+        <div>
+          <div class="ost-title">Status do Pedido</div>
+          <div class="ost-num">Pedido #QP-2026-00847</div>
+        </div>
+        <span class="ost-badge ost-badge-transito">Em trânsito</span>
+      </div>
+
+      <div class="status-timeline">
+
+        <!-- Passo 1: Nota Emitida (concluído) -->
+        <div class="st-step done" id="step-nota">
+          <div class="st-connector-col">
+            <div class="st-dot">✓</div>
+            <div class="st-line"></div>
+          </div>
+          <div class="st-info">
+            <div class="st-label">Nota Fiscal Emitida</div>
+            <div class="st-date">14/04/2026 às 09:42</div>
+          </div>
+        </div>
+
+        <!-- Passo 2: Aguardando Rota (concluído) -->
+        <div class="st-step done" id="step-aguardando">
+          <div class="st-connector-col">
+            <div class="st-dot">✓</div>
+            <div class="st-line"></div>
+          </div>
+          <div class="st-info">
+            <div class="st-label">Mercadoria Aguardando Rota</div>
+            <div class="st-date">14/04/2026 às 14:10</div>
+          </div>
+        </div>
+
+        <!-- Passo 3: Saiu para Rota (ativo) -->
+        <div class="st-step active" id="step-rota">
+          <div class="st-connector-col">
+            <div class="st-dot">🚚</div>
+            <div class="st-line"></div>
+          </div>
+          <div class="st-info">
+            <div class="st-label">Mercadoria Saiu para Rota</div>
+            <div class="st-date">Previsão: hoje até 18h</div>
+          </div>
+        </div>
+
+        <!-- Passo 4: Entregue (pendente) -->
+        <div class="st-step pending" id="step-entregue">
+          <div class="st-connector-col">
+            <div class="st-dot">📦</div>
+            <div class="st-line" style="display:none;"></div>
+          </div>
+          <div class="st-info">
+            <div class="st-label">Mercadoria Entregue</div>
+            <div class="st-date">Aguardando confirmação</div>
+          </div>
+        </div>
+
+      </div><!-- fim status-timeline -->
+    </div><!-- fim order-status -->
+
+  </div><!-- fim panel-right -->
+</div><!-- fim split-layout -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">QUERO PEÇAS</div>
+    <p>Mais de 55 mil peças disponíveis.<br>Entregamos em todo o Brasil.</p>
+  </div>
+  <div>
+    <h4>Links Rápidos</h4>
+    <a href="index.html">Início</a>
+    <a href="busca.html">Buscar Peças</a>
+    <a href="#">Destaques</a>
+    <a href="#">Contato</a>
+  </div>
+  <div>
+    <h4>Newsletter</h4>
+    <p>Receba ofertas e novidades no seu e-mail.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="seu@email.com"/>
+      <button>Inscrever →</button>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Quero Peças. Todos os direitos reservados.</span>
+  <span>Desenvolvido com ❤ no Brasil</span>
+</div>
+
+<script src="js/utils/cart.js"></script>
+<script src="js/controllers/carrinho.controller.js"></script>
+</body>
+</html>

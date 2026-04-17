@@ -1,0 +1,22 @@
+[
+  { "placa": "PBQ2694", "chassis": "9BWAL45U0KT104252", "marca": "VW",      "modelo": "GOL",        "motor": "1.6", "ano_fab": 2019, "ano_mod": 2019, "cor": "BRANCO"   },
+  { "placa": "JHA7426", "chassis": "9BGSA19907B121488", "marca": "GM",      "modelo": "CLASSIC",    "motor": "1.0", "ano_fab": 2006, "ano_mod": 2006, "cor": "CINZA"    },
+  { "placa": "JJH5152", "chassis": "8AP17164LC3029277", "marca": "FIAT",    "modelo": "PALIO",      "motor": "1.0", "ano_fab": 2011, "ano_mod": 2011, "cor": "CINZA"    },
+  { "placa": "OVM1510", "chassis": "93HGE8890EZ106227", "marca": "HONDA",   "modelo": "FIT",        "motor": "1.5", "ano_fab": 2013, "ano_mod": 2013, "cor": "CINZA"    },
+  { "placa": "JHJ3508", "chassis": "8AD3CN6B49G017544", "marca": "PEUGEOT", "modelo": "307",        "motor": "1.6", "ano_fab": 2008, "ano_mod": 2008, "cor": "VERMELHO" },
+  { "placa": "PRM6531", "chassis": "9BRBL3HE5J0149029", "marca": "TOYOTA",  "modelo": "COROLLA",    "motor": "1.8", "ano_fab": 2018, "ano_mod": 2018, "cor": "PRATA"    },
+  { "placa": "JIX0751", "chassis": "9BD15802AC6656467", "marca": "FIAT",    "modelo": "UNO",        "motor": "1.0", "ano_fab": 2011, "ano_mod": 2011, "cor": "VERMELHO" },
+  { "placa": "JKD0284", "chassis": "VF7UDRFJWBJ555532", "marca": "CITROEN", "modelo": "C4 PICASSO", "motor": "2.0", "ano_fab": 2011, "ano_mod": 2011, "cor": "PRATA"    },
+  { "placa": "PBJ2837", "chassis": "9BG148PK0JC439030", "marca": "GM",      "modelo": "S10",        "motor": "2.8", "ano_fab": 2017, "ano_mod": 2017, "cor": "VERMELHO" },
+  { "placa": "NGH2366", "chassis": "KMHJM81BP7U654003", "marca": "HYUNDAI", "modelo": "TUCSON",     "motor": "2.0", "ano_fab": 2007, "ano_mod": 2007, "cor": "PRETA"    },
+  { "placa": "FMG3E13", "chassis": "8AFVZZFHCEJ164513", "marca": "FORD",    "modelo": "FOCUS",      "motor": "1.6", "ano_fab": 2014, "ano_mod": 2014, "cor": "PRATA"    },
+  { "placa": "PZL5H39", "chassis": "9BD341A8CJY478557", "marca": "FIAT",    "modelo": "MOBI",       "motor": "1.0", "ano_fab": 2017, "ano_mod": 2017, "cor": "VERMELHO" },
+  { "placa": "RFL3I51", "chassis": "9BD341A5XLY690214", "marca": "FIAT",    "modelo": "MOBI",       "motor": "1.0", "ano_fab": 2020, "ano_mod": 2020, "cor": "BRANCO"   },
+  { "placa": "OGT7444", "chassis": "9BD195162D0372338", "marca": "FIAT",    "modelo": "UNO",        "motor": "1.0", "ano_fab": 2012, "ano_mod": 2012, "cor": "CINZA"    },
+  { "placa": "OVP5504", "chassis": "9BRB29BT0E2030019", "marca": "TOYOTA",  "modelo": "ETIOS",      "motor": "1.5", "ano_fab": 2013, "ano_mod": 2013, "cor": "PRETA"    },
+  { "placa": "JGY4411", "chassis": "8AD3CN6B49G032523", "marca": "PEUGEOT", "modelo": "307",        "motor": "1.6", "ano_fab": 2008, "ano_mod": 2008, "cor": "PRATA"    },
+  { "placa": "NGG0566", "chassis": "8AGSA19908R117606", "marca": "GM",      "modelo": "CLASSIC",    "motor": "1.0", "ano_fab": 2007, "ano_mod": 2007, "cor": "PRETA"    },
+  { "placa": "JHG3927", "chassis": "935FCKFV88B516907", "marca": "CITROEN", "modelo": "C3",         "motor": "1.4", "ano_fab": 2007, "ano_mod": 2007, "cor": "PRETA"    },
+  { "placa": "JIN5200", "chassis": "KNAFU411BB5921903", "marca": "KIA",     "modelo": "CERATO",     "motor": "1.6", "ano_fab": 2011, "ano_mod": 2011, "cor": "PRATA"    },
+  { "placa": "JET2227", "chassis": "9BHBG51CADP048935", "marca": "HYUNDAI", "modelo": "HB20",       "motor": "1.0", "ano_fab": 2013, "ano_mod": 2013, "cor": "BRANCO"   }
+]

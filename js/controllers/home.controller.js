@@ -26,7 +26,7 @@ const HomeController = {
 
   iniciarSlideshows() {
     HomeView.iniciarSlideshow('.hero-slide', 3000);
-    HomeView.iniciarSlideshow('.app-slide',  3000);
+    HomeView.iniciarSlideshow('.app-slide',  2000);
   },
 
   addToCart(nome, btn) {

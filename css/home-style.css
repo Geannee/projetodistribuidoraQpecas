@@ -757,7 +757,7 @@ button { cursor: pointer; font-family: inherit; }
   height: 100%;
   object-fit: contain;
   opacity: 0;
-  transition: opacity .8s ease;
+  transition: opacity .6s ease;
   filter: drop-shadow(0 8px 24px rgba(232,93,58,.2));
   animation: heroFloat 3s ease-in-out infinite;
 }

@@ -129,12 +129,48 @@ function limparCarrinho() {
 // ── Ações do pedido ──────────────────────────────────────────────────────────
 function finalizarPedido() {
   if (Cart.count() === 0) { alert('Adicione itens ao carrinho antes de finalizar.'); return; }
-  alert('✅ Pedido finalizado com sucesso!\nNúmero: #QP-2026-' + Math.floor(Math.random()*9000+1000) + '\n\nVocê receberá a confirmação por e-mail.');
+  const numero = '#QP-' + Math.floor(Math.random() * 9000 + 1000);
+  const itens  = Cart.get().map(i => i.name).join(', ');
+  const total  = Cart.get().reduce((s, i) => s + i.price * i.qty, 0);
+  const pedido = {
+    id: numero,
+    data: new Date().toLocaleDateString('pt-BR'),
+    itens: itens,
+    total: 'R$ ' + total.toFixed(2).replace('.', ','),
+    status: 'Aguardando Pagamento',
+    statusClass: 'status-aguardando',
+    previsao: '—'
+  };
+  const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+  pedidos.unshift(pedido);
+  localStorage.setItem('pedidos', JSON.stringify(pedidos));
+  Cart.save([]);
+  Cart.updateBadge();
+  renderCart();
+  setTimeout(() => { location.href = 'pedidos.html'; }, 800);
 }
 
 function gerarPedido() {
   if (Cart.count() === 0) { alert('Adicione itens ao carrinho antes de gerar o pedido.'); return; }
-  alert('📋 Pedido gerado!\nNúmero: #QP-2026-' + Math.floor(Math.random()*9000+1000) + '\n\nAguardando aprovação para emissão da nota fiscal.');
+  const numero = '#QP-' + Math.floor(Math.random() * 9000 + 1000);
+  const itens  = Cart.get().map(i => i.name).join(', ');
+  const total  = Cart.get().reduce((s, i) => s + i.price * i.qty, 0);
+  const pedido = {
+    id: numero,
+    data: new Date().toLocaleDateString('pt-BR'),
+    itens: itens,
+    total: 'R$ ' + total.toFixed(2).replace('.', ','),
+    status: 'Em Separação',
+    statusClass: 'status-separacao',
+    previsao: '—'
+  };
+  const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+  pedidos.unshift(pedido);
+  localStorage.setItem('pedidos', JSON.stringify(pedidos));
+  Cart.save([]);
+  Cart.updateBadge();
+  renderCart();
+  setTimeout(() => { location.href = 'pedidos.html'; }, 800);
 }
 
 function gerarPDF() {

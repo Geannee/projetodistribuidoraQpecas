@@ -18,5 +18,7 @@
   { "placa": "NGG0566", "chassis": "8AGSA19908R117606", "marca": "GM",      "modelo": "CLASSIC",    "motor": "1.0", "ano_fab": 2007, "ano_mod": 2007, "cor": "PRETA"    },
   { "placa": "JHG3927", "chassis": "935FCKFV88B516907", "marca": "CITROEN", "modelo": "C3",         "motor": "1.4", "ano_fab": 2007, "ano_mod": 2007, "cor": "PRETA"    },
   { "placa": "JIN5200", "chassis": "KNAFU411BB5921903", "marca": "KIA",     "modelo": "CERATO",     "motor": "1.6", "ano_fab": 2011, "ano_mod": 2011, "cor": "PRATA"    },
-  { "placa": "JET2227", "chassis": "9BHBG51CADP048935", "marca": "HYUNDAI", "modelo": "HB20",       "motor": "1.0", "ano_fab": 2013, "ano_mod": 2013, "cor": "BRANCO"   }
+  { "placa": "JET2227", "chassis": "9BHBG51CADP048935", "marca": "HYUNDAI", "modelo": "HB20",       "motor": "1.0", "ano_fab": 2013, "ano_mod": 2013, "cor": "BRANCO"   },
+  { "placa": "PAY3702", "chassis": "93HRV2850HZ229196", "marca": "HONDA",   "modelo": "HRV",        "motor": "1.8", "ano_fab": 2017, "ano_mod": 2018, "cor": "CINZA"   },
+  { "placa": "PZB2C68", "chassis": "9BD341ATZRY924205", "marca": "FIAT",    "modelo": "MOBI",       "motor": "1.0", "ano_fab": 2023, "ano_mod": 2024, "cor": "CINZA"   }
 ]

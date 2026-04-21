@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/geanne/Desktop/vetor/**)",
+      "Bash(npx expo:*)",
+      "Bash(open http://localhost:8083)"
+    ]
+  }
+}

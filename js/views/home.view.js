@@ -26,7 +26,7 @@ const HomeView = {
               <div class="produto-img">
                 <span class="badge-oferta">OFERTA</span>
                 <span class="badge-desc">${p.desc}</span>
-                ${p.icon}
+                <img src="${p.img}" alt="${p.nome}" style="width:100%;height:100%;object-fit:contain;"/>
               </div>
               <div class="produto-body">
                 <div class="produto-marca">${p.marca}</div>

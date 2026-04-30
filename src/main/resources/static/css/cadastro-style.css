@@ -1,0 +1,578 @@
+/* ── CADASTRO-STYLE.CSS ──────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --coral:      #E05A4E;
+  --coral-dark: #C94A3E;
+  --dark:       #1A100A;
+  --white:      #ffffff;
+  --border:     #e5e7eb;
+  --bg:         #f3f4f6;
+  --text:       #111827;
+  --muted:      #6b7280;
+  --radius:     10px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+.cad-header {
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+}
+
+.cad-logo {
+  width: 160px;
+  height: auto;
+}
+
+.cad-back {
+  color: #9ca3af;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.cad-back:hover {
+  color: var(--white);
+}
+
+/* ── BARRA DE PROGRESSO ──────────────────────────────────────────────────── */
+.progress-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 48px;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 100px;
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e5e7eb;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.step-done .step-circle {
+  background: #10B981;
+  border-color: #10B981;
+  color: var(--white);
+  font-size: 16px;
+}
+
+.step-done .step-label {
+  color: #10B981;
+}
+
+.step-active .step-circle {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--white);
+}
+
+.step-active .step-label {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  margin-bottom: 22px;
+  min-width: 40px;
+  max-width: 100px;
+}
+
+.step-line-done {
+  background: #10B981;
+}
+
+/* ── LAYOUT PRINCIPAL ────────────────────────────────────────────────────── */
+.cad-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 28px;
+  max-width: 1160px;
+  margin: 28px auto;
+  padding: 0 24px 48px;
+  align-items: start;
+}
+
+/* ── CARD DO FORMULÁRIO ──────────────────────────────────────────────────── */
+.cad-form-wrap {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 36px 40px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.cad-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.cad-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── SEÇÕES DO FORMULÁRIO ────────────────────────────────────────────────── */
+.form-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  margin-top: 6px;
+}
+
+/* ── CAMPOS ──────────────────────────────────────────────────────────────── */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 2px;
+}
+
+.field-row-3 {
+  grid-template-columns: 160px 1fr 90px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.field-input {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  outline: none;
+  width: 100%;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.field-input:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(224,90,78,.1);
+}
+
+.field-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.1);
+}
+
+.field-input:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+}
+
+.field-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+/* ── INPUT COM BOTÃO DE SENHA ────────────────────────────────────────────── */
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap .field-input {
+  padding-right: 40px;
+}
+
+.toggle-pw {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 0;
+  line-height: 1;
+}
+
+/* ── TERMOS ──────────────────────────────────────────────────────────────── */
+.termos-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.termos-check {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--coral);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.link-termos {
+  color: var(--coral);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-termos:hover {
+  text-decoration: underline;
+}
+
+/* ── ERRO ────────────────────────────────────────────────────────────────── */
+.form-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ── BOTÕES ──────────────────────────────────────────────────────────────── */
+.form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-voltar {
+  background: var(--white);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+
+.btn-voltar:hover {
+  border-color: #9ca3af;
+  color: var(--text);
+}
+
+.btn-criar {
+  flex: 1;
+  background: var(--coral);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, transform .1s;
+}
+
+.btn-criar:hover {
+  background: var(--coral-dark);
+  transform: translateY(-1px);
+}
+
+.btn-criar:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── PAINEL DIREITO ──────────────────────────────────────────────────────── */
+.cad-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Card do plano */
+.plano-card {
+  background: var(--dark);
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+}
+
+.plano-icon {
+  font-size: 26px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.plano-nome {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.plano-desc {
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.plano-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--coral);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 99px;
+}
+
+.painel-sub {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0 2px;
+}
+
+/* Cards de benefícios */
+.beneficio-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent, #e5e7eb);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+
+.ben-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.ben-body {
+  flex: 1;
+}
+
+.ben-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ben-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563EB;
+  background: #EFF6FF;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.ben-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.ben-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ben-list li {
+  font-size: 12px;
+  color: var(--muted);
+  padding-left: 14px;
+  position: relative;
+}
+
+.ben-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent, #e5e7eb);
+  font-weight: 700;
+}
+
+/* ── MODAL ───────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 44px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-16px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-icon {
+  font-size: 52px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.modal-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── RESPONSIVIDADE ──────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .cad-layout {
+    grid-template-columns: 1fr;
+  }
+  .cad-panel {
+    order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .cad-header {
+    padding: 0 20px;
+  }
+  .cad-form-wrap {
+    padding: 24px 20px;
+  }
+  .field-row,
+  .field-row-3 {
+    grid-template-columns: 1fr;
+  }
+  .progress-bar {
+    padding: 16px 12px;
+    gap: 0;
+  }
+  .step-label {
+    display: none;
+  }
+  .step-line {
+    min-width: 20px;
+  }
+}

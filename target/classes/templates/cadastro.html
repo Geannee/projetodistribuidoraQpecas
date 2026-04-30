@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar Conta – Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/cadastro-style.css"/>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="cad-header">
+  <img src="images/logoqueropeças.png" alt="Quero Peças" class="cad-logo"/>
+  <a href="login.html" class="cad-back">← Voltar ao login</a>
+</header>
+
+<!-- BARRA DE PROGRESSO -->
+<div class="progress-bar">
+  <div class="step step-done">
+    <div class="step-circle">✓</div>
+    <span class="step-label">Tipo de conta</span>
+  </div>
+  <div class="step-line step-line-done"></div>
+  <div class="step step-active">
+    <div class="step-circle">2</div>
+    <span class="step-label">Dados da oficina</span>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle">3</div>
+    <span class="step-label">Responsável</span>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle">4</div>
+    <span class="step-label">Acesso</span>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-circle">5</div>
+    <span class="step-label">Confirmação</span>
+  </div>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="cad-layout">
+
+  <!-- FORMULÁRIO -->
+  <div class="cad-form-wrap">
+    <h1 class="cad-title">Dados da sua oficina</h1>
+    <p class="cad-subtitle">Preencha os dados para acessar compras e funcionalidades da plataforma.</p>
+
+    <form id="form-cadastro" onsubmit="enviarCadastro(event)">
+
+      <!-- Identificação -->
+      <div class="form-section-title">Identificação</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">CNPJ *</label>
+          <input class="field-input" id="cnpj" type="text" placeholder="00.000.000/0001-00" oninput="mascaraCNPJ(this)" maxlength="18"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Razão Social *</label>
+          <input class="field-input" id="razao" type="text" placeholder="Oficina Silva e Filhos LTDA"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Nome da oficina *</label>
+          <input class="field-input" id="nome-oficina" type="text" placeholder="Oficina Silva"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Especialidade</label>
+          <input class="field-input" id="especialidade" type="text" placeholder="Mecânica geral, Freios..."/>
+        </div>
+      </div>
+
+      <!-- Endereço -->
+      <div class="form-section-title">Endereço</div>
+
+      <div class="field-row field-row-3">
+        <div class="field-group field-cep">
+          <label class="field-label">CEP *</label>
+          <input class="field-input" id="cep" type="text" placeholder="70000-000" oninput="mascaraCEP(this)" maxlength="9"/>
+        </div>
+        <div class="field-group field-logradouro">
+          <label class="field-label">Logradouro *</label>
+          <input class="field-input" id="logradouro" type="text" placeholder="Rua, Avenida, QI..."/>
+        </div>
+        <div class="field-group field-numero">
+          <label class="field-label">Número *</label>
+          <input class="field-input" id="numero" type="text" placeholder="100"/>
+        </div>
+      </div>
+
+      <div class="field-row field-row-3">
+        <div class="field-group">
+          <label class="field-label">Bairro *</label>
+          <input class="field-input" id="bairro" type="text" placeholder="Setor Industrial"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Cidade *</label>
+          <input class="field-input" id="cidade" type="text" placeholder="Brasília"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Estado *</label>
+          <select class="field-input field-select" id="estado">
+            <option value="">UF</option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+            <option>BA</option><option>CE</option><option selected>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+            <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+            <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+            <option>SP</option><option>SE</option><option>TO</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsável e acesso -->
+      <div class="form-section-title">Responsável e acesso</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Nome do responsável *</label>
+          <input class="field-input" id="responsavel" type="text" placeholder="João Silva"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Telefone / WhatsApp *</label>
+          <input class="field-input" id="telefone" type="text" placeholder="(61) 99999-9999" oninput="mascaraTelefone(this)" maxlength="15"/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">E-mail *</label>
+        <input class="field-input" id="email" type="email" placeholder="contato@oficina.com.br"/>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Senha *</label>
+          <div class="input-wrap">
+            <input class="field-input" id="senha" type="password" placeholder="Mínimo 8 caracteres"/>
+            <button type="button" class="toggle-pw" onclick="toggleSenha('senha', this)">👁</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Confirmar senha *</label>
+          <div class="input-wrap">
+            <input class="field-input" id="confirma-senha" type="password" placeholder="Repita a senha"/>
+            <button type="button" class="toggle-pw" onclick="toggleSenha('confirma-senha', this)">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="termos-wrap">
+        <input type="checkbox" id="termos" class="termos-check"/>
+        <label for="termos">
+          Aceito os <a href="#" class="link-termos">Termos de Uso</a> e a <a href="#" class="link-termos">Política de Privacidade</a>
+        </label>
+      </div>
+
+      <div id="cad-error" class="form-error" style="display:none;"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-voltar" onclick="location.href='login.html'">← Voltar</button>
+        <button type="submit" class="btn-criar" id="btn-criar">Criar minha conta →</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- PAINEL DIREITO -->
+  <div class="cad-panel">
+
+    <div class="plano-card">
+      <div class="plano-icon">🔧</div>
+      <div class="plano-info">
+        <div class="plano-nome">Plano Oficina</div>
+        <div class="plano-desc">Acesso completo às funcionalidades<br>de compra e gestão de peças.</div>
+      </div>
+      <span class="plano-badge">Gratuito</span>
+    </div>
+
+    <p class="painel-sub">O que você terá acesso:</p>
+
+    <div class="beneficio-card" style="--accent:#3B82F6;">
+      <div class="ben-icon" style="background:#EFF6FF;">🧾</div>
+      <div class="ben-body">
+        <div class="ben-title">Emissão de Boleto <span class="ben-badge">✓ Incluso</span></div>
+        <p class="ben-desc">Gere boletos bancários para pagamento de pedidos direto na plataforma, sem burocracia.</p>
+        <ul class="ben-list">
+          <li>Boleto para qualquer pedido</li>
+          <li>Vencimento configurável</li>
+          <li>Envio automático por e-mail</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#10B981;">
+      <div class="ben-icon" style="background:#ECFDF5;">🛡</div>
+      <div class="ben-body">
+        <div class="ben-title">Solicitação de Garantia <span class="ben-badge" style="color:#10B981;background:#ECFDF5;">✓ Incluso</span></div>
+        <p class="ben-desc">Abra chamados de garantia para peças com defeito de fábrica de forma simples e rastreável.</p>
+        <ul class="ben-list">
+          <li>Anexe fotos e laudo técnico</li>
+          <li>Acompanhe status em tempo real</li>
+          <li>Prazo de resposta: 3 dias úteis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#8B5CF6;">
+      <div class="ben-icon" style="background:#F5F3FF;">🔄</div>
+      <div class="ben-body">
+        <div class="ben-title">Solicitação de Devolução <span class="ben-badge" style="color:#8B5CF6;background:#F5F3FF;">✓ Incluso</span></div>
+        <p class="ben-desc">Solicite a devolução de peças dentro do prazo legal com processo 100% digital.</p>
+        <ul class="ben-list">
+          <li>Devolução em até 7 dias</li>
+          <li>Rastreamento de coleta incluso</li>
+          <li>Crédito ou reembolso disponível</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#F59E0B;">
+      <div class="ben-icon" style="background:#FFFBEB;">🔍</div>
+      <div class="ben-body">
+        <div class="ben-title">Busca por Placa <span class="ben-badge" style="color:#F59E0B;background:#FFFBEB;">✓ Incluso</span></div>
+        <p class="ben-desc">Encontre peças compatíveis pelo número da placa do veículo com equivalências por marca.</p>
+        <ul class="ben-list">
+          <li>Compatibilidade automática</li>
+          <li>Todas as marcas e referências</li>
+          <li>Histórico de buscas salvo</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL SUCESSO -->
+<div class="modal-overlay" id="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3 class="modal-title">Conta criada com sucesso!</h3>
+    <p class="modal-sub">Bem-vindo à Quero Peças! Seu cadastro foi realizado. Faça login para acessar sua conta.</p>
+    <div class="modal-actions">
+      <a href="login.html" class="btn-criar">Ir para o login →</a>
+    </div>
+  </div>
+</div>
+
+<script src="js/utils/masks.js"></script>
+<script src="js/utils/modal.js"></script>
+<script src="js/controllers/cadastro.controller.js"></script>
+</body>
+</html>

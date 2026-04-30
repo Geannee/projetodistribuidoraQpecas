@@ -1,0 +1,144 @@
+[
+  {
+    "id": "amortecedor",
+    "icon": "🔩",
+    "nome": "Amortecedor",
+    "sub": "Dianteiro / Traseiro",
+    "categoria": "Suspensão",
+    "filtros": ["Todas", "Original", "Premium", "Econômico"],
+    "opcoes": [
+      { "marca": "Monroe",  "ref": "G8197",    "tipo": "Original",  "destaque": "⭐ Mais vendido",  "preco": 187.00, "label": "à vista",  "estoque": "ok"  },
+      { "marca": "Sachs",   "ref": "311 479",  "tipo": "Premium",   "destaque": "🔝 Performance",   "preco": 248.00, "label": "à vista",  "estoque": "ok"  },
+      { "marca": "Cofap",   "ref": "GF72199",  "tipo": "Original",  "destaque": "",                 "preco": 154.00, "label": "à vista",  "estoque": "low" },
+      { "marca": "Nakata",  "ref": "HG31118",  "tipo": "Econômico", "destaque": "",                 "preco": 118.00, "label": "à vista",  "estoque": "ok"  },
+      { "marca": "Gabriel", "ref": "G57043",   "tipo": "Original",  "destaque": "✔ OEM",            "preco": 172.00, "label": "à vista",  "estoque": "ok"  }
+    ]
+  },
+  {
+    "id": "pistao-anel",
+    "icon": "🔧",
+    "nome": "Pistão com Anel",
+    "sub": "Motor — jogo completo",
+    "categoria": "Motor",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Metal Leve", "ref": "ML-A49700",   "tipo": "Original", "destaque": "⭐ Mais vendido",  "preco": 420.00, "label": "jogo c/4", "estoque": "ok"  },
+      { "marca": "Mahle",      "ref": "MH-224.0STD", "tipo": "Premium",  "destaque": "🔝 Alta precisão", "preco": 580.00, "label": "jogo c/4", "estoque": "ok"  },
+      { "marca": "Cofap",      "ref": "CP-4219",     "tipo": "Original", "destaque": "",                "preco": 390.00, "label": "jogo c/4", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "bronzina-biela",
+    "icon": "⚙",
+    "nome": "Bronzina de Biela",
+    "sub": "Motor — medida padrão / sobre-medida",
+    "categoria": "Motor",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Metal Leve", "ref": "ML-BIE030STD",  "tipo": "Original",  "destaque": "⭐ Mais vendida", "preco": 98.00,  "label": "jogo c/4", "estoque": "ok"  },
+      { "marca": "Mahle",      "ref": "MH-BIE025STD",  "tipo": "Premium",   "destaque": "🔝 Alta dureza",  "preco": 138.00, "label": "jogo c/4", "estoque": "ok"  },
+      { "marca": "Glyco",      "ref": "GL-01-4170STD", "tipo": "Original",  "destaque": "",               "preco": 112.00, "label": "jogo c/4", "estoque": "ok"  },
+      { "marca": "Cofap",      "ref": "CP-B1102",      "tipo": "Econômico", "destaque": "",               "preco": 72.00,  "label": "jogo c/4", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "bronzina-mancal",
+    "icon": "⚙",
+    "nome": "Bronzina de Mancal",
+    "sub": "Motor — medida padrão / sobre-medida",
+    "categoria": "Motor",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Metal Leve", "ref": "ML-MAN030STD",  "tipo": "Original",  "destaque": "⭐ Mais vendida", "preco": 124.00, "label": "jogo c/5", "estoque": "ok"  },
+      { "marca": "Mahle",      "ref": "MH-MAN025STD",  "tipo": "Premium",   "destaque": "🔝 Alta dureza",  "preco": 168.00, "label": "jogo c/5", "estoque": "ok"  },
+      { "marca": "Glyco",      "ref": "GL-02-3850STD", "tipo": "Original",  "destaque": "",               "preco": 142.00, "label": "jogo c/5", "estoque": "ok"  },
+      { "marca": "Cofap",      "ref": "CP-M2215",      "tipo": "Econômico", "destaque": "",               "preco": 94.00,  "label": "jogo c/5", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "arruela-encosto",
+    "icon": "🔩",
+    "nome": "Arruela de Encosto",
+    "sub": "Motor — folga axial do virabrequim",
+    "categoria": "Motor",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Metal Leve", "ref": "ML-AE1805STD", "tipo": "Original", "destaque": "⭐ Mais vendida", "preco": 48.00, "label": "jogo",  "estoque": "ok"  },
+      { "marca": "Mahle",      "ref": "MH-AE1540STD", "tipo": "Premium",  "destaque": "",               "preco": 68.00, "label": "jogo",  "estoque": "ok"  },
+      { "marca": "Glyco",      "ref": "GL-AH-14STD",  "tipo": "Original", "destaque": "",               "preco": 54.00, "label": "jogo",  "estoque": "low" }
+    ]
+  },
+  {
+    "id": "disco-freio",
+    "icon": "⭕",
+    "nome": "Disco de Freio",
+    "sub": "Dianteiro / Traseiro",
+    "categoria": "Freios",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Fremax", "ref": "BD-3701",      "tipo": "Original", "destaque": "⭐ Mais vendido", "preco": 142.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Bosch",  "ref": "BD 1072",      "tipo": "Premium",  "destaque": "",                "preco": 198.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Brembo", "ref": "08.9450.21",   "tipo": "Premium",  "destaque": "🔝 Performance",  "preco": 264.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "ATE",    "ref": "24.0109-0144", "tipo": "Original", "destaque": "✔ OEM",           "preco": 176.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Ferodo", "ref": "DDF1468",      "tipo": "Original", "destaque": "",                "preco": 158.00, "label": "à vista", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "pastilha-freio",
+    "icon": "🛑",
+    "nome": "Pastilha de Freio",
+    "sub": "Dianteira / Traseira",
+    "categoria": "Freios",
+    "filtros": ["Todas", "Original", "Premium", "Econômico"],
+    "opcoes": [
+      { "marca": "TRW",    "ref": "GDB 1497",    "tipo": "Original",  "destaque": "⭐ Mais vendida",      "preco": 87.50,  "label": "à vista", "estoque": "ok"  },
+      { "marca": "Bosch",  "ref": "BP 714",       "tipo": "Premium",   "destaque": "🔝 Alta durabilidade", "preco": 112.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Ferodo", "ref": "FDB 1678",     "tipo": "Original",  "destaque": "",                    "preco": 94.90,  "label": "à vista", "estoque": "ok"  },
+      { "marca": "ATE",    "ref": "13.0460-2891", "tipo": "Premium",   "destaque": "✔ OEM",               "preco": 128.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Jurid",  "ref": "573 107 J",    "tipo": "Econômico", "destaque": "",                    "preco": 62.00,  "label": "à vista", "estoque": "low" },
+      { "marca": "Cofap",  "ref": "MPF20345",     "tipo": "Econômico", "destaque": "",                    "preco": 54.90,  "label": "à vista", "estoque": "ok"  }
+    ]
+  },
+  {
+    "id": "coxim-motor",
+    "icon": "🛠",
+    "nome": "Coxim Motor",
+    "sub": "Dianteiro / Traseiro / Lateral",
+    "categoria": "Suspensão",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Cofap",  "ref": "CM-7722",   "tipo": "Original",  "destaque": "⭐ Mais vendido",  "preco": 68.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Sabo",   "ref": "SS-90541",  "tipo": "Premium",   "destaque": "🔝 Anti-vibração", "preco": 98.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Nakata", "ref": "NH-38009",  "tipo": "Original",  "destaque": "",                "preco": 74.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Axios",  "ref": "AX-CM1102", "tipo": "Econômico", "destaque": "",                "preco": 52.00, "label": "à vista", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "sapata-freio",
+    "icon": "🔴",
+    "nome": "Jogo de Sapata",
+    "sub": "Traseiro — com molas",
+    "categoria": "Freios",
+    "filtros": ["Todas", "Original", "Premium", "Econômico"],
+    "opcoes": [
+      { "marca": "Frasle", "ref": "SY-1063",      "tipo": "Original",  "destaque": "⭐ Mais vendida",      "preco": 78.00,  "label": "jogo", "estoque": "ok"  },
+      { "marca": "Bosch",  "ref": "0 986 AB1 922", "tipo": "Premium",   "destaque": "🔝 Alta durabilidade", "preco": 112.00, "label": "jogo", "estoque": "ok"  },
+      { "marca": "TRW",    "ref": "GS8744",        "tipo": "Original",  "destaque": "",                    "preco": 86.00,  "label": "jogo", "estoque": "ok"  },
+      { "marca": "Jurid",  "ref": "529 213 J",     "tipo": "Econômico", "destaque": "",                    "preco": 58.00,  "label": "jogo", "estoque": "low" }
+    ]
+  },
+  {
+    "id": "tambor-freio",
+    "icon": "🔵",
+    "nome": "Tambor de Freio",
+    "sub": "Traseiro",
+    "categoria": "Freios",
+    "filtros": ["Todas", "Original", "Premium"],
+    "opcoes": [
+      { "marca": "Fremax", "ref": "BT-3901",       "tipo": "Original", "destaque": "⭐ Mais vendido", "preco": 134.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "ATE",    "ref": "24.0221-0157",  "tipo": "Original", "destaque": "✔ OEM",           "preco": 158.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Bosch",  "ref": "0 986 477 175", "tipo": "Premium",  "destaque": "🔝 Performance",  "preco": 198.00, "label": "à vista", "estoque": "ok"  },
+      { "marca": "Frasle", "ref": "TF-1109",       "tipo": "Original", "destaque": "",                "preco": 118.00, "label": "à vista", "estoque": "low" }
+    ]
+  }
+]

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QUERO PEÇAS – Busca de Peças</title>
+  <link rel="stylesheet" href="css/busca-style.css"/>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>📞 +55 61 3356 1515</span>
+  <span class="center">Mais de <span>55 mil</span> peças disponíveis</span>
+  <span>🌐 PT | BRL</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="images/logopreta.png" alt="Quero Peças" class="navbar-logo-img"/>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="#">Destaques</a>
+    <a href="#">Loja</a>
+    <a href="#">Contato</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-cart" onclick="location.href='carrinho.html'">
+      🛒
+      <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
+    <button class="btn-back" onclick="location.href='index.html'">← Voltar</button>
+  </div>
+</nav>
+
+<!-- SPLIT LAYOUT -->
+<div class="split-layout">
+
+  <!-- ══════════════════════════════════════════════════════
+       PAINEL ESQUERDO — Busca + Confirmação do veículo
+       ══════════════════════════════════════════════════════ -->
+  <div class="panel-left">
+
+    <!-- Cabeçalho -->
+    <div class="pl-header">
+      <div class="pl-badge">🔍 Busca inteligente</div>
+      <h2>Encontre a peça<br>certa para você</h2>
+      <p>Busque por placa, aplicação ou código da peça</p>
+    </div>
+
+    <!-- Abas de tipo de busca -->
+    <div class="stabs">
+      <button class="stab active" id="stab-btn-placa"     onclick="switchTab('placa')">🚗 Por Placa</button>
+      <button class="stab"        id="stab-btn-aplicacao" onclick="switchTab('aplicacao')">🔎 Aplicação</button>
+      <button class="stab"        id="stab-btn-codigo"    onclick="switchTab('codigo')">📦 Código</button>
+    </div>
+
+    <!-- TAB: Por Placa -->
+    <div class="stab-content active" id="stab-placa">
+      <label class="tab-label">Placa do veículo</label>
+      <div class="search-wrap">
+        <div class="plate-icon">
+          <div class="brasil">BRASIL 🇧🇷</div>
+          <div class="chars">ABC·1234</div>
+          <div class="estado">SÃO PAULO</div>
+        </div>
+        <input class="search-input" id="plateInput" type="text"
+               placeholder="ABC-1234 ou HGB7F52" maxlength="8"/>
+        <button class="btn-search" onclick="searchPlate()">Buscar →</button>
+      </div>
+      <p class="tab-hint">Compatível com placas antigas e padrão Mercosul</p>
+    </div>
+
+    <!-- TAB: Por Aplicação -->
+    <div class="stab-content" id="stab-aplicacao">
+      <label class="tab-label">Selecione o veículo</label>
+      <div class="app-form">
+        <div class="app-row">
+          <select class="app-select" id="appMarca" onchange="onMarcaChange()">
+            <option value="">Marca</option>
+            <option>Chevrolet</option>
+            <option>Citroën</option>
+            <option>Fiat</option>
+            <option>Ford</option>
+            <option>Honda</option>
+            <option>Hyundai</option>
+            <option>Jeep</option>
+            <option>Kia</option>
+            <option>Peugeot</option>
+            <option>Renault</option>
+            <option>Toyota</option>
+            <option>Volkswagen</option>
+          </select>
+          <select class="app-select" id="appModelo" disabled>
+            <option value="">Modelo</option>
+          </select>
+        </div>
+        <div class="app-row">
+          <select class="app-select" id="appAno">
+            <option value="">Ano</option>
+            <option>2025</option><option>2024</option><option>2023</option>
+            <option>2022</option><option>2021</option><option>2020</option>
+            <option>2019</option><option>2018</option><option>2017</option>
+            <option>2016</option><option>2015</option><option>2014</option>
+            <option>2013</option><option>2012</option><option>2011</option>
+            <option>2010</option><option>2009</option><option>2008</option>
+            <option>2007</option><option>2006</option>
+          </select>
+          <select class="app-select" id="appCategoria">
+            <option value="">Categoria</option>
+            <option>Freios</option><option>Motor</option><option>Suspensão</option>
+            <option>Filtros</option><option>Elétrica</option>
+          </select>
+        </div>
+        <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>
+      </div>
+    </div>
+
+    <!-- TAB: Por Código -->
+    <div class="stab-content" id="stab-codigo">
+      <label class="tab-label">Código ou referência da peça</label>
+      <div class="code-form">
+        <input class="code-input" id="codeInput" type="text"
+               placeholder="Ex.: GDB 1497, BP 714, ILFR6B..."/>
+        <button class="btn-search-full" onclick="searchCode()">Buscar →</button>
+      </div>
+      <p class="tab-hint">Referência do fabricante ou código interno</p>
+    </div>
+
+    <!-- ── Confirmação do veículo (aparece após busca) ── -->
+    <div class="vehicle-confirm" id="vehicleConfirm" style="display:none;">
+      <div class="vc-divider"></div>
+      <div class="vc-label">✓ Veículo identificado</div>
+      <div class="vc-card" id="vcCard">
+        <div class="vc-plate">
+          <div class="plate-mercosul">
+            <div class="top-bar">BRASIL 🇧🇷</div>
+            <div class="plate-num" id="plateDisplay">ABC·1234</div>
+            <div class="plate-estado">SP</div>
+          </div>
+        </div>
+        <div class="vc-info">
+          <div class="vc-model" id="vcModel">Volkswagen Gol 1.0</div>
+          <div class="vc-detail" id="vcDetail1">2019 / 2020</div>
+          <div class="vc-detail" id="vcDetail2">Motor 1.0 · Cor: Branco</div>
+          <div class="vc-chassis" id="vcChassis">Chassis: —</div>
+        </div>
+      </div>
+      <div class="vc-not-found" id="vcNotFound" style="display:none;">
+        <div class="vnf-icon">🔍</div>
+        <div class="vnf-text">Placa não encontrada na base.<br><small>Verifique a placa e tente novamente.</small></div>
+      </div>
+      <span class="not-this" onclick="resetSearch()">Não é este veículo? →</span>
+    </div>
+
+    <!-- Stats na base -->
+    <div class="pl-stats">
+      <div class="pl-stat"><span>55k+</span><small>Peças</small></div>
+      <div class="pl-stat"><span>200+</span><small>Marcas</small></div>
+      <div class="pl-stat"><span>24h</span><small>Entrega</small></div>
+    </div>
+
+  </div><!-- fim panel-left -->
+
+  <!-- ══════════════════════════════════════════════════════
+       PAINEL DIREITO — Lista de peças
+       ══════════════════════════════════════════════════════ -->
+  <div class="panel-right">
+
+    <!-- Estado vazio (antes de buscar) -->
+    <div class="empty-state" id="emptyState">
+      <div class="es-icon">🔩</div>
+      <h3>Pronto para encontrar sua peça?</h3>
+      <p>Use o painel ao lado para buscar por placa, veículo ou código de referência</p>
+      <div class="es-hints">
+        <div class="es-hint"><span>🚗</span><div><strong>Por Placa</strong><br>Identificamos o veículo automaticamente</div></div>
+        <div class="es-hint"><span>🔎</span><div><strong>Por Aplicação</strong><br>Selecione marca, modelo e ano</div></div>
+        <div class="es-hint"><span>📦</span><div><strong>Por Código</strong><br>Busca direta por referência</div></div>
+      </div>
+    </div>
+
+    <!-- Lista de peças (aparece após busca) -->
+    <div id="resultSection" style="display:none;">
+
+      <div class="r-header">
+        <div class="r-title">Peças compatíveis</div>
+        <div class="r-sub" id="rSub">Gol 1.0 · 2019/2020 · 1.0 MPI Flex — Clique para ver as opções</div>
+      </div>
+
+      <div class="parts-accordion" id="partsAccordion">
+
+        <!-- ── PASTILHA DE FREIO ── -->
+        <div class="pa-item" id="pa-pastilha">
+          <div class="pa-header" onclick="togglePart('pa-pastilha')">
+            <span class="pa-icon">🛑</span>
+            <div class="pa-info">
+              <span class="pa-name">Pastilha de Freio</span>
+              <span class="pa-sub">Dianteira / Traseira</span>
+            </div>
+            <span class="pa-count">12 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Econômico</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">TRW</div>
+                  <div class="equiv-ref">Ref.: GDB 1497</div>
+                  <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendida</span></div>
+                </div>
+                <div class="equiv-estoque estoque-ok">● Estoque</div>
+                <div class="equiv-preco"><div class="price">R$ 87,50</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">Bosch</div>
+                  <div class="equiv-ref">Ref.: BP 714</div>
+                  <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">🔝 Alta durabilidade</span></div>
+                </div>
+                <div class="equiv-estoque estoque-ok">● Estoque</div>
+                <div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">Ferodo</div>
+                  <div class="equiv-ref">Ref.: FDB 1678</div>
+                  <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span></div>
+                </div>
+                <div class="equiv-estoque estoque-ok">● Estoque</div>
+                <div class="equiv-preco"><div class="price">R$ 94,90</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">Jurid</div>
+                  <div class="equiv-ref">Ref.: 573 107 J</div>
+                  <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">✓ compatível</span></div>
+                </div>
+                <div class="equiv-estoque estoque-low">⚠ Últimas 3</div>
+                <div class="equiv-preco"><div class="price">R$ 62,00</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">ATE</div>
+                  <div class="equiv-ref">Ref.: 13.0460-2891</div>
+                  <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">✔ OEM</span></div>
+                </div>
+                <div class="equiv-estoque estoque-ok">● Estoque</div>
+                <div class="equiv-preco"><div class="price">R$ 128,00</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+              <div class="equiv-row">
+                <div class="equiv-thumb">⚙</div>
+                <div class="equiv-info">
+                  <div class="equiv-brand">Cofap</div>
+                  <div class="equiv-ref">Ref.: MPF20345</div>
+                  <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">✓ compatível</span></div>
+                </div>
+                <div class="equiv-estoque estoque-ok">● Estoque</div>
+                <div class="equiv-preco"><div class="price">R$ 54,90</div><div class="label">à vista</div></div>
+                <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── DISCO DE FREIO ── -->
+        <div class="pa-item" id="pa-disco">
+          <div class="pa-header" onclick="togglePart('pa-disco')">
+            <span class="pa-icon">⭕</span>
+            <div class="pa-info">
+              <span class="pa-name">Disco de Freio</span>
+              <span class="pa-sub">Dianteiro / Traseiro</span>
+            </div>
+            <span class="pa-count">8 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: BD 1072</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 198,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Fremax</div><div class="equiv-ref">Ref.: BD-3701</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 142,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Brembo</div><div class="equiv-ref">Ref.: 08.9450.21</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">🔝 Performance</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 264,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── VELA DE IGNIÇÃO ── -->
+        <div class="pa-item" id="pa-vela">
+          <div class="pa-header" onclick="togglePart('pa-vela')">
+            <span class="pa-icon">⚡</span>
+            <div class="pa-info">
+              <span class="pa-name">Vela de Ignição</span>
+              <span class="pa-sub">Simples / Iridium / Platina</span>
+            </div>
+            <span class="pa-count">9 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Simples</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Iridium</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Platina</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">NGK</div><div class="equiv-ref">Ref.: ILFR6B</div><div class="equiv-badges"><span class="badge badge-premium">Iridium</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendida</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 196,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: FR 7 KPP 33+</div><div class="equiv-badges"><span class="badge badge-premium">Platina</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 168,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Denso</div><div class="equiv-ref">Ref.: W20EP-U</div><div class="equiv-badges"><span class="badge badge-original">Simples</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 98,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CABO DE VELA ── -->
+        <div class="pa-item" id="pa-cabo">
+          <div class="pa-header" onclick="togglePart('pa-cabo')">
+            <span class="pa-icon">🔌</span>
+            <div class="pa-info">
+              <span class="pa-name">Cabo de Vela</span>
+              <span class="pa-sub">Kit completo</span>
+            </div>
+            <span class="pa-count">6 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Labo</div><div class="equiv-ref">Ref.: LB-GN001</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 78,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: B 915</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FILTRO DE ÓLEO ── -->
+        <div class="pa-item" id="pa-filtro-oleo">
+          <div class="pa-header" onclick="togglePart('pa-filtro-oleo')">
+            <span class="pa-icon">🔧</span>
+            <div class="pa-info">
+              <span class="pa-name">Filtro de Óleo</span>
+              <span class="pa-sub">Original / Premium</span>
+            </div>
+            <span class="pa-count">7 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: W 811/80</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 34,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: OF 0S7</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 42,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FILTRO COMBUSTÍVEL ── -->
+        <div class="pa-item" id="pa-filtro-comb">
+          <div class="pa-header" onclick="togglePart('pa-filtro-comb')">
+            <span class="pa-icon">💧</span>
+            <div class="pa-info">
+              <span class="pa-name">Filtro Combustível</span>
+              <span class="pa-sub">Flex</span>
+            </div>
+            <span class="pa-count">4 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Tecfil</div><div class="equiv-ref">Ref.: ARL216</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 24,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Fram</div><div class="equiv-ref">Ref.: G5860</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 28,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FILTRO DE AR ── -->
+        <div class="pa-item" id="pa-filtro-ar">
+          <div class="pa-header" onclick="togglePart('pa-filtro-ar')">
+            <span class="pa-icon">🌬</span>
+            <div class="pa-info">
+              <span class="pa-name">Filtro de Ar</span>
+              <span class="pa-sub">Painel / Cabine</span>
+            </div>
+            <span class="pa-count">5 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: C 25 114</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 38,50</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: S0062</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 47,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── AMORTECEDOR ── -->
+        <div class="pa-item" id="pa-amortecedor">
+          <div class="pa-header" onclick="togglePart('pa-amortecedor')">
+            <span class="pa-icon">🔩</span>
+            <div class="pa-info">
+              <span class="pa-name">Amortecedor</span>
+              <span class="pa-sub">Dianteiro / Traseiro</span>
+            </div>
+            <span class="pa-count">6 opções</span>
+            <span class="pa-arrow">›</span>
+          </div>
+          <div class="pa-body">
+            <div class="quick-filters">
+              <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+              <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+            </div>
+            <div class="equiv-list">
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Monroe</div><div class="equiv-ref">Ref.: G8197</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">⭐ Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 187,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Cofap</div><div class="equiv-ref">Ref.: GF72199</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">✓ compatível</span></div></div><div class="equiv-estoque estoque-low">⚠ Últimas 2</div><div class="equiv-preco"><div class="price">R$ 154,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+              <div class="equiv-row"><div class="equiv-thumb">⚙</div><div class="equiv-info"><div class="equiv-brand">Sachs</div><div class="equiv-ref">Ref.: 311 479</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">✓ compatível</span><span class="badge badge-destaque">🔝 Performance</span></div></div><div class="equiv-estoque estoque-ok">● Estoque</div><div class="equiv-preco"><div class="price">R$ 248,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fim parts-accordion -->
+    </div><!-- fim resultSection -->
+
+  </div><!-- fim panel-right -->
+</div><!-- fim split-layout -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">QUERO PEÇAS</div>
+    <p>Mais de 55 mil peças disponíveis.<br>Entregamos em todo o Brasil.</p>
+  </div>
+  <div>
+    <h4>Links Rápidos</h4>
+    <a href="index.html">Início</a>
+    <a href="#">Loja</a>
+    <a href="#">Destaques</a>
+    <a href="#">Contato</a>
+  </div>
+  <div>
+    <h4>Newsletter</h4>
+    <p>Receba ofertas e novidades no seu e-mail.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="seu@email.com"/>
+      <button>Inscrever →</button>
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Quero Peças. Todos os direitos reservados.</span>
+  <span>Desenvolvido com ❤ no Brasil</span>
+</div>
+
+<script src="js/utils/cart.js"></script>
+<script src="js/models/busca.model.js"></script>
+<script src="js/views/busca.view.js"></script>
+<script src="js/controllers/busca.controller.js"></script>
+</body>
+</html>

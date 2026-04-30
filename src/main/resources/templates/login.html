@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Quero Peças</title>
+  <link rel="stylesheet" href="css/login-style.css"/>
+</head>
+<body>
+
+<div class="login-layout">
+
+  <!-- ── LADO ESQUERDO ── -->
+  <div class="left-panel">
+    <div class="left-inner">
+
+      <div class="logo">
+        <img src="images/logoqueropeças.png" alt="Quero Peças" class="login-logo-img"/>
+      </div>
+
+      <div class="left-body">
+        <h1>Acesse sua conta e gerencie seus pedidos.</h1>
+        <p>Distribuidoras e oficinas têm acesso a funcionalidades exclusivas.</p>
+
+        <ul class="features">
+          <li>
+            <div class="feat-icon">🔍</div>
+            <span>Busca por placa Mercosul</span>
+          </li>
+          <li>
+            <div class="feat-icon">📦</div>
+            <span>Gestão de pedidos em tempo real</span>
+          </li>
+          <li>
+            <div class="feat-icon">🧾</div>
+            <span>Emissão de boletos automática</span>
+          </li>
+          <li>
+            <div class="feat-icon">🔄</div>
+            <span>Garantia e devolução digital</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="left-footer">Mais de 55 mil peças · Entrega nacional</div>
+    </div>
+  </div>
+
+  <!-- ── LADO DIREITO ── -->
+  <div class="right-panel">
+    <div class="right-inner">
+
+      <div class="form-header">
+        <h2>Bem-vindo de volta! 👋</h2>
+        <p>Faça login para acessar sua conta</p>
+      </div>
+
+      <!-- Seletor de perfil -->
+      <div class="profile-label">Selecione seu perfil:</div>
+      <div class="profile-grid">
+        <div class="profile-card active" onclick="selectProfile(this)">
+          <div class="profile-icon">🏭</div>
+          <div class="profile-info">
+            <div class="profile-name">Distribuidora / Empresa</div>
+            <div class="profile-sub">CNPJ · Acesso B2B completo</div>
+          </div>
+          <div class="profile-check">✓</div>
+        </div>
+        <div class="profile-card" onclick="selectProfile(this)">
+          <div class="profile-icon">🔧</div>
+          <div class="profile-info">
+            <div class="profile-name">Oficina / Cliente Final</div>
+            <div class="profile-sub">CNPJ · Compra e gestão de peças</div>
+          </div>
+          <div class="profile-check">✓</div>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="field-group">
+          <label class="field-label">E-mail ou CNPJ</label>
+          <input
+            class="field-input"
+            id="email"
+            type="text"
+            placeholder="empresa@exemplo.com.br"
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Senha</label>
+          <div class="input-wrap">
+            <input
+              class="field-input"
+              id="senha"
+              type="password"
+              placeholder="••••••••••"
+              autocomplete="current-password"
+            />
+            <button type="button" class="btn-toggle-pw" onclick="togglePassword()" aria-label="Mostrar senha">
+              👁
+            </button>
+          </div>
+          <a href="#" class="link-esqueci">Esqueci minha senha →</a>
+        </div>
+
+        <div id="error-msg" class="error-msg" style="display:none;"></div>
+
+        <button class="btn-entrar" type="submit">Entrar na plataforma →</button>
+      </form>
+
+      <div class="divider"><span>ou</span></div>
+
+      <a href="cadastro.html" class="btn-criar">Criar nova conta</a>
+
+      <div class="ssl-badge">🔒 Acesso seguro com criptografia SSL</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="js/controllers/login.controller.js"></script>
+</body>
+</html>

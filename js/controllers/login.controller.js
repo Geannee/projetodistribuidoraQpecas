@@ -54,9 +54,7 @@ const LoginController = {
     btnEntrar.textContent = 'Entrando...';
 
     setTimeout(() => {
-      const perfil = document.querySelector('.profile-card.active .profile-name').textContent;
       sessionStorage.setItem('qp_usuario', email.value.trim());
-      sessionStorage.setItem('qp_perfil', perfil);
       window.location.href = 'dashboard.html';
     }, 1500);
   },

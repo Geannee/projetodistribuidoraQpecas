@@ -4,10 +4,12 @@ function fmt(valor) {
   return 'R$ ' + valor.toFixed(2).replace('.', ',');
 }
 
-// ── Atualiza visibilidade do botão "Limpar tudo" ─────────────────────────────
+// ── Atualiza estado do botão "Limpar orçamento" ──────────────────────────────
 function atualizarBtnLimpar(temItens) {
   const btn = document.getElementById('btnLimpar');
-  if (btn) btn.disabled = !temItens;
+  if (!btn) return;
+  btn.disabled = !temItens;
+  btn.style.opacity = temItens ? '1' : '0.35';
 }
 
 // ── Renderiza os itens do carrinho a partir do localStorage ──────────────────
@@ -24,6 +26,13 @@ function renderCart() {
     empty.style.display  = 'flex';
     footer.style.display = 'none';
     document.getElementById('cartCountLabel').textContent = 'Carrinho vazio';
+
+    // Zera o resumo do orçamento no painel direito
+    document.getElementById('summarySubtotal').textContent = fmt(0);
+    document.getElementById('summaryTotal').textContent    = fmt(0);
+    document.getElementById('cfTotal').textContent         = fmt(0);
+    const subLabel = document.querySelector('.os-row .os-label');
+    if (subLabel) subLabel.textContent = 'Subtotal (0 itens)';
     return;
   }
 

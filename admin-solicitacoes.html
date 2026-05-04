@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auditoria – Admin Quero Peças</title>
+  <title>Solicitações de Cadastro – Admin Quero Peças</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/admin-cadastro-style.css"/>
-  <link rel="stylesheet" href="css/admin-auditoria-style.css"/>
+  <link rel="stylesheet" href="css/admin-solicitacoes-style.css"/>
 </head>
 <body>
 
@@ -39,11 +39,11 @@
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
         Liberar Acesso
       </a>
-      <a href="admin-solicitacoes.html" class="nav-item">
+      <a href="admin-solicitacoes.html" class="nav-item active">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
         Solicitações
       </a>
-      <a href="admin-auditoria.html" class="nav-item active">
+      <a href="admin-auditoria.html" class="nav-item">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
         Auditoria
       </a>
@@ -60,7 +60,7 @@
   <div class="main-wrap">
 
     <header class="topbar">
-      <h1 class="topbar-title">Auditoria</h1>
+      <h1 class="topbar-title">Solicitações de Cadastro</h1>
       <div class="topbar-actions">
         <div class="topbar-avatar">AD</div>
       </div>
@@ -68,93 +68,69 @@
 
     <main class="main-content">
 
-      <!-- Filtros -->
-      <section class="form-card">
-        <h2 class="form-card-title">🔍 Filtrar Registros</h2>
-        <div class="filtros-row">
-          <div class="form-group">
-            <label class="form-label">Tipo de ação</label>
-            <select class="form-input form-select" id="filtro-tipo">
-              <option value="">Todos</option>
-              <option value="LOGIN">Login</option>
-              <option value="SENHA_ERRADA">Senha errada</option>
-              <option value="ACESSO_LIBERADO">Acesso liberado</option>
-              <option value="CADASTRO_VEICULO">Cadastro de veículo</option>
-              <option value="CADASTRO_PECA">Cadastro de peça</option>
-              <option value="EXCLUSAO">Exclusão</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Data inicial</label>
-            <input class="form-input" id="filtro-data-ini" type="date"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Data final</label>
-            <input class="form-input" id="filtro-data-fim" type="date"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Usuário</label>
-            <input class="form-input" id="filtro-usuario" type="text" placeholder="E-mail ou CNPJ"/>
-          </div>
-          <div class="filtros-btns">
-            <button class="btn-primary btn-blue" onclick="AuditoriaController.filtrar()">Filtrar</button>
-            <button class="btn-secondary" onclick="AuditoriaController.limparFiltros()">Limpar</button>
-          </div>
-        </div>
-      </section>
+      <div id="toast" class="toast"></div>
 
-      <!-- Estatísticas -->
-      <div class="audit-stats">
-        <div class="audit-stat-box">
-          <div class="audit-stat-label">Total de eventos</div>
-          <div class="audit-stat-value" id="stat-total">0</div>
+      <!-- Stats -->
+      <div class="sol-stats">
+        <div class="sol-stat-box">
+          <div class="sol-stat-label">Total de solicitações</div>
+          <div class="sol-stat-value" id="stat-total">—</div>
         </div>
-        <div class="audit-stat-box">
-          <div class="audit-stat-label">Senhas incorretas</div>
-          <div class="audit-stat-value color-red" id="stat-senhas">0</div>
+        <div class="sol-stat-box">
+          <div class="sol-stat-label">Pendentes</div>
+          <div class="sol-stat-value color-yellow" id="stat-pendente">—</div>
         </div>
-        <div class="audit-stat-box">
-          <div class="audit-stat-label">Cadastros realizados</div>
-          <div class="audit-stat-value color-green" id="stat-cadastros">0</div>
+        <div class="sol-stat-box">
+          <div class="sol-stat-label">Aprovados</div>
+          <div class="sol-stat-value color-green" id="stat-aprovado">—</div>
         </div>
-        <div class="audit-stat-box">
-          <div class="audit-stat-label">Acessos liberados</div>
-          <div class="audit-stat-value color-blue" id="stat-liberacoes">0</div>
+        <div class="sol-stat-box">
+          <div class="sol-stat-label">Recusados</div>
+          <div class="sol-stat-value color-red" id="stat-recusado">—</div>
         </div>
       </div>
 
-      <!-- Tabela de logs -->
-      <section class="list-card">
-        <div class="list-card-header">
-          <h3 class="list-card-title">Registro de Atividades</h3>
-          <div style="display:flex;gap:10px;align-items:center">
-            <span class="list-count" id="count-logs">0 registros</span>
-            <button class="btn-secondary btn-sm" onclick="AuditoriaController.exportar()">⬇ Exportar CSV</button>
-          </div>
+      <!-- Filtros -->
+      <div class="card">
+        <div class="sol-filtros">
+          <input class="filtro-input" id="busca-sol" type="text"
+            placeholder="Buscar por oficina, CNPJ ou responsável…"/>
+          <select class="filtro-select" id="filtro-sol-status">
+            <option value="">Todos os status</option>
+            <option value="pendente">⏳ Pendente</option>
+            <option value="aprovado">✅ Aprovado</option>
+            <option value="recusado">❌ Recusado</option>
+          </select>
         </div>
+
+        <!-- Tabela -->
         <div class="table-wrap">
           <table class="data-table">
             <thead>
               <tr>
-                <th>Data / Hora</th>
-                <th>Usuário</th>
-                <th>Ação</th>
-                <th>Detalhe</th>
-                <th>IP</th>
+                <th>ID</th>
+                <th>Oficina</th>
+                <th>Responsável</th>
+                <th>CNPJ</th>
+                <th>Cidade / UF</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th></th>
               </tr>
             </thead>
-            <tbody id="tbody-auditoria"></tbody>
+            <tbody id="sol-tbody"></tbody>
           </table>
         </div>
-        <div class="paginacao" id="paginacao"></div>
-      </section>
+
+        <div class="table-rodape" id="sol-rodape"></div>
+      </div>
 
     </main>
   </div>
 </div>
 
-<script src="js/models/admin-auditoria.model.js"></script>
-<script src="js/views/admin-auditoria.view.js"></script>
-<script src="js/controllers/admin-auditoria.controller.js"></script>
+<script src="js/models/admin-solicitacoes.model.js"></script>
+<script src="js/views/admin-solicitacoes.view.js"></script>
+<script src="js/controllers/admin-solicitacoes.controller.js"></script>
 </body>
 </html>

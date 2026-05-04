@@ -168,6 +168,25 @@ button { cursor: pointer; font-family: inherit; }
 }
 .btn-coral:hover { background: var(--coral-dark); }
 
+.btn-admin {
+  background: transparent;
+  color: var(--coral);
+  border: 1.5px solid var(--coral);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background .2s, color .2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-admin:hover {
+  background: var(--coral);
+  color: var(--white);
+}
+
 /* ─── HERO ───────────────────────────────────────────────────────────────── */
 .hero {
   background: var(--black);

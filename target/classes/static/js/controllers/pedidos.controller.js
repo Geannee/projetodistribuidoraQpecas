@@ -53,16 +53,67 @@ const PedidosController = {
     this.renderizar();
   },
 
-  verDetalhes(id) {
-    const pedido = PedidosModel.pedidos.find(p => p.id === id);
-    if (!pedido) return;
-    document.body.insertAdjacentHTML('beforeend', PedidosView.renderModal(pedido));
+  toggleDetalhe(id) {
+    const key     = id.replace('#', '');
+    const row     = document.getElementById('detalhe-' + key);
+    const btn     = document.getElementById('btn-' + key);
+    if (!row) return;
+
+    const aberto = row.classList.contains('aberto');
+
+    // Fecha todas as outras abas abertas
+    document.querySelectorAll('.detalhe-row.aberto').forEach(r => {
+      r.classList.remove('aberto');
+      const k = r.id.replace('detalhe-', '');
+      const b = document.getElementById('btn-' + k);
+      if (b) b.textContent = 'Ver detalhes ▾';
+    });
+
+    if (!aberto) {
+      row.classList.add('aberto');
+      btn.textContent = 'Fechar ▴';
+    }
   },
 
-  fecharModal(event) {
-    if (event && event.target.id !== 'modal-pedido') return;
-    const modal = document.getElementById('modal-pedido');
-    if (modal) modal.remove();
+  atualizarStatus(id, novoStatus) {
+    const key    = id.replace('#', '');
+    const todos  = PedidosModel.carregarPedidos();
+    const pedido = todos.find(p => p.id === id);
+    if (!pedido) return;
+
+    pedido.status      = novoStatus;
+    pedido.statusClass = PedidosModel.statusClasse[novoStatus] || '';
+
+    // Persiste se for pedido do localStorage
+    const salvos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+    const idx    = salvos.findIndex(p => p.id === id);
+    if (idx !== -1) {
+      salvos[idx].status      = novoStatus;
+      salvos[idx].statusClass = pedido.statusClass;
+      localStorage.setItem('pedidos', JSON.stringify(salvos));
+    }
+
+    // Atualiza badge na linha da tabela
+    const badgeCell = document.querySelector(`#row-${key} .badge-status`);
+    if (badgeCell) {
+      badgeCell.className  = `badge-status ${pedido.statusClass}`;
+      badgeCell.textContent = `${PedidosModel.statusIcone[novoStatus]} ${novoStatus}`;
+    }
+
+    // Atualiza timeline na aba
+    const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Em Separação', 'Em Viagem', 'Entregue'];
+    const idxMap = { 'Aguardando Pagamento': 1, 'Em Separação': 2, 'Em Viagem': 3, 'Entregue': 4, 'Cancelado': -1 };
+    const atual  = idxMap[novoStatus] ?? 0;
+    const tl     = document.getElementById('tl-' + key);
+    if (tl) {
+      tl.innerHTML = novoStatus === 'Cancelado'
+        ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
+        : passos.map((passo, i) => `
+            <div class="tl-passo ${i <= atual ? 'tl-ativo' : ''}">
+              <div class="tl-bolinha">${i <= atual ? '✓' : i + 1}</div>
+              <span>${passo}</span>
+            </div>`).join('');
+    }
   }
 };
 

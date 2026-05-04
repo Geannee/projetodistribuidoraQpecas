@@ -4,10 +4,10 @@
 
 const PedidosView = {
 
-  /** Renderiza a tabela de pedidos */
+  /** Renderiza a tabela com linhas expandíveis */
   renderTabela(tbody, pedidos) {
     tbody.innerHTML = pedidos.map(p => `
-      <tr>
+      <tr class="pedido-row" id="row-${p.id.replace('#','')}">
         <td class="pedido-id">${p.id}</td>
         <td>${p.data}</td>
         <td class="pedido-itens">${p.itens}</td>
@@ -19,69 +19,82 @@ const PedidosView = {
         </td>
         <td class="pedido-previsao">${p.previsao !== '—' ? '📅 ' + p.previsao : '—'}</td>
         <td>
-          <button class="btn-detalhes" onclick="PedidosController.verDetalhes('${p.id}')">
-            Ver detalhes →
+          <button class="btn-detalhes" id="btn-${p.id.replace('#','')}" onclick="PedidosController.toggleDetalhe('${p.id}')">
+            Ver detalhes ▾
           </button>
+        </td>
+      </tr>
+      <tr class="detalhe-row" id="detalhe-${p.id.replace('#','')}">
+        <td colspan="7" class="detalhe-td">
+          ${this.renderPainel(p)}
         </td>
       </tr>
     `).join('');
   },
 
-  /** Atualiza o contador de resultados no rodapé */
-  renderRodape(el, total, filtrado) {
-    el.textContent = `Mostrando ${filtrado} de ${total} pedidos`;
-  },
-
-  /** Mostra o modal com detalhes do pedido */
-  renderModal(pedido) {
-    const linha = (label, valor) => `
-      <div class="detalhe-linha">
-        <span class="detalhe-label">${label}</span>
-        <span class="detalhe-valor">${valor}</span>
-      </div>`;
-
+  /** Painel expandido com orçamento e status */
+  renderPainel(p) {
     const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Em Separação', 'Em Viagem', 'Entregue'];
-    const idx = {
-      'Aguardando Pagamento': 1,
-      'Em Separação':        2,
-      'Em Viagem':           3,
-      'Entregue':            4,
-      'Cancelado':           -1
-    };
-    const atual = idx[pedido.status] ?? 0;
+    const idx = { 'Aguardando Pagamento': 1, 'Em Separação': 2, 'Em Viagem': 3, 'Entregue': 4, 'Cancelado': -1 };
+    const atual = idx[p.status] ?? 0;
 
     const timeline = passos.map((passo, i) => `
-      <div class="tl-passo ${i <= atual ? 'tl-ativo' : ''} ${pedido.status === 'Cancelado' ? 'tl-cancelado' : ''}">
-        <div class="tl-bolinha">${i <= atual && pedido.status !== 'Cancelado' ? '✓' : i + 1}</div>
+      <div class="tl-passo ${i <= atual && p.status !== 'Cancelado' ? 'tl-ativo' : ''}">
+        <div class="tl-bolinha">${i <= atual && p.status !== 'Cancelado' ? '✓' : i + 1}</div>
         <span>${passo}</span>
       </div>
     `).join('');
 
+    const statusOpcoes = Object.keys(PedidosModel.statusIcone).map(s =>
+      `<option value="${s}" ${s === p.status ? 'selected' : ''}>${PedidosModel.statusIcone[s]} ${s}</option>`
+    ).join('');
+
+    const itensList = p.itens.split(',').map(i => `
+      <div class="orcamento-item">
+        <span class="oi-icone">⚙️</span>
+        <span class="oi-nome">${i.trim()}</span>
+      </div>
+    `).join('');
+
     return `
-      <div class="modal-overlay" id="modal-pedido" onclick="PedidosController.fecharModal(event)">
-        <div class="modal-box">
-          <div class="modal-header">
-            <h3>Pedido ${pedido.id}</h3>
-            <button class="modal-fechar" onclick="PedidosController.fecharModal()">✕</button>
+      <div class="detalhe-painel">
+
+        <!-- Orçamento -->
+        <div class="dp-secao">
+          <div class="dp-secao-titulo">📋 Orçamento</div>
+          <div class="orcamento-itens">${itensList}</div>
+          <div class="orcamento-total">
+            <span>Total do pedido</span>
+            <strong>${p.total}</strong>
           </div>
-          <div class="modal-body">
-            ${linha('Data do pedido', pedido.data)}
-            ${linha('Itens', pedido.itens)}
-            ${linha('Total', pedido.total)}
-            ${linha('Previsão de entrega', pedido.previsao)}
-            <div class="detalhe-linha">
-              <span class="detalhe-label">Status</span>
-              <span class="badge-status ${pedido.statusClass}">
-                ${PedidosModel.statusIcone[pedido.status]} ${pedido.status}
-              </span>
-            </div>
-            <div class="timeline">
-              ${pedido.status === 'Cancelado'
-                ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
-                : timeline}
-            </div>
+          <div class="orcamento-meta">
+            <span>📅 Data: <strong>${p.data}</strong></span>
+            <span>🚚 Previsão: <strong>${p.previsao !== '—' ? p.previsao : 'A definir'}</strong></span>
           </div>
         </div>
+
+        <!-- Status -->
+        <div class="dp-secao">
+          <div class="dp-secao-titulo">🔄 Status do Pedido</div>
+          <div class="status-selector">
+            <label class="status-sel-label">Alterar status:</label>
+            <select class="status-select" id="sel-${p.id.replace('#','')}"
+              onchange="PedidosController.atualizarStatus('${p.id}', this.value)">
+              ${statusOpcoes}
+            </select>
+          </div>
+          <div class="timeline" id="tl-${p.id.replace('#','')}">
+            ${p.status === 'Cancelado'
+              ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
+              : timeline}
+          </div>
+        </div>
+
       </div>`;
+  },
+
+  /** Atualiza o contador de resultados no rodapé */
+  renderRodape(el, total, filtrado) {
+    el.textContent = `Mostrando ${filtrado} de ${total} pedidos`;
   }
 };

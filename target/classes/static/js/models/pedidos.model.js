@@ -67,10 +67,18 @@ const PedidosModel = {
   },
 
   statusIcone: {
-    'Em Separação':       '📦',
-    'Em Viagem':          '🚚',
+    'Em Separação':         '📦',
+    'Em Viagem':            '🚚',
     'Aguardando Pagamento': '💳',
-    'Entregue':           '✅',
-    'Cancelado':          '❌'
+    'Entregue':             '✅',
+    'Cancelado':            '❌'
+  },
+
+  statusClasse: {
+    'Em Separação':         'status-separacao',
+    'Em Viagem':            'status-viagem',
+    'Aguardando Pagamento': 'status-aguardando',
+    'Entregue':             'status-entregue',
+    'Cancelado':            'status-cancelado'
   }
 };

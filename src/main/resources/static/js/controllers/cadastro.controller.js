@@ -72,6 +72,29 @@ const CadastroController = {
     btn.disabled = true;
     btn.textContent = '⏳ Criando conta...';
 
+    const solicitacao = {
+      id: 'CAD-' + Date.now(),
+      cnpj:        document.getElementById('cnpj').value.trim(),
+      razao:       document.getElementById('razao').value.trim(),
+      nomeOficina: document.getElementById('nome-oficina').value.trim(),
+      especialidade: document.getElementById('especialidade')?.value.trim() || '',
+      cep:         document.getElementById('cep').value.trim(),
+      logradouro:  document.getElementById('logradouro').value.trim(),
+      numero:      document.getElementById('numero').value.trim(),
+      bairro:      document.getElementById('bairro').value.trim(),
+      cidade:      document.getElementById('cidade').value.trim(),
+      estado:      document.getElementById('estado').value.trim(),
+      responsavel: document.getElementById('responsavel').value.trim(),
+      telefone:    document.getElementById('telefone').value.trim(),
+      email:       document.getElementById('email').value.trim(),
+      status:      'pendente',
+      dataEnvio:   new Date().toLocaleDateString('pt-BR')
+    };
+
+    const lista = JSON.parse(localStorage.getItem('qp_solicitacoes') || '[]');
+    lista.unshift(solicitacao);
+    localStorage.setItem('qp_solicitacoes', JSON.stringify(lista));
+
     setTimeout(() => {
       btn.disabled = false;
       btn.textContent = 'Criar minha conta →';

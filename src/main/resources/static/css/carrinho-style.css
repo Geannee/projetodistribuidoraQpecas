@@ -136,23 +136,27 @@ body {
 .pl-header h2 { font-size: 32px; font-weight: 800; line-height: 1.2; color: #fff; }
 .pl-header p  { font-size: 13px; color: #666; }
 
-/* Botão limpar carrinho */
+/* Botão limpar orçamento */
 .btn-limpar {
-  background: transparent;
-  border: 1px solid rgba(239,68,68,.35);
+  background: rgba(239,68,68,.12);
+  border: 1.5px solid #ef4444;
   color: #ef4444;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 7px 12px;
-  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 8px;
   cursor: pointer;
   white-space: nowrap;
-  transition: background .15s, border-color .15s;
+  transition: background .15s, color .15s;
   flex-shrink: 0;
   margin-bottom: 4px;
+  font-family: inherit;
 }
-.btn-limpar:hover { background: rgba(239,68,68,.12); border-color: #ef4444; }
-.btn-limpar:disabled { opacity: .3; cursor: default; }
+.btn-limpar:hover:not(:disabled) {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-limpar:disabled { cursor: default; }
 
 /* Botão excluir item — mais visível */
 .ci-remove {

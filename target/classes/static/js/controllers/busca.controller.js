@@ -44,10 +44,17 @@ const BuscaController = {
       this.pecas    = [];
     }
 
-    const input = document.getElementById('plateInput');
-    if (input) {
-      input.addEventListener('keydown', e => {
+    const inputPlate = document.getElementById('plateInput');
+    if (inputPlate) {
+      inputPlate.addEventListener('keydown', e => {
         if (e.key === 'Enter') this.searchPlate();
+      });
+    }
+
+    const inputCode = document.getElementById('codeInput');
+    if (inputCode) {
+      inputCode.addEventListener('keydown', e => {
+        if (e.key === 'Enter') searchCode();
       });
     }
   },
@@ -127,7 +134,31 @@ function searchApp() {
   const appData = { marca, modelo, ano, categoria };
   BuscaView.mostrarResultadosApp(appData, pecasFiltradas);
 }
-function searchCode()     { /* TODO: integrar busca por código */ }
+function searchCode() {
+  const input  = document.getElementById('codeInput');
+  const codigo = input.value.trim();
+
+  if (!codigo || codigo.length < 2) {
+    input.style.borderColor = '#ef4444';
+    input.focus();
+    setTimeout(() => { input.style.borderColor = ''; }, 1500);
+    return;
+  }
+
+  const termo = codigo.toLowerCase().replace(/[\s\-\.]/g, '');
+
+  const resultados = BuscaController.pecas
+    .map(cat => ({
+      ...cat,
+      opcoes: cat.opcoes.filter(op =>
+        op.ref.toLowerCase().replace(/[\s\-\.]/g, '').includes(termo) ||
+        op.marca.toLowerCase().includes(codigo.toLowerCase())
+      )
+    }))
+    .filter(cat => cat.opcoes.length > 0);
+
+  BuscaView.mostrarResultadosCodigo(codigo, resultados);
+}
 
 function onMarcaChange() {
   const marca   = document.getElementById('appMarca').value;

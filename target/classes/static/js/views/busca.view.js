@@ -140,6 +140,40 @@ const BuscaView = {
     if (panelRight) panelRight.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
+  mostrarResultadosCodigo(codigo, pecas) {
+    const total = pecas.reduce((n, c) => n + c.opcoes.length, 0);
+
+    document.getElementById('vcCard').style.display     = 'flex';
+    document.getElementById('vcNotFound').style.display = 'none';
+    document.querySelector('.vc-plate').style.display   = 'none';
+    document.getElementById('vcModel').textContent      = `Referência: ${codigo}`;
+    document.getElementById('vcDetail1').textContent    = 'Busca por código';
+    document.getElementById('vcDetail2').textContent    = total > 0
+      ? `${total} resultado(s) encontrado(s)` : 'Nenhuma peça encontrada';
+    document.getElementById('vcChassis').style.display  = 'none';
+
+    const rSub = document.getElementById('rSub');
+    if (rSub) rSub.textContent = `Código "${codigo}" — Clique para ver as opções`;
+
+    if (pecas.length === 0) {
+      document.getElementById('partsAccordion').innerHTML = `
+        <div style="text-align:center;padding:48px 24px;color:#737373;">
+          <div style="font-size:40px;margin-bottom:12px;">🔍</div>
+          <p>Nenhuma peça encontrada para <strong>${codigo}</strong>.</p>
+          <p style="font-size:13px;margin-top:8px;">Verifique a referência e tente novamente.</p>
+        </div>`;
+    } else {
+      this.renderAcordeon(pecas);
+    }
+
+    document.getElementById('vehicleConfirm').style.display = 'flex';
+    document.getElementById('emptyState').style.display     = 'none';
+    document.getElementById('resultSection').style.display  = 'block';
+
+    const panelRight = document.querySelector('.panel-right');
+    if (panelRight) panelRight.scrollTo({ top: 0, behavior: 'smooth' });
+  },
+
   mostrarNaoEncontrado(placa) {
     // Exibe placa digitada no card mesmo sem encontrar
     const fmt = placa.replace(/[^A-Z0-9]/gi, '').toUpperCase();

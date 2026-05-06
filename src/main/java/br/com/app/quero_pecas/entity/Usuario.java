@@ -9,11 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +33,5 @@ public class Usuario {
     private List<Telefone> telefone;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "ENUM DEFAULT MECANICO")
     private TipoUsuario tipoUsuario;
 }

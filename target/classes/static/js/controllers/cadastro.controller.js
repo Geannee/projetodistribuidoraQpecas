@@ -25,7 +25,8 @@ const CadastroController = {
     }
   },
 
-  enviarCadastro(e) {
+  // Tornamos a função async para podermos usar o await no fetch
+  async enviarCadastro(e) {
     e.preventDefault();
     const errorEl = document.getElementById('cad-error');
     const btn     = document.getElementById('btn-criar');
@@ -72,34 +73,68 @@ const CadastroController = {
     btn.disabled = true;
     btn.textContent = '⏳ Criando conta...';
 
-    const solicitacao = {
-      id: 'CAD-' + Date.now(),
-      cnpj:        document.getElementById('cnpj').value.trim(),
-      razao:       document.getElementById('razao').value.trim(),
-      nomeOficina: document.getElementById('nome-oficina').value.trim(),
-      especialidade: document.getElementById('especialidade')?.value.trim() || '',
-      cep:         document.getElementById('cep').value.trim(),
-      logradouro:  document.getElementById('logradouro').value.trim(),
-      numero:      document.getElementById('numero').value.trim(),
-      bairro:      document.getElementById('bairro').value.trim(),
-      cidade:      document.getElementById('cidade').value.trim(),
-      estado:      document.getElementById('estado').value.trim(),
-      responsavel: document.getElementById('responsavel').value.trim(),
-      telefone:    document.getElementById('telefone').value.trim(),
-      email:       document.getElementById('email').value.trim(),
-      status:      'pendente',
-      dataEnvio:   new Date().toLocaleDateString('pt-BR')
+    // 1. Montar o Payload mapeado EXATAMENTE como o seu UsuarioDTO.Save espera
+    const payload = {
+      cnpj: document.getElementById('cnpj').value.replace(/\D/g, ''), // Remove máscara, envia só números
+      razaoSocial: document.getElementById('razao').value.trim(),
+      nomeFantasia: document.getElementById('nome-oficina').value.trim(),
+      representanteLegal: document.getElementById('responsavel').value.trim(),
+      senha: senha,
+      email: document.getElementById('email').value.trim(),
+
+      endereco: {
+        cep: document.getElementById('cep').value.replace(/\D/g, ''),
+        logradouro: document.getElementById('logradouro').value.trim(),
+        numero: parseInt(document.getElementById('numero').value.replace(/\D/g, ''), 10), // Converte para Integer
+        bairro: document.getElementById('bairro').value.trim(),
+        cidade: document.getElementById('cidade').value.trim(),
+        estado: document.getElementById('estado').value.trim()
+      },
+
+      telefone: [
+        {
+          telefone: document.getElementById('telefone').value.replace(/\D/g, ''),
+          tipo: 'CELULAR' // Deixei fixo, mas você pode pegar de um select se houver
+        }
+      ]
     };
 
-    const lista = JSON.parse(localStorage.getItem('qp_solicitacoes') || '[]');
-    lista.unshift(solicitacao);
-    localStorage.setItem('qp_solicitacoes', JSON.stringify(lista));
+    // 2. Realizar a requisição Fetch para o Backend Spring Boot
+    try {
+      // ATENÇÃO: Substitua a URL abaixo pela rota correta do seu Controller no Java
+      const response = await fetch('http://localhost:8080/usuarios/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
 
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.textContent = 'Criar minha conta →';
+      if (!response.ok) {
+        // Se o Java retornar um erro (ex: 400 Validation Error, 500 Internal Server Error)
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || 'Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
+      }
+
+      // 3. Sucesso!
+      btn.textContent = 'Conta criada com sucesso!';
       Modal.abrir();
-    }, 1400);
+
+      // Opcional: Limpar o formulário após o sucesso
+      // document.querySelector('form').reset();
+
+    } catch (error) {
+      // 4. Tratamento de Erros
+      console.error('Erro no Fetch:', error);
+      errorEl.textContent = error.message;
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Restaura o botão para o usuário tentar novamente
+      btn.textContent = 'Criar minha conta →';
+      btn.disabled = false;
+    }
   }
 };
 

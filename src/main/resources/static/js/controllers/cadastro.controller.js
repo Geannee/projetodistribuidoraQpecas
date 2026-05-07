@@ -77,7 +77,7 @@ const CadastroController = {
     const payload = {
       cnpj: document.getElementById('cnpj').value.replace(/\D/g, ''), // Remove máscara, envia só números
       razaoSocial: document.getElementById('razao').value.trim(),
-      nomeFantasia: document.getElementById('nome-oficina').value.trim(),
+      nomeFantasia: document.getElementById('nome-fantasia').value.trim(),
       representanteLegal: document.getElementById('responsavel').value.trim(),
       senha: senha,
       email: document.getElementById('email').value.trim(),

@@ -5,6 +5,7 @@ import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,4 +54,29 @@ public class UsuarioService {
         }
         usuarioRepository.save(usuario);
     }
+
+    @Transactional
+    public void aprovarUsuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuario.setAtivo(true);
+
+        usuarioRepository.save(usuario);
+
+        // TODO: dispararEmailComCredenciais(usuario.getEmail());
+    }
+
+    @Transactional
+    public void reprovarUsuario(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuario.setAtivo(false);
+
+        usuarioRepository.save(usuario);
+
+        // TODO: notificarSolicitanteReprovacao(usuario.getEmail(), motivo);
+    }
+
 }

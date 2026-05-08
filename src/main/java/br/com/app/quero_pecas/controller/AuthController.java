@@ -15,11 +15,7 @@ public class AuthController {
     AuthService service;
     @PostMapping("/")
     public ResponseEntity<AuthDTO.Response> postAuth(@RequestBody @Valid AuthDTO.Request data) {
-        try {
             AuthDTO.Response usuario = service.auth(data);
             return ResponseEntity.ok(usuario);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
     }
 }

@@ -55,26 +55,7 @@
         <p>Faça login para acessar sua conta</p>
       </div>
 
-      <!-- Seletor de perfil -->
-      <div class="profile-label">Selecione seu perfil:</div>
-      <div class="profile-grid">
-        <div class="profile-card active" onclick="selectProfile(this)">
-          <div class="profile-icon">🏭</div>
-          <div class="profile-info">
-            <div class="profile-name">Distribuidora / Empresa</div>
-            <div class="profile-sub">CNPJ · Acesso B2B completo</div>
-          </div>
-          <div class="profile-check">✓</div>
-        </div>
-        <div class="profile-card" onclick="selectProfile(this)">
-          <div class="profile-icon">🔧</div>
-          <div class="profile-info">
-            <div class="profile-name">Oficina / Cliente Final</div>
-            <div class="profile-sub">CNPJ · Compra e gestão de peças</div>
-          </div>
-          <div class="profile-check">✓</div>
-        </div>
-      </div>
+      
 
       <!-- Formulário -->
       <form id="login-form" onsubmit="handleLogin(event)">
@@ -122,7 +103,6 @@
 
 </div>
 
-<script src="../static/js/utils/auth.js"></script>
 <script src="../static/js/controllers/login.controller.js"></script>
 </body>
 </html>

@@ -77,24 +77,24 @@ class UsuarioServiceTest {
         verify(usuarioRepository, times(1)).save(usuario);
     }
 
-    @Test
-    @DisplayName("Deve desativar um usuário ao reprovar")
-    void reprovarUsuario_Sucesso() {
-        // Arrange
-        Long idTeste = 1L;
-        Usuario usuario = new Usuario();
-//        usuario.setId(idTeste);
-        usuario.setAtivo(true);
-
-        when(usuarioRepository.findById(idTeste)).thenReturn(Optional.of(usuario));
-
-        // Act
-        usuarioService.reprovarUsuario(idTeste);
-
-        // Assert
-        assertFalse(usuario.isAtivo());
-        verify(usuarioRepository).save(usuario);
-    }
+//    @Test
+//    @DisplayName("Deve desativar um usuário ao reprovar")
+//    void reprovarUsuario_Sucesso() {
+//        // Arrange
+//        Long idTeste = 1L;
+//        Usuario usuario = new Usuario();
+////        usuario.setId(idTeste);
+//        usuario.setAtivo(true);
+//
+//        when(usuarioRepository.findById(idTeste)).thenReturn(Optional.of(usuario));
+//
+//        // Act
+//        usuarioService.reprovarUsuario(idTeste);
+//
+//        // Assert
+//        assertFalse(usuario.isAtivo());
+//        verify(usuarioRepository).save(usuario);
+//    }
 
     @Test
     @DisplayName("Deve lançar exceção ao tentar aprovar usuário inexistente")

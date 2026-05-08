@@ -2,6 +2,7 @@ package br.com.app.quero_pecas.service;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
 import br.com.app.quero_pecas.entity.Endereco;
+import br.com.app.quero_pecas.entity.StatusUsuario;
 import br.com.app.quero_pecas.entity.Telefone;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
@@ -27,6 +28,7 @@ public class UsuarioService {
         usuario.setSenha(dados.senha());
         usuario.setEmail(dados.email());
         usuario.setTipoUsuario(dados.tipoUsuario());
+        usuario.setMotivoReprovacao(dados.motivoReprovacao());
 
         // 1. Convertendo EnderecoCreate (DTO) para Endereco (Entidade)
         if (dados.endereco() != null) {
@@ -62,17 +64,20 @@ public class UsuarioService {
 
         usuario.setAtivo(true);
 
+        usuario.setStatus(StatusUsuario.ATIVO);
         usuarioRepository.save(usuario);
 
         // TODO: dispararEmailComCredenciais(usuario.getEmail());
     }
 
     @Transactional
-    public void reprovarUsuario(Long id) {
+    public void reprovarUsuario(Long id, String motivo) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
+        usuario.setStatus(StatusUsuario.REPROVADO);
         usuario.setAtivo(false);
+        usuario.setMotivoReprovacao(motivo);
 
         usuarioRepository.save(usuario);
 

@@ -19,8 +19,8 @@ public class AdminUsuarioController {
     }
 
     @PatchMapping("/{id}/reprovar")
-    public ResponseEntity<Void> reprovar(@PathVariable Long id) {
-        usuarioService.reprovarUsuario(id);
+    public ResponseEntity<Void> reprovar(@PathVariable Long id, @RequestBody String motivo) {
+        usuarioService.reprovarUsuario(id, motivo);
         return ResponseEntity.ok().build();
     }
 }

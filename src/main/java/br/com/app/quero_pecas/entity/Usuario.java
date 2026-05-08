@@ -20,6 +20,7 @@ public class Usuario {
     private String representanteLegal;
     private String senha;
     private String email;
+    private String motivoReprovacao;
 
     @Column(columnDefinition = "TINYINT DEFAULT 0")
     private boolean ativo;
@@ -31,6 +32,9 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
     private List<Telefone> telefone;
+
+    @Enumerated(EnumType.STRING)
+    private StatusUsuario status = StatusUsuario.PENDENTE;
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;

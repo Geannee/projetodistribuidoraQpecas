@@ -17,6 +17,7 @@ public interface UsuarioDTO {
             @NotBlank @Size(min = 8) String senha,
             @NotBlank @Email String email,
             TipoUsuario tipoUsuario,
+            String motivoReprovacao,
 
             EnderecoCreate endereco,
             List<TelefoneCreate> telefone

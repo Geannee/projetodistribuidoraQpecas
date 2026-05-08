@@ -11,7 +11,11 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import static br.com.app.quero_pecas.utils.Validacoes.validarCNPJ;
+import static br.com.app.quero_pecas.utils.Validacoes.validarEmail;
 
 @Service
 public class AuthService {
@@ -23,24 +27,16 @@ public class AuthService {
     @Autowired
     private TokenService tokenService;
 
+    private static final String MSG_ERRO_AUTH = "Login ou Senha inválidos";
+
     public AuthDTO.Response auth(@Valid AuthDTO.Request data) {
         String login = data.login().trim();
+        boolean isEmail = login.contains("@");
 
-        if (login.contains("@")) {
-            validarEmail(login);
-        } else {
-            validarCNPJ(login);
-        }
-
-        Optional<Usuario> usuarioOpt = login.contains("@")
-                ? repository.findByEmail(login.toLowerCase())
-                : repository.findByCnpj(login.replaceAll("\\D", ""));
-
-        Usuario usuario = usuarioOpt.orElseThrow(() ->
-                new BadCredentialsException("Login ou senha inválidos"));
+        Usuario usuario = buscarEValidar(login, isEmail);
 
         if (!passwordEncoder.matches(data.senha(), usuario.getSenha())) {
-            throw new BadCredentialsException("Login ou senha inválidos");
+            throw new BadCredentialsException(MSG_ERRO_AUTH);
         }
 
         String token = tokenService.gerarToken(usuario);
@@ -54,17 +50,19 @@ public class AuthService {
         );
     }
 
-    private void validarEmail(@NonNull String email) {
-        if (!email.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new BadCredentialsException("Formato de E-mail Invalido");
-        }
-    }
-
-    private void validarCNPJ(String cnpj) {
+    private Usuario buscarEValidar(String login, boolean isEmail) {
         try {
-            new CNPJValidator(false).assertValid(cnpj);
+            if (isEmail) {
+                validarEmail(login);
+                return repository.findByEmail(login.toLowerCase())
+                        .orElseThrow(NoSuchElementException::new);
+            } else {
+                validarCNPJ(login);
+                return repository.findByCnpj(login.replaceAll("\\D", ""))
+                        .orElseThrow(NoSuchElementException::new);
+            }
         } catch (Exception e) {
-            throw new BadCredentialsException("O CNPJ não é válido");
+            throw new BadCredentialsException(MSG_ERRO_AUTH);
         }
     }
 }

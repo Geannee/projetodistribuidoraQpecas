@@ -3,9 +3,11 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.UsuarioDTO;
 import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
+import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,14 +20,20 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void save(UsuarioDTO.Save dados) {
+
+        if (usuarioRepository.existsByCnpj(dados.cnpj())) {
+            throw new IllegalArgumentException("CNPJ inválido");
+        }
         Usuario usuario = new Usuario();
         usuario.setCnpj(dados.cnpj());
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
         usuario.setRepresentanteLegal(dados.representanteLegal());
-        usuario.setSenha(dados.senha());
         usuario.setEmail(dados.email());
-        usuario.setTipoUsuario(dados.tipoUsuario());
+        usuario.setTipoUsuario(TipoUsuario.MECANICO);
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setSenha(encoder.encode(dados.senha()));
 
         // 1. Convertendo EnderecoCreate (DTO) para Endereco (Entidade)
         if (dados.endereco() != null) {

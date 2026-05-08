@@ -16,7 +16,6 @@ public interface UsuarioDTO {
             @NotBlank String representanteLegal,
             @NotBlank @Size(min = 8) String senha,
             @NotBlank @Email String email,
-            TipoUsuario tipoUsuario,
 
             EnderecoCreate endereco,
             List<TelefoneCreate> telefone

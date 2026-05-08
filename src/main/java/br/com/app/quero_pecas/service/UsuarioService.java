@@ -8,6 +8,7 @@ import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,14 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public void save(UsuarioDTO.Save dados) {
 
         if (usuarioRepository.existsByCnpj(dados.cnpj())) {
             throw new IllegalArgumentException("CNPJ inválido");
         }
+
         Usuario usuario = new Usuario();
         usuario.setCnpj(dados.cnpj());
         usuario.setRazaoSocial(dados.razaoSocial());
@@ -32,8 +36,8 @@ public class UsuarioService {
         usuario.setEmail(dados.email());
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        usuario.setSenha(encoder.encode(dados.senha()));
+        String senhaCriptografada = passwordEncoder.encode(dados.senha());
+        usuario.setSenha(senhaCriptografada);
 
         // 1. Convertendo EnderecoCreate (DTO) para Endereco (Entidade)
         if (dados.endereco() != null) {

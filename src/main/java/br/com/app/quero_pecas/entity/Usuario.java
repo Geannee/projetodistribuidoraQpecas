@@ -39,4 +39,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "ENUM DEFAULT MECANICO")
     private TipoUsuario tipoUsuario;
+
+
 }

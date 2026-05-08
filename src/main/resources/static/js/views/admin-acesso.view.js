@@ -21,36 +21,46 @@ const AcessoView = {
   renderBloqueados(lista) {
     const tbody = document.getElementById('tbody-bloqueados');
     const count = document.getElementById('count-bloqueados');
+
     if (!tbody) return;
     if (count) count.textContent = `${lista.length} registro${lista.length !== 1 ? 's' : ''}`;
+
     if (!lista.length) {
       tbody.innerHTML = '<tr><td colspan="5" class="empty-row">Nenhum cadastro pendente.</td></tr>';
       return;
     }
-    tbody.innerHTML = lista.map(u => `
-      <tr id="row-${u.id}">
+
+    tbody.innerHTML = lista.map(u => {
+      const id = u.idUsuario;
+
+      const enderecoFormatado = u.endereco
+          ? `${u.endereco.logradouro}, ${u.endereco.numero} - ${u.endereco.cidade}/${u.endereco.estado}`
+          : 'Endereço não informado';
+
+      return `
+      <tr id="row-${id}">
         <td>
-          <div style="font-weight:600">${u.nome}</div>
-          <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
+          <div style="font-weight:600">${u.razaoSocial}</div> <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
         </td>
         <td>${u.cnpj}</td>
-        <td>${u.endereco}</td>
-        <td>${u.criadoEm}</td>
-        <td>
+        <td>${enderecoFormatado}</td>
+        <td>${u.status}</td> <td>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn-liberar" onclick="AcessoController.liberar(${u.id})">Liberar</button>
-            <button class="btn-recusar" onclick="AcessoController.mostrarCampoRecusa(${u.id})">Recusar</button>
+            <button class="btn-liberar" onclick="AcessoController.liberar(${id})">Liberar</button>
+            <button class="btn-recusar" onclick="AcessoController.mostrarCampoRecusa(${id})">Recusar</button>
           </div>
-          <div class="recusa-inline" id="recusa-inline-${u.id}" style="display:none;margin-top:8px">
-            <input type="text" class="form-input recusa-input" id="motivo-${u.id}" placeholder="Informe o motivo da recusa..."/>
+          
+          <div class="recusa-inline" id="recusa-inline-${id}" style="display:none;margin-top:8px">
+            <input type="text" class="form-input recusa-input" id="motivo-${id}" placeholder="Informe o motivo da recusa..."/>
             <div style="display:flex;gap:6px;margin-top:6px">
-              <button class="btn-confirmar-recusa" onclick="AcessoController.confirmarRecusa(${u.id})">Confirmar</button>
-              <button class="btn-cancelar-recusa"  onclick="AcessoController.cancelarRecusa(${u.id})">Cancelar</button>
+              <button class="btn-confirmar-recusa" onclick="AcessoController.confirmarRecusa(${id})">Confirmar</button>
+              <button class="btn-cancelar-recusa"  onclick="AcessoController.cancelarRecusa(${id})">Cancelar</button>
             </div>
           </div>
         </td>
       </tr>
-    `).join('');
+      `;
+    }).join('');
   },
 
   renderHistorico(lista) {

@@ -57,6 +57,18 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    public List<Usuario> listarPendentes() {
+        return usuarioRepository.findByStatus(StatusUsuario.PENDENTE);
+    }
+
+    public List<Usuario> listarReprovados() {
+        return usuarioRepository.findByStatus(StatusUsuario.REPROVADO);
+    }
+
+    public List<Usuario> listarAtivos() {
+        return usuarioRepository.findByStatus(StatusUsuario.ATIVO);
+    }
+
     @Transactional
     public void aprovarUsuario(Long id) {
         Usuario usuario = usuarioRepository.findById(id)

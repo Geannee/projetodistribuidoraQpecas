@@ -21,6 +21,7 @@ public class Usuario {
     private String senha;
     private String email;
     private String motivoReprovacao;
+    //TODO: necessario criar um atributo "Criado em" para a tela "admin-acesso.html"
 
     @Column(columnDefinition = "TINYINT DEFAULT 0")
     private boolean ativo;

@@ -6,22 +6,37 @@ const AcessoController = {
     this._render();
   },
 
-  _render() {
-    const pendentes = AcessoModel.getPendentes();
-    const recusados = AcessoModel.getRecusados();
+   async _render() {
+    const pendentes = await AcessoModel.getPendentes();
+    const recusados = await AcessoModel.getRecusados();
+    const liberados = await AcessoModel.getAtivos();
     const historico = AcessoModel.getHistorico();
-    const liberados = historico.filter(h => h.acao === 'Cadastro liberado').length;
 
-    AcessoView.renderStats(pendentes.length, recusados.length, liberados);
+    AcessoView.renderStats(pendentes.length, recusados.length, liberados.length);
     AcessoView.renderBloqueados(pendentes);
     AcessoView.renderHistorico(historico);
   },
 
-  liberar(id) {
+  async liberar(id) {
     if (!confirm('Liberar o cadastro deste usuário?')) return;
-    AcessoModel.liberarAcesso(id);
-    AcessoView.showToast('Cadastro liberado com sucesso!', 'success');
-    this._render();
+
+    try {
+      // Faz a chamada para o seu Back-end Java
+      const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/aprovar`, {
+        method: 'PATCH'
+      });
+
+      if (response.ok) {
+        AcessoView.showToast('Cadastro liberado com sucesso!', 'success');
+        // Idealmente, o Model deveria buscar os dados atualizados do banco agora
+        this._render();
+      } else {
+        AcessoView.showToast('Erro ao liberar no servidor.', 'error');
+      }
+    } catch (error) {
+      console.error("Erro na conexão:", error);
+      AcessoView.showToast('Erro de conexão com o servidor.', 'error');
+    }
   },
 
   mostrarCampoRecusa(id) {
@@ -36,18 +51,36 @@ const AcessoController = {
     if (input) input.value = '';
   },
 
-  confirmarRecusa(id) {
+  async confirmarRecusa(id) {
     const input = document.getElementById(`motivo-${id}`);
     const motivo = input?.value.trim();
+
     if (!motivo) {
       AcessoView.showToast('Informe o motivo da recusa.', 'error');
       input?.focus();
       return;
     }
+
     if (!confirm(`Recusar este cadastro?\nMotivo: ${motivo}`)) return;
-    AcessoModel.recusarCadastro(id, motivo);
-    AcessoView.showToast('Cadastro recusado.', 'error');
-    this._render();
+
+    try {
+      const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/reprovar`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'text/plain' // Como seu Java recebe @RequestBody String
+        },
+        body: motivo
+      });
+
+      if (response.ok) {
+        AcessoView.showToast('Cadastro recusado.', 'error');
+        this._render();
+      } else {
+        AcessoView.showToast('Erro ao recusar no servidor.', 'error');
+      }
+    } catch (error) {
+      AcessoView.showToast('Erro de conexão.', 'error');
+    }
   }
 };
 

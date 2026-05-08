@@ -1,6 +1,7 @@
 package br.com.app.quero_pecas;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
+import br.com.app.quero_pecas.entity.StatusUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import br.com.app.quero_pecas.service.UsuarioService;
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.app.quero_pecas.entity.StatusUsuario.PENDENTE;
 import static br.com.app.quero_pecas.entity.TipoUsuario.MECANICO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -38,7 +40,7 @@ class UsuarioServiceTest {
         var request = new UsuarioDTO.Save(
                 "15436940000103", "Razao Social Ltda", "Nome Fantasia", 
                 "Representante", "senha123", "teste@email.com", 
-                MECANICO, enderecoDto, List.of(telefoneDto)
+                MECANICO, "",enderecoDto, List.of(telefoneDto)
         );
 
         // Act (Ação)
@@ -77,24 +79,30 @@ class UsuarioServiceTest {
         verify(usuarioRepository, times(1)).save(usuario);
     }
 
-//    @Test
-//    @DisplayName("Deve desativar um usuário ao reprovar")
-//    void reprovarUsuario_Sucesso() {
-//        // Arrange
-//        Long idTeste = 1L;
-//        Usuario usuario = new Usuario();
-////        usuario.setId(idTeste);
-//        usuario.setAtivo(true);
-//
-//        when(usuarioRepository.findById(idTeste)).thenReturn(Optional.of(usuario));
-//
-//        // Act
-//        usuarioService.reprovarUsuario(idTeste);
-//
-//        // Assert
-//        assertFalse(usuario.isAtivo());
-//        verify(usuarioRepository).save(usuario);
-//    }
+    @Test
+    @DisplayName("Deve desativar o usuário, mudar status para REPROVADO e salvar o motivo")
+    void reprovarUsuario_Sucesso() {
+        // Arrange (Preparação)
+        Long idTeste = 1L;
+        String motivoTeste = "Documentação ilegível";
+
+        Usuario usuario = new Usuario();
+        usuario.setIdUsuario(idTeste);
+        usuario.setAtivo(true);
+        usuario.setStatus(PENDENTE);
+
+        when(usuarioRepository.findById(idTeste)).thenReturn(Optional.of(usuario));
+
+        // Act (Ação)
+        usuarioService.reprovarUsuario(idTeste, motivoTeste);
+
+        // Assert (Verificação)
+        assertFalse(usuario.isAtivo(), "O usuário deveria estar desativado");
+        assertEquals(StatusUsuario.REPROVADO, usuario.getStatus(), "O status deveria ser REPROVADO");
+        assertEquals(motivoTeste, usuario.getMotivoReprovacao(), "O motivo gravado deve ser igual ao enviado");
+
+        verify(usuarioRepository).save(usuario);
+    }
 
     @Test
     @DisplayName("Deve lançar exceção ao tentar aprovar usuário inexistente")

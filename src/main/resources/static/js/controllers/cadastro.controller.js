@@ -5,7 +5,7 @@
 const CadastroController = {
 
   _campos: [
-    'cnpj', 'razao', 'nome-oficina',
+    'cnpj', 'razao', 'nome-fantasia',
     'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado',
     'responsavel', 'telefone', 'email', 'senha', 'confirma-senha'
   ],

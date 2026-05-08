@@ -5,6 +5,7 @@ import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
+import br.com.app.quero_pecas.utils.Validacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class UsuarioService {
 
     public void save(UsuarioDTO.Save dados) {
         Usuario usuario = new Usuario();
+
+        String cnpjValidado = new Validacoes().validarCNPJ(dados.cnpj());
         usuario.setCnpj(dados.cnpj().replaceAll("\\D", ""));
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
@@ -32,7 +35,6 @@ public class UsuarioService {
         usuario.setSenha(senhaCriptografada);
 
         usuario.setEmail(dados.email().toLowerCase());
-        usuario.setTipoUsuario(dados.tipoUsuario());
 
         // 1. Convertendo EnderecoCreate (DTO) para Endereco (Entidade)
         if (dados.endereco() != null) {

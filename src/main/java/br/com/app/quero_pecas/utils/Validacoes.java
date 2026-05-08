@@ -11,9 +11,10 @@ public class Validacoes {
         }
     }
 
-    public void validarCNPJ(String cnpj) {
+    public String validarCNPJ(String cnpj) {
         try {
             new CNPJValidator(false).assertValid(cnpj);
+            return cnpj;
         } catch (Exception e) {
             throw new BadCredentialsException("O CNPJ não é válido");
         }

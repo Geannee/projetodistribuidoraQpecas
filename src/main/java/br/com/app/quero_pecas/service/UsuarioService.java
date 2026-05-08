@@ -3,11 +3,9 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.UsuarioDTO;
 import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
-import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +20,19 @@ public class UsuarioService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     public void save(UsuarioDTO.Save dados) {
-
-        if (usuarioRepository.existsByCnpj(dados.cnpj())) {
-            throw new IllegalArgumentException("CNPJ inválido");
-        }
-
         Usuario usuario = new Usuario();
-        usuario.setCnpj(dados.cnpj());
+        usuario.setCnpj(dados.cnpj().replaceAll("\\D", ""));
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
         usuario.setRepresentanteLegal(dados.representanteLegal());
-        usuario.setEmail(dados.email());
-        usuario.setTipoUsuario(TipoUsuario.MECANICO);
 
         String senhaCriptografada = passwordEncoder.encode(dados.senha());
         usuario.setSenha(senhaCriptografada);
+
+        usuario.setEmail(dados.email().toLowerCase());
+        usuario.setTipoUsuario(dados.tipoUsuario());
 
         // 1. Convertendo EnderecoCreate (DTO) para Endereco (Entidade)
         if (dados.endereco() != null) {

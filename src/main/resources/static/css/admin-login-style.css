@@ -60,6 +60,31 @@ body {
 .btn-admin-login:hover  { background: var(--coral-dark); }
 .btn-admin-login:active { transform: scale(.98); }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-voltar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, border-color .2s, transform .1s;
+}
+.btn-voltar:hover  { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.45); }
+.btn-voltar:active { transform: scale(.98); }
+
 /* ─── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
   flex: 1;

@@ -1,0 +1,21 @@
+package br.com.app.quero_pecas.controller;
+
+import br.com.app.quero_pecas.dto.AuthDTO;
+import br.com.app.quero_pecas.service.AuthService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+@CrossOrigin(origins = "*")
+public class AuthController {
+    @Autowired
+    AuthService service;
+    @PostMapping("/")
+    public ResponseEntity<AuthDTO.Response> postAuth(@RequestBody @Valid AuthDTO.Request data) {
+            AuthDTO.Response usuario = service.auth(data);
+            return ResponseEntity.ok(usuario);
+    }
+}

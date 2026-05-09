@@ -1,5 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
+import br.com.app.quero_pecas.entity.TipoUsuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -16,6 +17,7 @@ public interface AuthDTO {
             String cnpj,
             String email,
             String nome,
+            TipoUsuario tipoUsuario,
             String token
     ) {}
 }

@@ -3,6 +3,7 @@ package br.com.app.quero_pecas.Controller;
 import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
+import br.com.app.quero_pecas.service.TokenService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneOffset;
+
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -103,5 +109,25 @@ public class AuthControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString(MSG_ERRO)));
+    }
+
+    @Test
+    @DisplayName("Endpoint protegido deve retornar 401 quando token está expirado")
+    void deveRetornar401QuandoTokenExpirado() throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setEmail("teste@expirado.com");
+        usuario.setIdUsuario(999L);
+
+        String secret = "meuSegredoTeste";
+
+        Clock fixedClock = Clock.fixed(Instant.parse("2025-01-01T00:00:00Z"), ZoneOffset.UTC);
+        TokenService service = new TokenService(secret, fixedClock);
+        String tokenExp = service.gerarTokenExpirado(usuario);
+
+        mockMvc.perform(get("/usuario/me")
+                    .header("Authorization", "Bearer " + tokenExp))
+                .andDo(print())
+                .andExpect(status().isUnauthorized());
+
     }
 }

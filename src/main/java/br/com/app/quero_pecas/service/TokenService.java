@@ -43,7 +43,7 @@ public class TokenService {
         }
     }
 
-    String gerarTokenExpirado(Usuario usuario) {
+    public String gerarTokenExpirado(Usuario usuario) {
         Instant past = Instant.now(clock).minusSeconds(1);
         return gerarTokenComExpiracao(usuario, past);
     }

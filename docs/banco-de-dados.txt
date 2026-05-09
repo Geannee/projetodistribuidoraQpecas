@@ -1,0 +1,164 @@
+================================================================
+  QUERO PEÇAS — PROPOSTA DE BANCO DE DADOS
+================================================================
+  Tecnologia sugerida: PostgreSQL (produção) / SQLite (testes)
+================================================================
+
+
+----------------------------------------------------------------
+  TABELA: clientes
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  cnpj            VARCHAR(18)     ÚNICO
+  razao_social    VARCHAR(150)
+  nome_fantasia   VARCHAR(100)
+  especialidade   VARCHAR(200)
+  responsavel     VARCHAR(100)
+  telefone        VARCHAR(20)
+  email           VARCHAR(100)    ÚNICO
+  senha_hash      VARCHAR(255)
+  limite_credito  DECIMAL(10,2)   DEFAULT 0
+  criado_em       TIMESTAMP
+
+
+----------------------------------------------------------------
+  TABELA: enderecos
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  cliente_id      FK → clientes
+  cep             VARCHAR(9)
+  logradouro      VARCHAR(150)
+  numero          VARCHAR(10)
+  bairro          VARCHAR(80)
+  cidade          VARCHAR(80)
+  estado          CHAR(2)
+
+
+----------------------------------------------------------------
+  TABELA: veiculos  (base de aplicação para busca)
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  placa           VARCHAR(8)      ÚNICO
+  marca           VARCHAR(50)
+  modelo          VARCHAR(80)
+  ano_fab         SMALLINT
+  ano_mod         SMALLINT
+  motor           VARCHAR(50)
+  cambio          VARCHAR(50)
+  chassis         VARCHAR(30)
+
+
+----------------------------------------------------------------
+  TABELA: pecas
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  referencia      VARCHAR(50)     ÚNICO
+  marca           VARCHAR(60)
+  nome            VARCHAR(150)
+  categoria       VARCHAR(80)     (Freios, Motor, Suspensão...)
+  tipo            VARCHAR(30)     (Original / Premium / Econômico)
+  preco           DECIMAL(10,2)
+  estoque         INT
+  unidade         VARCHAR(20)     (un, kit c/4...)
+
+
+----------------------------------------------------------------
+  TABELA: peca_veiculo  (compatibilidade N:N)
+----------------------------------------------------------------
+  peca_id         FK → pecas
+  veiculo_id      FK → veiculos
+  PRIMARY KEY (peca_id, veiculo_id)
+
+
+----------------------------------------------------------------
+  TABELA: pedidos
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  numero          VARCHAR(20)     (ex: QP-2026-00847)
+  cliente_id      FK → clientes
+  total           DECIMAL(10,2)
+  status          ENUM            (aguardando / nota_emitida /
+                                   em_rota / entregue)
+  criado_em       TIMESTAMP
+  atualizado_em   TIMESTAMP
+
+
+----------------------------------------------------------------
+  TABELA: itens_pedido
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  pedido_id       FK → pedidos
+  peca_id         FK → pecas
+  quantidade      INT
+  preco_unitario  DECIMAL(10,2)   (preço na hora da venda)
+
+
+----------------------------------------------------------------
+  TABELA: boletos
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  numero          VARCHAR(20)     (ex: BOL-4821)
+  pedido_id       FK → pedidos
+  cliente_id      FK → clientes
+  valor           DECIMAL(10,2)
+  vencimento      DATE
+  status          ENUM            (pendente / pago / vencido)
+  pago_em         TIMESTAMP       (nullable)
+
+
+----------------------------------------------------------------
+  TABELA: devolucoes
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  protocolo       VARCHAR(20)     (ex: DEV-0041)
+  pedido_id       FK → pedidos
+  cliente_id      FK → clientes
+  motivo          VARCHAR(100)    (Peça errada, Defeito...)
+  descricao       TEXT
+  status          ENUM            (em_andamento / aprovada / negada)
+  criado_em       TIMESTAMP
+
+
+----------------------------------------------------------------
+  TABELA: garantias
+----------------------------------------------------------------
+  id              SERIAL          PRIMARY KEY
+  protocolo       VARCHAR(20)     (ex: GAR-0087)
+  pedido_id       FK → pedidos
+  peca_id         FK → pecas
+  cliente_id      FK → clientes
+  defeito         VARCHAR(150)
+  descricao       TEXT
+  status          ENUM            (em_analise / aprovada / negada)
+  criado_em       TIMESTAMP
+
+
+----------------------------------------------------------------
+  TABELA: creditos
+----------------------------------------------------------------
+  id                SERIAL          PRIMARY KEY
+  protocolo         VARCHAR(20)     (ex: CRE-0012)
+  cliente_id        FK → clientes
+  limite_solicitado DECIMAL(10,2)
+  limite_aprovado   DECIMAL(10,2)   (nullable)
+  finalidade        VARCHAR(150)
+  status            ENUM            (em_analise / aprovada / negada)
+  resposta          TEXT            (nullable)
+  criado_em         TIMESTAMP
+
+
+================================================================
+  RELACIONAMENTOS
+================================================================
+
+  clientes   ──<  pedidos       ──<  itens_pedido  >──  pecas
+  clientes   ──<  boletos       >──  pedidos
+  clientes   ──<  devolucoes    >──  pedidos
+  clientes   ──<  garantias     >──  pedidos / pecas
+  clientes   ──<  creditos
+  clientes   ──   enderecos
+  pecas      >──< veiculos      (via peca_veiculo)
+
+================================================================
+  FIM DO DOCUMENTO
+================================================================

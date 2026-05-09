@@ -46,6 +46,7 @@ public class AuthService {
                 usuario.getCnpj(),
                 usuario.getEmail(),
                 usuario.getRepresentanteLegal(),
+                usuario.getTipoUsuario(),
                 token
         );
     }

@@ -1,5 +1,6 @@
 package br.com.app.quero_pecas.Controller;
 
+import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +30,12 @@ public class AuthControllerTest {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private static final String JSON_CNPJ_INVALIDO = "{\"login\": \"11.111.111/1111-11\", \"senha\": \"senha111\"}";
+    private static final String LOGIN_SUCESSO_CNPJ = "{\"login\": \"15.436.940/0001-03\", \"senha\": \"senha123\"}";
+    private static final String LOGIN_SUCESSO_EMAIL = "{\"login\": \"loja@pecas.com\", \"senha\": \"senha123\"}";
+    private static final String SENHA_INCORRETA = "{\"login\": \"15.436.940/0001-03\", \"senha\": \"senha_errada\"}";
+    private static final String MSG_ERRO = "Login ou Senha inválidos";
+
     @BeforeEach
     void setup() {
         repository.deleteAll();
@@ -38,35 +45,63 @@ public class AuthControllerTest {
         usuario.setEmail("loja@pecas.com");
         usuario.setSenha(passwordEncoder.encode("senha123"));
         usuario.setRepresentanteLegal("Lojista Teste");
+        usuario.setTipoUsuario(TipoUsuario.MECANICO);
         repository.save(usuario);
     }
 
     @Test
     @DisplayName("CA: Login com CNPJ válido e mascarado deve retornar 200")
     void loginSucessoCnpj() throws Exception {
-        // O login enviado tem máscara, o seu Service vai limpá-la.
-        String json = "{\"login\": \"15.436.940/0001-03\", \"senha\": \"senha123\"}";
 
         mockMvc.perform(post("/auth/")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
+                        .content(LOGIN_SUCESSO_CNPJ))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.token").exists());
+                .andExpectAll(
+                        status().isOk(),
+                        jsonPath("$.token").exists(),
+                        jsonPath("$.id").exists(),
+                        jsonPath("$.nome").exists(),
+                        jsonPath("$.tipoUsuario").exists()
+                );
+    }
+
+    @Test
+    @DisplayName("CA: Login com E-mail válido e mascarado deve retornar 200")
+    void loginSucessoEmail() throws Exception {
+        mockMvc.perform(post("/auth/")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(LOGIN_SUCESSO_EMAIL))
+                .andDo(print())
+                .andExpectAll(
+                        status().isOk(),
+                        jsonPath("$.token").exists(),
+                        jsonPath("$.id").exists(),
+                        jsonPath("$.nome").exists(),
+                        jsonPath("$.tipoUsuario").exists()
+                );
+
     }
 
     @Test
     @DisplayName("CA: Bloqueio de CNPJ matematicamente inválido deve retornar 400")
     void loginCnpjInvalido() throws Exception {
-        String json = "{\"login\": \"11.111.111/1111-11\", \"senha\": \"senha111\"}";
-
         mockMvc.perform(post("/auth/")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(json))
+                    .content(JSON_CNPJ_INVALIDO))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString("Login ou Senha inválidos")));
+                .andExpect(content().string(containsString(MSG_ERRO)));
     }
 
-
+    @Test
+    @DisplayName("Deve retornar 400 quando a senha estiver incorreta")
+    void loginSenhaIncorreta() throws Exception {
+        mockMvc.perform(post("/auth/")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(SENHA_INCORRETA))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(containsString(MSG_ERRO)));
+    }
 }

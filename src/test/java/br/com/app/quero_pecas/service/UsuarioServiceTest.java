@@ -92,7 +92,7 @@ class UsuarioServiceTest {
             usuarioService.save(dto);
         });
 
-        assertEquals("Verifique se o campo está correto.", exception.getMessage()); // Mensagem que você definiu no Validacoes
+        assertEquals("Formato de CNPJ invalido.", exception.getMessage()); // Mensagem que você definiu no Validacoes
         verify(usuarioRepository, never()).save(any());
     }
 }

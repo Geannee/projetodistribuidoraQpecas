@@ -17,6 +17,7 @@ public class Validacoes {
             return cnpj;
         } catch (Exception e) {
             throw new IllegalArgumentException("Verifique se o campo está correto.");
+            throw new IllegalArgumentException("Formato de CNPJ invalido.");
         }
     }
 }

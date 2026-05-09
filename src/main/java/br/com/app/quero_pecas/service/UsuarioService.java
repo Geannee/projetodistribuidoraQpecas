@@ -3,6 +3,7 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.UsuarioDTO;
 import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
+import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import br.com.app.quero_pecas.utils.Validacoes;
@@ -26,6 +27,15 @@ public class UsuarioService {
     @Transactional
     public void save(UsuarioDTO.Save dados) {
 
+        String cnpjLimpo = dados.cnpj().replaceAll("\\D", "");
+
+        if (usuarioRepository.existsByCnpj(cnpjLimpo)) {
+            throw new IllegalArgumentException("CNPJ já cadastrado no sistema.");
+        }
+        if (usuarioRepository.existsByEmail(dados.email().toLowerCase())) {
+            throw new IllegalArgumentException("E-mail já cadastrado no sistema.");
+        }
+
         Validacoes.validarEmail(dados.email());
         Validacoes.validarCNPJ(dados.cnpj());
 
@@ -34,6 +44,7 @@ public class UsuarioService {
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
         usuario.setRepresentanteLegal(dados.representanteLegal());
+        usuario.setTipoUsuario(TipoUsuario.MECANICO);
 
         String senhaCriptografada = passwordEncoder.encode(dados.senha());
         usuario.setSenha(senhaCriptografada);

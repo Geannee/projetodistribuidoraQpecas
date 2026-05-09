@@ -21,12 +21,9 @@ public class UsuarioController {
     private UsuarioService usuarioService;
     @PostMapping("/")
     public ResponseEntity<String> save(@RequestBody @Valid UsuarioDTO.Save dados) {
-        try{
             this.usuarioService.save(dados);
             return ResponseEntity.status(HttpStatus.CREATED).body("Usuario cadastrado com sucesso!");
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body("Erro ao cadastrar usuario!");
-        }
+
     }
 
     @GetMapping("/me")

@@ -104,6 +104,7 @@ public class UsuarioControllerTest {
         mockMvc.perform(post("/usuarios/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().string(containsString("Usuario cadastrado com sucesso!")));
     }
@@ -140,6 +141,7 @@ public class UsuarioControllerTest {
         mockMvc.perform(post("/usuarios/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
+                .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString("CNPJ já cadastrado no sistema.")));
     }
@@ -170,7 +172,7 @@ public class UsuarioControllerTest {
         mockMvc.perform(post("/usuarios/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andDo(print()) //
+                .andDo(print())
                 .andExpect(status().isBadRequest());
 
     }
@@ -239,6 +241,7 @@ public class UsuarioControllerTest {
         mockMvc.perform(post("/usuarios/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
+                .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString("E-mail já cadastrado no sistema.")));
     }

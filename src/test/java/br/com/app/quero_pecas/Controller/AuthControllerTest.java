@@ -52,6 +52,7 @@ public class AuthControllerTest {
         usuario.setSenha(passwordEncoder.encode("senha123"));
         usuario.setRepresentanteLegal("Lojista Teste");
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
+        usuario.setAtivo(true);
         repository.save(usuario);
     }
 

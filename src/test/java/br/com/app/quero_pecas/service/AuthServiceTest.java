@@ -54,6 +54,7 @@ class AuthServiceTest {
         var usuario = new Usuario();
         usuario.setCnpj(cnpjTeste);
         usuario.setSenha("senha_hash");
+        usuario.setAtivo(true);
 
         // Stubbing
         when(repository.findByCnpj(cnpjTeste)).thenReturn(Optional.of(usuario));
@@ -125,6 +126,7 @@ class AuthServiceTest {
         var usuario = new Usuario();
         usuario.setEmail("teste@email.com");
         usuario.setSenha("hash");
+        usuario.setAtivo(true);
 
         when(repository.findByEmail("teste@email.com")).thenReturn(Optional.of(usuario));
         when(passwordEncoder.matches("senha123", "hash")).thenReturn(true);

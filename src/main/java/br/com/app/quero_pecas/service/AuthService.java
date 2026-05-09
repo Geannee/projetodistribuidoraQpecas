@@ -3,16 +3,13 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.AuthDTO;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
-import br.com.caelum.stella.validation.CNPJValidator;
 import jakarta.validation.Valid;
-import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import static br.com.app.quero_pecas.utils.Validacoes.validarCNPJ;
 import static br.com.app.quero_pecas.utils.Validacoes.validarEmail;
@@ -28,12 +25,17 @@ public class AuthService {
     private TokenService tokenService;
 
     private static final String MSG_ERRO_AUTH = "Login ou Senha inválidos";
+    private static final String MSG_CONTA_INATIVA = "Sua conta não se encontra ativa. Verifique sua caixa de email ou com o Suporte Quero-Pecas";
 
     public AuthDTO.Response auth(@Valid AuthDTO.Request data) {
         String login = data.login().trim();
         boolean isEmail = login.contains("@");
 
         Usuario usuario = buscarEValidar(login, isEmail);
+
+        if(!usuario.isAtivo()) {
+            throw new BadCredentialsException(MSG_CONTA_INATIVA);
+        }
 
         if (!passwordEncoder.matches(data.senha(), usuario.getSenha())) {
             throw new BadCredentialsException(MSG_ERRO_AUTH);

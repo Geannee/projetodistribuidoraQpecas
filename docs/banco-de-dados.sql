@@ -3,160 +3,230 @@
 --  Criação completa do banco de dados
 -- ================================================================
 
-CREATE DATABASE IF NOT EXISTS quero_pecas_db
+CREATE DATABASE IF NOT EXISTS quero_pecas
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE quero_pecas_db;
+USE quero_pecas;
 
-create table endereco
-(
-    id_endereco bigint auto_increment
-        primary key,
-    bairro      varchar(255) null,
-    cep         varchar(255) null,
-    cidade      varchar(255) null,
-    estado      varchar(255) null,
-    logradouro  varchar(255) null,
-    numero      int          not null
-);
+-- ----------------------------------------------------------------
+--  CLIENTES
+-- ----------------------------------------------------------------
+CREATE TABLE clientes (
+  id              INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  cnpj            VARCHAR(18)     NOT NULL,
+  razao_social    VARCHAR(150)    NOT NULL,
+  nome_fantasia   VARCHAR(100)    NOT NULL,
+  especialidade   VARCHAR(200)        NULL,
+  responsavel     VARCHAR(100)    NOT NULL,
+  telefone        VARCHAR(20)     NOT NULL,
+  email           VARCHAR(100)    NOT NULL,
+  senha_hash      VARCHAR(255)    NOT NULL,
+  limite_credito  DECIMAL(10,2)   NOT NULL DEFAULT 0.00,
+  criado_em       DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_clientes_cnpj  (cnpj),
+  UNIQUE KEY uq_clientes_email (email)
+) ENGINE=InnoDB;
 
-create table entrega
-(
-    id_entrega          bigint auto_increment
-        primary key,
-    prazo               varchar(255) null,
-    status              varchar(255) null,
-    destino_endereco_id bigint       null,
-    constraint UKh0k79gl1elqe1s8e2il1h2jca
-        unique (destino_endereco_id),
-    constraint FKhic6q1fq9m0kqcbi1g298j8b1
-        foreign key (destino_endereco_id) references endereco (id_endereco)
-);
 
-create table fabricante
-(
-    id_fabricante bigint auto_increment
-        primary key,
-    cnpj          varchar(255) null,
-    nome          varchar(255) null
-);
+-- ----------------------------------------------------------------
+--  ENDEREÇOS
+-- ----------------------------------------------------------------
+CREATE TABLE enderecos (
+  id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  cliente_id  INT UNSIGNED  NOT NULL,
+  cep         VARCHAR(9)    NOT NULL,
+  logradouro  VARCHAR(150)  NOT NULL,
+  numero      VARCHAR(10)   NOT NULL,
+  bairro      VARCHAR(80)   NOT NULL,
+  cidade      VARCHAR(80)   NOT NULL,
+  estado      CHAR(2)       NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_enderecos_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
-create table peca
-(
-    id_peca       bigint auto_increment
-        primary key,
-    descricao     varchar(255) null,
-    estoque       int          not null,
-    marca         varchar(255) null,
-    nome          varchar(255) null,
-    preco_base    float        not null,
-    fabricante_id bigint       null,
-    constraint UKsho0wwgfyug2bti3tk9ktfxfp
-        unique (fabricante_id),
-    constraint FK4ywpnxk0apagm5bnh2h94uda2
-        foreign key (fabricante_id) references fabricante (id_fabricante)
-);
 
-create table usuario
-(
-    id_usuario          bigint auto_increment
-        primary key,
-    ativo               tinyint default 0                 null,
-    cnpj                varchar(255)                      null,
-    email               varchar(255)                      null,
-    nome_fantasia       varchar(255)                      null,
-    razao_social        varchar(255)                      null,
-    representante_legal varchar(255)                      null,
-    senha               varchar(255)                      null,
-    tipo_usuario        enum ('DISTRIBUIDOR', 'MECANICO') null,
-    endereco_id         bigint                            null,
-    constraint UKi068p2cyc5fi4d8j8ago5s6y5
-        unique (cnpj),
-    constraint UKt7mwqqaisjlrg6yoj4dtwh0vd
-        unique (endereco_id),
-    constraint FK8fl5dxscva53gw12f19q6qxf8
-        foreign key (endereco_id) references endereco (id_endereco)
-);
+-- ----------------------------------------------------------------
+--  VEÍCULOS  (base de aplicação para busca por placa)
+-- ----------------------------------------------------------------
+CREATE TABLE veiculos (
+  id        INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  placa     VARCHAR(8)    NOT NULL,
+  marca     VARCHAR(50)   NOT NULL,
+  modelo    VARCHAR(80)   NOT NULL,
+  ano_fab   SMALLINT      NOT NULL,
+  ano_mod   SMALLINT      NOT NULL,
+  motor     VARCHAR(50)       NULL,
+  cambio    VARCHAR(50)       NULL,
+  chassis   VARCHAR(30)       NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_veiculos_placa (placa)
+) ENGINE=InnoDB;
 
-create table pedido
-(
-    id_pedido     bigint auto_increment
-        primary key,
-    data          datetime(6)  null,
-    numero_pedido varchar(255) null,
-    status        varchar(255) null,
-    valor_frete   float        not null,
-    valor_total   float        not null,
-    entrega_id    bigint       null,
-    usuario_id    bigint       null,
-    constraint UKfmcm2nikue28ay7mcvvlaw03c
-        unique (entrega_id),
-    constraint FK6uxomgomm93vg965o8brugt00
-        foreign key (usuario_id) references usuario (id_usuario),
-    constraint FKevm8nwtd6mwuj3jy0oc4brbil
-        foreign key (entrega_id) references entrega (id_entrega)
-);
 
-create table pagamento
-(
-    id_pagamento     bigint auto_increment
-        primary key,
-    data_pagamento   datetime(6)                                                                     null,
-    status_pagamento enum ('AGUARDANDO_PAGAMENTO', 'CANCELADO', 'EM_TRANSPORTE', 'ENTREGUE', 'PAGO') null,
-    tipo_pagamento   varchar(255)                                                                    null,
-    pedido_id        bigint                                                                          null,
-    constraint UKsc46s3wc046ujpdoumidm4cr7
-        unique (pedido_id),
-    constraint FKthad9tkw4188hb3qo1lm5ueb0
-        foreign key (pedido_id) references pedido (id_pedido)
-);
+-- ----------------------------------------------------------------
+--  PEÇAS
+-- ----------------------------------------------------------------
+CREATE TABLE pecas (
+  id          INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  referencia  VARCHAR(50)     NOT NULL,
+  marca       VARCHAR(60)     NOT NULL,
+  nome        VARCHAR(150)    NOT NULL,
+  categoria   VARCHAR(80)     NOT NULL,
+  tipo        ENUM('Original','Premium','Econômico') NOT NULL DEFAULT 'Original',
+  preco       DECIMAL(10,2)   NOT NULL,
+  estoque     INT             NOT NULL DEFAULT 0,
+  unidade     VARCHAR(20)     NOT NULL DEFAULT 'un',
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_pecas_referencia (referencia)
+) ENGINE=InnoDB;
 
-create table peca_pedido
-(
-    id_peca_pedido bigint auto_increment
-        primary key,
-    preco_venda    float  not null,
-    quantidade     int    not null,
-    peca_id        bigint null,
-    pedido_id      bigint null,
-    constraint FK5vearayu4e7rgurvdnl7lvh5l
-        foreign key (peca_id) references peca (id_peca),
-    constraint FKbg91l87fooub8l4yeepjt9hbp
-        foreign key (pedido_id) references pedido (id_pedido)
-);
 
-create table telefone
-(
-    id_telefone bigint auto_increment
-        primary key,
-    telefone    varchar(255) null,
-    tipo        varchar(255) null,
-    usuario_id  bigint       null,
-    constraint FK92q33nmw94rylnpis5mgcy3v
-        foreign key (usuario_id) references usuario (id_usuario)
-);
+-- ----------------------------------------------------------------
+--  COMPATIBILIDADE PEÇA × VEÍCULO  (N:N)
+-- ----------------------------------------------------------------
+CREATE TABLE peca_veiculo (
+  peca_id     INT UNSIGNED  NOT NULL,
+  veiculo_id  INT UNSIGNED  NOT NULL,
+  PRIMARY KEY (peca_id, veiculo_id),
+  CONSTRAINT fk_pv_peca
+    FOREIGN KEY (peca_id)    REFERENCES pecas    (id) ON DELETE CASCADE,
+  CONSTRAINT fk_pv_veiculo
+    FOREIGN KEY (veiculo_id) REFERENCES veiculos (id) ON DELETE CASCADE
+) ENGINE=InnoDB;
 
-create table veiculo
-(
-    id_veiculo     bigint auto_increment
-        primary key,
-    ano_fabricacao year         null,
-    chassi         varchar(255) null,
-    marca          varchar(255) null,
-    modelo         varchar(255) null,
-    placa          varchar(255) null
-);
 
-create table peca_veiculo
-(
-    peca_veiculo bigint auto_increment
-        primary key,
-    peca_id      bigint null,
-    veiculo_id   bigint null,
-    constraint FK1uorvnhq8m16m21gcfydrlv9v
-        foreign key (veiculo_id) references veiculo (id_veiculo),
-    constraint FKlam70n8pjurhhwstf52303q49
-        foreign key (peca_id) references peca (id_peca)
-);
+-- ----------------------------------------------------------------
+--  PEDIDOS
+-- ----------------------------------------------------------------
+CREATE TABLE pedidos (
+  id            INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  numero        VARCHAR(20)   NOT NULL,
+  cliente_id    INT UNSIGNED  NOT NULL,
+  total         DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  status        ENUM(
+    'aguardando',
+    'nota_emitida',
+    'aguardando_rota',
+    'em_rota',
+    'entregue'
+  ) NOT NULL DEFAULT 'aguardando',
+  criado_em     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+                              ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_pedidos_numero (numero),
+  CONSTRAINT fk_pedidos_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+) ENGINE=InnoDB;
 
+
+-- ----------------------------------------------------------------
+--  ITENS DO PEDIDO
+-- ----------------------------------------------------------------
+CREATE TABLE itens_pedido (
+  id              INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  pedido_id       INT UNSIGNED    NOT NULL,
+  peca_id         INT UNSIGNED    NOT NULL,
+  quantidade      INT             NOT NULL DEFAULT 1,
+  preco_unitario  DECIMAL(10,2)   NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_itens_pedido
+    FOREIGN KEY (pedido_id) REFERENCES pedidos (id) ON DELETE CASCADE,
+  CONSTRAINT fk_itens_peca
+    FOREIGN KEY (peca_id)   REFERENCES pecas   (id)
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------------
+--  BOLETOS
+-- ----------------------------------------------------------------
+CREATE TABLE boletos (
+  id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  numero      VARCHAR(20)   NOT NULL,
+  pedido_id   INT UNSIGNED  NOT NULL,
+  cliente_id  INT UNSIGNED  NOT NULL,
+  valor       DECIMAL(10,2) NOT NULL,
+  vencimento  DATE          NOT NULL,
+  status      ENUM('pendente','pago','vencido') NOT NULL DEFAULT 'pendente',
+  pago_em     DATETIME          NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_boletos_numero (numero),
+  CONSTRAINT fk_boletos_pedido
+    FOREIGN KEY (pedido_id)  REFERENCES pedidos  (id),
+  CONSTRAINT fk_boletos_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------------
+--  DEVOLUÇÕES
+-- ----------------------------------------------------------------
+CREATE TABLE devolucoes (
+  id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  protocolo   VARCHAR(20)   NOT NULL,
+  pedido_id   INT UNSIGNED  NOT NULL,
+  cliente_id  INT UNSIGNED  NOT NULL,
+  motivo      VARCHAR(100)  NOT NULL,
+  descricao   TEXT              NULL,
+  status      ENUM('em_andamento','aprovada','negada') NOT NULL DEFAULT 'em_andamento',
+  criado_em   DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_devolucoes_protocolo (protocolo),
+  CONSTRAINT fk_dev_pedido
+    FOREIGN KEY (pedido_id)  REFERENCES pedidos  (id),
+  CONSTRAINT fk_dev_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------------
+--  GARANTIAS
+-- ----------------------------------------------------------------
+CREATE TABLE garantias (
+  id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  protocolo   VARCHAR(20)   NOT NULL,
+  pedido_id   INT UNSIGNED  NOT NULL,
+  peca_id     INT UNSIGNED  NOT NULL,
+  cliente_id  INT UNSIGNED  NOT NULL,
+  defeito     VARCHAR(150)  NOT NULL,
+  descricao   TEXT              NULL,
+  status      ENUM('em_analise','aprovada','negada') NOT NULL DEFAULT 'em_analise',
+  criado_em   DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_garantias_protocolo (protocolo),
+  CONSTRAINT fk_gar_pedido
+    FOREIGN KEY (pedido_id)  REFERENCES pedidos  (id),
+  CONSTRAINT fk_gar_peca
+    FOREIGN KEY (peca_id)    REFERENCES pecas    (id),
+  CONSTRAINT fk_gar_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+) ENGINE=InnoDB;
+
+
+-- ----------------------------------------------------------------
+--  CRÉDITOS
+-- ----------------------------------------------------------------
+CREATE TABLE creditos (
+  id                  INT UNSIGNED    NOT NULL AUTO_INCREMENT,
+  protocolo           VARCHAR(20)     NOT NULL,
+  cliente_id          INT UNSIGNED    NOT NULL,
+  limite_solicitado   DECIMAL(10,2)   NOT NULL,
+  limite_aprovado     DECIMAL(10,2)       NULL,
+  finalidade          VARCHAR(150)    NOT NULL,
+  status              ENUM('em_analise','aprovada','negada') NOT NULL DEFAULT 'em_analise',
+  resposta            TEXT                NULL,
+  criado_em           DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_creditos_protocolo (protocolo),
+  CONSTRAINT fk_cre_cliente
+    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
+) ENGINE=InnoDB;
+
+
+-- ================================================================
+--  FIM DO SCRIPT
+-- ================================================================

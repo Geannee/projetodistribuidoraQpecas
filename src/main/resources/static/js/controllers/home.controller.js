@@ -13,10 +13,10 @@ const HomeController = {
 
   verificarSessao() {
     const usuario  = Auth.getUsuario();
-    const token   = Auth.getToken();
+    const perfil   = Auth.getPerfil();
     const navActions = document.getElementById('nav-actions');
     if (!navActions) return;
-    if (token && usuario) HomeView.renderNavLogado(navActions, usuario, perfil);
+    if (usuario) HomeView.renderNavLogado(navActions, usuario, perfil);
   },
 
   renderOfertas() {

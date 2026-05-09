@@ -27,6 +27,15 @@ public class UsuarioService {
     @Transactional
     public void save(UsuarioDTO.Save dados) {
 
+        String cnpjLimpo = dados.cnpj().replaceAll("\\D", "");
+
+        if (usuarioRepository.existsByCnpj(cnpjLimpo)) {
+            throw new IllegalArgumentException("CNPJ já cadastrado no sistema.");
+        }
+        if (usuarioRepository.existsByEmail(dados.email().toLowerCase())) {
+            throw new IllegalArgumentException("E-mail já cadastrado no sistema.");
+        }
+
         Validacoes.validarEmail(dados.email());
         Validacoes.validarCNPJ(dados.cnpj());
 

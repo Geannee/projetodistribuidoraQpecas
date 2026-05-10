@@ -54,6 +54,7 @@ class AuthServiceTest {
         var usuario = new Usuario();
         usuario.setCnpj(cnpjTeste);
         usuario.setSenha("senha_hash");
+        usuario.setAtivo(true);
 
         // Stubbing
         when(repository.findByCnpj(cnpjTeste)).thenReturn(Optional.of(usuario));
@@ -125,6 +126,7 @@ class AuthServiceTest {
         var usuario = new Usuario();
         usuario.setEmail("teste@email.com");
         usuario.setSenha("hash");
+        usuario.setAtivo(true);
 
         when(repository.findByEmail("teste@email.com")).thenReturn(Optional.of(usuario));
         when(passwordEncoder.matches("senha123", "hash")).thenReturn(true);
@@ -146,6 +148,27 @@ class AuthServiceTest {
     void authEmailInvalido() {
         System.out.println("Teste de exceção E-mail invalido");
         var request = new AuthDTO.Request("em@ail", "senha123");
+
+        System.out.println("Request usado no teste: " + request);
+
+        var exception = assertThrows(BadCredentialsException.class, () -> {
+            authService.auth(request);
+        });
+
+        System.out.println("Exceção lançada: " + exception.getClass().getSimpleName());
+        System.out.println("Mensagem da exceção: " + exception.getMessage());
+        System.out.println("------------- \n\n");
+
+        verifyNoInteractions(repository);
+    }
+
+    @Test
+    @DisplayName("Deve lançar execeção ao enviar uma conta Inativa")
+    void enviarContaInativa() {
+        System.out.println("Teste de exceção Conta Inativa");
+        var request = new AuthDTO.Request("45851493000103", "senha123");
+        var usuario = new Usuario();
+        usuario.setAtivo(false);
 
         System.out.println("Request usado no teste: " + request);
 

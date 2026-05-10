@@ -16,7 +16,7 @@ public class Validacoes {
             new CNPJValidator(false).assertValid(cnpj);
             return cnpj;
         } catch (Exception e) {
-            throw new IllegalArgumentException("Verifique se o campo está correto.");
+            //throw new IllegalArgumentException("Verifique se o campo está correto.");
             throw new IllegalArgumentException("Formato de CNPJ invalido.");
         }
     }

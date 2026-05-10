@@ -25,7 +25,7 @@ public class AuthService {
     private TokenService tokenService;
 
     private static final String MSG_ERRO_AUTH = "Login ou Senha inválidos";
-    private static final String MSG_CONTA_INATIVA = "Sua conta não se encontra ativa. Verifique sua caixa de email ou com o Suporte Quero-Pecas";
+    private static final String MSG_CONTA_INATIVA = "Sua conta não se encontra ativa. Verifique sua caixa de E-mail ou com o Suporte Quero-Pecas";
 
     public AuthDTO.Response auth(@Valid AuthDTO.Request data) {
         String login = data.login().trim();

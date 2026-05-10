@@ -38,9 +38,11 @@ public class AuthControllerTest {
 
     private static final String JSON_CNPJ_INVALIDO = "{\"login\": \"11.111.111/1111-11\", \"senha\": \"senha111\"}";
     private static final String LOGIN_SUCESSO_CNPJ = "{\"login\": \"15.436.940/0001-03\", \"senha\": \"senha123\"}";
+    private static final String LOGIN_CNPJ_INATIVO = "{\"login\": \"21.146.030/0001-80\", \"senha\": \"senha123\"}";
     private static final String LOGIN_SUCESSO_EMAIL = "{\"login\": \"loja@pecas.com\", \"senha\": \"senha123\"}";
     private static final String SENHA_INCORRETA = "{\"login\": \"15.436.940/0001-03\", \"senha\": \"senha_errada\"}";
     private static final String MSG_ERRO = "Login ou Senha inválidos";
+    private static final String MSG_CONTA_INATIVA = "Sua conta não se encontra ativa. Verifique sua caixa de E-mail ou com o Suporte Quero-Pecas";
 
     @BeforeEach
     void setup() {
@@ -53,7 +55,17 @@ public class AuthControllerTest {
         usuario.setRepresentanteLegal("Lojista Teste");
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
         usuario.setAtivo(true);
+
+        Usuario usuarioIn = new Usuario();
+        usuarioIn.setCnpj("21146030000180");
+        usuarioIn.setEmail("loja@x.com");
+        usuarioIn.setSenha(passwordEncoder.encode("senha123"));
+        usuarioIn.setRepresentanteLegal("Lojista Teste");
+        usuarioIn.setTipoUsuario(TipoUsuario.MECANICO);
+        usuarioIn.setAtivo(false);
+
         repository.save(usuario);
+        repository.save(usuarioIn);
     }
 
     @Test
@@ -77,8 +89,8 @@ public class AuthControllerTest {
     @DisplayName("CA: Login com E-mail válido e mascarado deve retornar 200")
     void loginSucessoEmail() throws Exception {
         mockMvc.perform(post("/auth/")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(LOGIN_SUCESSO_EMAIL))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(LOGIN_SUCESSO_EMAIL))
                 .andDo(print())
                 .andExpectAll(
                         status().isOk(),
@@ -94,8 +106,8 @@ public class AuthControllerTest {
     @DisplayName("CA: Bloqueio de CNPJ matematicamente inválido deve retornar 400")
     void loginCnpjInvalido() throws Exception {
         mockMvc.perform(post("/auth/")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(JSON_CNPJ_INVALIDO))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(JSON_CNPJ_INVALIDO))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString(MSG_ERRO)));
@@ -105,8 +117,8 @@ public class AuthControllerTest {
     @DisplayName("Deve retornar 400 quando a senha estiver incorreta")
     void loginSenhaIncorreta() throws Exception {
         mockMvc.perform(post("/auth/")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(SENHA_INCORRETA))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(SENHA_INCORRETA))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString(MSG_ERRO)));
@@ -126,9 +138,20 @@ public class AuthControllerTest {
         String tokenExp = service.gerarTokenExpirado(usuario);
 
         mockMvc.perform(get("/usuario/me")
-                    .header("Authorization", "Bearer " + tokenExp))
+                        .header("Authorization", "Bearer " + tokenExp))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
 
+    }
+
+    @Test
+    @DisplayName("Conta com status ativo false deve retornar 400 e mensagem")
+    void deveRetornar400QuandoContaEstiverInativa() throws Exception {
+        mockMvc.perform(post("/auth/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(LOGIN_CNPJ_INATIVO))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(containsString(MSG_CONTA_INATIVA)));
     }
 }

@@ -25,7 +25,6 @@ const CadastroController = {
     }
   },
 
-  // Tornamos a função async para podermos usar o await no fetch
   async enviarCadastro(e) {
     e.preventDefault();
     const errorEl = document.getElementById('cad-error');
@@ -73,9 +72,8 @@ const CadastroController = {
     btn.disabled = true;
     btn.textContent = '⏳ Criando conta...';
 
-    // 1. Montar o Payload mapeado EXATAMENTE como o seu UsuarioDTO.Save espera
     const payload = {
-      cnpj: document.getElementById('cnpj').value.replace(/\D/g, ''), // Remove máscara, envia só números
+      cnpj: document.getElementById('cnpj').value.trim(), // ← corrigido: era 'ccnpj'
       razaoSocial: document.getElementById('razao').value.trim(),
       nomeFantasia: document.getElementById('nome-fantasia').value.trim(),
       representanteLegal: document.getElementById('responsavel').value.trim(),
@@ -85,7 +83,7 @@ const CadastroController = {
       endereco: {
         cep: document.getElementById('cep').value.replace(/\D/g, ''),
         logradouro: document.getElementById('logradouro').value.trim(),
-        numero: parseInt(document.getElementById('numero').value.replace(/\D/g, ''), 10), // Converte para Integer
+        numero: parseInt(document.getElementById('numero').value.replace(/\D/g, ''), 10),
         bairro: document.getElementById('bairro').value.trim(),
         cidade: document.getElementById('cidade').value.trim(),
         estado: document.getElementById('estado').value.trim()
@@ -94,14 +92,12 @@ const CadastroController = {
       telefone: [
         {
           telefone: document.getElementById('telefone').value.replace(/\D/g, ''),
-          tipo: 'CELULAR' // Deixei fixo, mas você pode pegar de um select se houver
+          tipo: 'CELULAR'
         }
       ]
     };
 
-    // 2. Realizar a requisição Fetch para o Backend Spring Boot
     try {
-      // ATENÇÃO: Substitua a URL abaixo pela rota correta do seu Controller no Java
       const response = await fetch('http://localhost:8080/usuarios/', {
         method: 'POST',
         headers: {
@@ -112,34 +108,32 @@ const CadastroController = {
       });
 
       if (!response.ok) {
-        // Se o Java retornar um erro (ex: 400 Validation Error, 500 Internal Server Error)
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.message || 'Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
+        const text = await response.text(); // ← lê o body UMA só vez
+        console.error('Erro do servidor:', text);
+        let message = text;
+        try {
+          const json = JSON.parse(text);
+          message = json.message || JSON.stringify(json);
+        } catch {}
+        throw new Error(message);
       }
 
-      // 3. Sucesso!
       btn.textContent = 'Conta criada com sucesso!';
       Modal.abrir();
 
-      // Opcional: Limpar o formulário após o sucesso
-      // document.querySelector('form').reset();
-
     } catch (error) {
-      // 4. Tratamento de Erros
       console.error('Erro no Fetch:', error);
       errorEl.textContent = error.message;
       errorEl.style.display = 'block';
       errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      // Restaura o botão para o usuário tentar novamente
       btn.textContent = 'Criar minha conta →';
       btn.disabled = false;
     }
   }
 };
 
-// Aliases globais para chamadas inline nos HTML
-function enviarCadastro(e)         { CadastroController.enviarCadastro(e); }
-function toggleSenha(id, btn)      { CadastroController.toggleSenha(id, btn); }
+function enviarCadastro(e)    { CadastroController.enviarCadastro(e); }
+function toggleSenha(id, btn) { CadastroController.toggleSenha(id, btn); }
 
 CadastroController.init();

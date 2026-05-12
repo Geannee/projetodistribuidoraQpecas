@@ -28,7 +28,7 @@ O levantamento de requisitos foi conduzido por meio da metodologia Lean Inceptio
 ## Documento de Visão
 Lean Inception - Quero Peças v1.0, abril de 2026. Disponível no link: [Lean Inception - QueroPeças](https://miro.com/welcomeonboard/c2h0NWhia2E4R2IwYzNIY0dGRFlyeDdJUFFtZFhmMEdrVXlRTEVTT1pXbmppZGs1MVc2eWlKTnFNNExGeFJkSWtPTE9DQ3VXbXJXenFzcEdDY0FkczlkUGxycnZRcm0zaW84L2tXWWZZNEV6NHg3RlNRQ2huMDVXRldsUGNYWkVzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=199937401374)
 
-Documento de Visão - Quero Peças v1.0, abril de 2026. Disponível na pasta de projetos: [Documento de Visão](https://docs.google.com/document/u/0/d/1yj296Jq77pvsResUVHLCE_K4leIcSEvw8tLb1KphGXU/edit)
+Documento de Visão - Quero Peças v1.0, abril de 2026. Disponível na pasta de projetos: [Documento de Visão](https://github.com/Geannee/projetodistribuidoraQpecas/blob/docs-update-MD/docs/documento_visao.md#quero-pe%C3%A7as)
 
 # Visão geral dos requisitos funcionais
 | **_ID_**   | **_User Story_**                                   | **_Valor de Negócio_**                                 | **_MoSCoW_** | **_Prioridade_** | **_Story Points_** | **_Dependências_** |

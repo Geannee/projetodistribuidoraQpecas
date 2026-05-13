@@ -82,7 +82,7 @@ public class PecaControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("[0].nome").value("Filtro de Óleo"));
+                .andExpect(jsonPath("$.pecas[0].nome").value("Filtro de Óleo"));
     }
 
     @Test

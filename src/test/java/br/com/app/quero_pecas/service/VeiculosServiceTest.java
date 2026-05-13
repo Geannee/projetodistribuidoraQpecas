@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,16 +25,27 @@ public class VeiculosServiceTest {
     @InjectMocks private VeiculoService veiculoService;
 
     @Test
-    void deveRotornarPecas_QuandoPlacaExiste() {
+    void deveRetornarPecas_QuandoPlacaExiste() {
         Veiculo veiculo = new Veiculo();
         veiculo.setIdVeiculo(1L);
+        veiculo.setPlaca("ABC1234");
+        veiculo.setMarca("Honda");
+        veiculo.setModelo("Civic");
+        veiculo.setAnoFabricacao(java.time.Year.of(2020));
+
         when(veiculoRepository.findByPlaca("ABC1234")).thenReturn(Optional.of(veiculo));
 
         Peca peca = new Peca();
+        peca.setIdPeca(10L);
         peca.setNome("Filtro");
+        peca.setPrecoBase(50.0F);
+
         when(pecaVeiculoRepository.findPecasByVeiculoId(1L)).thenReturn(List.of(peca));
 
-        List<BuscarPorPlacaDTO.PecaResponse> result = veiculoService.buscarPecasPorPlaca("ABC-1234");
-        assertFalse(result.isEmpty());
+        BuscarPorPlacaDTO.BuscarPlacaResponseDTO result = veiculoService.buscarPecasPorPlaca("ABC-1234");
+
+        assertNotNull(result);
+        assertEquals("2020", result.veiculo().ano());
+        assertFalse(result.pecas().isEmpty());
     }
 }

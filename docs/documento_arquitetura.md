@@ -56,6 +56,7 @@ O QueroPeças é uma plataforma B2B, inteligente projetado para conectar lojas d
 | **_Portabilidade_**            | [Descrição do requisito arquitetural]                                                                                                               | [Breve descrição da Solução]                                                                                                                                            |
 | **_Escalabilidade_**           | Suporte a crescimento de usuários e picos de 200 pedidos/min.                                                                                       | Arquitetura stateless (JWT) permite escalonamento horizontal. Processamento assíncrono com filas.                                                                       |
 | **_Disponibilidade_**          | Uptime de 98% mensal.                                                                                                                               | Disponibilidade mensal de 99,5% com monitoramento APM.                                                                                                                  |
+
 Tabela 1 – Restrições e requisitos arquiteturais
 
 ## 3. VISÃO DE CASOS DE USO

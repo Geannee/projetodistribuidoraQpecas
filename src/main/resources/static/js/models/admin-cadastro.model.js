@@ -19,22 +19,38 @@ const AdminCadastroModel = {
     }
   },
 
-  salvarVeiculo(dados) {
-    const lista = this.getVeiculos();
-    const novo  = {
-      id:          Date.now(),
-      placa:       dados.placa.toUpperCase(),
-      chassi:      dados.chassi.toUpperCase(),
-      marca:       dados.marca,
-      modelo:      dados.modelo,
-      ano:         Number(dados.ano),
-      combustivel: dados.combustivel,
-      obs:         dados.obs || ''
-    };
-    lista.push(novo);
-    localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
-    return novo;
+  async salvarVeiculo(dados) {
+    try {
+      const response = await fetch('http://localhost:8080/veiculos/cadastro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // Transformamos o objeto JS no JSON que o seu VeiculoDTO espera
+        body: JSON.stringify({
+          placa: dados.placa.toUpperCase(),
+          chassi: dados.chassi.toUpperCase(),
+          marca: dados.marca,
+          modelo: dados.modelo,
+          anoFabricacao: dados.ano,
+          tipoDeCompustivel: dados.combustivel,
+          observacoes: dados.obs || ''
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        throw new Error(errorData || 'Erro ao cadastrar veículo');
+      }
+
+      // Se o Java retorna texto puro, use .text() em vez de .json()
+      return await response.text();
+    } catch (error) {
+      console.error("Erro no Model:", error);
+      throw error; // Repassa o erro para o Controller exibir um alerta
+    }
   },
+
 
   excluirVeiculo(id) {
     const lista = this.getVeiculos().filter(v => v.id !== id);

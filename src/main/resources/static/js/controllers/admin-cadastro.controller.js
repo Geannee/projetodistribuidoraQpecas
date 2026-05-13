@@ -40,7 +40,7 @@ const AdminCadastroController = {
 
   // ── VEÍCULO ────────────────────────────────────────────────────────────────
 
-  submeterVeiculo() {
+  async submeterVeiculo() {
     const campos = {
       marca:       document.getElementById('v-marca')?.value.trim(),
       modelo:      document.getElementById('v-modelo')?.value.trim(),
@@ -58,10 +58,23 @@ const AdminCadastroController = {
       return;
     }
 
-    AdminCadastroModel.salvarVeiculo(campos);
-    AdminCadastroView.showToast('Veículo cadastrado com sucesso!', 'success');
-    this.limparVeiculo();
-    AdminCadastroView.renderVeiculos(AdminCadastroModel.getVeiculos());
+    try {
+      // 1. Envia para o servidor e espera a resposta
+      await AdminCadastroModel.salvarVeiculo(campos);
+
+      // 2. Só limpa e avisa se o 'await' acima deu certo
+      AdminCadastroView.showToast('Veículo cadastrado com sucesso!', 'success');
+      this.limparVeiculo();
+
+      // 3. ATENÇÃO: Agora precisamos buscar a lista atualizada do BANCO
+      const listaAtualizada = await AdminCadastroModel.getVeiculos();
+      AdminCadastroView.renderVeiculos(listaAtualizada);
+
+    } catch (error) {
+      // 4. Se o Java der erro, ele cai aqui e te avisa no Toast
+      console.error("Erro ao salvar:", error);
+      AdminCadastroView.showToast('Erro ao salvar no banco: ' + error.message, 'error');
+    }
   },
 
   _validarVeiculo(c) {

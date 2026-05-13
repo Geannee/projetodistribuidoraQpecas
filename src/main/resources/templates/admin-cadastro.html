@@ -104,12 +104,12 @@
               <label class="form-label" for="v-combustivel">Tipo de Combustível *</label>
               <select class="form-input form-select" id="v-combustivel">
                 <option value="">Selecione...</option>
-                <option value="Flex">Flex</option>
-                <option value="Gasolina">Gasolina</option>
-                <option value="Etanol">Etanol</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Elétrico">Elétrico</option>
-                <option value="Híbrido">Híbrido</option>
+                <option value="FLEX">Flex</option>
+                <option value="GASOLINA">Gasolina</option>
+                <option value="ETANOL">Etanol</option>
+                <option value="DIESEL">Diesel</option>
+                <option value="ELETRICO">Elétrico</option>
+                <option value="HIBRIDO">Híbrido</option>
               </select>
             </div>
           </div>
@@ -134,7 +134,7 @@
 
           <div class="form-actions">
             <button type="button" class="btn-secondary" onclick="AdminCadastroController.limparVeiculo()">Limpar</button>
-            <button type="submit" class="btn-primary btn-blue">Cadastrar Veículo →</button>
+            <button type="submit" class="btn-primary btn-blue" onsubmit="AdminCadastroController.subm eterVeiculo()" >Cadastrar Veículo →</button>
           </div>
         </form>
       </section>

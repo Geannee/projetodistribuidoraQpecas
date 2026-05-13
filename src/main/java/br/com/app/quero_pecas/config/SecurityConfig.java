@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers("/auth/**").permitAll();
                     req.requestMatchers("/usuarios/").permitAll();
+                    req.requestMatchers("/veiculos/**").permitAll();
                     req.requestMatchers("/usuarios/me").authenticated();
                     req.anyRequest().authenticated();
                 })

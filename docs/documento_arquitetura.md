@@ -89,6 +89,7 @@ O diagrama de classes é a planta baixa do software, representando visualmente o
 | Banco de dados                        | MariaDB                                       | Familiaridade da equipe, bom desempenho para consultas relacionais e integração com Spring Boot. |
 | Serviços de terceiros                 | N/A                                           | N/A                                                                                              |
 | Gerenciamento de dependÊncias / Build | Maven                                         | Padronização do ciclo de vida e gestão de dependências                                           |
+
 Tabela 2 - Decisões arquiteturais
 ### 4.4 Representação da arquitetura lógica
 O diagrama de pacotes organiza os componentes da aplicação Spring Boot:

@@ -12,7 +12,7 @@ Documento de Arquitetura de Software - Versão <1,0>
    1. [Finalidade](#11-finalidade)
    2. [Escopo](#12-escopo)
    3. [Definições, Acrônicos e Abreviações](#13-definições-acrônimos-e-abreviações)
-2. [RESTRIÇÕES E REQUISITOS ARQUITETURAIS](#2-restrições-e-requisitos-arquiteturais-)
+2. [RESTRIÇÕES E REQUISITOS ARQUITETURAIS](#2-restrições-e-requisitos-arquiteturais)
 3. [VISÃO DE CASOS DE USO](#3-visão-de-casos-de-uso)
 4. [VISÃO LÓGICA](#4-visão-lógica)
    1. [Divisão em subsistemas e camadas do spring;](#41-divisão-em-subsistemas-e-camadas-do-spring)
@@ -24,7 +24,6 @@ Documento de Arquitetura de Software - Versão <1,0>
 6. [VISÃO DE DADOS](#6-visão-de-dados)
 7. [VOLUME E DESEMPENHO](#7-volume-e-desempenho)
 8. [REFERENCIAS](#referencias)
------
 # Documento de Arquitetura de Software
 ## 1. INTRODUÇÃO
 Este documento oferece uma visão geral arquitetural abrangente do sistema Quero-Peças, utilizando o modelo de visões 4 + 1 (Kruchten, 1994). O objetivo é capturar e comunicar as decisões arquitetônicas significativas que suportam os requisitos funcionais e não funcionais do sistema.

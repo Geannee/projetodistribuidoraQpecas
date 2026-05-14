@@ -127,11 +127,11 @@ O detalhamento dos requisitos aqui documentados é mantido de forma viva e colab
 
 ## Segurança da Informação
 
-| **ID**                                                  | **Descrição**                                                                                                                                                                                                                                                    | **Fonte/autoridade**                                                                    | **Impacto**                                                          |
-|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| **RN-026 - Armazenamento de Senhas com Hash**           | Nenhuma senha de usuário pode ser armazenada em texto plano. Todas as senhas devem ser transformadas por uma função hash unidirecional (bcrypt com fator de custo mínimo 10) antes de serem persistidas no banco de dados.                                       | Política de Segurança da Informação do Quero-Peças; boas práticas OWASP.                | US-023 (Criptografar Senha e Dados sensíveis), US-001 (Fazer Login). |
-| **RN-027 - Criptografia de Dados Sensíveis em Repouso** | Dados pessoais sensíveis (CPF, CNPJ, RG) armazenados no banco de dados devem ser criptografados em repouso utilizando algoritmo AES com chave de 256 bits (AES-256). A chave de criptografia deve ser gerenciada separadamente dos dados (ex.: cofre de chaves). | Política de Segurança da Informação do Quero-Peças; Lei nº 13.709/2018 (LGPD), Art. 46. | US-023 (Criptografar Senha e Dados sensíveis).                       |
-| **RN-028 - Oferta Opcional de 2FA**                     | A autenticação em dois fatores (2FA) é uma funcionalidade de segurança adicional oferecida ao usuário, mas sua ativação não é obrigatória para uso do sistema. Uma vez ativada, é exigida a cada novo dispositivo ou a cada 30 dias no mesmo dispositivo.        | Política de Segurança da Informação do Quero-Peças.                                     | US-022 (Implementar Autenticação 2FA).                               |
+| **ID**                                                  | **Descrição**                                                                                                                                                                                                                                             | **Fonte/autoridade**                                                                    | **Impacto**                                                          |
+|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| **RN-026 - Armazenamento de Senhas com Hash**           | Nenhuma senha de usuário pode ser armazenada em texto plano. Todas as senhas devem ser transformadas por uma função hash unidirecional (bcrypt com fator de custo mínimo 10) antes de serem persistidas no banco de dados.                                | Política de Segurança da Informação do Quero-Peças; boas práticas OWASP.                | US-023 (Criptografar Senha e Dados sensíveis), US-001 (Fazer Login). |
+| **RN-027 - Criptografia de Dados Sensíveis em Repouso** | Dados pessoais sensíveis (CPF, CNPJ, RG) armazenados no banco de dados devem ser criptografados em repouso utilizando algoritmo AES com chave de 256 bits (AES-256). A chave de criptografia deve ser gerenciada separadamente dos dados.                 | Política de Segurança da Informação do Quero-Peças; Lei nº 13.709/2018 (LGPD), Art. 46. | US-023 (Criptografar Senha e Dados sensíveis).                       |
+| **RN-028 - Oferta Opcional de 2FA**                     | A autenticação em dois fatores (2FA) é uma funcionalidade de segurança adicional oferecida ao usuário, mas sua ativação não é obrigatória para uso do sistema. Uma vez ativada, é exigida a cada novo dispositivo ou a cada 30 dias no mesmo dispositivo. | Política de Segurança da Informação do Quero-Peças.                                     | US-022 (Implementar Autenticação 2FA).                               |
 
 ## Acessibilidade e Requisitos Transversais
 
@@ -145,19 +145,19 @@ O detalhamento dos requisitos aqui documentados é mantido de forma viva e colab
 ## LISTA DE REQUISITOS NÃO FUNCIONAIS
 
 **RNF-001 - Tempo de Resposta da Busca por Placa**
-- **Descrição:** O endpoint REST responsável pela busca por placa (GET /api/pecas?placa=XXX) deve responder em ≤ 3 segundos para 95% das requisições sob carga de até 500 usuários simultâneos.
+- **Descrição:** O endpoint REST responsável pela busca por placa `(GET /api/pecas?placa=XXX)` deve responder em ≤ 3 segundos para 95% das requisições sob carga de até 500 usuários simultâneos.
     - **Classificação:** Eficiência de desempenho / Comportamento temporal.
     - **Método de verificação:** Teste de carga com JMeter simulando 500 threads executando requisições à API Spring Boot; medição via Spring Actuator + Micrometer (métricas de latência percentil 95).
     - **Critério de aceitação:** Relatório do teste mostra que o percentil 95 do tempo de resposta do endpoint é ≤ 3 segundos.
 
 **RNF-002 - Tempo de Resposta para Navegação de Páginas**
-- **Descrição:** As páginas servidas pelo backend (caso use SSR com Thymeleaf) ou as chamadas à API que alimentam o frontend (se SPA) devem ter tempo de resposta ≤ 2 segundos para 90% das requisições sob 1000 usuários ativos.
+- **Descrição:** As páginas servidas pelo backend com chamadas à API que alimentam o frontend (se SPA) devem ter tempo de resposta ≤ 2 segundos para 90% das requisições sob 1000 usuários ativos.
     - **Classificação:** Eficiência de desempenho.
-    - **Método de verificação:** Teste de carga com Gatling (compatível com Java/Scala) ou JMeter, medindo endpoints críticos (/catalogo, /carrinho, /pedidos). Métricas expostas via Actuator + Prometheus.
+    - **Método de verificação:** Teste de carga com Gatling (compatível com Java/Scala) ou JMeter, medindo endpoints críticos `(/catalogo, /carrinho, /pedidos)`. Métricas expostas via Actuator + Prometheus.
     - **Critério de aceitação:** Percentil 90 dos endpoints medidos ≤ 2 segundos.
 
 **RNF-003 - Capacidade de Processamento de Pedidos**
-- **Descrição:** O sistema deve suportar picos de 200 requisições de finalização de compra (POST /api/pedidos) por minuto sem que o tempo de resposta ultrapasse 5 segundos.
+- **Descrição:** O sistema deve suportar picos de 200 requisições de finalização de compra `(POST /api/pedidos)` por minuto sem que o tempo de resposta ultrapasse 5 segundos.
     - **Classificação:** Eficiência de desempenho.
     - **Método de verificação:** Teste de estresse com JMeter, aumentando gradativamente injeções até 200/min, monitorando via Actuator/Micrometer.
     - **Critério de aceitação:** Nenhuma transação falha com erro 5xx e o tempo máximo não ultrapassa 5 segundos.
@@ -193,13 +193,12 @@ O detalhamento dos requisitos aqui documentados é mantido de forma viva e colab
     - **Critério de aceitação:**
 
 **RNF-009 - Acessibilidade WCAG 2.1 AA**
-- **Descrição:** O frontend (mesmo que servido pelo Spring Boot como Thymeleaf ou como API) deve atender critérios AA.
+- **Descrição:** O frontend (mesmo que servido pelo Spring Boot API) deve atender critérios AA.
     - **Classificação:** Usabilidade / Acessibilidade.
     - **Método de verificação:** Lighthouse e testes com NVDA.
     - **Critério de aceitação:**
 
 **RNF-010 - Facilidade de Primeiro Uso**
-
 - **Descrição:** Um mecânico completa "buscar peça por placa e adicionar ao carrinho" em ≤ 2 minutos no primeiro uso.
     - **Classificação:** Usabilidade / Operabilidade.
     - **Método de verificação:** Teste com 5 usuários representativos.
@@ -218,7 +217,7 @@ O detalhamento dos requisitos aqui documentados é mantido de forma viva e colab
     - **Critério de aceitação:** Sem truncamento horizontal.
 
 **RNF-013 - Cobertura de Testes Automatizados**
-- **Descrição:** Cobertura de linhas ≥ 70% para módulos Spring (services, controllers) e ≥ 60% para frontend.
+- **Descrição:** Cobertura de linhas ≥ 70% para módulos Spring `(services, controllers)` e ≥ 60% para frontend.
     - **Classificação:** Manutenibilidade / Testabilidade.
     - **Método de verificação:**
     - **Critério de aceitação:**

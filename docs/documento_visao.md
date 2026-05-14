@@ -26,17 +26,17 @@ _Com essa abordagem, o sistema reduz erros de identificação, melhora a eficiê
 # POSICIONAMENTO
 
 ## Declaração Do Problema
-
+|                                | Detalhes                                                                                                                               |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | O problema de                  | _Identificação incorreta de peças automotivas durante o processo de venda._                                                            |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
 | Afeta                          | _Lojas de autopeças, vendedores, oficinas mecânicas e distribuidores do mercado de reposição automotiva._                              |
 | Cujo impacto é                 | _Aumento de trocas/devoluções, perda de tempo, prejuízo financeiro e insatisfação._                                                    |
 | Uma solução de sucesso deveria | _Plataforma onde o mecânico, a partir da placa, encontra a peça correta e consulta estoque integrado, fechando a venda com segurança._ |
 
 ## Declaração Da Visão Do Software
-
+|               | Detalhes                                                                                                                                                                                                                    |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Para          | _Lojas de autopeças e seus vendedores._                                                                                                                                                                                     |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Que           | _Enfrentam dificuldades na identificação de peças e fragmentação no acesso a estoques de distribuidores._                                                                                                                   |
 | O Quero-Peças | _É uma plataforma B2B de busca e compra de peças automotivas._                                                                                                                                                              |
 | É uma         | _Plataforma B2B de busca e integração de peças automotivas._                                                                                                                                                                |
@@ -46,49 +46,48 @@ _Com essa abordagem, o sistema reduz erros de identificação, melhora a eficiê
 
 # Descrição Das Partes Interessadas
 
-| **Nome**                         | **Descrição**                                                                                                                                                                            | **Responsabilidades**                                                                                                                                                                                                                                                                            |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| _O Mecânico e Loja de Autopeças_ | _Profissional responsável pela manutenção e reparo de veículos automotores. Utiliza o sistema para identificar corretamente as peças necessárias para cada veículo atendido na oficina._ | _• Informar corretamente a placa do veículo para busca de peças <br>• Identificar e validar as peças necessárias para o reparo <br>• Solicitar as peças corretas para a loja de autopeças <br>• Utilizar o sistema como apoio técnico para reduzir erros de identificação_                       |
-| _Loja de Autopeças_              | _Estabelecimento responsável pela comercialização de peças automotivas. Utiliza o sistema para localizar peças compatíveis com veículos e consultar estoque das distribuidoras._         | _• Utilizar o sistema para identificar peças compatíveis com o veículo <br>• Realizar consultas de estoque nas distribuidoras integradas <br>• Efetuar vendas com base nas informações fornecidas pelo sistema <br>• Garantir que os pedidos realizados correspondam às necessidades do cliente_ |
-| _Distribuidor de Peças_          | _Empresa responsável pelo fornecimento e distribuição de peças automotivas para lojas e revendedores. Disponibiliza seus estoques para consulta através da integração com o sistema._    | _• Manter o estoque atualizado e integrado ao sistema <br>• Garantir disponibilidade das informações de produtos <br>• Fornecer dados corretos de peças e compatibilidade <br>• Atender aos pedidos realizados pelas lojas através do Sistema_                                                   |
-| _Usuario Distribuidor_           | _Responsável pela gestão, manutenção e controle da plataforma Quero-Peças, garantindo o funcionamento correto do sistema e das integrações._                                             | _• Administrar usuários e acessos ao sistema_<br><br>_• Monitorar o funcionamento da plataforma_<br><br>_<br><br/>_                                                                                                                                                                              |
-| _Equipe de Desenvolvimento_      | _Responsável pelo desenvolvimento da solução Quero-Peças, garantindo a disponibilidade e arquitetura do projeto._                                                                        | _• Garantir a segurança e integridade das informações_<br><br>_• Gerenciar arquitetura integrável e expansiva_<br><br>_• Gerenciar integrações com distribuidores_                                                                                                                               |
+| **Nome**                         | **Descrição**                                                                                                                                                                            | **Responsabilidades**                                                                                                                                                                                                                                                      |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| _O Mecânico e Loja de Autopeças_ | _Profissional responsável pela manutenção e reparo de veículos automotores. Utiliza o sistema para identificar corretamente as peças necessárias para cada veículo atendido na oficina._ | _• Informar corretamente a placa do veículo para busca de peças <br>• Identificar e validar as peças necessárias para o reparo <br>• Solicitar as peças corretas para a loja de autopeças <br>• Utilizar o sistema como apoio técnico para reduzir erros de identificação_ |
+| _Distribuidor de Peças_          | _Empresa responsável pelo fornecimento e distribuição de peças automotivas para lojas e revendedores. Disponibiliza seus estoques para consulta através da integração com o sistema._    | _• Manter o estoque atualizado e integrado ao sistema <br>• Garantir disponibilidade das informações de produtos <br>• Fornecer dados corretos de peças e compatibilidade <br>• Atender aos pedidos realizados pelas lojas através do Sistema_                             |
+| _Usuario Distribuidor_           | _Responsável pela gestão, manutenção e controle da plataforma Quero-Peças, garantindo o funcionamento correto do sistema e das integrações._                                             | _• Administrar usuários e acessos ao sistema_<br><br>_• Monitorar o funcionamento da plataforma_<br><br>_<br><br/>_                                                                                                                                                        |
+| _Equipe de Desenvolvimento_      | _Responsável pelo desenvolvimento da solução Quero-Peças, garantindo a disponibilidade e arquitetura do projeto._                                                                        | _• Garantir a segurança e integridade das informações_<br><br>_• Gerenciar arquitetura integrável e expansiva_<br><br>_• Gerenciar integrações com distribuidores_                                                                                                         |
 
 # Visão geral do produto
 
 ## Necessidades e funcionalidades
 
-| **Necessidade**                                              | **Funcionalidade**                           | **Prioridade** | **Responsável** |
-| ------------------------------------------------------------ | -------------------------------------------- | -------------- | --------------- |
-| Acessar o sistema com segurança                              | Fazer login com credenciais da loja          | Alta           |                 |
-| Recuperar acesso em caso de esquecimento de senha            | Recuperar Senha                              | Alta           |                 |
-| (Lojista) Cadastrar a loja na plataforma                     | Registro de Lojista                          | Alta           |                 |
-| (Lojista) Manter dados da loja atualizados                   | Editar Dados Cadastrais                      | Média          |                 |
-| (Admin) Garantir que apenas lojas válidas acessem            | Aprovar Cadastro                             | Alta           |                 |
-| Proteger a conta contra acessos indevidos                    | Autenticação 2FA e Criptografia              | Média / Alta   |                 |
-| Cumprir as leis de privacidade (LGPD)                        | Consentimento, exclusão de dados, logs       | Alta           |                 |
-| Buscar peças usando a placa do veículo                       | Busca por Placa                              | Alta           |                 |
-| Buscar peças quando a placa não está disponível              | Busca por Modelo                             | Alta           |                 |
-| Buscar uma peça específica pelo código do fabricante         | Busca por Código de Peça                     | Alta           |                 |
-| Navegar por todas as peças de um veículo de forma intuitiva  | Catálogo de Peças Compatíveis                | Média          |                 |
-| Saber se a peça está disponível no distribuidor              | Consultar Estoque                            | Alta           |                 |
-| Montar um pedido com várias peças                            | Adicionar ao Carrinho                        | Alta           |                 |
-| Gerar um orçamento para mostrar ao cliente                   | Salvar Orçamento / Exportar PDF              | Alta / Média   |                 |
-| Fechar a venda e receber a peça                              | Compra (com escolha de pagamento e endereço) | Alta           |                 |
-| Ter o boleto enviado automaticamente                         | Envio Automático de Boletos                  | Média          |                 |
-| Saber se o pedido já foi pago, enviado, etc.                 | Acompanhar Status do Pedido                  | Alta           |                 |
-| Ver compras passadas para conferência ou repetição           | Visualizar Histórico de Pedidos              | Baixa          |                 |
-| Pedir para pagar a prazo (se a loja tiver crédito)           | Solicitar Crédito                            | Média          |                 |
-| Resolver problemas com uma peça que não serve ou veio errada | Solicitar Devolução                          | Média          |                 |
-| Acionar garantia de uma peça com defeito                     | Solicitar Garantia                           | Média          |                 |
-| (Admin) Alimentar a base de veículos e peças                 | Cadastrar Veículo / Cadastrar Peça           | Alta           |                 |
-| Incluir mecânicos com alguma deficiência visual              | Acessibilidade Visual                        | Média          |                 |
-| (Lojista/Gerente) Análise de vendas                          | Relatório de Pedidos                         | Baixa          |                 |
+| **Necessidade**                                              | **Funcionalidade**                           | **Prioridade** | **Responsável**           |
+|--------------------------------------------------------------|----------------------------------------------|----------------|---------------------------|
+| Acessar o sistema com segurança                              | Fazer login com credenciais da loja          | Alta           | Equipe de Desenvolvimento |
+| Recuperar acesso em caso de esquecimento de senha            | Recuperar Senha                              | Alta           | Equipe de Desenvolvimento |
+| (Lojista) Cadastrar a loja na plataforma                     | Registro de Lojista                          | Alta           | Equipe de Desenvolvimento |
+| (Lojista) Manter dados da loja atualizados                   | Editar Dados Cadastrais                      | Média          | Equipe de Desenvolvimento |
+| (Admin) Garantir que apenas lojas válidas acessem            | Aprovar Cadastro                             | Alta           | Equipe de Desenvolvimento |
+| Proteger a conta contra acessos indevidos                    | Autenticação 2FA e Criptografia              | Média / Alta   | Equipe de Desenvolvimento |
+| Cumprir as leis de privacidade (LGPD)                        | Consentimento, exclusão de dados, logs       | Alta           | Equipe de Desenvolvimento |
+| Buscar peças usando a placa do veículo                       | Busca por Placa                              | Alta           | Equipe de Desenvolvimento |
+| Buscar peças quando a placa não está disponível              | Busca por Modelo                             | Alta           | Equipe de Desenvolvimento |
+| Buscar uma peça específica pelo código do fabricante         | Busca por Código de Peça                     | Alta           | Equipe de Desenvolvimento |
+| Navegar por todas as peças de um veículo de forma intuitiva  | Catálogo de Peças Compatíveis                | Média          | Equipe de Desenvolvimento |
+| Saber se a peça está disponível no distribuidor              | Consultar Estoque                            | Alta           | Equipe de Desenvolvimento |
+| Montar um pedido com várias peças                            | Adicionar ao Carrinho                        | Alta           | Equipe de Desenvolvimento |
+| Gerar um orçamento para mostrar ao cliente                   | Salvar Orçamento / Exportar PDF              | Alta / Média   | Equipe de Desenvolvimento |
+| Fechar a venda e receber a peça                              | Compra (com escolha de pagamento e endereço) | Alta           | Equipe de Desenvolvimento |
+| Ter o boleto enviado automaticamente                         | Envio Automático de Boletos                  | Média          | Equipe de Desenvolvimento |
+| Saber se o pedido já foi pago, enviado, etc.                 | Acompanhar Status do Pedido                  | Alta           | Equipe de Desenvolvimento |
+| Ver compras passadas para conferência ou repetição           | Visualizar Histórico de Pedidos              | Baixa          | Equipe de Desenvolvimento |
+| Pedir para pagar a prazo (se a loja tiver crédito)           | Solicitar Crédito                            | Média          | Equipe de Desenvolvimento |
+| Resolver problemas com uma peça que não serve ou veio errada | Solicitar Devolução                          | Média          | Equipe de Desenvolvimento |
+| Acionar garantia de uma peça com defeito                     | Solicitar Garantia                           | Média          | Equipe de Desenvolvimento |
+| (Admin) Alimentar a base de veículos e peças                 | Cadastrar Veículo / Cadastrar Peça           | Alta           | Equipe de Desenvolvimento |
+| Incluir mecânicos com alguma deficiência visual              | Acessibilidade Visual                        | Média          | Equipe de Desenvolvimento |
+| (Lojista/Gerente) Análise de vendas                          | Relatório de Pedidos                         | Baixa          | Equipe de Desenvolvimento |
 
 ## Requisitos não funcionais preliminares
 
 | **Requisito não funcional**                                                                                     | **Prioridade** |
-| --------------------------------------------------------------------------------------------------------------- | -------------- |
+|-----------------------------------------------------------------------------------------------------------------|----------------|
 | O sistema deve permitir acesso via navegador web em computadores, tablets e dispositivos móveis.                | Alta           |
 | O tempo de resposta para busca de peças através da placa do veículo não deve ultrapassar 3 segundos.            | Alta           |
 | O sistema deve garantir disponibilidade mínima de 98% de uptime para acesso dos usuários.                       | Alta           |

@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class PecaControllerTest {
+public class VeiculoControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -77,7 +77,7 @@ public class PecaControllerTest {
     @Test
     @DisplayName("Cenário 01: Placa válida -> retornar listas de peças")
     void buscarPecasPorPlaca_DeveRetornar200() throws Exception {
-        mockMvc.perform(get("/pecas/findByPlaca")
+        mockMvc.perform(get("/veiculos/findByPlaca")
                     .param("placa", "ABC-1234"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -88,7 +88,7 @@ public class PecaControllerTest {
     @Test
     @DisplayName("Cenário 02: Placa não encontrada -> 404 com mensagem")
     void buscarPecasPorPlaca_PlacaNaoEcontrada_DeveRetornar404() throws Exception {
-        mockMvc.perform(get("/pecas/findByPlaca")
+        mockMvc.perform(get("/veiculos/findByPlaca")
                     .param("placa", "CBA-4321"))
                 .andDo(print())
                 .andExpect(status().isNotFound())

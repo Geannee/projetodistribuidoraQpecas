@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findByStatus(StatusUsuario status);
+    Optional<Usuario> findByCnpj(String cnpj);
+    Optional<Usuario> findByEmail(String email);
+    boolean existsByCnpj(String cnpj);
+    boolean existsByEmail(String email);
 }

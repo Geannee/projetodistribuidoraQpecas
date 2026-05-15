@@ -1,4 +1,4 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
@@ -72,56 +72,26 @@ public class AuthControllerTest {
     @DisplayName("CA: Login com CNPJ válido e mascarado deve retornar 200")
     void loginSucessoCnpj() throws Exception {
 
-        mockMvc.perform(post("/auth/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(LOGIN_SUCESSO_CNPJ))
-                .andDo(print())
-                .andExpectAll(
-                        status().isOk(),
-                        jsonPath("$.token").exists(),
-                        jsonPath("$.id").exists(),
-                        jsonPath("$.nome").exists(),
-                        jsonPath("$.tipoUsuario").exists()
-                );
+        mockMvc.perform(post("/auth/").contentType(MediaType.APPLICATION_JSON).content(LOGIN_SUCESSO_CNPJ)).andDo(print()).andExpectAll(status().isOk(), jsonPath("$.token").exists(), jsonPath("$.id").exists(), jsonPath("$.nome").exists(), jsonPath("$.tipoUsuario").exists());
     }
 
     @Test
     @DisplayName("CA: Login com E-mail válido e mascarado deve retornar 200")
     void loginSucessoEmail() throws Exception {
-        mockMvc.perform(post("/auth/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(LOGIN_SUCESSO_EMAIL))
-                .andDo(print())
-                .andExpectAll(
-                        status().isOk(),
-                        jsonPath("$.token").exists(),
-                        jsonPath("$.id").exists(),
-                        jsonPath("$.nome").exists(),
-                        jsonPath("$.tipoUsuario").exists()
-                );
+        mockMvc.perform(post("/auth/").contentType(MediaType.APPLICATION_JSON).content(LOGIN_SUCESSO_EMAIL)).andDo(print()).andExpectAll(status().isOk(), jsonPath("$.token").exists(), jsonPath("$.id").exists(), jsonPath("$.nome").exists(), jsonPath("$.tipoUsuario").exists());
 
     }
 
     @Test
     @DisplayName("CA: Bloqueio de CNPJ matematicamente inválido deve retornar 400")
     void loginCnpjInvalido() throws Exception {
-        mockMvc.perform(post("/auth/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(JSON_CNPJ_INVALIDO))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString(MSG_ERRO)));
+        mockMvc.perform(post("/auth/").contentType(MediaType.APPLICATION_JSON).content(JSON_CNPJ_INVALIDO)).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString(MSG_ERRO)));
     }
 
     @Test
     @DisplayName("Deve retornar 400 quando a senha estiver incorreta")
     void loginSenhaIncorreta() throws Exception {
-        mockMvc.perform(post("/auth/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(SENHA_INCORRETA))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString(MSG_ERRO)));
+        mockMvc.perform(post("/auth/").contentType(MediaType.APPLICATION_JSON).content(SENHA_INCORRETA)).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString(MSG_ERRO)));
     }
 
     @Test
@@ -137,21 +107,13 @@ public class AuthControllerTest {
         TokenService service = new TokenService(secret, fixedClock);
         String tokenExp = service.gerarTokenExpirado(usuario);
 
-        mockMvc.perform(get("/usuario/me")
-                        .header("Authorization", "Bearer " + tokenExp))
-                .andDo(print())
-                .andExpect(status().isUnauthorized());
+        mockMvc.perform(get("/usuario/me").header("Authorization", "Bearer " + tokenExp)).andDo(print()).andExpect(status().isUnauthorized());
 
     }
 
     @Test
     @DisplayName("Conta com status ativo false deve retornar 400 e mensagem")
     void deveRetornar400QuandoContaEstiverInativa() throws Exception {
-        mockMvc.perform(post("/auth/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(LOGIN_CNPJ_INATIVO))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString(MSG_CONTA_INATIVA)));
+        mockMvc.perform(post("/auth/").contentType(MediaType.APPLICATION_JSON).content(LOGIN_CNPJ_INATIVO)).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString(MSG_CONTA_INATIVA)));
     }
 }

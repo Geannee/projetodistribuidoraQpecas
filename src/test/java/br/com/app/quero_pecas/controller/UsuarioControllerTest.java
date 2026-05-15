@@ -1,4 +1,4 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
@@ -101,12 +101,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isCreated())
-                .andExpect(content().string(containsString("Usuario cadastrado com sucesso!")));
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isCreated()).andExpect(content().string(containsString("Usuario cadastrado com sucesso!")));
     }
 
     @Test
@@ -138,12 +133,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString("CNPJ já cadastrado no sistema.")));
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString("CNPJ já cadastrado no sistema.")));
     }
 
     @Test
@@ -169,11 +159,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isBadRequest());
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isBadRequest());
 
     }
 
@@ -200,11 +186,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isBadRequest())
                 // Espera que o campo "cnpj" retorne um erro no JSON (barrado pelo @Size do DTO)
                 .andExpect(jsonPath("$.cnpj").exists());
     }
@@ -238,12 +220,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString("E-mail já cadastrado no sistema.")));
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isBadRequest()).andExpect(content().string(containsString("E-mail já cadastrado no sistema.")));
     }
 
     @Test
@@ -269,11 +246,7 @@ public class UsuarioControllerTest {
                 }
                 """;
 
-        mockMvc.perform(post("/usuarios/")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
+        mockMvc.perform(post("/usuarios/").contentType(MediaType.APPLICATION_JSON).content(json)).andDo(print()).andExpect(status().isBadRequest())
                 // Espera que o campo "email" retorne um erro no JSON (barrado pelo @Email do DTO)
                 .andExpect(jsonPath("$.email").exists());
     }

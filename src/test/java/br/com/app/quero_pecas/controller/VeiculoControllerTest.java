@@ -1,4 +1,4 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.PecaVeiculo;
@@ -17,15 +17,15 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Year;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @ActiveProfiles("test")
 public class VeiculoControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -41,7 +41,6 @@ public class VeiculoControllerTest {
         pecaRepository.deleteAll();
         veiculoRepository.deleteAll();
 
-        // Cria um veículo
         Veiculo veiculo = new Veiculo();
         veiculo.setPlaca("ABC1234");
         veiculo.setModelo("Civic");
@@ -49,7 +48,6 @@ public class VeiculoControllerTest {
         veiculo.setAnoFabricacao(Year.of(2020));
         veiculo = veiculoRepository.save(veiculo);
 
-        // Cria algumas peças
         Peca peca1 = new Peca();
         peca1.setNome("Filtro de Óleo");
         peca1.setPrecoBase(25.90f);
@@ -62,7 +60,6 @@ public class VeiculoControllerTest {
         peca2.setEstoque(5);
         peca2 = pecaRepository.save(peca2);
 
-        // Associa as peças ao veículo via tabela de ligação
         PecaVeiculo pv1 = new PecaVeiculo();
         pv1.setVeiculo(veiculo);
         pv1.setPeca(peca1);
@@ -77,21 +74,12 @@ public class VeiculoControllerTest {
     @Test
     @DisplayName("Cenário 01: Placa válida -> retornar listas de peças")
     void buscarPecasPorPlaca_DeveRetornar200() throws Exception {
-        mockMvc.perform(get("/veiculos/findByPlaca")
-                    .param("placa", "ABC-1234"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.length()").value(2))
-                .andExpect(jsonPath("$.pecas[0].nome").value("Filtro de Óleo"));
+        mockMvc.perform(get("/veiculos/findByPlaca").param("placa", "ABC-1234")).andDo(print()).andExpect(status().isOk()).andExpect(jsonPath("$.pecas.length()").value(2)).andExpect(jsonPath("$.pecas[*].nome", org.hamcrest.Matchers.hasItems("Filtro de Óleo", "Pastilha de Freio")));
     }
 
     @Test
     @DisplayName("Cenário 02: Placa não encontrada -> 404 com mensagem")
     void buscarPecasPorPlaca_PlacaNaoEcontrada_DeveRetornar404() throws Exception {
-        mockMvc.perform(get("/veiculos/findByPlaca")
-                    .param("placa", "CBA-4321"))
-                .andDo(print())
-                .andExpect(status().isNotFound())
-                .andExpect(content().string(containsString("Placa não encontrada. Tente buscar por modelo")));
+        mockMvc.perform(get("/veiculos/findByPlaca").param("placa", "CBA-4321")).andDo(print()).andExpect(status().isNotFound()).andExpect(content().string("Placa não encontrada. Tente buscar por modelo"));
     }
 }

@@ -41,8 +41,7 @@ class TokenServiceTest {
         TokenService tokenService = new TokenService(SECRET, clock);
         String tokenExpirado = tokenService.gerarTokenExpirado(usuario);
 
-        RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> tokenService.validarToken(tokenExpirado));
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> tokenService.validarToken(tokenExpirado));
         assertEquals("Token expirado", exception.getMessage());
     }
 
@@ -53,8 +52,7 @@ class TokenServiceTest {
         TokenService tokenService = new TokenService(SECRET, clock);
         String tokenInvalido = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
-        RuntimeException exception = assertThrows(RuntimeException.class,
-                () -> tokenService.validarToken(tokenInvalido));
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> tokenService.validarToken(tokenInvalido));
         assertEquals("Token inválido", exception.getMessage());
     }
 }

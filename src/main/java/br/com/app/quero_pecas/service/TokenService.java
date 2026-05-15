@@ -32,12 +32,7 @@ public class TokenService {
     private String gerarTokenComExpiracao(Usuario usuario, Instant expiration) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            return JWT.create()
-                    .withIssuer("quero_pecas_api")
-                    .withSubject(usuario.getEmail())
-                    .withClaim("id", usuario.getIdUsuario())
-                    .withExpiresAt(expiration)
-                    .sign(algorithm);
+            return JWT.create().withIssuer("quero_pecas_api").withSubject(usuario.getEmail()).withClaim("id", usuario.getIdUsuario()).withExpiresAt(expiration).sign(algorithm);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao gerar token", e);
         }
@@ -51,9 +46,7 @@ public class TokenService {
     public String validarToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            var verifier = JWT.require(algorithm)
-                    .withIssuer("quero_pecas_api")
-                    .build();
+            var verifier = JWT.require(algorithm).withIssuer("quero_pecas_api").build();
             var decoded = verifier.verify(token);
             return decoded.getSubject(); // retorna o email (subject)
         } catch (TokenExpiredException e) {

@@ -23,10 +23,8 @@ class UsuarioServiceTest {
 
     @Mock
     private UsuarioRepository usuarioRepository;
-
     @Mock
     private PasswordEncoder passwordEncoder;
-
     @InjectMocks
     private UsuarioService usuarioService;
 
@@ -35,18 +33,24 @@ class UsuarioServiceTest {
     void deveSalvarUsuarioComSucesso() {
         // Arrange: Dados válidos (CNPJ matematicamente válido para passar no Caelum Stella)
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
-                "20402686000154", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "20402686000154",
+                "Mecânica Silva",
+                "Auto Peças Silva",
+                "João Silva",
+                "senha123",
+                "joao@email.com",
+                TipoUsuario.MECANICO,
+                null,
+                null,
+                new ArrayList<>()
         );
 
         when(usuarioRepository.existsByCnpj(anyString())).thenReturn(false);
         when(usuarioRepository.existsByEmail(anyString())).thenReturn(false);
         when(passwordEncoder.encode("senha123")).thenReturn("$2a$10$HashSimuladoAqui");
 
-        // Act
         usuarioService.save(dto);
 
-        // Assert: Captura o objeto que foi enviado para o Repository.save()
         ArgumentCaptor<Usuario> usuarioCaptor = ArgumentCaptor.forClass(Usuario.class);
         verify(usuarioRepository, times(1)).save(usuarioCaptor.capture());
 
@@ -61,21 +65,27 @@ class UsuarioServiceTest {
     @Test
     @DisplayName("Deve lançar exceção ao tentar salvar CNPJ já cadastrado")
     void naoDeveSalvarCnpjDuplicado() {
-        // Arrange
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
-                "37805121000109", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "37805121000109",
+                "Mecânica Silva",
+                "Auto Peças Silva",
+                "João Silva",
+                "senha123",
+                "joao@email.com",
+                null,
+                null,
+                null,
+                new ArrayList<>()
         );
 
-        when(usuarioRepository.existsByCnpj(anyString())).thenReturn(true); // Simula que já existe
+        when(usuarioRepository.existsByCnpj(anyString())).thenReturn(true);
 
-        // Act & Assert
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             usuarioService.save(dto);
         });
 
         assertEquals("CNPJ já cadastrado no sistema.", exception.getMessage());
-        verify(usuarioRepository, never()).save(any(Usuario.class)); // Garante que NUNCA chamou o save
+        verify(usuarioRepository, never()).save(any(Usuario.class));
     }
 
     @Test
@@ -83,16 +93,23 @@ class UsuarioServiceTest {
     void naoDeveSalvarComCnpjInvalido() {
         // Arrange: CNPJ com números repetidos (matematicamente inválido)
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
-                "11111111111111", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "11111111111111",
+                "Mecânica Silva",
+                "Auto Peças Silva",
+                "João Silva",
+                "senha123",
+                "joao@email.com",
+                null,
+                null,
+                null,
+                new ArrayList<>()
         );
 
-        // Act & Assert
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             usuarioService.save(dto);
         });
 
-        assertEquals("Formato de CNPJ invalido.", exception.getMessage()); // Mensagem que você definiu no Validacoes
+        assertEquals("Formato de CNPJ invalido.", exception.getMessage());
         verify(usuarioRepository, never()).save(any());
     }
 }

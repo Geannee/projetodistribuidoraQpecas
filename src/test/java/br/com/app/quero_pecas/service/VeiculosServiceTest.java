@@ -20,9 +20,12 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class VeiculosServiceTest {
 
-    @Mock private VeiculoRepository veiculoRepository;
-    @Mock private PecaVeiculoRepository pecaVeiculoRepository;
-    @InjectMocks private VeiculoService veiculoService;
+    @Mock
+    private VeiculoRepository veiculoRepository;
+    @Mock
+    private PecaVeiculoRepository pecaVeiculoRepository;
+    @InjectMocks
+    private VeiculoService veiculoService;
 
     @Test
     void deveRetornarPecas_QuandoPlacaExiste() {

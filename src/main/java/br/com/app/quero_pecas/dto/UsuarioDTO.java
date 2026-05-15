@@ -18,21 +18,19 @@ public interface UsuarioDTO {
             @NotBlank @Email String email,
             TipoUsuario tipoUsuario,
             String motivoReprovacao,
-
-            EnderecoCreate endereco,
-            List<TelefoneCreate> telefone
+            EnderecoCreate endereco, List<TelefoneCreate> telefone
 
     ) {}
+
     record EnderecoCreate(
-           @NotBlank  String cep,
-           @NotBlank  String logradouro,
-           @NotNull int numero,
-           @NotBlank  String bairro,
-           @NotBlank  String cidade,
-           @NotBlank  String estado
-    ) {}
+            @NotBlank String cep,
+            @NotBlank String logradouro,
+            @NotNull int numero,
+            @NotBlank String bairro,
+            @NotBlank String cidade,
+            @NotBlank String estado) {}
+
     record TelefoneCreate(
-           @NotBlank String telefone,
-            String tipo
-    ) {}
+            @NotBlank String telefone,
+            String tipo) {}
 }

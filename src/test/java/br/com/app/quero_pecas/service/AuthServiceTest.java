@@ -92,7 +92,6 @@ class AuthServiceTest {
         System.out.println("Mensagem da exceção: " + exception.getMessage());
         System.out.println("------------- \n\n");
 
-        // Agora deve passar, pois o validarCNPJ() no Service lança a exceção ANTES do repository
         verifyNoInteractions(repository);
     }
 

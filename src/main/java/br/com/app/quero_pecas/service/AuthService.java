@@ -33,7 +33,7 @@ public class AuthService {
 
         Usuario usuario = buscarEValidar(login, isEmail);
 
-        if(!usuario.isAtivo()) {
+        if (!usuario.isAtivo()) {
             throw new BadCredentialsException(MSG_CONTA_INATIVA);
         }
 
@@ -43,26 +43,17 @@ public class AuthService {
 
         String token = tokenService.gerarToken(usuario);
 
-        return new AuthDTO.Response(
-                usuario.getIdUsuario(),
-                usuario.getCnpj(),
-                usuario.getEmail(),
-                usuario.getRepresentanteLegal(),
-                usuario.getTipoUsuario(),
-                token
-        );
+        return new AuthDTO.Response(usuario.getIdUsuario(), usuario.getCnpj(), usuario.getEmail(), usuario.getRepresentanteLegal(), usuario.getTipoUsuario(), token);
     }
 
     private Usuario buscarEValidar(String login, boolean isEmail) {
         try {
             if (isEmail) {
                 validarEmail(login);
-                return repository.findByEmail(login.toLowerCase())
-                        .orElseThrow(NoSuchElementException::new);
+                return repository.findByEmail(login.toLowerCase()).orElseThrow(NoSuchElementException::new);
             } else {
                 validarCNPJ(login);
-                return repository.findByCnpj(login.replaceAll("\\D", ""))
-                        .orElseThrow(NoSuchElementException::new);
+                return repository.findByCnpj(login.replaceAll("\\D", "")).orElseThrow(NoSuchElementException::new);
             }
         } catch (Exception e) {
             throw new BadCredentialsException(MSG_ERRO_AUTH);

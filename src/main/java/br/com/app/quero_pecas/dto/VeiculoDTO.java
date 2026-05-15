@@ -1,6 +1,7 @@
 package br.com.app.quero_pecas.dto;
 
 import br.com.app.quero_pecas.entity.TipoDeCompustivel;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.Year;

@@ -33,7 +33,8 @@ public class SecurityConfig {
                     req.requestMatchers("/usuarios/").permitAll();
                     req.requestMatchers("/veiculos/**").permitAll();
                     req.requestMatchers("/usuarios/me").authenticated();
-//                    req.anyRequest().authenticated();
+                    req.requestMatchers("/pecas/**").authenticated();
+//                  req.anyRequest().authenticated();
                 })
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint((request, response, authException) -> {

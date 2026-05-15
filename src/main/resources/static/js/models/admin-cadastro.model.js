@@ -11,12 +11,24 @@ const AdminCadastroModel = {
 
   // ── VEÍCULOS ───────────────────────────────────────────────────────────────
 
-  getVeiculos() {
+  async getVeiculos() {
     try {
-      return JSON.parse(localStorage.getItem(this.KEYS.veiculos)) || [];
-    } catch {
+      const response = await fetch('http://localhost:8080/veiculos/historico');
+
+      if (!response.ok) {
+        throw new Error('Erro ao buscar histórico de veículos');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro no Model:", error);
       return [];
     }
+    // try {
+    //   return JSON.parse(localStorage.getItem(this.KEYS.veiculos)) || [];
+    // } catch {
+    //   return [];
+    // }
   },
 
   async salvarVeiculo(dados) {
@@ -52,13 +64,27 @@ const AdminCadastroModel = {
   },
 
 
-  excluirVeiculo(id) {
-    const lista = this.getVeiculos().filter(v => v.id !== id);
-    localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
+  async excluirVeiculo(id) {
+    // const lista = this.getVeiculos().filter(v => v.id !== id);
+    // localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
+    try {
+      const response = await fetch(`http://localhost:8080/veiculos/${id}/deletar`, {
+        method: 'PATCH',
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao excluir o veículo no servidor');
+      }
+
+    } catch (error) {
+      console.error("Ops! Algo deu errado:", error);
+      throw error;
+    }
   },
 
-  placaExiste(placa) {
-    return this.getVeiculos().some(v => v.placa === placa.toUpperCase());
+  async placaExiste(placa) {
+    const lista = await this.getVeiculos();
+    return lista.some(v => v.placa.toUpperCase() === placa.toUpperCase());
   },
 
   // ── PEÇAS ──────────────────────────────────────────────────────────────────

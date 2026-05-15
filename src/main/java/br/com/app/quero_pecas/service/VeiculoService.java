@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VeiculoService {
 
@@ -36,5 +38,15 @@ public class VeiculoService {
         return veiculoRepository.save(veiculo);
     }
 
+    public List<Veiculo> listActiveHistory(){
+        return veiculoRepository.findAllByAtivoTrue();
+    }
+
+    public Veiculo delete(Long id) {
+        Veiculo veiculo = veiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario nao encontrado"));
+        veiculo.setAtivo(false);
+        return veiculoRepository.save(veiculo);
+    }
 
 }

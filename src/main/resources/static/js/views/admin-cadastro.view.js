@@ -47,11 +47,11 @@ const AdminCadastroView = {
       <tr>
         <td><strong>${v.placa}</strong></td>
         <td>${v.marca} ${v.modelo}</td>
-        <td>${v.ano}</td>
-        <td>${v.combustivel}</td>
+        <td>${v.anoFabricacao}</td>
+        <td>${v.tipoDeCompustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
         <td>
-          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.id})">
+          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.idVeiculo})">
             Excluir
           </button>
         </td>

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/veiculos")
 @CrossOrigin(origins = "*")
@@ -21,4 +23,18 @@ public class VeiculoController {
         Veiculo novoVeiculo = veiculoService.save(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body("Veiculo cadastrado com sucesso!");
     }
+
+    @GetMapping("/historico")
+    public ResponseEntity<List<Veiculo>> showHistoryActive() {
+        List<Veiculo> veiculosAtivos = veiculoService.listActiveHistory();
+        return ResponseEntity.ok(veiculosAtivos);
+    }
+
+    @PatchMapping("/{id}/deletar")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        veiculoService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Veículo excluído com sucesso!");
+    }
+
+
 }

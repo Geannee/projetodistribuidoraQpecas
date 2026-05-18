@@ -20,7 +20,7 @@ public class VeiculoController {
 
     @PostMapping("/cadastro")
     public ResponseEntity<String> cadastrar(@RequestBody VeiculoDTO.Save dados) {
-        Veiculo novoVeiculo = veiculoService.save(dados);
+        veiculoService.save(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body("Veiculo cadastrado com sucesso!");
     }
 

@@ -1,0 +1,87 @@
+/* ─── FORNECEDOR – ESTILOS EXTRAS ────────────────────────────────────────── */
+/* Importa a base do admin-cadastro-style.css; aqui ficam apenas os           */
+/* componentes específicos da página de cadastro de fornecedor.               */
+
+:root {
+  --green:       #059669;
+  --green-dark:  #047857;
+  --green-light: #ECFDF5;
+}
+
+/* ─── BOTÃO VERDE (submit) ───────────────────────────────────────────────── */
+.btn-green { background: var(--green); }
+.btn-green:hover { filter: brightness(.88); }
+
+/* ─── INPUT + BOTÃO INLINE ───────────────────────────────────────────────── */
+.input-action-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.input-action-group .form-input {
+  flex: 1;
+  min-width: 0;
+}
+.btn-verificar {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .18s, border-color .18s, color .18s;
+}
+.btn-verificar:hover {
+  background: var(--page-bg);
+  border-color: #9ca3af;
+  color: var(--dark-text);
+}
+.btn-verificar:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* ─── BADGE SITUAÇÃO CNPJ ────────────────────────────────────────────────── */
+.cnpj-status-badge {
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.cnpj-status-badge.ativa {
+  background: var(--green-light);
+  color: var(--green);
+  border: 1px solid #A7F3D0;
+}
+.cnpj-status-badge.inativa {
+  background: #FEF3C7;
+  color: #D97706;
+  border: 1px solid #FDE68A;
+}
+.cnpj-status-badge.erro {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+}
+
+/* ─── BADGE PORTE ────────────────────────────────────────────────────────── */
+.badge-porte {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.porte-mei   { background: #EFF6FF; color: #2563EB; }
+.porte-me    { background: #F5F3FF; color: #7C3AED; }
+.porte-epp   { background: #FFF7ED; color: #EA580C; }
+.porte-grande{ background: var(--green-light); color: var(--green); }

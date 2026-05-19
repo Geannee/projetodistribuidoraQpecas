@@ -12,11 +12,12 @@ const HomeController = {
   },
 
   verificarSessao() {
-    const usuario  = Auth.getUsuario();
-    const token   = Auth.getToken();
+    const usuario    = Auth.getUsuario();
+    const perfil     = Auth.getPerfil();
+    const isAdmin    = sessionStorage.getItem('qp_admin') === 'true';
     const navActions = document.getElementById('nav-actions');
     if (!navActions) return;
-    if (token && usuario) HomeView.renderNavLogado(navActions, usuario, perfil);
+    if (usuario && !isAdmin) HomeView.renderNavLogado(navActions, usuario, perfil);
   },
 
   renderOfertas() {

@@ -168,6 +168,22 @@ button { cursor: pointer; font-family: inherit; }
 }
 .btn-coral:hover { background: var(--coral-dark); }
 
+.btn-admin-nav {
+  background: transparent;
+  color: var(--dark);
+  border: 1.5px solid var(--coral);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.btn-admin-nav:hover {
+  background: var(--coral);
+  color: var(--white);
+}
+
 /* ─── HERO ───────────────────────────────────────────────────────────────── */
 .hero {
   background: var(--black);

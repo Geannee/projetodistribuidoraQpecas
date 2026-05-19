@@ -375,3 +375,17 @@ body {
   color: var(--gray-text);
   margin-top: 20px;
 }
+
+
+/* Botão Início */
+.btn-inicio-login {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-text);
+  text-decoration: none;
+  transition: color .2s;
+}
+.btn-inicio-login:hover { color: var(--coral); }

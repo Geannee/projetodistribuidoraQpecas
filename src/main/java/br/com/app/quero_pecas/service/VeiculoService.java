@@ -9,6 +9,7 @@ import br.com.app.quero_pecas.utils.PlacaNaoEncontradaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Year;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -41,4 +42,16 @@ public class VeiculoService {
         return new BuscarPorPlacaDTO.BuscarPlacaResponseDTO(veiculoDTO, pecasResponses);
     }
 
+    public List<String> findModelosByMarca(String marca) {
+        if (marca == null || marca.trim().isEmpty()) {
+            return List.of(); // Retorna lista vazia de forma segura se a marca for inválida
+        }
+        return veiculoRepository.findDistinctModelosByMarca(marca.trim());
+    }
+    public List<Year> findDistinctAnoFabricacaoByModelo(String modelo) {
+        if (modelo == null || modelo.trim().isEmpty()) {
+            return List.of();
+        }
+        return veiculoRepository.findDistinctAnoFabricacaoByModelo(modelo.trim());
+    }
 }

@@ -16,9 +16,10 @@ public class Peca {
     private int estoque;
     private String marca;
     private String nome;
+    private String categoria;
     private float precoBase;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
 }

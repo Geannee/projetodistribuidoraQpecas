@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro de Veículos e Peças – Admin Quero Peças</title>
+  <title>Cadastro de Veículos – Admin Quero Peças</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -15,11 +15,9 @@
 
   <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
-
     <div class="sidebar-logo">
       <img src="../static/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
     </div>
-
     <div class="sidebar-user">
       <div class="user-avatar" id="sidebar-avatar">AD</div>
       <div>
@@ -27,7 +25,6 @@
         <div class="user-role">Administrador</div>
       </div>
     </div>
-
     <nav class="sidebar-nav">
       <a href="admin-veiculo.html" class="nav-item active">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H11a1 1 0 001-1v-1h2.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-3-3A1 1 0 0016 4H3z"/></svg>
@@ -50,18 +47,16 @@
         Auditoria
       </a>
     </nav>
-
     <div class="sidebar-bottom">
       <a href="#" class="nav-item nav-config">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
         Configurações
       </a>
-      <a href="login.html" class="nav-item nav-sair">
+      <a href="admin-login.html" class="nav-item nav-sair">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
         Sair da conta
       </a>
     </div>
-
   </aside>
 
   <!-- ── CONTEÚDO PRINCIPAL ── -->
@@ -79,11 +74,10 @@
 
     <main class="main-content">
 
-      <!-- ── TOAST ── -->
       <div id="toast" class="toast" aria-live="polite"></div>
 
       <!-- ── FORMULÁRIO: VEÍCULO ── -->
-      <section class="form-card" id="secao-veiculo">
+      <section class="form-card">
         <h2 class="form-card-title">🚗 Cadastrar Novo Veículo</h2>
 
         <form id="form-veiculo" novalidate>
@@ -101,15 +95,15 @@
               <input class="form-input" id="v-ano" type="number" placeholder="Ex: 2020" min="1950" max="2030"/>
             </div>
             <div class="form-group">
-              <label class="form-label" for="v-combustivel">Tipo de Combustível *</label>
+              <label class="form-label" for="v-combustivel">Combustível *</label>
               <select class="form-input form-select" id="v-combustivel">
                 <option value="">Selecione...</option>
-                <option value="FLEX">Flex</option>
-                <option value="GASOLINA">Gasolina</option>
-                <option value="ETANOL">Etanol</option>
-                <option value="DIESEL">Diesel</option>
-                <option value="ELETRICO">Elétrico</option>
-                <option value="HIBRIDO">Híbrido</option>
+                <option value="Flex">Flex</option>
+                <option value="Gasolina">Gasolina</option>
+                <option value="Etanol">Etanol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Elétrico">Elétrico</option>
+                <option value="Híbrido">Híbrido</option>
               </select>
             </div>
           </div>
@@ -134,79 +128,7 @@
 
           <div class="form-actions">
             <button type="button" class="btn-secondary" onclick="AdminCadastroController.limparVeiculo()">Limpar</button>
-            <button type="submit" class="btn-primary btn-blue" onsubmit="AdminCadastroController.submeterVeiculo()" >Cadastrar Veículo →</button>
-          </div>
-        </form>
-      </section>
-
-      <!-- ── FORMULÁRIO: PEÇA ── -->
-      <section class="form-card" id="secao-peca">
-        <h2 class="form-card-title">⚙️ Cadastrar Nova Peça</h2>
-
-        <form id="form-peca" novalidate>
-          <div class="form-row cols-2">
-            <div class="form-group">
-              <label class="form-label" for="p-nome">Nome/Descrição *</label>
-              <input class="form-input" id="p-nome" type="text" placeholder="Ex: Amortecedor Dianteiro Monroe" autocomplete="off"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="p-sku">Código SKU *</label>
-              <input class="form-input" id="p-sku" type="text" placeholder="Ex: G8197" autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="form-row cols-1">
-            <div class="form-group">
-              <label class="form-label" for="p-compatibilidade">Compatibilidade de Veículos *</label>
-              <input class="form-input" id="p-compatibilidade" type="text" placeholder="Ex: VW Gol 2010-2020, Fiat Palio 2012-2018" autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="form-row cols-3">
-            <div class="form-group">
-              <label class="form-label" for="p-preco">Preço (R$) *</label>
-              <input class="form-input" id="p-preco" type="text" placeholder="Ex: 187,00" autocomplete="off"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="p-estoque">Quantidade em Estoque *</label>
-              <input class="form-input" id="p-estoque" type="number" placeholder="Ex: 10" min="0"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="p-fornecedor">Fornecedor *</label>
-              <input class="form-input" id="p-fornecedor" type="text" placeholder="Ex: Monroe, Sachs, Bosch" autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="form-row cols-2">
-            <div class="form-group">
-              <label class="form-label" for="p-categoria">Categoria *</label>
-              <select class="form-input form-select" id="p-categoria">
-                <option value="">Selecione...</option>
-                <option value="Suspensão">Suspensão</option>
-                <option value="Motor">Motor</option>
-                <option value="Freios">Freios</option>
-                <option value="Filtros">Filtros</option>
-                <option value="Elétrica">Elétrica</option>
-                <option value="Transmissão">Transmissão</option>
-                <option value="Arrefecimento">Arrefecimento</option>
-                <option value="Escapamento">Escapamento</option>
-                <option value="Outros">Outros</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="p-tipo">Tipo *</label>
-              <select class="form-input form-select" id="p-tipo">
-                <option value="">Selecione...</option>
-                <option value="Original">Original</option>
-                <option value="Premium">Premium</option>
-                <option value="Econômico">Econômico</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-actions">
-            <button type="button" class="btn-secondary" onclick="AdminCadastroController.limparPeca()">Limpar</button>
-            <button type="submit" class="btn-primary btn-purple">Cadastrar Peça →</button>
+            <button type="submit" class="btn-primary btn-blue">Cadastrar Veículo →</button>
           </div>
         </form>
       </section>
@@ -231,32 +153,6 @@
             </thead>
             <tbody id="tbody-veiculos">
               <tr><td colspan="6" class="empty-row">Nenhum veículo cadastrado.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- ── LISTAGEM DE PEÇAS ── -->
-      <section class="list-card">
-        <div class="list-card-header">
-          <h3 class="list-card-title">Peças Cadastradas</h3>
-          <span class="list-count" id="count-pecas">0 registros</span>
-        </div>
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>SKU</th>
-                <th>Nome / Descrição</th>
-                <th>Categoria</th>
-                <th>Fornecedor</th>
-                <th>Preço</th>
-                <th>Estoque</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-pecas">
-              <tr><td colspan="7" class="empty-row">Nenhuma peça cadastrada.</td></tr>
             </tbody>
           </table>
         </div>

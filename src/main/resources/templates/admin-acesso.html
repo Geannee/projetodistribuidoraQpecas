@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Liberar Acesso – Admin Quero Peças</title>
+  <title>Liberar Cadastros – Admin Quero Peças</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -27,11 +27,11 @@
       </div>
     </div>
     <nav class="sidebar-nav">
-      <a href="admin-cadastro.html#secao-veiculo" class="nav-item">
+      <a href="admin-veiculo.html" class="nav-item">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H11a1 1 0 001-1v-1h2.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-3-3A1 1 0 0016 4H3z"/></svg>
         Cadastrar Veículo
       </a>
-      <a href="admin-cadastro.html#secao-peca" class="nav-item">
+      <a href="admin-pecas.html" class="nav-item">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
         Cadastrar Peças
       </a>
@@ -60,7 +60,7 @@
   <div class="main-wrap">
 
     <header class="topbar">
-      <h1 class="topbar-title">Liberar Acesso</h1>
+      <h1 class="topbar-title">Liberar Cadastros</h1>
       <div class="topbar-actions">
         <div class="topbar-avatar">AD</div>
       </div>
@@ -76,14 +76,14 @@
           <div class="stat-box-icon icon-orange">🔒</div>
           <div>
             <div class="stat-box-value" id="stat-bloqueados">0</div>
-            <div class="stat-box-label">Usuários bloqueados</div>
+            <div class="stat-box-label">Cadastros Há Liberar</div>
           </div>
         </div>
         <div class="stat-box">
           <div class="stat-box-icon icon-red">⚠️</div>
           <div>
             <div class="stat-box-value" id="stat-tentativas">0</div>
-            <div class="stat-box-label">Tentativas incorretas</div>
+            <div class="stat-box-label">Cadastros Recusados</div>
           </div>
         </div>
         <div class="stat-box">
@@ -95,30 +95,20 @@
         </div>
       </div>
 
-      <!-- Buscar usuário -->
-      <section class="form-card">
-        <h2 class="form-card-title">🔑 Liberar Acesso / Redefinir Senha</h2>
-        <div class="busca-row">
-          <input class="form-input" id="busca-usuario" type="text" placeholder="Buscar por e-mail ou CNPJ do usuário..."/>
-          <button class="btn-primary btn-blue" onclick="AcessoController.buscar()">Buscar</button>
-        </div>
-        <div id="resultado-busca"></div>
-      </section>
-
-      <!-- Tabela de usuários bloqueados -->
+      <!-- Tabela de usuários novos -->
       <section class="list-card">
         <div class="list-card-header">
-          <h3 class="list-card-title">Usuários com Acesso Bloqueado</h3>
+          <h3 class="list-card-title">Usuarios Novos </h3>
           <span class="list-count" id="count-bloqueados">0 registros</span>
         </div>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
               <tr>
-                <th>Usuário</th>
-                <th>Tentativas incorretas</th>
-                <th>Último acesso</th>
-                <th>Bloqueado em</th>
+                <th>Representante Legal</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+                <th>Criado Em</th>
                 <th>Ação</th>
               </tr>
             </thead>

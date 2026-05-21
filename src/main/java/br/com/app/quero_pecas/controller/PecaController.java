@@ -16,7 +16,7 @@ public class PecaController {
     @Autowired
     private PecaService pecaService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody @Valid PecaDTO.Save dados) {
         pecaService.save(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body("Peça cadastrada com sucesso");

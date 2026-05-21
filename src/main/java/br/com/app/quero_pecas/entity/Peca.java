@@ -16,7 +16,11 @@ public class Peca {
     private int estoque;
     private String marca;
     private String nome;
-    private float precoBase;
+    private double precoBase;
+    private String categoria;
+
+    @Column(unique = true)
+    private String codigo;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")

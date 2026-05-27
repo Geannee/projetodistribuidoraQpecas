@@ -5,7 +5,7 @@
 const CadastroController = {
 
   _campos: [
-    'cnpj', 'razao', 'nome-oficina',
+    'cnpj', 'razao', 'nome-fantasia',
     'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'estado',
     'responsavel', 'telefone', 'email', 'senha', 'confirma-senha'
   ],
@@ -25,7 +25,7 @@ const CadastroController = {
     }
   },
 
-  enviarCadastro(e) {
+  async enviarCadastro(e) {
     e.preventDefault();
     const errorEl = document.getElementById('cad-error');
     const btn     = document.getElementById('btn-criar');
@@ -72,6 +72,7 @@ const CadastroController = {
     btn.disabled = true;
     btn.textContent = '⏳ Criando conta...';
 
+<<<<<<< HEAD
     const solicitacao = {
       id: 'CAD-' + Date.now(),
       cnpj:        document.getElementById('cnpj').value.trim(),
@@ -98,13 +99,70 @@ const CadastroController = {
     setTimeout(() => {
       btn.disabled = false;
       btn.textContent = 'Criar minha conta →';
+=======
+    const payload = {
+      cnpj: document.getElementById('cnpj').value.trim(), // ← corrigido: era 'ccnpj'
+      razaoSocial: document.getElementById('razao').value.trim(),
+      nomeFantasia: document.getElementById('nome-fantasia').value.trim(),
+      representanteLegal: document.getElementById('responsavel').value.trim(),
+      senha: senha,
+      email: document.getElementById('email').value.trim(),
+
+      endereco: {
+        cep: document.getElementById('cep').value.replace(/\D/g, ''),
+        logradouro: document.getElementById('logradouro').value.trim(),
+        numero: parseInt(document.getElementById('numero').value.replace(/\D/g, ''), 10),
+        bairro: document.getElementById('bairro').value.trim(),
+        cidade: document.getElementById('cidade').value.trim(),
+        estado: document.getElementById('estado').value.trim()
+      },
+
+      telefone: [
+        {
+          telefone: document.getElementById('telefone').value.replace(/\D/g, ''),
+          tipo: 'CELULAR'
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/usuarios/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const text = await response.text(); // ← lê o body UMA só vez
+        console.error('Erro do servidor:', text);
+        let message = text;
+        try {
+          const json = JSON.parse(text);
+          message = json.message || JSON.stringify(json);
+        } catch {}
+        throw new Error(message);
+      }
+
+      btn.textContent = 'Conta criada com sucesso!';
+>>>>>>> origin/dev
       Modal.abrir();
-    }, 1400);
+
+    } catch (error) {
+      console.error('Erro no Fetch:', error);
+      errorEl.textContent = error.message;
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      btn.textContent = 'Criar minha conta →';
+      btn.disabled = false;
+    }
   }
 };
 
-// Aliases globais para chamadas inline nos HTML
-function enviarCadastro(e)         { CadastroController.enviarCadastro(e); }
-function toggleSenha(id, btn)      { CadastroController.toggleSenha(id, btn); }
+function enviarCadastro(e)    { CadastroController.enviarCadastro(e); }
+function toggleSenha(id, btn) { CadastroController.toggleSenha(id, btn); }
 
 CadastroController.init();

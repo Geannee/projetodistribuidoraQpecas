@@ -1,0 +1,35 @@
+package br.com.app.quero_pecas.controller;
+
+import br.com.app.quero_pecas.dto.UsuarioDTO;
+import br.com.app.quero_pecas.entity.Usuario;
+import br.com.app.quero_pecas.service.UsuarioService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/usuarios")
+@CrossOrigin(origins = "*")
+public class UsuarioController {
+
+    @Autowired
+    private UsuarioService usuarioService;
+    @PostMapping("/")
+    public ResponseEntity<String> save(@RequestBody @Valid UsuarioDTO.Save dados) {
+            this.usuarioService.save(dados);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Usuario cadastrado com sucesso!");
+
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<?> getCurrentUser() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(Map.of("email", email));
+    }
+}
+

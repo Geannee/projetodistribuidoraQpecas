@@ -3,3 +3,8 @@ node_modules/
 *.log
 .env
 target/
+<<<<<<< HEAD
+=======
+.idea/
+.vscode/
+>>>>>>> origin/dev

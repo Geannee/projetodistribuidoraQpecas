@@ -92,8 +92,13 @@
 }
 .btn-liberar:hover { filter: brightness(.88); }
 
+<<<<<<< HEAD
 .btn-resetar {
   background: var(--blue);
+=======
+.btn-recusar {
+  background: #DC2626;
+>>>>>>> origin/dev
   color: #fff;
   border: none;
   border-radius: 7px;
@@ -104,6 +109,7 @@
   cursor: pointer;
   transition: filter .2s;
 }
+<<<<<<< HEAD
 .btn-resetar:hover { filter: brightness(.88); }
 
 .nao-encontrado {
@@ -113,6 +119,51 @@
   font-size: 14px;
 }
 
+=======
+.btn-recusar:hover { filter: brightness(.88); }
+
+.recusa-inline {
+  border-top: 1px solid rgba(0,0,0,.08);
+  padding-top: 8px;
+}
+
+.recusa-input {
+  width: 100%;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.btn-confirmar-recusa {
+  background: #DC2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter .2s;
+}
+.btn-confirmar-recusa:hover { filter: brightness(.88); }
+
+.btn-cancelar-recusa {
+  background: transparent;
+  color: var(--gray-text);
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-cancelar-recusa:hover { background: #f3f4f6; }
+
+>>>>>>> origin/dev
 /* badge status usuario */
 .badge-status-usuario {
   display: inline-block;

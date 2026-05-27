@@ -7,13 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/cadastro-style.css"/>
+  <link rel="stylesheet" href="../static/css/cadastro-style.css"/>
 </head>
 <body>
 
 <!-- HEADER -->
 <header class="cad-header">
-  <img src="images/logoqueropeças.png" alt="Quero Peças" class="cad-logo"/>
+  <img src="../static/images/logoqueropecas.png" alt="Quero Peças" class="cad-logo"/>
   <a href="login.html" class="cad-back">← Voltar ao login</a>
 </header>
 
@@ -69,15 +69,10 @@
         </div>
       </div>
 
-      <div class="field-row">
-        <div class="field-group">
-          <label class="field-label">Nome da oficina *</label>
-          <input class="field-input" id="nome-oficina" type="text" placeholder="Oficina Silva"/>
-        </div>
-        <div class="field-group">
-          <label class="field-label">Especialidade</label>
-          <input class="field-input" id="especialidade" type="text" placeholder="Mecânica geral, Freios..."/>
-        </div>
+      <!-- Nome da Oficina ocupando a linha inteira -->
+      <div class="field-group">
+        <label class="field-label">Nome Fantasia (Nome da oficina) *</label>
+        <input class="field-input" id="nome-fantasia" type="text" placeholder="Oficina Silva"/>
       </div>
 
       <!-- Endereço -->
@@ -127,7 +122,7 @@
 
       <div class="field-row">
         <div class="field-group">
-          <label class="field-label">Nome do responsável *</label>
+          <label class="field-label">Representante Legal (Responsável) *</label>
           <input class="field-input" id="responsavel" type="text" placeholder="João Silva"/>
         </div>
         <div class="field-group">
@@ -256,8 +251,8 @@
   </div>
 </div>
 
-<script src="js/utils/masks.js"></script>
-<script src="js/utils/modal.js"></script>
-<script src="js/controllers/cadastro.controller.js"></script>
+<script src="../static/js/utils/masks.js"></script>
+<script src="../static/js/utils/modal.js"></script>
+<script src="../static/js/controllers/cadastro.controller.js"></script>
 </body>
 </html>

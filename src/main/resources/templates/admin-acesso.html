@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<<<<<<< HEAD
   <title>Liberar Acesso – Admin Quero Peças</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/admin-cadastro-style.css"/>
   <link rel="stylesheet" href="css/admin-acesso-style.css"/>
+=======
+  <title>Liberar Cadastros – Admin Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/css/admin-cadastro-style.css"/>
+  <link rel="stylesheet" href="../static/css/admin-acesso-style.css"/>
+>>>>>>> origin/dev
 </head>
 <body>
 
@@ -17,7 +26,11 @@
   <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
     <div class="sidebar-logo">
+<<<<<<< HEAD
       <img src="images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+=======
+      <img src="../static/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+>>>>>>> origin/dev
     </div>
     <div class="sidebar-user">
       <div class="user-avatar" id="sidebar-avatar">AD</div>
@@ -37,7 +50,11 @@
       </a>
       <a href="admin-acesso.html" class="nav-item active">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+<<<<<<< HEAD
         Liberar Acesso
+=======
+        Liberar Cadastros
+>>>>>>> origin/dev
       </a>
       <a href="admin-solicitacoes.html" class="nav-item">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
@@ -60,7 +77,11 @@
   <div class="main-wrap">
 
     <header class="topbar">
+<<<<<<< HEAD
       <h1 class="topbar-title">Liberar Acesso</h1>
+=======
+      <h1 class="topbar-title">Liberar Cadastros</h1>
+>>>>>>> origin/dev
       <div class="topbar-actions">
         <div class="topbar-avatar">AD</div>
       </div>
@@ -76,14 +97,22 @@
           <div class="stat-box-icon icon-orange">🔒</div>
           <div>
             <div class="stat-box-value" id="stat-bloqueados">0</div>
+<<<<<<< HEAD
             <div class="stat-box-label">Usuários bloqueados</div>
+=======
+            <div class="stat-box-label">Cadastros Há Liberar</div>
+>>>>>>> origin/dev
           </div>
         </div>
         <div class="stat-box">
           <div class="stat-box-icon icon-red">⚠️</div>
           <div>
             <div class="stat-box-value" id="stat-tentativas">0</div>
+<<<<<<< HEAD
             <div class="stat-box-label">Tentativas incorretas</div>
+=======
+            <div class="stat-box-label">Cadastros Recusados</div>
+>>>>>>> origin/dev
           </div>
         </div>
         <div class="stat-box">
@@ -95,6 +124,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <!-- Buscar usuário -->
       <section class="form-card">
         <h2 class="form-card-title">🔑 Liberar Acesso / Redefinir Senha</h2>
@@ -109,16 +139,29 @@
       <section class="list-card">
         <div class="list-card-header">
           <h3 class="list-card-title">Usuários com Acesso Bloqueado</h3>
+=======
+      <!-- Tabela de usuários novos -->
+      <section class="list-card">
+        <div class="list-card-header">
+          <h3 class="list-card-title">Usuarios Novos </h3>
+>>>>>>> origin/dev
           <span class="list-count" id="count-bloqueados">0 registros</span>
         </div>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
               <tr>
+<<<<<<< HEAD
                 <th>Usuário</th>
                 <th>Tentativas incorretas</th>
                 <th>Último acesso</th>
                 <th>Bloqueado em</th>
+=======
+                <th>Representante Legal</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+                <th>Criado Em</th>
+>>>>>>> origin/dev
                 <th>Ação</th>
               </tr>
             </thead>
@@ -152,8 +195,14 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <script src="js/models/admin-acesso.model.js"></script>
 <script src="js/views/admin-acesso.view.js"></script>
 <script src="js/controllers/admin-acesso.controller.js"></script>
+=======
+<script src="../static/js/models/admin-acesso.model.js"></script>
+<script src="../static/js/views/admin-acesso.view.js"></script>
+<script src="../static/js/controllers/admin-acesso.controller.js"></script>
+>>>>>>> origin/dev
 </body>
 </html>

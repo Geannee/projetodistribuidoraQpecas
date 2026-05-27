@@ -107,10 +107,10 @@ const PedidosController = {
     const tl     = document.getElementById('tl-' + key);
     if (tl) {
       tl.innerHTML = novoStatus === 'Cancelado'
-        ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
+        ? '<div class="tl-cancelado-msg">Este pedido foi cancelado.</div>'
         : passos.map((passo, i) => `
             <div class="tl-passo ${i <= atual ? 'tl-ativo' : ''}">
-              <div class="tl-bolinha">${i <= atual ? '✓' : i + 1}</div>
+              <div class="tl-bolinha">${i <= atual ? '&#10003;' : i + 1}</div>
               <span>${passo}</span>
             </div>`).join('');
     }

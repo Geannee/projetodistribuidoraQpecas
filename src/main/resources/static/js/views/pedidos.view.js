@@ -14,10 +14,10 @@ const PedidosView = {
         <td class="pedido-total">${p.total}</td>
         <td>
           <span class="badge-status ${p.statusClass}">
-            ${PedidosModel.statusIcone[p.status]} ${p.status}
+            ${(PedidosModel.statusIcone[p.status] || (() => ''))() } ${p.status}
           </span>
         </td>
-        <td class="pedido-previsao">${p.previsao !== '—' ? '📅 ' + p.previsao : '—'}</td>
+        <td class="pedido-previsao">${p.previsao !== '—' ? ICONS.calendar + ' ' + p.previsao : '—'}</td>
         <td>
           <button class="btn-detalhes" id="btn-${p.id.replace('#','')}" onclick="PedidosController.toggleDetalhe('${p.id}')">
             Ver detalhes ▾
@@ -40,18 +40,18 @@ const PedidosView = {
 
     const timeline = passos.map((passo, i) => `
       <div class="tl-passo ${i <= atual && p.status !== 'Cancelado' ? 'tl-ativo' : ''}">
-        <div class="tl-bolinha">${i <= atual && p.status !== 'Cancelado' ? '✓' : i + 1}</div>
+        <div class="tl-bolinha">${i <= atual && p.status !== 'Cancelado' ? ICONS.check : i + 1}</div>
         <span>${passo}</span>
       </div>
     `).join('');
 
     const statusOpcoes = Object.keys(PedidosModel.statusIcone).map(s =>
-      `<option value="${s}" ${s === p.status ? 'selected' : ''}>${PedidosModel.statusIcone[s]} ${s}</option>`
+      `<option value="${s}" ${s === p.status ? 'selected' : ''}>${s}</option>`
     ).join('');
 
     const itensList = p.itens.split(',').map(i => `
       <div class="orcamento-item">
-        <span class="oi-icone">⚙️</span>
+        <span class="oi-icone">${ICONS.wrench}</span>
         <span class="oi-nome">${i.trim()}</span>
       </div>
     `).join('');
@@ -61,21 +61,21 @@ const PedidosView = {
 
         <!-- Orçamento -->
         <div class="dp-secao">
-          <div class="dp-secao-titulo">📋 Orçamento</div>
+          <div class="dp-secao-titulo">${ICONS.clipboardList} Orçamento</div>
           <div class="orcamento-itens">${itensList}</div>
           <div class="orcamento-total">
             <span>Total do pedido</span>
             <strong>${p.total}</strong>
           </div>
           <div class="orcamento-meta">
-            <span>📅 Data: <strong>${p.data}</strong></span>
-            <span>🚚 Previsão: <strong>${p.previsao !== '—' ? p.previsao : 'A definir'}</strong></span>
+            <span>${ICONS.calendar} Data: <strong>${p.data}</strong></span>
+            <span>${ICONS.truck} Previsão: <strong>${p.previsao !== '—' ? p.previsao : 'A definir'}</strong></span>
           </div>
         </div>
 
         <!-- Status -->
         <div class="dp-secao">
-          <div class="dp-secao-titulo">🔄 Status do Pedido</div>
+          <div class="dp-secao-titulo">${ICONS.rotateCcw} Status do Pedido</div>
           <div class="status-selector">
             <label class="status-sel-label">Alterar status:</label>
             <select class="status-select" id="sel-${p.id.replace('#','')}"
@@ -85,7 +85,7 @@ const PedidosView = {
           </div>
           <div class="timeline" id="tl-${p.id.replace('#','')}">
             ${p.status === 'Cancelado'
-              ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
+              ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.</div>`
               : timeline}
           </div>
         </div>

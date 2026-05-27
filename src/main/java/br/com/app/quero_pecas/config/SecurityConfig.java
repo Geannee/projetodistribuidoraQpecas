@@ -32,9 +32,10 @@ public class SecurityConfig {
                     req.requestMatchers("/auth/**").permitAll();
                     req.requestMatchers("/usuarios/").permitAll();
                     req.requestMatchers("/veiculos/**").permitAll();
-                    req.requestMatchers("/usuarios/me").authenticated();
-                    req.requestMatchers("/pecas/**").authenticated();
-//                  req.anyRequest().authenticated();
+                    req.requestMatchers("/pecas/**").permitAll();
+                    req.requestMatchers("/static/**", "/css/**", "/js/**", "/images/**").permitAll();
+                    req.requestMatchers("/*.html", "/").permitAll();
+                    req.anyRequest().permitAll();
                 })
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint((request, response, authException) -> {

@@ -48,8 +48,8 @@ const BuscaView = {
     const BADGE_CLASS = { 'Original': 'badge-original', 'Premium': 'badge-premium', 'Econômico': 'badge-economico' };
     const ESTOQUE_MAP = {
       ok:  { cls: 'estoque-ok',  txt: '● Estoque' },
-      low: { cls: 'estoque-low', txt: '⚠ Últimas unid.' },
-      out: { cls: 'estoque-out', txt: '✕ Sem estoque' }
+      low: { cls: 'estoque-low', txt: () => ICONS.alertTriangle + ' Últimas unid.' },
+      out: { cls: 'estoque-out', txt: () => ICONS.x + ' Sem estoque' }
     };
 
     container.innerHTML = pecas.map(cat => {
@@ -60,20 +60,20 @@ const BuscaView = {
       const linhas = cat.opcoes.map(op => {
         const est     = ESTOQUE_MAP[op.estoque] || ESTOQUE_MAP.ok;
         const badgeTipo = `<span class="badge ${BADGE_CLASS[op.tipo] || ''}">${op.tipo}</span>`;
-        const badgeComp = `<span class="badge badge-compat">✓ compatível</span>`;
+        const badgeComp = `<span class="badge badge-compat">${ICONS.check} compatível</span>`;
         const badgeDest = op.destaque
           ? `<span class="badge badge-destaque">${op.destaque}</span>` : '';
         const preco = 'R$ ' + op.preco.toFixed(2).replace('.', ',');
 
         return `
           <div class="equiv-row">
-            <div class="equiv-thumb">⚙</div>
+            <div class="equiv-thumb">${ICONS.wrench}</div>
             <div class="equiv-info">
               <div class="equiv-brand">${op.marca}</div>
               <div class="equiv-ref">Ref.: ${op.ref}</div>
               <div class="equiv-badges">${badgeTipo}${badgeComp}${badgeDest}</div>
             </div>
-            <div class="equiv-estoque ${est.cls}">${est.txt}</div>
+            <div class="equiv-estoque ${est.cls}">${typeof est.txt === 'function' ? est.txt() : est.txt}</div>
             <div class="equiv-preco">
               <div class="price">${preco}</div>
               <div class="label">${op.label}</div>
@@ -85,7 +85,7 @@ const BuscaView = {
       return `
         <div class="pa-item" id="pa-${cat.id}">
           <div class="pa-header" onclick="togglePart('pa-${cat.id}')">
-            <span class="pa-icon">${cat.icon}</span>
+            <span class="pa-icon">${typeof cat.icon === 'function' ? cat.icon() : cat.icon}</span>
             <div class="pa-info">
               <span class="pa-name">${cat.nome}</span>
               <span class="pa-sub">${cat.sub}</span>
@@ -125,7 +125,7 @@ const BuscaView = {
     if (pecas.length === 0) {
       document.getElementById('partsAccordion').innerHTML = `
         <div style="text-align:center;padding:48px 24px;color:#737373;">
-          <div style="font-size:40px;margin-bottom:12px;">🔍</div>
+          <div style="margin-bottom:12px;opacity:0.4;">${ICONS.search}</div>
           <p>Nenhuma peça encontrada para <strong>${catLabel}</strong>.</p>
         </div>`;
     } else {
@@ -158,7 +158,7 @@ const BuscaView = {
     if (pecas.length === 0) {
       document.getElementById('partsAccordion').innerHTML = `
         <div style="text-align:center;padding:48px 24px;color:#737373;">
-          <div style="font-size:40px;margin-bottom:12px;">🔍</div>
+          <div style="margin-bottom:12px;opacity:0.4;">${ICONS.search}</div>
           <p>Nenhuma peça encontrada para <strong>${codigo}</strong>.</p>
           <p style="font-size:13px;margin-top:8px;">Verifique a referência e tente novamente.</p>
         </div>`;

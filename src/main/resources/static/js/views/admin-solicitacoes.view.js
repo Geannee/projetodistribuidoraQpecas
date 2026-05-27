@@ -64,7 +64,7 @@ const SolicitacoesView = {
       <div class="sol-painel">
 
         <div class="sol-secao">
-          <div class="sol-secao-titulo">🏢 Dados da Empresa</div>
+          <div class="sol-secao-titulo"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Dados da Empresa</div>
           <div class="sol-grid">
             <div class="sol-campo"><span class="sol-label">CNPJ</span><span class="sol-valor">${s.cnpj}</span></div>
             <div class="sol-campo"><span class="sol-label">Razão Social</span><span class="sol-valor">${s.razao}</span></div>
@@ -74,7 +74,7 @@ const SolicitacoesView = {
         </div>
 
         <div class="sol-secao">
-          <div class="sol-secao-titulo">📍 Endereço</div>
+          <div class="sol-secao-titulo"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Endereço</div>
           <div class="sol-grid">
             <div class="sol-campo"><span class="sol-label">Logradouro</span><span class="sol-valor">${s.logradouro}, ${s.numero}</span></div>
             <div class="sol-campo"><span class="sol-label">Bairro</span><span class="sol-valor">${s.bairro}</span></div>
@@ -84,7 +84,7 @@ const SolicitacoesView = {
         </div>
 
         <div class="sol-secao">
-          <div class="sol-secao-titulo">👤 Responsável</div>
+          <div class="sol-secao-titulo"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Responsável</div>
           <div class="sol-grid">
             <div class="sol-campo"><span class="sol-label">Nome</span><span class="sol-valor">${s.responsavel}</span></div>
             <div class="sol-campo"><span class="sol-label">Telefone</span><span class="sol-valor">${s.telefone}</span></div>
@@ -99,12 +99,12 @@ const SolicitacoesView = {
             <button class="btn-aprovar" id="btn-aprovar-${s.id}"
               onclick="SolicitacoesController.aprovar('${s.id}')"
               ${!podeAprovar ? 'disabled' : ''}>
-              ✅ Aprovar cadastro
+              Aprovar cadastro
             </button>
             <button class="btn-recusar" id="btn-recusar-${s.id}"
               onclick="SolicitacoesController.recusar('${s.id}')"
               ${!podeRecusar ? 'disabled' : ''}>
-              ❌ Recusar cadastro
+              Recusar cadastro
             </button>
           </div>
           ${s.dataDecisao ? `<div class="sol-decisao-data">Decisão registrada em ${s.dataDecisao}</div>` : ''}

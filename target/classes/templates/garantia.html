@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solicitação de Garantia – Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/dashboard-style.css"/>
+  <link rel="stylesheet" href="css/interno-style.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar">OF</div>
+      <div>
+        <div class="user-name" id="sidebar-nome">Oficina Silva</div>
+        <div class="user-cnpj" id="sidebar-cnpj">CNPJ: 12.345.678/0001</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/></svg>
+        Dashboard
+      </a>
+      <a href="boleto.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 3h4v1H8V7zm0 3h4v1H8v-1zm0 3h2v1H8v-1z"/></svg>
+        Emissão de Boleto
+      </a>
+      <a href="credito.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2H2V5zm0 4h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm4 3a1 1 0 000 2h2a1 1 0 000-2H6z"/></svg>
+        Solicitação de Crédito
+      </a>
+      <a href="devolucao.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+        Solicitação de Devolução
+      </a>
+      <a href="garantia.html" class="nav-item active">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Solicitação de Garantia
+      </a>
+      <a href="busca.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        Buscar Peças
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
+        Meus Pedidos
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+        Documentos
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item nav-config">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+        Configurações
+      </a>
+      <a href="#" class="nav-item nav-sair" onclick="logout(event)">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Sair da conta
+      </a>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <h1 class="topbar-title">Solicitação de Garantia</h1>
+      <div class="topbar-actions">
+        <button class="btn-bell" title="Notificações">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zm0 16a2 2 0 01-2-2h4a2 2 0 01-2 2z"/></svg>
+          <span class="bell-dot"></span>
+        </button>
+        <div class="topbar-avatar" id="topbar-avatar">OF</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Resumo -->
+      <div class="resumo-grid">
+        <div class="resumo-card">
+          <div class="resumo-icon icon-yellow">🔍</div>
+          <div><div class="resumo-label">Em análise</div><div class="resumo-valor">2</div></div>
+        </div>
+        <div class="resumo-card">
+          <div class="resumo-icon icon-green">✅</div>
+          <div><div class="resumo-label">Aprovadas</div><div class="resumo-valor">7</div></div>
+        </div>
+        <div class="resumo-card">
+          <div class="resumo-icon icon-red">❌</div>
+          <div><div class="resumo-label">Negadas</div><div class="resumo-valor">1</div></div>
+        </div>
+        <div class="resumo-card">
+          <div class="resumo-icon icon-blue">📅</div>
+          <div><div class="resumo-label">Prazo resposta</div><div class="resumo-valor">3 dias úteis</div></div>
+        </div>
+      </div>
+
+      <div class="interno-grid">
+
+        <!-- Formulário -->
+        <div class="interno-card">
+          <div class="card-header">
+            <div class="card-header-icon" style="background:#ECFDF5;">🛡</div>
+            <div>
+              <h2 class="card-title">Abrir Chamado de Garantia</h2>
+              <p class="card-subtitle">Informe o defeito para análise técnica</p>
+            </div>
+          </div>
+          <form id="form-garantia" onsubmit="enviarSolicitacao(event,'garantia')">
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Número do Pedido *</label>
+                <input class="field-input" id="gar-pedido" type="text" placeholder="Ex: 4821"/>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Data da Compra *</label>
+                <input class="field-input" id="gar-data" type="date"/>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Peça / Produto *</label>
+              <input class="field-input" id="gar-produto" type="text" placeholder="Ex: Pastilha de Freio TRW GDB1497"/>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">Tipo de Defeito *</label>
+                <select class="field-input field-select" id="gar-defeito">
+                  <option value="">Selecione</option>
+                  <option value="fabricacao">Defeito de fabricação</option>
+                  <option value="material">Falha de material</option>
+                  <option value="dimensao">Dimensão incorreta</option>
+                  <option value="desgaste">Desgaste prematuro</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label">Km Rodados na Instalação</label>
+                <input class="field-input" id="gar-km" type="text" placeholder="Ex: 45.000 km"/>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Descrição do Defeito *</label>
+              <textarea class="field-input field-textarea" id="gar-desc" placeholder="Descreva o defeito com o máximo de detalhes..."></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Fotos / Laudo Técnico (opcional)</label>
+              <div class="upload-area" onclick="document.getElementById('gar-foto').click()">
+                <span class="upload-icon">📷</span>
+                <span class="upload-text">Clique para anexar arquivos</span>
+                <span class="upload-sub">PNG, JPG, PDF até 5MB</span>
+                <input type="file" id="gar-foto" accept="image/*,.pdf" multiple style="display:none;" onchange="mostrarArquivos(this,'gar-arquivo-nome')"/>
+              </div>
+              <span class="arquivo-nome" id="gar-arquivo-nome"></span>
+            </div>
+            <div id="gar-error" class="form-error" style="display:none;"></div>
+            <div class="form-actions">
+              <button type="button" class="btn-secundario" onclick="this.closest('form').reset();document.getElementById('gar-arquivo-nome').textContent=''">Limpar</button>
+              <button type="submit" class="btn-primario btn-green" id="btn-gar">
+                <span>🛡</span> Solicitar Garantia
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Em análise -->
+        <div class="interno-card">
+          <div class="card-header">
+            <div class="card-header-icon" style="background:#ECFDF5;">📋</div>
+            <div>
+              <h2 class="card-title">Em Análise</h2>
+              <p class="card-subtitle">Chamados aguardando avaliação técnica</p>
+            </div>
+          </div>
+          <div class="solicitacoes-list" id="gar-list"></div>
+        </div>
+
+      </div>
+
+      <!-- Histórico -->
+      <div class="historico-card">
+        <div class="historico-header">
+          <div>
+            <h2 class="card-title">Histórico de Garantias</h2>
+            <p class="card-subtitle">Todos os chamados dos últimos 90 dias</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th>Protocolo</th><th>Pedido</th><th>Produto</th><th>Defeito</th><th>Data</th><th>Status</th><th>Ação</th>
+              </tr>
+            </thead>
+            <tbody id="gar-historico"></tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span>Mostrando 4 de 10 registros</span>
+          <a href="#" class="link-ver-todos">Ver todos →</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-icon">🛡</div>
+    <h3 class="modal-title">Garantia Solicitada!</h3>
+    <p class="modal-sub" id="modal-info">Seu chamado foi registrado com sucesso.</p>
+    <div class="protocolo-box">
+      <span class="protocolo-label">Número do Protocolo</span>
+      <div class="protocolo-val" id="modal-protocolo">GAR-0000</div>
+    </div>
+    <p class="modal-obs">Nossa equipe técnica analisará seu chamado em até <strong>3 dias úteis</strong>.</p>
+    <div class="modal-actions">
+      <button class="btn-secundario" onclick="fecharModal()">Fechar</button>
+      <a href="dashboard.html" class="btn-primario btn-green">Ir ao Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<script src="js/utils/auth.js"></script>
+<script src="js/utils/modal.js"></script>
+<script src="js/models/garantia.model.js"></script>
+<script src="js/views/shared.view.js"></script>
+<script src="js/views/garantia.view.js"></script>
+<script src="js/controllers/garantia.controller.js"></script>
+</body>
+</html>

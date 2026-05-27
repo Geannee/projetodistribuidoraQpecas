@@ -51,11 +51,11 @@ const BoletoController = {
     }
 
     btnGerar.disabled = true;
-    btnGerar.innerHTML = '<span>⏳</span> Gerando...';
+    btnGerar.textContent = 'Gerando...';
 
     setTimeout(() => {
       btnGerar.disabled = false;
-      btnGerar.innerHTML = '<span>🧾</span> Gerar Boleto';
+      btnGerar.innerHTML = ICONS.fileText + ' Gerar Boleto';
 
       const codigo    = this._gerarCodigoBarras();
       const numBoleto = '#BOL-' + numPedido.value.trim().replace(/\D/g, '').padStart(4, '0');
@@ -81,7 +81,7 @@ const BoletoController = {
     const codigo = document.getElementById('modal-codigo').textContent;
     navigator.clipboard.writeText(codigo).then(() => {
       const btn = document.querySelector('.btn-copiar');
-      btn.textContent = '✓ Copiado!';
+      btn.textContent = 'Copiado!';
       setTimeout(() => { btn.textContent = 'Copiar código'; }, 2000);
     });
   },

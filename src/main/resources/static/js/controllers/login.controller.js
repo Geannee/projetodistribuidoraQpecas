@@ -14,10 +14,10 @@ const LoginController = {
         const btn = document.querySelector('.btn-toggle-pw');
         if (input.type === 'password') {
             input.type = 'text';
-            btn.textContent = '🙈';
+            btn.innerHTML = ICONS.eyeOff;
         } else {
             input.type = 'password';
-            btn.textContent = '👁';
+            btn.innerHTML = ICONS.eye;
         }
     },
 
@@ -68,8 +68,9 @@ const LoginController = {
             const dados = await response.json();
 
             sessionStorage.setItem('qp_token', dados.token);
-            sessionStorage.setItem('qp_usuario', dados.usuario);
-            sessionStorage.setItem('qp_nome', dados.nomeFantasia);
+            sessionStorage.setItem('qp_usuario', dados.email);
+            sessionStorage.setItem('qp_nome', dados.nome);
+            sessionStorage.setItem('qp_perfil', dados.cnpj);
             sessionStorage.setItem('qp_id', dados.id);
 
             window.location.href = 'dashboard.html';

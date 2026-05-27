@@ -12,8 +12,9 @@ const HomeController = {
   },
 
   verificarSessao() {
-    const usuario  = Auth.getUsuario();
-    const token   = Auth.getToken();
+    const usuario    = Auth.getUsuario();
+    const token      = Auth.getToken();
+    const perfil     = Auth.getPerfil();
     const navActions = document.getElementById('nav-actions');
     if (!navActions) return;
     if (token && usuario) HomeView.renderNavLogado(navActions, usuario, perfil);
@@ -31,7 +32,7 @@ const HomeController = {
 
   addToCart(nome, btn) {
     const original = btn.textContent;
-    btn.textContent = '✓ Adicionado!';
+    btn.textContent = 'Adicionado!';
     btn.style.background = '#2EB855';
     setTimeout(() => {
       btn.textContent = original;
@@ -42,7 +43,7 @@ const HomeController = {
   handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.btn-enviar');
-    btn.textContent = '✓ Mensagem enviada!';
+    btn.textContent = 'Mensagem enviada!';
     btn.style.background = '#2EB855';
     setTimeout(() => {
       btn.textContent = 'Enviar mensagem →';
@@ -55,7 +56,7 @@ const HomeController = {
     const input = document.querySelector('.newsletter-input');
     const btn   = document.querySelector('.btn-inscrever');
     if (!input.value) { input.style.borderColor = 'var(--coral)'; return; }
-    btn.textContent = '✓ Inscrito!';
+    btn.textContent = 'Inscrito!';
     btn.style.background = '#2EB855';
     input.value = '';
     setTimeout(() => {

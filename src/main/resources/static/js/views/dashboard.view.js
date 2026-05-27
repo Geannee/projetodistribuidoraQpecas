@@ -9,7 +9,7 @@ const DashboardView = {
       <tr>
         <td>
           <div class="tipo-cell">
-            <div class="tipo-icon">${a.icone}</div>
+            <div class="tipo-icon">${a.icone()}</div>
             ${a.tipo}
           </div>
         </td>
@@ -23,6 +23,6 @@ const DashboardView = {
 
   renderSaudacao(id, nome) {
     const el = document.getElementById(id);
-    if (el) el.textContent = `Olá, ${nome}! 👋`;
+    if (el) el.textContent = `Olá, ${nome}!`;
   }
 };

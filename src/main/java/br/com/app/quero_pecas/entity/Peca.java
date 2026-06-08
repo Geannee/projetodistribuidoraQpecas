@@ -22,7 +22,13 @@ public class Peca {
     @Column(unique = true)
     private String codigo;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @Enumerated(EnumType.STRING)
+    private TipoPeca tipoPeca;
+
+    @Column(columnDefinition = "TINYINT DEFAULT 1")
+    private boolean ativo = true;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
 }

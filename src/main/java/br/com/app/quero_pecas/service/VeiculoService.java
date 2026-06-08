@@ -32,7 +32,7 @@ public class VeiculoService {
         veiculo.setChassi(dados.chassi() != null ? dados.chassi().toUpperCase() : null);
         veiculo.setPlaca(dados.placa() != null ? dados.placa().toUpperCase() : null);
         veiculo.setObservacoes(dados.observacoes());
-        veiculo.setTipoDeCompustivel(dados.tipoDeCompustivel());
+        veiculo.setTipoDeCombustivel(dados.tipoDeCombustivel());
         veiculo.setAtivo(true);
 
         return veiculoRepository.save(veiculo);

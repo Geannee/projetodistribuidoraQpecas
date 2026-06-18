@@ -47,11 +47,11 @@ const AdminCadastroView = {
       <tr>
         <td><strong>${v.placa}</strong></td>
         <td>${v.marca} ${v.modelo}</td>
-        <td>${v.ano}</td>
-        <td>${v.combustivel}</td>
+        <td>${v.anoFabricacao}</td>
+        <td>${v.tipoDeCompustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
         <td>
-          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.id})">
+          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.idVeiculo})">
             Excluir
           </button>
         </td>
@@ -76,20 +76,21 @@ const AdminCadastroView = {
     tbody.innerHTML = pecas.map(p => {
       const estoqueClass = p.estoque === 0 ? 'estoque-zero' : p.estoque <= 3 ? 'estoque-low' : 'estoque-ok';
       const estoqueLabel = p.estoque === 0 ? 'Sem estoque' : p.estoque <= 3 ? `Baixo (${p.estoque})` : p.estoque;
-      const preco = p.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      const preco = p.precoBase.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
       return `
         <tr>
-          <td><code style="font-size:12px">${p.sku}</code></td>
+          <td><code style="font-size:12px">${p.codigo}</code></td>
           <td>
             <div style="font-weight:600">${p.nome}</div>
-            <div style="font-size:11px;color:var(--gray-text)">${p.compatibilidade}</div>
+            <div style="font-size:11px;color:var(--gray-text)">${p.tipoPeca}</div>
+            <!--TODO: MUDAR  ESSE TIPO DE PECA POR COMPATIBILIDADE-->
           </td>
           <td>${p.categoria}</td>
           <td>${p.fornecedor}</td>
           <td><strong>${preco}</strong></td>
           <td><span class="badge-estoque ${estoqueClass}">${estoqueLabel}</span></td>
           <td>
-            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.id})">
+            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.idPeca})">
               Excluir
             </button>
           </td>

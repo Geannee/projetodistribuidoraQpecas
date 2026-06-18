@@ -96,10 +96,10 @@ const AdminLoginController = {
     const btn   = document.querySelector('.btn-toggle-pw');
     if (input.type === 'password') {
       input.type = 'text';
-      btn.textContent = '🙈';
+      btn.innerHTML = ICONS.eyeOff;
     } else {
       input.type = 'password';
-      btn.textContent = '👁';
+      btn.innerHTML = ICONS.eye;
     }
   },
 

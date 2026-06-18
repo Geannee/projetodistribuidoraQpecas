@@ -43,11 +43,11 @@ const CreditoController = {
     }
 
     btn.disabled = true;
-    btn.innerHTML = '<span>⏳</span> Enviando...';
+    btn.textContent = 'Enviando...';
 
     setTimeout(() => {
       btn.disabled = false;
-      btn.innerHTML = '<span>💳</span> Enviar Solicitação';
+      btn.innerHTML = ICONS.creditCard + ' Enviar Solicitação';
 
       const protocolo = 'CRE-' + String(Math.floor(Math.random() * 9000) + 1000);
       CreditoView.mostrarModal(limite.value, protocolo);

@@ -45,11 +45,11 @@ const GarantiaController = {
     }
 
     btn.disabled = true;
-    btn.innerHTML = '<span>⏳</span> Enviando...';
+    btn.textContent = 'Enviando...';
 
     setTimeout(() => {
       btn.disabled = false;
-      btn.innerHTML = '<span>🛡</span> Solicitar Garantia';
+      btn.innerHTML = ICONS.shield + ' Solicitar Garantia';
 
       const protocolo = 'GAR-' + String(Math.floor(Math.random() * 9000) + 1000);
       GarantiaView.mostrarModal(pedido.value.trim(), protocolo);

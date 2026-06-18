@@ -104,8 +104,8 @@ const SolicitacoesModel = {
   },
 
   statusLabel: {
-    'pendente': '⏳ Pendente',
-    'aprovado': '✅ Aprovado',
-    'recusado': '❌ Recusado'
+    'pendente': 'Pendente',
+    'aprovado': 'Aprovado',
+    'recusado': 'Recusado'
   }
 };

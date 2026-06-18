@@ -45,11 +45,11 @@ const DevolucaoController = {
     }
 
     btn.disabled = true;
-    btn.innerHTML = '<span>⏳</span> Enviando...';
+    btn.textContent = 'Enviando...';
 
     setTimeout(() => {
       btn.disabled = false;
-      btn.innerHTML = '<span>🔄</span> Abrir Devolução';
+      btn.innerHTML = ICONS.rotateCcw + ' Abrir Devolução';
 
       const protocolo = 'DEV-' + String(Math.floor(Math.random() * 9000) + 1000);
       DevolucaoView.mostrarModal(pedido.value.trim(), protocolo);

@@ -1,81 +1,138 @@
-// ── ADMIN LOGIN CONTROLLER ─────────────────────────────────────────────────────
-// Gerencia o modal de login do administrador
-// ─────────────────────────────────────────────────────────────────────────────
+// ── ADMIN LOGIN CONTROLLER ────────────────────────────────────────────────────
 
 const AdminLoginController = {
 
-  // Credenciais do administrador
   CREDENCIAIS: {
-    email: 'admin@queropeças.com.br',
-    senha: 'admin123'
+    email: 'admin@queropecas.com',
+    senha: 'queropecas'
   },
 
-  abrirModal() {
-    document.getElementById('modal-overlay').classList.add('open');
-    setTimeout(() => document.getElementById('admin-email')?.focus(), 100);
+  // ── LOGIN ──────────────────────────────────────────────────────────────────
+
+  handleLogin(e) {
+    e.preventDefault();
+    this._limparErros('error-msg');
+
+    const email = document.getElementById('admin-email');
+    const senha = document.getElementById('admin-senha');
+    const btn   = document.getElementById('btn-entrar');
+
+    let valido = true;
+    if (!email.value.trim()) { email.classList.add('error'); valido = false; }
+    if (!senha.value.trim()) { senha.classList.add('error'); valido = false; }
+
+    if (!valido) {
+      this._mostrarErro('error-msg', 'Preencha todos os campos para continuar.');
+      return;
+    }
+
+    if (
+      email.value.trim().toLowerCase() !== this.CREDENCIAIS.email ||
+      senha.value !== this.CREDENCIAIS.senha
+    ) {
+      email.classList.add('error');
+      senha.classList.add('error');
+      this._mostrarErro('error-msg', 'E-mail ou senha incorretos. Tente novamente.');
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Entrando...';
+
+    setTimeout(() => {
+      sessionStorage.setItem('qp_admin', 'true');
+      sessionStorage.setItem('qp_usuario', email.value.trim());
+      window.location.href = 'admin-veiculo.html';
+    }, 700);
   },
 
-  fecharModal(e) {
-    if (e && e.target !== document.getElementById('modal-overlay')) return;
-    document.getElementById('modal-overlay').classList.remove('open');
-    this._limpar();
+  // ── REDEFINIÇÃO DE SENHA ───────────────────────────────────────────────────
+
+  handleReset(e) {
+    e.preventDefault();
+    this._limparErros('reset-error');
+    document.getElementById('reset-success').style.display = 'none';
+
+    const email = document.getElementById('reset-email');
+    const btn   = document.getElementById('btn-reset');
+
+    if (!email.value.trim()) {
+      email.classList.add('error');
+      this._mostrarErro('reset-error', 'Informe o e-mail do administrador.');
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Enviando...';
+
+    setTimeout(() => {
+      document.getElementById('reset-success').style.display = 'block';
+      email.value     = '';
+      btn.disabled    = false;
+      btn.textContent = 'Enviar link de redefinição →';
+    }, 1200);
   },
+
+  // ── NAVEGAÇÃO ENTRE VIEWS ──────────────────────────────────────────────────
+
+  mostrarReset(e) {
+    e.preventDefault();
+    document.getElementById('view-login').style.display = 'none';
+    document.getElementById('view-reset').style.display = 'block';
+    document.getElementById('reset-email').focus();
+  },
+
+  mostrarLogin(e) {
+    e.preventDefault();
+    document.getElementById('view-reset').style.display = 'none';
+    document.getElementById('view-login').style.display = 'block';
+    document.getElementById('admin-email').focus();
+  },
+
+  // ── TOGGLE SENHA ───────────────────────────────────────────────────────────
 
   toggleSenha() {
     const input = document.getElementById('admin-senha');
     const btn   = document.querySelector('.btn-toggle-pw');
     if (input.type === 'password') {
       input.type = 'text';
-      btn.textContent = '🙈';
+      btn.innerHTML = ICONS.eyeOff;
     } else {
       input.type = 'password';
-      btn.textContent = '👁';
+      btn.innerHTML = ICONS.eye;
     }
   },
 
-  handleLogin(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btn-entrar');
-    btn.disabled    = true;
-    btn.textContent = 'Entrando...';
-    setTimeout(() => {
-      sessionStorage.setItem('qp_admin', 'true');
-      sessionStorage.setItem('qp_usuario', 'admin');
-      window.location.href = 'admin-cadastro.html';
-    }, 700);
-  },
+  // ── HELPERS ────────────────────────────────────────────────────────────────
 
-  _mostrarErro(msg) {
-    const el = document.getElementById('admin-error');
+  _mostrarErro(id, msg) {
+    const el = document.getElementById(id);
     el.textContent = msg;
     el.style.display = 'block';
   },
 
-  _limparErros() {
-    document.getElementById('admin-email')?.classList.remove('error');
-    document.getElementById('admin-senha')?.classList.remove('error');
-    const el = document.getElementById('admin-error');
+  _limparErros(errorId) {
+    document.querySelectorAll('.field-input').forEach(i => i.classList.remove('error'));
+    const el = document.getElementById(errorId);
     if (el) el.style.display = 'none';
   },
 
-  _limpar() {
-    const email = document.getElementById('admin-email');
-    const senha = document.getElementById('admin-senha');
-    if (email) email.value = '';
-    if (senha) { senha.value = ''; senha.type = 'password'; }
-    const btn = document.querySelector('.btn-toggle-pw');
-    if (btn) btn.textContent = '👁';
-    this._limparErros();
-  },
-
   _init() {
-    // Fecha modal com Escape
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        document.getElementById('modal-overlay').classList.remove('open');
-        this._limpar();
-      }
-    });
+    document.getElementById('admin-email')
+      ?.addEventListener('input', () => {
+        document.getElementById('admin-email').classList.remove('error');
+        document.getElementById('error-msg').style.display = 'none';
+      });
+    document.getElementById('admin-senha')
+      ?.addEventListener('input', () => {
+        document.getElementById('admin-senha').classList.remove('error');
+        document.getElementById('error-msg').style.display = 'none';
+      });
+    document.getElementById('reset-email')
+      ?.addEventListener('input', () => {
+        document.getElementById('reset-email').classList.remove('error');
+        document.getElementById('reset-error').style.display = 'none';
+      });
   }
 };
 

@@ -14,10 +14,10 @@ const LoginController = {
         const btn = document.querySelector('.btn-toggle-pw');
         if (input.type === 'password') {
             input.type = 'text';
-            btn.textContent = '🙈';
+            btn.innerHTML = ICONS.eyeOff;
         } else {
             input.type = 'password';
-            btn.textContent = '👁';
+            btn.innerHTML = ICONS.eye;
         }
     },
 
@@ -68,8 +68,9 @@ const LoginController = {
             const dados = await response.json();
 
             sessionStorage.setItem('qp_token', dados.token);
-            sessionStorage.setItem('qp_usuario', dados.usuario);
-            sessionStorage.setItem('qp_nome', dados.nomeFantasia);
+            sessionStorage.setItem('qp_usuario', dados.email);
+            sessionStorage.setItem('qp_nome', dados.nome);
+            sessionStorage.setItem('qp_perfil', dados.cnpj);
             sessionStorage.setItem('qp_id', dados.id);
 
             window.location.href = 'dashboard.html';
@@ -81,9 +82,60 @@ const LoginController = {
         }
     },
 
+    // ── REDEFINIÇÃO DE SENHA ─────────────────────────────────────────────────
+
+    handleReset(e) {
+        e.preventDefault();
+        const email = document.getElementById('reset-email');
+        const btn   = document.getElementById('btn-reset');
+        const errEl = document.getElementById('reset-error');
+        const okEl  = document.getElementById('reset-success');
+
+        email.classList.remove('error');
+        errEl.style.display = 'none';
+        okEl.style.display  = 'none';
+
+        if (!email.value.trim()) {
+            email.classList.add('error');
+            errEl.textContent    = 'Informe o e-mail da conta.';
+            errEl.style.display  = 'block';
+            return;
+        }
+
+        btn.disabled    = true;
+        btn.textContent = 'Enviando...';
+
+        setTimeout(() => {
+            okEl.style.display  = 'block';
+            email.value         = '';
+            btn.disabled        = false;
+            btn.textContent     = 'Enviar link de redefinição →';
+        }, 1200);
+    },
+
+    mostrarReset(e) {
+        e.preventDefault();
+        document.getElementById('view-login').style.display = 'none';
+        document.getElementById('view-reset').style.display = 'block';
+        document.getElementById('reset-email').focus();
+    },
+
+    mostrarLogin(e) {
+        e.preventDefault();
+        document.getElementById('view-reset').style.display = 'none';
+        document.getElementById('view-login').style.display = 'block';
+        document.getElementById('email').focus();
+    },
+
+    // ── INIT ─────────────────────────────────────────────────────────────────
+
     init() {
         document.getElementById('email').addEventListener('input', () => this.clearErrors());
         document.getElementById('senha').addEventListener('input', () => this.clearErrors());
+        document.getElementById('reset-email')?.addEventListener('input', () => {
+            document.getElementById('reset-email').classList.remove('error');
+            document.getElementById('reset-error').style.display = 'none';
+        });
     }
 };
 
@@ -98,6 +150,18 @@ function togglePassword() {
 
 function handleLogin(e) {
     LoginController.handleLogin(e);
+}
+
+function handleReset(e) {
+    LoginController.handleReset(e);
+}
+
+function mostrarReset(e) {
+    LoginController.mostrarReset(e);
+}
+
+function mostrarLogin(e) {
+    LoginController.mostrarLogin(e);
 }
 
 LoginController.init();

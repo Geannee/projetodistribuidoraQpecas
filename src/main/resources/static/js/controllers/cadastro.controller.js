@@ -18,10 +18,10 @@ const CadastroController = {
     const input = document.getElementById(id);
     if (input.type === 'password') {
       input.type = 'text';
-      btn.textContent = '🙈';
+      btn.innerHTML = ICONS.eyeOff;
     } else {
       input.type = 'password';
-      btn.textContent = '👁';
+      btn.innerHTML = ICONS.eye;
     }
   },
 
@@ -70,7 +70,7 @@ const CadastroController = {
     }
 
     btn.disabled = true;
-    btn.textContent = '⏳ Criando conta...';
+    btn.textContent = 'Criando conta...';
 
     const payload = {
       cnpj: document.getElementById('cnpj').value.trim(), // ← corrigido: era 'ccnpj'

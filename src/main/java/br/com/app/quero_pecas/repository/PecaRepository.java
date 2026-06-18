@@ -1,6 +1,8 @@
 package br.com.app.quero_pecas.repository;
 
 import br.com.app.quero_pecas.entity.Peca;
+import br.com.app.quero_pecas.entity.Veiculo;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -30,5 +32,8 @@ public interface PecaRepository extends JpaRepository<Peca, Long> {
             @Param("categoria") String categoria
     );
 
+public interface PecaRepository extends JpaRepository<Peca, Long> {
+    boolean existsByCodigo(@NotBlank String codigo);
+    List<Peca> findAllByAtivoTrue();
 }
 

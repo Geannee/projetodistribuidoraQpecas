@@ -71,7 +71,7 @@ const SolicitacoesController = {
     if (row) { row.classList.add('aberto'); }
     if (btn) btn.textContent = 'Fechar ▴';
 
-    SolicitacoesView.mostrarToast('✅ Cadastro aprovado com sucesso!', 'ok');
+    SolicitacoesView.mostrarToast('Cadastro aprovado com sucesso!', 'ok');
   },
 
   recusar(id) {
@@ -83,7 +83,7 @@ const SolicitacoesController = {
     if (row) { row.classList.add('aberto'); }
     if (btn) btn.textContent = 'Fechar ▴';
 
-    SolicitacoesView.mostrarToast('❌ Cadastro recusado.', 'erro');
+    SolicitacoesView.mostrarToast('Cadastro recusado.', 'erro');
   }
 };
 

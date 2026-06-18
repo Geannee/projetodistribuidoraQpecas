@@ -12,4 +12,5 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
     boolean existsByChassiAndAtivoTrue(String chassi);
     boolean existsByPlacaAndAtivoTrue(String placa);
     List<Veiculo> findAllByAtivoTrue();
+   Optional<Veiculo> findByPlaca(String placa);
 }

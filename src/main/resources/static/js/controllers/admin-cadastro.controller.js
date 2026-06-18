@@ -119,11 +119,12 @@ const AdminCadastroController = {
 
   // ── PEÇA ───────────────────────────────────────────────────────────────────
 
-  submeterPeca() {
+  async submeterPeca() {
+    const compatibilidadeTexto = document.getElementById('p-compatibilidade')?.value.trim();
     const campos = {
       nome:            document.getElementById('p-nome')?.value.trim(),
       sku:             document.getElementById('p-sku')?.value.trim(),
-      compatibilidade: document.getElementById('p-compatibilidade')?.value.trim(),
+      compatibilidade: compatibilidadeTexto ? compatibilidadeTexto.split(',').map(num => Number(num.trim())) : [],
       preco:           document.getElementById('p-preco')?.value.trim(),
       estoque:         document.getElementById('p-estoque')?.value.trim(),
       fornecedor:      document.getElementById('p-fornecedor')?.value.trim(),
@@ -138,13 +139,14 @@ const AdminCadastroController = {
       return;
     }
 
-    AdminCadastroModel.salvarPeca(campos);
+    await AdminCadastroModel.salvarPeca(campos);
     AdminCadastroView.showToast('Peça cadastrada com sucesso!', 'success');
     this.limparPeca();
-    AdminCadastroView.renderPecas(AdminCadastroModel.getPecas());
+    const listaAtualizada = await AdminCadastroModel.getPecas();
+    AdminCadastroView.renderPecas(listaAtualizada);
   },
 
-  _validarPeca(c) {
+  async _validarPeca(c) {
     const erros = [];
     if (!c.nome)            erros.push('p-nome');
     if (!c.sku)             erros.push('p-sku');
@@ -155,7 +157,8 @@ const AdminCadastroController = {
     if (!c.categoria)       erros.push('p-categoria');
     if (!c.tipo)            erros.push('p-tipo');
 
-    if (!erros.includes('p-sku') && AdminCadastroModel.skuExiste(c.sku)) {
+    const skuExiste = await AdminCadastroModel.skuExiste(c.sku);
+    if (!erros.includes('p-sku') && skuExiste) {
       AdminCadastroView.showToast(`SKU "${c.sku}" já cadastrado.`, 'error');
       erros.push('p-sku');
     }
@@ -170,11 +173,19 @@ const AdminCadastroController = {
     });
   },
 
-  excluirPeca(id) {
+  async excluirPeca(id) {
     if (!confirm('Excluir esta peça?')) return;
-    AdminCadastroModel.excluirPeca(id);
-    AdminCadastroView.renderPecas(AdminCadastroModel.getPecas());
-    AdminCadastroView.showToast('Peça excluída.', 'success');
+    try {
+      await AdminCadastroModel.excluirPeca(id);
+
+      AdminCadastroView.showToast('Veículo removido com sucesso!', 'success');
+
+      const listaAtualizada = await AdminCadastroModel.getPecas();
+      AdminCadastroView.renderPecas(listaAtualizada);
+
+    } catch (error) {
+      AdminCadastroView.showToast('Não foi possível excluir o veículo.', 'error');
+    }
   }
 };
 

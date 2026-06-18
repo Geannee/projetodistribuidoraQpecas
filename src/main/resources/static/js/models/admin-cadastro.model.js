@@ -9,6 +9,23 @@ const AdminCadastroModel = {
     pecas:    'qp_pecas'
   },
 
+  // ── SEED DE DEMONSTRAÇÃO ───────────────────────────────────────────────────
+
+  _seed() {
+    if (!localStorage.getItem(this.KEYS.veiculos)) {
+      localStorage.setItem(this.KEYS.veiculos, JSON.stringify([
+        { id: 1, placa: 'PBQ2694', chassi: '9BWAL45U0KT104252', marca: 'VW',   modelo: 'Gol',   ano: 2020, combustivel: 'Flex',     obs: '' },
+        { id: 2, placa: 'ABC1D23', chassi: '9BWZZZ377VT004251', marca: 'Fiat', modelo: 'Palio', ano: 2018, combustivel: 'Gasolina', obs: '' }
+      ]));
+    }
+    if (!localStorage.getItem(this.KEYS.pecas)) {
+      localStorage.setItem(this.KEYS.pecas, JSON.stringify([
+        { id: 3, sku: 'G8197', nome: 'Amortecedor Dianteiro Monroe', categoria: 'Suspensão', tipo: 'Original', compatibilidade: 'VW Gol 2010-2020', preco: 187.00, estoque: 10, fornecedor: 'Monroe' },
+        { id: 4, sku: 'F0012', nome: 'Filtro de Óleo Bosch',         categoria: 'Filtros',   tipo: 'Premium',  compatibilidade: 'Fiat Palio 2012-2018', preco: 35.90, estoque: 2,  fornecedor: 'Bosch'  }
+      ]));
+    }
+  },
+
   // ── VEÍCULOS ───────────────────────────────────────────────────────────────
 
   async getVeiculos() {
@@ -24,6 +41,11 @@ const AdminCadastroModel = {
       console.error("Erro no Model:", error);
       return [];
     }
+    // try {
+    //   return JSON.parse(localStorage.getItem(this.KEYS.veiculos)) || [];
+    // } catch {
+    //   return [];
+    // }
   },
 
   async salvarVeiculo(dados) {

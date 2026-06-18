@@ -50,10 +50,9 @@ const AdminCadastroView = {
         <td>${v.ano}</td>
         <td>${v.combustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
-        <td>
-          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.id})">
-            Excluir
-          </button>
+        <td style="display:flex;gap:6px">
+          <button class="btn-alterar">Alterar</button>
+          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.id})">Excluir</button>
         </td>
       </tr>
     `).join('');
@@ -88,10 +87,9 @@ const AdminCadastroView = {
           <td>${p.fornecedor}</td>
           <td><strong>${preco}</strong></td>
           <td><span class="badge-estoque ${estoqueClass}">${estoqueLabel}</span></td>
-          <td>
-            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.id})">
-              Excluir
-            </button>
+          <td style="display:flex;gap:6px">
+            <button class="btn-alterar">Alterar</button>
+            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.id})">Excluir</button>
           </td>
         </tr>
       `;

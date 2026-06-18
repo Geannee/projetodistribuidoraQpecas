@@ -47,12 +47,13 @@ const AdminCadastroView = {
       <tr>
         <td><strong>${v.placa}</strong></td>
         <td>${v.marca} ${v.modelo}</td>
-        <td>${v.ano}</td>
-        <td>${v.combustivel}</td>
+        <td>${v.anoFabricacao}</td>
+        <td>${v.tipoDeCompustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
-        <td style="display:flex;gap:6px">
-          <button class="btn-alterar">Alterar</button>
-          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.id})">Excluir</button>
+        <td>
+          <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.idVeiculo})">
+            Excluir
+          </button>
         </td>
       </tr>
     `).join('');

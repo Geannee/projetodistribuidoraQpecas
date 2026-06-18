@@ -1,25 +1,24 @@
 package br.com.app.quero_pecas.service;
 
-import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
-import br.com.app.quero_pecas.entity.PecaVeiculo;
-import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaRepository;
-import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
-import br.com.app.quero_pecas.repository.VeiculoRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
-@Transactional
 public class PecaService {
-
     @Autowired private PecaRepository pecaRepository;
     @Autowired private PecaVeiculoRepository pecaVeiculoRepository;
     @Autowired private VeiculoRepository veiculoRepository;
+
+    public List<Peca> buscarPecas(String marca, String modelo, Integer ano, String categoria) {
+        // Transforma strings vazias do front em null para a query funcionar corretamente
+        String filtroMarca = (marca != null && !marca.trim().isEmpty()) ? marca : null;
+        String filtroModelo = (modelo != null && !modelo.trim().isEmpty()) ? modelo : null;
+        String filtroCategoria = (categoria != null && !categoria.trim().isEmpty()) ? categoria : null;
+
+        return pecaRepository.buscarPorAplicacao(filtroMarca, filtroModelo, ano, filtroCategoria);
 
     public void save(PecaDTO.Save dados) {
 

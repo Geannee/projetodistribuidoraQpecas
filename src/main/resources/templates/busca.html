@@ -93,12 +93,12 @@
             <option>Toyota</option>
             <option>Volkswagen</option>
           </select>
-          <select class="app-select" id="appModelo" disabled>
+          <select class="app-select" id="appModelo" onchange="onModeloChange()" disabled>
             <option value="">Modelo</option>
           </select>
         </div>
         <div class="app-row">
-          <select class="app-select" id="appAno">
+          <select class="app-select" id="appAno" >
             <option value="">Ano</option>
             <option>2025</option><option>2024</option><option>2023</option>
             <option>2022</option><option>2021</option><option>2020</option>
@@ -110,8 +110,11 @@
           </select>
           <select class="app-select" id="appCategoria">
             <option value="">Categoria</option>
-            <option>Freios</option><option>Motor</option><option>Suspensão</option>
-            <option>Filtros</option><option>Elétrica</option>
+            <option value="FREIO">Freios</option>
+            <option value="MOTOR">Motor</option>
+            <option value="SUSPENSAO">Suspensão</option>
+            <option value="FILTRO">Filtros</option>
+            <option value="ELETRICA">Elétrica</option>
           </select>
         </div>
         <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>

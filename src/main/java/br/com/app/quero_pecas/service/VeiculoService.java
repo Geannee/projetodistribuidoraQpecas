@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Year;
 import java.util.List;
 
 @Service
@@ -49,4 +50,16 @@ public class VeiculoService {
         return veiculoRepository.save(veiculo);
     }
 
+    public List<String> findModelosByMarca(String marca) {
+        if (marca == null || marca.trim().isEmpty()) {
+            return List.of(); // Retorna lista vazia de forma segura se a marca for inválida
+        }
+        return veiculoRepository.findDistinctModelosByMarca(marca.trim());
+    }
+    public List<Year> findDistinctAnoFabricacaoByModelo(String modelo) {
+        if (modelo == null || modelo.trim().isEmpty()) {
+            return List.of();
+        }
+        return veiculoRepository.findDistinctAnoFabricacaoByModelo(modelo.trim());
+    }
 }

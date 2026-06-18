@@ -16,17 +16,8 @@ public class Peca {
     private int estoque;
     private String marca;
     private String nome;
-    private double precoBase;
     private String categoria;
-
-    @Column(unique = true)
-    private String codigo;
-
-    @Enumerated(EnumType.STRING)
-    private TipoPeca tipoPeca;
-
-    @Column(columnDefinition = "TINYINT DEFAULT 1")
-    private boolean ativo = true;
+    private float precoBase;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")

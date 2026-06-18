@@ -1,50 +1,109 @@
+
+
+
+/**
+ * MODEL: Gerencia as requisições assíncronas com o Back-end (Spring Boot)
+ */
+const BuscaModel = {
+  baseUrl: 'http://localhost:8080',
+
+  /**
+   * Obtém a lista de modelos cadastrados para uma determinada marca
+   */
+  async obterModelosPorMarca(marca) {
+    try {
+      const response = await fetch(`${this.baseUrl}/veiculos/modelos?marca=${encodeURIComponent(marca)}`);
+      if (!response.ok) throw new Error('Erro ao buscar modelos.');
+      return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
+    } catch (error) {
+      console.error('Erro no Model (obterModelosPorMarca):', error);
+      return [];
+    }
+  },
+
+  async obterAnoPorModelo(modelo) {
+    try {
+      const response = await fetch(`${this.baseUrl}/veiculos/anoDeFabricacao?modelo=${encodeURIComponent(modelo)}`);
+      if (!response.ok) throw new Error('Erro ao buscar Ano de fabricação.');
+      return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
+    } catch (error) {
+      console.error('Erro no Model (obterAnoPorModelo):', error);
+      return [];
+    }
+  },
+
+  /**
+   * Realiza a busca cumulativa e inteligente de peças no back-end
+   */
+  async buscarPecasInteligente(marca, modelo, ano, categoria) {
+    try {
+      // Cria dinamicamente os Query Parameters ignorando campos vazios
+      const params = new URLSearchParams();
+      if (marca) params.append('marca', marca);
+      if (modelo) params.append('modelo', modelo);
+      if (ano) params.append('ano', ano);
+      if (categoria) params.append('categoria', categoria.toUpperCase()); // Enums do back são UPPERCASE
+
+      const response = await fetch(`${this.baseUrl}/pecas/busca-inteligente?${params.toString()}`);
+      if (!response.ok) throw new Error('Erro ao buscar peças.');
+      return await response.json(); // Retorna a lista de entidades Peca
+    } catch (error) {
+      console.error('Erro no Model (buscarPecasInteligente):', error);
+      return [];
+    }
+  }
+};
+
+
+
+
 // ── BUSCA MODEL ───────────────────────────────────────────────────────────────
 // Dados de veículo simulado, categorias e equivalências de peças
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BuscaModel = {
-
-  veiculo: {
-    modelo:  'Volkswagen Gol 1.0',
-    ano:     '2019 / 2020',
-    motor:   '1.0 MPI Flex 82cv',
-    cambio:  'Manual 5 marchas',
-    chassis: '9BWZZZ377VT004251'
-  },
-
-  categorias: [
-    { id: 'acc-pastilha', nome: 'Pastilha de Freio Dianteira', icon: () => ICONS.disc,      sub: 'Dianteira / Traseira', count: 12 },
-    { id: 'acc-disco',    nome: 'Disco de Freio Dianteiro',    icon: () => ICONS.disc,      sub: 'Dianteiro / Traseiro', count: 8  },
-    { id: 'acc-vela',     nome: 'Vela de Ignição',             icon: () => ICONS.zap,       sub: 'Simples / Iridium',   count: 9  },
-    { id: 'acc-cabo',     nome: 'Cabo de Vela — Kit Completo', icon: () => ICONS.plug,      sub: 'Kit completo',         count: 6  },
-    { id: 'acc-filtro',   nome: 'Filtro de Óleo',              icon: () => ICONS.wrench,    sub: 'Original / Premium',  count: 7  },
-    { id: 'acc-comb',     nome: 'Filtro de Combustível',       icon: () => ICONS.droplets,  sub: 'Flex',                count: 4  },
-    { id: 'acc-ar',       nome: 'Filtro de Ar',                icon: () => ICONS.wind,      sub: 'Painel / Cabine',     count: 5  },
-    { id: 'acc-amor',     nome: 'Amortecedor Dianteiro',       icon: () => ICONS.settings,  sub: 'Dianteiro / Traseiro',count: 6  },
-  ],
-
-  equivalencias: {
-    'acc-pastilha': [
-      { marca: 'TRW',    desc: 'Pastilha de Freio Dianteira', ref: 'GDB 1497',      badges: ['original','compat','destaque'], destaque: 'Mais vendida',      estoque: 'ok',  preco: 'R$ 87,50'  },
-      { marca: 'Bosch',  desc: 'Pastilha de Freio Dianteira', ref: 'BP 714',         badges: ['premium','compat','destaque'],  destaque: 'Alta durabilidade', estoque: 'ok',  preco: 'R$ 112,00' },
-      { marca: 'Ferodo', desc: 'Pastilha de Freio Dianteira', ref: 'FDB 1678',       badges: ['original','compat'],            destaque: '',                     estoque: 'ok',  preco: 'R$ 94,90'  },
-      { marca: 'Jurid',  desc: 'Pastilha de Freio Dianteira', ref: '573 107 J',      badges: ['economico','compat'],           destaque: '',                     estoque: 'low', preco: 'R$ 62,00'  },
-      { marca: 'ATE',    desc: 'Pastilha de Freio Dianteira', ref: '13.0460-2891',   badges: ['premium','compat','destaque'],  destaque: 'OEM',                estoque: 'ok',  preco: 'R$ 128,00' },
-      { marca: 'Cofap',  desc: 'Pastilha de Freio Dianteira', ref: 'MPF20345',       badges: ['economico','compat'],           destaque: '',                     estoque: 'ok',  preco: 'R$ 54,90'  },
-    ],
-    'acc-disco': [
-      { marca: 'Bosch',  desc: 'Disco de Freio Dianteiro', ref: 'BD 1072',    badges: ['premium','compat'],           destaque: '',               estoque: 'ok', preco: 'R$ 198,00' },
-      { marca: 'Fremax', desc: 'Disco de Freio Dianteiro', ref: 'BD-3701',    badges: ['original','compat','destaque'],destaque: 'Mais vendido', estoque: 'ok', preco: 'R$ 142,00' },
-      { marca: 'Brembo', desc: 'Disco de Freio Dianteiro', ref: '08.9450.21', badges: ['premium','compat','destaque'], destaque: 'Performance',  estoque: 'ok', preco: 'R$ 264,00' },
-    ],
-    'acc-vela': [
-      { marca: 'NGK',   desc: 'Vela de Ignição Iridium — Kit 4 peças',  ref: 'ILFR6B',       badges: ['premium','compat','destaque'], destaque: 'Mais vendida', estoque: 'ok', preco: 'R$ 196,00', label: 'kit com 4' },
-      { marca: 'Bosch', desc: 'Vela de Ignição Platina — Kit 4 peças',  ref: 'FR 7 KPP 33+', badges: ['premium','compat'],            destaque: '',               estoque: 'ok', preco: 'R$ 168,00', label: 'kit com 4' },
-      { marca: 'Denso', desc: 'Vela de Ignição Simples — Kit 4 peças',  ref: 'W20EP-U',      badges: ['original','compat'],           destaque: '',               estoque: 'ok', preco: 'R$ 98,00',  label: 'kit com 4' },
-    ],
-    'acc-cabo': [
-      { marca: 'Labo',  desc: 'Cabo de Vela — Kit 4 cabos',        ref: 'LB-GN001', badges: ['original','compat','destaque'], destaque: 'Mais vendido', estoque: 'ok', preco: 'R$ 78,00',  label: 'kit com 4' },
-      { marca: 'Bosch', desc: 'Cabo de Vela Premium — Kit 4 cabos', ref: 'B 915',    badges: ['premium','compat'],             destaque: '',               estoque: 'ok', preco: 'R$ 112,00', label: 'kit com 4' },
-    ]
-  }
-};
+// const BuscaModel = {
+//
+//   veiculo: {
+//     modelo:  'Volkswagen Gol 1.0',
+//     ano:     '2019 / 2020',
+//     motor:   '1.0 MPI Flex 82cv',
+//     cambio:  'Manual 5 marchas',
+//     chassis: '9BWZZZ377VT004251'
+//   },
+//
+//   categorias: [
+//     { id: 'acc-pastilha', nome: 'Pastilha de Freio Dianteira', icon: '🛑', sub: 'Dianteira / Traseira', count: 12 },
+//     { id: 'acc-disco',    nome: 'Disco de Freio Dianteiro',    icon: '⭕', sub: 'Dianteiro / Traseiro', count: 8  },
+//     { id: 'acc-vela',     nome: 'Vela de Ignição',             icon: '⚡', sub: 'Simples / Iridium',   count: 9  },
+//     { id: 'acc-cabo',     nome: 'Cabo de Vela — Kit Completo', icon: '🔌', sub: 'Kit completo',         count: 6  },
+//     { id: 'acc-filtro',   nome: 'Filtro de Óleo',              icon: '🔧', sub: 'Original / Premium',  count: 7  },
+//     { id: 'acc-comb',     nome: 'Filtro de Combustível',       icon: '💧', sub: 'Flex',                count: 4  },
+//     { id: 'acc-ar',       nome: 'Filtro de Ar',                icon: '🌬', sub: 'Painel / Cabine',     count: 5  },
+//     { id: 'acc-amor',     nome: 'Amortecedor Dianteiro',       icon: '🔩', sub: 'Dianteiro / Traseiro',count: 6  },
+//   ],
+//
+//   equivalencias: {
+//     'acc-pastilha': [
+//       { marca: 'TRW',    desc: 'Pastilha de Freio Dianteira', ref: 'GDB 1497',      badges: ['original','compat','destaque'], destaque: '⭐ Mais vendida',      estoque: 'ok',  preco: 'R$ 87,50'  },
+//       { marca: 'Bosch',  desc: 'Pastilha de Freio Dianteira', ref: 'BP 714',         badges: ['premium','compat','destaque'],  destaque: '🔝 Alta durabilidade', estoque: 'ok',  preco: 'R$ 112,00' },
+//       { marca: 'Ferodo', desc: 'Pastilha de Freio Dianteira', ref: 'FDB 1678',       badges: ['original','compat'],            destaque: '',                     estoque: 'ok',  preco: 'R$ 94,90'  },
+//       { marca: 'Jurid',  desc: 'Pastilha de Freio Dianteira', ref: '573 107 J',      badges: ['economico','compat'],           destaque: '',                     estoque: 'low', preco: 'R$ 62,00'  },
+//       { marca: 'ATE',    desc: 'Pastilha de Freio Dianteira', ref: '13.0460-2891',   badges: ['premium','compat','destaque'],  destaque: '✔ OEM',                estoque: 'ok',  preco: 'R$ 128,00' },
+//       { marca: 'Cofap',  desc: 'Pastilha de Freio Dianteira', ref: 'MPF20345',       badges: ['economico','compat'],           destaque: '',                     estoque: 'ok',  preco: 'R$ 54,90'  },
+//     ],
+//     'acc-disco': [
+//       { marca: 'Bosch',  desc: 'Disco de Freio Dianteiro', ref: 'BD 1072',    badges: ['premium','compat'],           destaque: '',               estoque: 'ok', preco: 'R$ 198,00' },
+//       { marca: 'Fremax', desc: 'Disco de Freio Dianteiro', ref: 'BD-3701',    badges: ['original','compat','destaque'],destaque: '⭐ Mais vendido', estoque: 'ok', preco: 'R$ 142,00' },
+//       { marca: 'Brembo', desc: 'Disco de Freio Dianteiro', ref: '08.9450.21', badges: ['premium','compat','destaque'], destaque: '🔝 Performance', estoque: 'ok', preco: 'R$ 264,00' },
+//     ],
+//     'acc-vela': [
+//       { marca: 'NGK',   desc: 'Vela de Ignição Iridium — Kit 4 peças',  ref: 'ILFR6B',       badges: ['premium','compat','destaque'], destaque: '⭐ Mais vendida', estoque: 'ok', preco: 'R$ 196,00', label: 'kit com 4' },
+//       { marca: 'Bosch', desc: 'Vela de Ignição Platina — Kit 4 peças',  ref: 'FR 7 KPP 33+', badges: ['premium','compat'],            destaque: '',               estoque: 'ok', preco: 'R$ 168,00', label: 'kit com 4' },
+//       { marca: 'Denso', desc: 'Vela de Ignição Simples — Kit 4 peças',  ref: 'W20EP-U',      badges: ['original','compat'],           destaque: '',               estoque: 'ok', preco: 'R$ 98,00',  label: 'kit com 4' },
+//     ],
+//     'acc-cabo': [
+//       { marca: 'Labo',  desc: 'Cabo de Vela — Kit 4 cabos',        ref: 'LB-GN001', badges: ['original','compat','destaque'], destaque: '⭐ Mais vendido', estoque: 'ok', preco: 'R$ 78,00',  label: 'kit com 4' },
+//       { marca: 'Bosch', desc: 'Cabo de Vela Premium — Kit 4 cabos', ref: 'B 915',    badges: ['premium','compat'],             destaque: '',               estoque: 'ok', preco: 'R$ 112,00', label: 'kit com 4' },
+//     ]
+//   }
+// };

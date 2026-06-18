@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Year;
 import java.util.List;
 
 @RestController
@@ -30,11 +31,18 @@ public class VeiculoController {
         return ResponseEntity.ok(veiculosAtivos);
     }
 
-    @PatchMapping("/{id}/deletar")
-    public ResponseEntity<String> deletar(@PathVariable Long id) {
-        veiculoService.delete(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Veículo excluído com sucesso!");
+    @GetMapping("/modelos")
+    public ResponseEntity<List<String>> findModelosByMarca(@RequestParam String marca) {
+        // Busca no banco os modelos únicos filtrados pela marca informada
+        List<String> modelos = veiculoService.findModelosByMarca(marca);
+        return ResponseEntity.ok(modelos);
     }
 
+    @GetMapping("/anoDeFabricacao")
+    public ResponseEntity<List<Year>> findAnoByModelo(@RequestParam String modelo) {
+        // Busca no banco os modelos únicos filtrados pela marca informada
+        List<Year> anosDeFabricacao = veiculoService.findDistinctAnoFabricacaoByModelo(modelo);
+        return ResponseEntity.ok(anosDeFabricacao);
+    }
 
 }

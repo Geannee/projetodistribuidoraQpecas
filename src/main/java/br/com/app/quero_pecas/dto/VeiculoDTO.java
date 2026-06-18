@@ -1,6 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
-import br.com.app.quero_pecas.entity.TipoDeCompustivel;
+import br.com.app.quero_pecas.entity.TipoDeCombustivel;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.Year;
@@ -14,6 +14,6 @@ public interface VeiculoDTO {
             @NotBlank String chassi,
             @NotBlank String placa,
             String observacoes,
-            @NotBlank TipoDeCompustivel tipoDeCompustivel
+            @NotBlank TipoDeCombustivel tipoDeCombustivel
     ) {}
 }

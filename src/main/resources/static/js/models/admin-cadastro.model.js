@@ -82,8 +82,6 @@ const AdminCadastroModel = {
 
 
   async excluirVeiculo(id) {
-    // const lista = this.getVeiculos().filter(v => v.id !== id);
-    // localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
     try {
       const response = await fetch(`http://localhost:8080/veiculos/${id}/deletar`, {
         method: 'PATCH',
@@ -106,48 +104,71 @@ const AdminCadastroModel = {
 
   // ── PEÇAS ──────────────────────────────────────────────────────────────────
 
-  getPecas() {
-    this._seed();
+  async getPecas() {
     try {
-      return JSON.parse(localStorage.getItem(this.KEYS.pecas)) || [];
-    } catch {
+      const response = await fetch('http://localhost:8080/pecas/historico');
+
+      if (!response.ok) {
+        throw new Error('Erro ao buscar histórico de veículos');
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro no Model:", error);
       return [];
     }
   },
 
-  salvarPeca(dados) {
-    const lista = this.getPecas();
-    const novo  = {
-      id:              Date.now(),
-      sku:             dados.sku,
-      nome:            dados.nome,
-      categoria:       dados.categoria,
-      tipo:            dados.tipo,
-      compatibilidade: dados.compatibilidade,
-      preco:           parseFloat(dados.preco.replace(',', '.')),
-      estoque:         Number(dados.estoque),
-      fornecedor:      dados.fornecedor
-    };
-    lista.push(novo);
-    localStorage.setItem(this.KEYS.pecas, JSON.stringify(lista));
-    return novo;
+  async salvarPeca(dados) {
+    try {
+      const response = await fetch('http://localhost:8080/pecas/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          categoria:       dados.categoria.toUpperCase(),
+          codigo:          dados.sku.toUpperCase(),
+          descricao:       "VAZIO",
+          nome:            dados.nome,
+          estoque:         Number(dados.estoque),
+          tipoPeca:        dados.tipo.toUpperCase(),
+          precoBase:       parseFloat(dados.preco.toString().replace(',', '.')),
+          marca:           dados.fornecedor,
+          veiculosIds:     dados.compatibilidade || []
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        throw new Error(errorData || 'Erro ao cadastrar peça');
+      }
+
+      return await response.text();
+
+    } catch (error) {
+      console.error("Erro no Model (Peças):", error);
+      throw error;
+    }
   },
 
-  atualizarPeca(id, dados) {
-    const lista = this.getPecas().map(p =>
-      p.id === id
-        ? { ...p, sku: dados.sku, nome: dados.nome, categoria: dados.categoria, tipo: dados.tipo, compatibilidade: dados.compatibilidade, preco: parseFloat(dados.preco.replace(',', '.')), estoque: Number(dados.estoque), fornecedor: dados.fornecedor }
-        : p
-    );
-    localStorage.setItem(this.KEYS.pecas, JSON.stringify(lista));
+  async excluirPeca(id) {
+    try {
+      const response = await fetch(`http://localhost:8080/pecas/${id}/deletar`, {
+        method: 'PATCH',
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao excluir a peça no servidor');
+      }
+
+    } catch (error) {
+      console.error("Ops! Algo deu errado:", error);
+      throw error;
+    }
   },
 
-  excluirPeca(id) {
-    const lista = this.getPecas().filter(p => p.id !== id);
-    localStorage.setItem(this.KEYS.pecas, JSON.stringify(lista));
-  },
-
-  skuExiste(sku, excludeId = null) {
-    return this.getPecas().some(p => p.sku.toLowerCase() === sku.toLowerCase() && p.id !== excludeId);
-  }
+  async skuExiste(sku) {
+    const lista = await this.getPecas();
+    return lista.some(p => p.codigo?.toLowerCase() === sku?.toLowerCase());  }
 };

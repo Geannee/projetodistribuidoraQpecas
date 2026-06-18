@@ -4,12 +4,6 @@ import br.com.app.quero_pecas.dto.VeiculoDTO;
 import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
 import jakarta.transaction.Transactional;
-import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
-import br.com.app.quero_pecas.entity.Peca;
-import br.com.app.quero_pecas.entity.Veiculo;
-import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
-import br.com.app.quero_pecas.repository.VeiculoRepository;
-import br.com.app.quero_pecas.utils.PlacaNaoEncontradaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +32,7 @@ public class VeiculoService {
         veiculo.setChassi(dados.chassi() != null ? dados.chassi().toUpperCase() : null);
         veiculo.setPlaca(dados.placa() != null ? dados.placa().toUpperCase() : null);
         veiculo.setObservacoes(dados.observacoes());
-        veiculo.setTipoDeCompustivel(dados.tipoDeCompustivel());
+        veiculo.setTipoDeCombustivel(dados.tipoDeCombustivel());
         veiculo.setAtivo(true);
 
         return veiculoRepository.save(veiculo);

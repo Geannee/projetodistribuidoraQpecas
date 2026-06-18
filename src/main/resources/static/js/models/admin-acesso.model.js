@@ -6,7 +6,7 @@ const AcessoModel = {
     usuarios:  'qp_usuarios_acesso',
     historico: 'qp_historico_acesso'
   },
-
+  // TODO: Verificar se e necessario manter essa seed
   _seed() {
     if (localStorage.getItem(this.KEYS.usuarios)) return;
     const demo = [
@@ -23,12 +23,44 @@ const AcessoModel = {
     return JSON.parse(localStorage.getItem(this.KEYS.usuarios)) || [];
   },
 
-  getPendentes() {
-    return this.getUsuarios().filter(u => u.pendente && !u.recusado);
+  async getPendentes() {
+    try {
+      // Adicionando a URL completa do servidor Spring
+      const response = await fetch('http://localhost:8080/admin/usuarios/pendentes');
+
+      if (!response.ok) throw new Error('Erro ao buscar pendentes');
+
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   },
 
-  getRecusados() {
-    return this.getUsuarios().filter(u => u.recusado);
+  async getRecusados() {
+    try {
+      const response = await fetch('http://localhost:8080/admin/usuarios/reprovados');
+
+      if (!response.ok) throw new Error('Erro ao buscar usuários recusados');
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro no Model (getRecusados):", error);
+      return [];
+    }
+  },
+
+  async getAtivos() {
+    try {
+      const response = await fetch('http://localhost:8080/admin/usuarios/ativos');
+
+      if (!response.ok) throw new Error('Erro ao buscar usuários recusados');
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro no Model (getRecusados):", error);
+      return [];
+    }
   },
 
   liberarAcesso(id) {

@@ -10,13 +10,14 @@ import java.util.List;
 
 public interface UsuarioDTO {
     public record Save(
-            @NotBlank @Size(max = 14, min = 14) String cnpj,
+            @NotBlank @Size(max = 18, min = 14) String cnpj,
             @NotBlank String razaoSocial,
             @NotBlank String nomeFantasia,
             @NotBlank String representanteLegal,
             @NotBlank @Size(min = 8) String senha,
             @NotBlank @Email String email,
             TipoUsuario tipoUsuario,
+            String motivoReprovacao,
 
             EnderecoCreate endereco,
             List<TelefoneCreate> telefone

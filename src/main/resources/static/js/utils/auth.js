@@ -8,7 +8,7 @@ const Auth = {
     return sessionStorage.getItem('qp_usuario');
   },
 
-  getPerfil() {
+  getToken() {
     return sessionStorage.getItem('qp_perfil');
   },
 

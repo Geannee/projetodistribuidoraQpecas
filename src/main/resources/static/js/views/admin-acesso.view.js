@@ -21,17 +21,26 @@ const AcessoView = {
   renderBloqueados(lista) {
     const tbody = document.getElementById('tbody-bloqueados');
     const count = document.getElementById('count-bloqueados');
+
     if (!tbody) return;
     if (count) count.textContent = `${lista.length} registro${lista.length !== 1 ? 's' : ''}`;
+
     if (!lista.length) {
       tbody.innerHTML = '<tr><td colspan="5" class="empty-row">Nenhum cadastro pendente.</td></tr>';
       return;
     }
-    tbody.innerHTML = lista.map(u => `
-      <tr id="row-${u.id}">
+
+    tbody.innerHTML = lista.map(u => {
+      const id = u.idUsuario;
+
+      const enderecoFormatado = u.endereco
+          ? `${u.endereco.logradouro}, ${u.endereco.numero} - ${u.endereco.cidade}/${u.endereco.estado}`
+          : 'Endereço não informado';
+
+      return `
+      <tr id="row-${id}">
         <td>
-          <div style="font-weight:600">${u.nome}</div>
-          <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
+          <div style="font-weight:600">${u.razaoSocial}</div> <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
         </td>
         <td>${u.cnpj}</td>
         <td>${u.endereco}</td>
@@ -50,7 +59,8 @@ const AcessoView = {
           </div>
         </td>
       </tr>
-    `).join('');
+      `;
+    }).join('');
   },
 
   renderHistorico(lista) {

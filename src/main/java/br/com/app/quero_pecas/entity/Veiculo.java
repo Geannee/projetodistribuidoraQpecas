@@ -27,5 +27,5 @@ public class Veiculo {
     private boolean ativo = true;
 
     @Enumerated(EnumType.STRING)
-    private TipoDeCompustivel tipoDeCompustivel;
+    private TipoDeCombustivel tipoDeCombustivel;
 }

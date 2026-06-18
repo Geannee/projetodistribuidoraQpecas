@@ -11,6 +11,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PecaService {
@@ -33,6 +35,8 @@ public class PecaService {
         peca.setMarca(dados.marca());
         peca.setNome(dados.nome());
         peca.setPrecoBase(dados.precoBase());
+        peca.setTipoPeca(dados.tipoPeca());
+        peca.setAtivo(true);
 
         peca = pecaRepository.save(peca);
 
@@ -48,5 +52,16 @@ public class PecaService {
             pv.setVeiculo(veiculo);
             pecaVeiculoRepository.save(pv);
         }
+    }
+
+    public List<Peca> listActivePeca(){
+        return pecaRepository.findAllByAtivoTrue();
+    }
+
+    public Peca delete(Long id) {
+        Peca peca = pecaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Peça não encontrado"));
+        peca.setAtivo(false);
+        return pecaRepository.save(peca);
     }
 }

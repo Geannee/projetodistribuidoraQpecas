@@ -197,16 +197,16 @@
               <label class="form-label" for="p-tipo">Tipo *</label>
               <select class="form-input form-select" id="p-tipo">
                 <option value="">Selecione...</option>
-                <option value="Original">Original</option>
-                <option value="Premium">Premium</option>
-                <option value="Econômico">Econômico</option>
+                <option value="ORIGINAL">Original</option>
+                <option value="PREMIUM">Premium</option>
+                <option value="ECONOMICO">Econômico</option>
               </select>
             </div>
           </div>
 
           <div class="form-actions">
             <button type="button" class="btn-secondary" onclick="AdminCadastroController.limparPeca()">Limpar</button>
-            <button type="submit" class="btn-primary btn-purple">Cadastrar Peça →</button>
+            <button type="button" class="btn-primary btn-purple" onclick="AdminCadastroController.submeterPeca()">Cadastrar Peça →</button>
           </div>
         </form>
       </section>

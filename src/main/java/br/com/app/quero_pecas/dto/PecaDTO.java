@@ -1,5 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
+import br.com.app.quero_pecas.entity.TipoPeca;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +18,8 @@ public interface PecaDTO {
             @NotBlank String marca,
             @NotBlank String nome,
             @NotNull Double precoBase,
+
+            @NotNull TipoPeca tipoPeca,
 
             @NotEmpty(message = "Selecione ao menos um veículo compatível")
             List<Long> veiculosIds

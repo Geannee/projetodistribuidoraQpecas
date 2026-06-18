@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     @Autowired
     AuthService service;
+
     @PostMapping("/")
     public ResponseEntity<AuthDTO.Response> postAuth(@RequestBody @Valid AuthDTO.Request data) {
-            AuthDTO.Response usuario = service.auth(data);
-            return ResponseEntity.ok(usuario);
+        AuthDTO.Response usuario = service.auth(data);
+        return ResponseEntity.ok(usuario);
     }
 }

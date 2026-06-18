@@ -6,8 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+import java.util.Optional;
+
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
     boolean existsByChassiAndAtivoTrue(String chassi);
     boolean existsByPlacaAndAtivoTrue(String placa);
     List<Veiculo> findAllByAtivoTrue();
+   Optional<Veiculo> findByPlaca(String placa);
 }

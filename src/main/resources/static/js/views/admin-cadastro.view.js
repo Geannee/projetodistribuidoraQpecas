@@ -88,10 +88,9 @@ const AdminCadastroView = {
           <td>${p.fornecedor}</td>
           <td><strong>${preco}</strong></td>
           <td><span class="badge-estoque ${estoqueClass}">${estoqueLabel}</span></td>
-          <td>
-            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.id})">
-              Excluir
-            </button>
+          <td style="display:flex;gap:6px">
+            <button class="btn-alterar">Alterar</button>
+            <button class="btn-excluir" onclick="AdminCadastroController.excluirPeca(${p.id})">Excluir</button>
           </td>
         </tr>
       `;

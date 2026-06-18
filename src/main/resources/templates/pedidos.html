@@ -34,10 +34,7 @@
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/></svg>
         Dashboard
       </a>
-      <a href="busca.html" class="nav-item">
-        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
-        Buscar Peças
-      </a>
+      
       <a href="pedidos.html" class="nav-item active">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
         Meus Pedidos
@@ -104,15 +101,15 @@
           type="text"
           id="busca-pedido"
           class="filtro-input"
-          placeholder="🔍 Buscar por nº do pedido ou produto..."
+          placeholder="Buscar por nº do pedido ou produto..."
         />
         <select id="filtro-status" class="filtro-select">
           <option value="">Todos os status</option>
-          <option value="Em Separação">📦 Em Separação</option>
-          <option value="Em Viagem">🚚 Em Viagem</option>
-          <option value="Aguardando Pagamento">💳 Aguardando Pagamento</option>
-          <option value="Entregue">✅ Entregue</option>
-          <option value="Cancelado">❌ Cancelado</option>
+          <option value="Em Separação">Em Separação</option>
+          <option value="Em Viagem">Em Viagem</option>
+          <option value="Aguardando Pagamento">Aguardando Pagamento</option>
+          <option value="Entregue">Entregue</option>
+          <option value="Cancelado">Cancelado</option>
         </select>
       </div>
 
@@ -144,6 +141,7 @@
   </div>
 </div>
 
+<script src="../static/js/utils/icons.js"></script>
 <script src="../static/js/utils/auth.js"></script>
 <script src="../static/js/models/pedidos.model.js"></script>
 <script src="../static/js/views/pedidos.view.js"></script>

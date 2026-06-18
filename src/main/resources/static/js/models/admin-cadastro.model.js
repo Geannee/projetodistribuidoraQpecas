@@ -82,6 +82,8 @@ const AdminCadastroModel = {
 
 
   async excluirVeiculo(id) {
+    // const lista = this.getVeiculos().filter(v => v.id !== id);
+    // localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
     try {
       const response = await fetch(`http://localhost:8080/veiculos/${id}/deletar`, {
         method: 'PATCH',
@@ -168,7 +170,7 @@ const AdminCadastroModel = {
     }
   },
 
-  async skuExiste(sku) {
-    const lista = await this.getPecas();
-    return lista.some(p => p.codigo?.toLowerCase() === sku?.toLowerCase());  }
+  skuExiste(sku) {
+    return this.getPecas().some(p => p.sku.toLowerCase() === sku.toLowerCase());
+  }
 };

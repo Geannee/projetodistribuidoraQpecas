@@ -35,7 +35,7 @@ const AdminCadastroController = {
 
   async _renderListas() {
     AdminCadastroView.renderVeiculos(await AdminCadastroModel.getVeiculos());
-    AdminCadastroView.renderPecas(await AdminCadastroModel.getPecas());
+    AdminCadastroView.renderPecas(AdminCadastroModel.getPecas());
   },
 
   // ── VEÍCULO ────────────────────────────────────────────────────────────────

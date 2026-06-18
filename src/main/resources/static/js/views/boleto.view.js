@@ -16,7 +16,7 @@ const BoletoView = {
           <div>
             <div class="boleto-valor">${b.valor}</div>
             <div class="boleto-venc ${b.urgente ? 'venc-urgente' : ''}">
-              Vence: ${b.venc} ${b.urgente ? '⚠' : ''}
+              Vence: ${b.venc} ${b.urgente ? ICONS.alertTriangle : ''}
             </div>
           </div>
           <button class="btn-baixar" onclick="BoletoController.baixarBoleto('${b.num}')">↓ Baixar</button>

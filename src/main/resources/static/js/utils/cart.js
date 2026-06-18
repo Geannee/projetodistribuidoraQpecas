@@ -71,7 +71,7 @@ function addToCart(btn) {
       .replace('R$', '').replace(/\./g, '').replace(',', '.').trim()
   );
   const label  = row.querySelector('.equiv-preco .label').textContent.trim();
-  const icon   = paItem?.querySelector('.pa-icon')?.textContent?.trim() || '⚙';
+  const icon   = paItem?.querySelector('.pa-icon')?.innerHTML?.trim() || ICONS.wrench;
   const name   = paItem?.querySelector('.pa-name')?.textContent?.trim() || '';
 
   const plateEl = document.getElementById('plateDisplay');
@@ -80,7 +80,7 @@ function addToCart(btn) {
   Cart.add({ brand, ref, price, label, icon, name, vehicle });
 
   // Feedback visual no botão
-  btn.textContent         = '✓';
+  btn.innerHTML           = ICONS.check;
   btn.style.background    = 'var(--green)';
   btn.style.pointerEvents = 'none';
   setTimeout(() => {
@@ -101,7 +101,7 @@ function showCartToast(msg) {
     toast.className = 'cart-toast';
     document.body.appendChild(toast);
   }
-  toast.innerHTML = `🛒 ${msg} <a href="carrinho.html" class="toast-link">Ver carrinho →</a>`;
+  toast.innerHTML = `${msg} <a href="carrinho.html" class="toast-link">Ver carrinho →</a>`;
   toast.classList.add('show');
   clearTimeout(toast._t);
   toast._t = setTimeout(() => toast.classList.remove('show'), 3000);

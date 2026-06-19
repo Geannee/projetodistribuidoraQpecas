@@ -131,7 +131,6 @@ const BuscaView = {
     this.emptyState.style.display = 'none';
     this.resultSection.style.display = 'block';
   },
-
   /**
    * Helper para agrupar o array linear de peças por categoria
    * CORREÇÃO: Blindado contra 'categoria' nula vinda do banco

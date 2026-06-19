@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @ActiveProfiles("test")
 public class VeiculoControllerTest {
     @Autowired
@@ -75,6 +76,7 @@ public class VeiculoControllerTest {
     }
 
     @Test
+    @WithMockUser
     @DisplayName("Cenário 01: Placa válida -> retornar listas de peças")
     void buscarPecasPorPlaca_DeveRetornar200() throws Exception {
         mockMvc.perform(get("/veiculos/findByPlaca")
@@ -86,6 +88,7 @@ public class VeiculoControllerTest {
     }
 
     @Test
+    @WithMockUser
     @DisplayName("Cenário 02: Placa não encontrada -> 404 com mensagem")
     void buscarPecasPorPlaca_PlacaNaoEcontrada_DeveRetornar404() throws Exception {
         mockMvc.perform(get("/veiculos/findByPlaca")

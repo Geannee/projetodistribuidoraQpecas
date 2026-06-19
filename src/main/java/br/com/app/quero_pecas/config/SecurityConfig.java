@@ -32,7 +32,9 @@ public class SecurityConfig {
                     req.requestMatchers("/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll();
                     req.requestMatchers(
                             "/", "/index.html", "/login.html", "/admin-login.html", "/cadastro.html", // LOGIN SCREEN
-                            "/dashboard.html", "/busca-cliente.html", "/carrinho.html" // PORTAL CLIENTE
+                            "/dashboard.html", "/busca-cliente.html", "/carrinho.html", "/pedidos.html", // PORTAL CLIENTE
+
+                            "/busca.html" // PAGINA LEGADO
                     ).permitAll();
 
                     req.requestMatchers("/auth/**", "/usuarios/").permitAll();

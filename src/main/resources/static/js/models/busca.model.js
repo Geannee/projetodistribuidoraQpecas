@@ -1,6 +1,3 @@
-
-
-
 /**
  * MODEL: Gerencia as requisições assíncronas com o Back-end (Spring Boot)
  */
@@ -58,20 +55,25 @@ const BuscaModel = {
    */
   async buscarPorPlaca(placa) {
     try {
-      const response = await fetch(`${this.baseUrl}/veiculos/findByPlaca?placa=${encodeURIComponent(placa)}`);
+        const token = sessionStorage.getItem('qp_token');
 
-      // Se retornar 404, lidamos de forma limpa retornando null
-      if (response.status === 404) {
-        return null;
-      }
+        const response = await fetch(`${this.baseUrl}/veiculos/findByPlaca?placa=${encodeURIComponent(placa)}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token ? `Bearer ${token}` : ''
+            }
+        });
+        if (response.status === 404) {
+            return null;
+        }
 
-      if (!response.ok) throw new Error(`Erro HTTP ${response.status}`);
+        if (!response.ok) throw new Error(`Erro HTTP ${response.status}`);
 
-      return await response.json(); // Retorna o objeto { veiculo: {...}, pecas: [...] }
+        return await response.json();
     } catch (error) {
-      console.error('Erro no Model (buscarPorPlaca):', error);
-      // Retorna null para o controller saber que houve uma falha ou não encontrou nada
-      return null;
+        console.error('Erro no Model (buscarPorPlaca):', error);
+        return null;
     }
   }
 };

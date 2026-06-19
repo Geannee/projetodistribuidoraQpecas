@@ -59,6 +59,11 @@ const Cart = {
   }
 };
 
+// ── Funções auxiliares ────────────────────────────────────────────────────────
+function fmt(valor) {
+  return 'R$ ' + valor.toFixed(2).replace('.', ',');
+}
+
 // ── Função global: adicionar ao carrinho a partir de um botão na busca ───────
 function addToCart(btn) {
   const row    = btn.closest('.equiv-row');
@@ -89,7 +94,11 @@ function addToCart(btn) {
     btn.style.pointerEvents = '';
   }, 1800);
 
+  // Exibe o toast clássico
   showCartToast(`${brand} adicionado ao carrinho`);
+
+  // Abre e atualiza o carrinho lateral dinamicamente
+  toggleSideCart(true);
 }
 
 // ── Toast de confirmação ─────────────────────────────────────────────────────
@@ -106,6 +115,115 @@ function showCartToast(msg) {
   clearTimeout(toast._t);
   toast._t = setTimeout(() => toast.classList.remove('show'), 3000);
 }
+
+// ── Lógica de Controle do Carrinho Lateral (Drawer) ──────────────────────────
+
+function toggleSideCart(open) {
+  const drawer  = document.getElementById('sideCartDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  if (!drawer || !overlay) return;
+
+  if (open === undefined) {
+    open = !drawer.classList.contains('open');
+  }
+
+  if (open) {
+    renderDrawerCart();
+    drawer.classList.add('open');
+    overlay.classList.add('active');
+  } else {
+    drawer.classList.remove('open');
+    overlay.classList.remove('active');
+  }
+}
+
+function renderDrawerCart() {
+  const container = document.getElementById('drawerCartItems');
+  const empty     = document.getElementById('drawerCartEmpty');
+  const totalEl   = document.getElementById('drawerCartTotal');
+  if (!container || !empty || !totalEl) return;
+
+  const items = Cart.get();
+
+  if (items.length === 0) {
+    container.innerHTML = '';
+    empty.style.display = 'flex';
+    totalEl.textContent = fmt(0);
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  container.innerHTML = items.map(item => `
+    <div class="drawer-cart-item" id="dci-${item.id}">
+      <div class="dci-thumb">${item.icon || '⚙️'}</div>
+      <div class="dci-info">
+        <div class="dci-brand" title="${item.brand} — ${item.name}">${item.brand} — ${item.name}</div>
+        <div class="dci-ref" title="Ref.: ${item.ref}">Ref.: ${item.ref}</div>
+        ${item.vehicle ? `<div class="dci-compat">${item.vehicle}</div>` : ''}
+      </div>
+      <div class="dci-qty">
+        <button class="dci-qty-btn" onclick="alterarQtyDrawer('${item.id}', -1)">−</button>
+        <span class="dci-qty-num">${item.qty}</span>
+        <button class="dci-qty-btn" onclick="alterarQtyDrawer('${item.id}', 1)">+</button>
+      </div>
+      <div class="dci-price">
+        <div class="dci-price-unit">${fmt(item.price)} / ${item.label}</div>
+        <div class="dci-price-total">${fmt(item.price * item.qty)}</div>
+      </div>
+      <button class="dci-remove" onclick="removerItemDrawer('${item.id}')" title="Remover">&times;</button>
+    </div>
+  `).join('');
+
+  totalEl.textContent = fmt(Cart.total());
+}
+
+function alterarQtyDrawer(id, delta) {
+  Cart.updateQty(id, delta);
+  renderDrawerCart();
+}
+
+function removerItemDrawer(id) {
+  const el = document.getElementById('dci-' + id);
+  if (el) {
+    el.style.opacity   = '0';
+    el.style.transform = 'translateX(20px)';
+    el.style.transition= 'opacity .22s, transform .22s';
+    setTimeout(() => {
+      Cart.remove(id);
+      renderDrawerCart();
+    }, 240);
+  } else {
+    Cart.remove(id);
+    renderDrawerCart();
+  }
+}
+
+function limparCarrinhoDrawer() {
+  if (Cart.count() === 0) return;
+  if (!confirm('Deseja remover todos os itens do carrinho?')) return;
+
+  const itemsElements = document.querySelectorAll('.drawer-cart-item');
+  itemsElements.forEach((el, i) => {
+    setTimeout(() => {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateX(20px)';
+      el.style.transition= 'opacity .2s, transform .2s';
+    }, i * 60);
+  });
+
+  setTimeout(() => {
+    Cart.save([]);
+    Cart.updateBadge();
+    renderDrawerCart();
+  }, itemsElements.length * 60 + 220);
+}
+
+// Bind das funções ao objeto window para garantir acesso aos onclick inline do HTML
+window.toggleSideCart = toggleSideCart;
+window.alterarQtyDrawer = alterarQtyDrawer;
+window.removerItemDrawer = removerItemDrawer;
+window.limparCarrinhoDrawer = limparCarrinhoDrawer;
 
 // ── Inicializa badge ao carregar a página ────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => Cart.updateBadge());

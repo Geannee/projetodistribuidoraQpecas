@@ -43,11 +43,10 @@ public class  UsuarioService {
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
         usuario.setRepresentanteLegal(dados.representanteLegal());
-        usuario.setSenha(dados.senha());
         usuario.setMotivoReprovacao(dados.motivoReprovacao());
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
-
-        String senhaCriptografada = passwordEncoder.encode(dados.senha());
+        String senha = dados.senha();
+        String senhaCriptografada = passwordEncoder.encode(senha);
         usuario.setSenha(senhaCriptografada);
 
         usuario.setEmail(dados.email().toLowerCase());

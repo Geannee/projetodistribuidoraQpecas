@@ -46,6 +46,8 @@ public class UsuarioService {
         usuario.setSenha(dados.senha());
         usuario.setMotivoReprovacao(dados.motivoReprovacao());
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
+        usuario.setAtivo(true);
+        usuario.setStatus(StatusUsuario.ATIVO);
 
         String senhaCriptografada = passwordEncoder.encode(dados.senha());
         usuario.setSenha(senhaCriptografada);

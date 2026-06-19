@@ -10,14 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
+
     boolean existsByChassiAndAtivoTrue(String chassi);
+
     boolean existsByPlacaAndAtivoTrue(String placa);
+
     List<Veiculo> findAllByAtivoTrue();
-   Optional<Veiculo> findByPlaca(String placa);
 
-   @Query("SELECT DISTINCT v.modelo FROM Veiculo v WHERE LOWER(v.marca) = LOWER(:marca) ORDER BY v.modelo")
-   List<String> findDistinctModelosByMarca(@Param("marca") String marca);
+    Optional<Veiculo> findByPlaca(String placa);
 
-   @Query("SELECT DISTINCT v.anoFabricacao FROM Veiculo v WHERE LOWER(v.modelo) = LOWER(:modelo) ORDER BY v.anoFabricacao")
-   List<Year> findDistinctAnoFabricacaoByModelo(@Param("modelo") String modelo);
+    @Query("SELECT DISTINCT v.modelo FROM Veiculo v WHERE LOWER(v.marca) = LOWER(:marca) ORDER BY v.modelo")
+    List<String> findDistinctModelosByMarca(@Param("marca") String marca);
+
+    @Query("SELECT DISTINCT v.anoFabricacao FROM Veiculo v WHERE LOWER(v.modelo) = LOWER(:modelo) ORDER BY v.anoFabricacao")
+    List<Year> findDistinctAnoFabricacaoByModelo(@Param("modelo") String modelo);
 }

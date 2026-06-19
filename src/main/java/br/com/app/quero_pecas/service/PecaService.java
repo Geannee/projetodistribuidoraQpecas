@@ -1,7 +1,12 @@
 package br.com.app.quero_pecas.service;
 
+import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
+import br.com.app.quero_pecas.entity.PecaVeiculo;
+import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaRepository;
+import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
+import br.com.app.quero_pecas.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +24,7 @@ public class PecaService {
         String filtroCategoria = (categoria != null && !categoria.trim().isEmpty()) ? categoria : null;
 
         return pecaRepository.buscarPorAplicacao(filtroMarca, filtroModelo, ano, filtroCategoria);
+    }
 
     public void save(PecaDTO.Save dados) {
 

@@ -3,6 +3,7 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.PecaVeiculo;
+import br.com.app.quero_pecas.entity.TipoPeca;
 import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaRepository;
 import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
@@ -42,7 +43,7 @@ class PecaServiceTest {
     void deveSalvarPecaComSucesso() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Motor", "COD-123", "Motor V8", 5, "Ford", "Motorzão", 5000.0, List.of(1L, 2L)
+                "Motor", "COD-123", "Motor V8", 5, "Ford", "Motorzão", 5000.0, TipoPeca.ECONOMICO, List.of(1L, 2L)
         );
 
         Peca pecaSalva = new Peca();
@@ -66,7 +67,7 @@ class PecaServiceTest {
     void deveFalharPorCodigoDuplicado() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Motor", "COD-123", "Desc", 5, "Marca", "Nome", 10.0, List.of(1L)
+                "Motor", "COD-123", "Desc", 5, "Marca", "Nome", 10.0, TipoPeca.ORIGINAL, List.of(1L)
         );
 
         when(pecaRepository.existsByCodigo("COD-123")).thenReturn(true);
@@ -82,7 +83,7 @@ class PecaServiceTest {
     void deveFalharPorVeiculoNaoEncontrado() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Freio", "COD-999", "Desc", 5, "Marca", "Nome", 10.0, List.of(99L)
+                "Freio", "COD-999", "Desc", 5, "Marca", "Nome", 10.0, TipoPeca.PREMIUM, List.of(99L)
         );
 
         when(pecaRepository.existsByCodigo("COD-999")).thenReturn(false);

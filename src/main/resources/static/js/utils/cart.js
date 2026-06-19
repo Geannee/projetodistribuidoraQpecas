@@ -72,8 +72,8 @@ function addToCart(btn) {
   const brand = row.querySelector('.equiv-brand').textContent.trim();
   const ref   = row.querySelector('.equiv-ref').textContent.replace('Ref.:', '').trim();
   const price = parseFloat(
-    row.querySelector('.price').textContent
-      .replace('R$', '').replace(/\./g, '').replace(',', '.').trim()
+      row.querySelector('.price').textContent
+          .replace('R$', '').replace(/\./g, '').replace(',', '.').trim()
   );
   const label  = row.querySelector('.equiv-preco .label').textContent.trim();
   const icon   = paItem?.querySelector('.pa-icon')?.innerHTML?.trim() || ICONS.wrench;
@@ -225,5 +225,10 @@ window.alterarQtyDrawer = alterarQtyDrawer;
 window.removerItemDrawer = removerItemDrawer;
 window.limparCarrinhoDrawer = limparCarrinhoDrawer;
 
-// ── Inicializa badge ao carregar a página ────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => Cart.updateBadge());
+// ── Inicializa badge e dados do usuário ao carregar a página ──────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  Cart.updateBadge();
+  if (typeof SharedView !== 'undefined' && SharedView.preencherUsuario) {
+    SharedView.preencherUsuario();
+  }
+});

@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../static/css/dashboard-style.css"/>
-  <link rel="stylesheet" href="../static/css/pedidos-style.css"/>
+  <link rel="stylesheet" href="/css/dashboard-style.css"/>
+  <link rel="stylesheet" href="/css/pedidos-style.css"/>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <aside class="sidebar">
 
     <div class="sidebar-logo">
-      <img src="../static/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
     </div>
 
     <div class="sidebar-user">
@@ -34,7 +34,7 @@
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/></svg>
         Dashboard
       </a>
-      
+
       <a href="pedidos.html" class="nav-item active">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
         Meus Pedidos
@@ -98,10 +98,10 @@
       <!-- Filtros -->
       <div class="pedidos-filtros">
         <input
-          type="text"
-          id="busca-pedido"
-          class="filtro-input"
-          placeholder="Buscar por nº do pedido ou produto..."
+                type="text"
+                id="busca-pedido"
+                class="filtro-input"
+                placeholder="Buscar por nº do pedido ou produto..."
         />
         <select id="filtro-status" class="filtro-select">
           <option value="">Todos os status</option>
@@ -118,15 +118,15 @@
         <div class="table-wrap">
           <table class="activity-table pedidos-table">
             <thead>
-              <tr>
-                <th>Nº Pedido</th>
-                <th>Data</th>
-                <th>Itens</th>
-                <th>Total</th>
-                <th>Status</th>
-                <th>Previsão</th>
-                <th>Ação</th>
-              </tr>
+            <tr>
+              <th>Nº Pedido</th>
+              <th>Data</th>
+              <th>Itens</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Previsão</th>
+              <th>Ação</th>
+            </tr>
             </thead>
             <tbody id="pedidos-tbody"></tbody>
           </table>
@@ -141,10 +141,10 @@
   </div>
 </div>
 
-<script src="../static/js/utils/icons.js"></script>
-<script src="../static/js/utils/auth.js"></script>
-<script src="../static/js/models/pedidos.model.js"></script>
-<script src="../static/js/views/pedidos.view.js"></script>
-<script src="../static/js/controllers/pedidos.controller.js"></script>
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/models/pedidos.model.js"></script>
+<script src="/js/views/pedidos.view.js"></script>
+<script src="/js/controllers/pedidos.controller.js"></script>
 </body>
 </html>

@@ -170,7 +170,8 @@ const AdminCadastroModel = {
     }
   },
 
-  skuExiste(sku) {
-    return this.getPecas().some(p => p.sku.toLowerCase() === sku.toLowerCase());
+  async skuExiste(sku) {
+    const lista = await this.getPecas();
+    return lista.some(p => p.codigo?.toLowerCase() === sku?.toLowerCase());
   }
 };

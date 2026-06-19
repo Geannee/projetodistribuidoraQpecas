@@ -30,13 +30,20 @@ class UsuarioServiceTest {
     @InjectMocks
     private UsuarioService usuarioService;
 
+
+
     @Test
     @DisplayName("Deve salvar usuário com sucesso quando os dados forem válidos")
+
     void deveSalvarUsuarioComSucesso() {
         // Arrange: Dados válidos (CNPJ matematicamente válido para passar no Caelum Stella)
+        UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
+                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+        );
+
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
                 "20402686000154", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "senha123", "joao@email.com", TipoUsuario.MECANICO, "12345", enderecoFake, new ArrayList<>()
         );
 
         when(usuarioRepository.existsByCnpj(anyString())).thenReturn(false);
@@ -62,9 +69,13 @@ class UsuarioServiceTest {
     @DisplayName("Deve lançar exceção ao tentar salvar CNPJ já cadastrado")
     void naoDeveSalvarCnpjDuplicado() {
         // Arrange
+        UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
+                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+        );
+
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
                 "37805121000109", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "senha123", "joao@email.com", null, "", enderecoFake, new ArrayList<>()
         );
 
         when(usuarioRepository.existsByCnpj(anyString())).thenReturn(true); // Simula que já existe
@@ -81,10 +92,13 @@ class UsuarioServiceTest {
     @Test
     @DisplayName("Deve falhar ao passar um CNPJ com formato inválido (Caelum Stella)")
     void naoDeveSalvarComCnpjInvalido() {
+        UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
+                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+        );
         // Arrange: CNPJ com números repetidos (matematicamente inválido)
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
                 "11111111111111", "Mecânica Silva", "Auto Peças Silva", "João Silva",
-                "senha123", "joao@email.com", null, new ArrayList<>()
+                "senha123", "joao@email.com", null, "", enderecoFake, new ArrayList<>()
         );
 
         // Act & Assert

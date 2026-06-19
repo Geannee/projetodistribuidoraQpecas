@@ -1,8 +1,12 @@
 package br.com.app.quero_pecas.service;
 
+import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.VeiculoDTO;
+import br.com.app.quero_pecas.entity.Peca;
+import br.com.app.quero_pecas.entity.TipoDeCombustivel;
 import br.com.app.quero_pecas.entity.TipoDeCompustivel;
 import br.com.app.quero_pecas.entity.Veiculo;
+import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,11 +27,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class VeiculoServiceTest {
 
-    @Mock
-    private VeiculoRepository veiculoRepository;
-
-    @InjectMocks
-    private VeiculoService veiculoService;
+    @Mock private VeiculoRepository veiculoRepository;
+    @Mock private PecaVeiculoRepository pecaVeiculoRepository;
+    @InjectMocks private VeiculoService veiculoService;
 
     private VeiculoDTO.Save dadosDTO;
     private Veiculo veiculoExemplo;
@@ -36,7 +38,7 @@ class VeiculoServiceTest {
     void setUp() {
         dadosDTO = new VeiculoDTO.Save(
                 Year.of(2023), "Toyota", "Corolla",
-                "CHASSI123", "ABC1D23", "Nota fiscal ok", TipoDeCompustivel.FLEX
+                "CHASSI123", "ABC1D23", "Nota fiscal ok", TipoDeCombustivel.FLEX
         );
 
         veiculoExemplo = new Veiculo();
@@ -119,5 +121,30 @@ class VeiculoServiceTest {
         assertThrows(RuntimeException.class, () -> {
             veiculoService.delete(99L);
         });
+    }
+
+    @Test
+    void deveRetornarPecas_QuandoPlacaExiste() {
+        Veiculo veiculo = new Veiculo();
+        veiculo.setIdVeiculo(1L);
+        veiculo.setPlaca("ABC1234");
+        veiculo.setMarca("Honda");
+        veiculo.setModelo("Civic");
+        veiculo.setAnoFabricacao(java.time.Year.of(2020));
+
+        when(veiculoRepository.findByPlaca("ABC1234")).thenReturn(Optional.of(veiculo));
+
+        Peca peca = new Peca();
+        peca.setIdPeca(10L);
+        peca.setNome("Filtro");
+        peca.setPrecoBase(50.0F);
+
+        when(pecaVeiculoRepository.findPecasByVeiculoId(1L)).thenReturn(List.of(peca));
+
+        BuscarPorPlacaDTO.BuscarPlacaResponseDTO result = veiculoService.buscarPecasPorPlaca("ABC-1234");
+
+        assertNotNull(result);
+        assertEquals("2020", result.veiculo().ano());
+        assertFalse(result.pecas().isEmpty());
     }
 }

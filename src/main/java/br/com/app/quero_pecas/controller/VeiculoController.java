@@ -1,5 +1,6 @@
 package br.com.app.quero_pecas.controller;
 
+import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.VeiculoDTO;
 import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.service.VeiculoService;
@@ -43,6 +44,12 @@ public class VeiculoController {
         // Busca no banco os modelos únicos filtrados pela marca informada
         List<Year> anosDeFabricacao = veiculoService.findDistinctAnoFabricacaoByModelo(modelo);
         return ResponseEntity.ok(anosDeFabricacao);
+    }
+
+    @GetMapping("/findByPlaca")
+    public ResponseEntity<BuscarPorPlacaDTO.BuscarPlacaResponseDTO> findByPlaca(@RequestParam String placa) {
+        BuscarPorPlacaDTO.BuscarPlacaResponseDTO response = veiculoService.buscarPecasPorPlaca(placa);
+        return ResponseEntity.ok(response);
     }
 
 }

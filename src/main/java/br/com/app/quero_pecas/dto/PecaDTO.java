@@ -15,7 +15,7 @@ public interface PecaDTO {
             @NotBlank String codigo,
             @NotBlank String descricao,
             @NotNull @PositiveOrZero Integer estoque,
-            @NotBlank String marca,
+            @NotNull Long fabricanteId,
             @NotBlank String nome,
             @NotNull Double precoBase,
 

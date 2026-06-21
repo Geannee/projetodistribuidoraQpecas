@@ -48,7 +48,7 @@ const AdminCadastroView = {
         <td><strong>${v.placa}</strong></td>
         <td>${v.marca} ${v.modelo}</td>
         <td>${v.anoFabricacao}</td>
-        <td>${v.tipoDeCompustivel}</td>
+        <td>${v.tipoDeCombustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
         <td>
           <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.idVeiculo})">
@@ -86,7 +86,7 @@ const AdminCadastroView = {
             <!--TODO: MUDAR  ESSE TIPO DE PECA POR COMPATIBILIDADE-->
           </td>
           <td>${p.categoria}</td>
-          <td>${p.fornecedor}</td>
+          <td>${p.fabricante ? p.fabricante.nome : (p.marca || '—')}</td>
           <td><strong>${preco}</strong></td>
           <td><span class="badge-estoque ${estoqueClass}">${estoqueLabel}</span></td>
           <td>

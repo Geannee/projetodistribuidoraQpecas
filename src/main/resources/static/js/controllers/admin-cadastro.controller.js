@@ -5,6 +5,7 @@
 const AdminCadastroController = {
 
   init() {
+    Auth.checkAdmin();
     this._bindForms();
     this._renderListas();
   },
@@ -34,7 +35,34 @@ const AdminCadastroController = {
   // ── LISTAS ─────────────────────────────────────────────────────────────────
 
   async _renderListas() {
-    AdminCadastroView.renderVeiculos(await AdminCadastroModel.getVeiculos());
+    const veiculos = await AdminCadastroModel.getVeiculos();
+    AdminCadastroView.renderVeiculos(veiculos);
+
+    // Populate compatibility select dropdown
+    const selectCompatibilidade = document.getElementById('p-compatibilidade');
+    if (selectCompatibilidade) {
+      if (veiculos.length === 0) {
+        selectCompatibilidade.innerHTML = '<option value="" disabled>Nenhum veículo cadastrado. Cadastre um veículo primeiro.</option>';
+      } else {
+        selectCompatibilidade.innerHTML = veiculos.map(v => 
+          `<option value="${v.idVeiculo}">${v.marca} ${v.modelo} (${v.anoFabricacao}) - ${v.placa}</option>`
+        ).join('');
+      }
+    }
+
+    // Populate manufacturers select dropdown
+    const selectFornecedor = document.getElementById('p-fornecedor');
+    if (selectFornecedor) {
+      const fornecedores = await AdminCadastroModel.getFornecedores();
+      if (fornecedores.length === 0) {
+        selectFornecedor.innerHTML = '<option value="" disabled>Nenhum fabricante cadastrado. Cadastre um fabricante primeiro.</option>';
+      } else {
+        selectFornecedor.innerHTML = '<option value="">Selecione...</option>' + fornecedores.map(f =>
+          `<option value="${f.idFabricante}">${f.nome}</option>`
+        ).join('');
+      }
+    }
+
     AdminCadastroView.renderPecas(await AdminCadastroModel.getPecas());
   },
 
@@ -120,19 +148,23 @@ const AdminCadastroController = {
   // ── PEÇA ───────────────────────────────────────────────────────────────────
 
   async submeterPeca() {
-    const compatibilidadeTexto = document.getElementById('p-compatibilidade')?.value.trim();
+    const compatibilidadeSelect = document.getElementById('p-compatibilidade');
+    let compatibilidadeIds = [];
+    if (compatibilidadeSelect) {
+      compatibilidadeIds = Array.from(compatibilidadeSelect.selectedOptions).map(opt => Number(opt.value));
+    }
     const campos = {
       nome:            document.getElementById('p-nome')?.value.trim(),
       sku:             document.getElementById('p-sku')?.value.trim(),
-      compatibilidade: compatibilidadeTexto ? compatibilidadeTexto.split(',').map(num => Number(num.trim())) : [],
+      compatibilidade: compatibilidadeIds,
       preco:           document.getElementById('p-preco')?.value.trim(),
       estoque:         document.getElementById('p-estoque')?.value.trim(),
-      fornecedor:      document.getElementById('p-fornecedor')?.value.trim(),
+      fabricanteId:    document.getElementById('p-fornecedor')?.value,
       categoria:       document.getElementById('p-categoria')?.value,
       tipo:            document.getElementById('p-tipo')?.value
     };
 
-    const erros = this._validarPeca(campos);
+    const erros = await this._validarPeca(campos);
     if (erros.length) {
       erros.forEach(id => AdminCadastroView.marcarErro(id));
       AdminCadastroView.showToast('Preencha os campos obrigatórios.', 'error');
@@ -150,10 +182,10 @@ const AdminCadastroController = {
     const erros = [];
     if (!c.nome)            erros.push('p-nome');
     if (!c.sku)             erros.push('p-sku');
-    if (!c.compatibilidade) erros.push('p-compatibilidade');
+    if (!c.compatibilidade || c.compatibilidade.length === 0) erros.push('p-compatibilidade');
     if (!c.preco || isNaN(parseFloat(c.preco.replace(',', '.')))) erros.push('p-preco');
     if (!c.estoque || isNaN(Number(c.estoque)) || Number(c.estoque) < 0) erros.push('p-estoque');
-    if (!c.fornecedor)      erros.push('p-fornecedor');
+    if (!c.fabricanteId)    erros.push('p-fornecedor');
     if (!c.categoria)       erros.push('p-categoria');
     if (!c.tipo)            erros.push('p-tipo');
 

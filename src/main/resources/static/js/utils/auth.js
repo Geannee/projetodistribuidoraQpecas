@@ -16,26 +16,35 @@ const Auth = {
     return sessionStorage.getItem('qp_perfil');
   },
 
+  getTipo() {
+    return sessionStorage.getItem('qp_tipo');
+  },
+
   /** Redireciona para login se não houver sessão */
   check() {
-    if (!this.getUsuario()) {
-      sessionStorage.setItem('qp_usuario', 'dev@queropecas.com');
-      sessionStorage.setItem('qp_nome', 'Dev');
-      sessionStorage.setItem('qp_perfil', 'MECANICO');
-      sessionStorage.setItem('qp_token', 'dev-token');
-      sessionStorage.setItem('qp_id', '1');
+    if (!this.getUsuario() || !this.getToken()) {
+      window.location.href = 'login.html';
+    }
+  },
+
+  /** Redireciona para login administrativo se não houver sessão admin */
+  checkAdmin() {
+    if (!this.getUsuario() || !this.getToken() || this.getTipo() !== 'DISTRIBUIDOR') {
+      window.location.href = 'admin-login.html';
     }
   },
 
   /** Encerra a sessão e redireciona para login */
   logout(e) {
     if (e) e.preventDefault();
+    const isAdmin = this.getTipo() === 'DISTRIBUIDOR';
     sessionStorage.removeItem('qp_usuario');
     sessionStorage.removeItem('qp_token');
     sessionStorage.removeItem('qp_perfil');
+    sessionStorage.removeItem('qp_tipo');
     sessionStorage.removeItem('qp_nome');
     sessionStorage.removeItem('qp_id');
-    window.location.href = 'login.html';
+    window.location.href = isAdmin ? 'admin-login.html' : 'login.html';
   },
 
   /** Retorna as 2 iniciais do usuário */

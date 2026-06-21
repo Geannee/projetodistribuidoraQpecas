@@ -7,6 +7,7 @@ const AuditoriaController = {
   _porPagina: 12,
 
   init() {
+    Auth.checkAdmin();
     this._logs = AuditoriaModel.getLogs();
     AuditoriaView.renderStats(this._logs);
     AuditoriaView.renderTabela(this._logs, this._pagina, this._porPagina);

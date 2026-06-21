@@ -4,7 +4,6 @@ import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.VeiculoDTO;
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.TipoDeCombustivel;
-import br.com.app.quero_pecas.entity.TipoDeCompustivel;
 import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;

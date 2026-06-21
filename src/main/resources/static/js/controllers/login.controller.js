@@ -71,6 +71,7 @@ const LoginController = {
             sessionStorage.setItem('qp_usuario', dados.email);
             sessionStorage.setItem('qp_nome', dados.nome);
             sessionStorage.setItem('qp_perfil', dados.cnpj);
+            sessionStorage.setItem('qp_tipo', dados.tipoUsuario);
             sessionStorage.setItem('qp_id', dados.id);
 
             window.location.href = 'dashboard.html';

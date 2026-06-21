@@ -4,6 +4,8 @@ import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.PecaVeiculo;
 import br.com.app.quero_pecas.entity.Veiculo;
+import br.com.app.quero_pecas.entity.Fabricante;
+import br.com.app.quero_pecas.repository.FabricanteRepository;
 import br.com.app.quero_pecas.repository.PecaRepository;
 import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
@@ -16,6 +18,7 @@ public class PecaService {
     @Autowired private PecaRepository pecaRepository;
     @Autowired private PecaVeiculoRepository pecaVeiculoRepository;
     @Autowired private VeiculoRepository veiculoRepository;
+    @Autowired private FabricanteRepository fabricanteRepository;
 
     public List<Peca> buscarPecas(String marca, String modelo, Integer ano, String categoria) {
         // Transforma strings vazias do front em null para a query funcionar corretamente
@@ -37,7 +40,12 @@ public class PecaService {
         peca.setCodigo(dados.codigo());
         peca.setDescricao(dados.descricao());
         peca.setEstoque(dados.estoque());
-        peca.setMarca(dados.marca());
+
+        Fabricante fabricante = fabricanteRepository.findById(dados.fabricanteId())
+                .orElseThrow(() -> new RuntimeException("Fabricante com ID " + dados.fabricanteId() + " não encontrado"));
+        peca.setFabricante(fabricante);
+        peca.setMarca(fabricante.getNome());
+
         peca.setNome(dados.nome());
         peca.setPrecoBase(dados.precoBase());
         peca.setTipoPeca(dados.tipoPeca());

@@ -61,7 +61,10 @@ public class ViewController {
     public String adminAuditoria() { return "admin-auditoria"; }
 
     @GetMapping("/admin-cadastro.html")
-    public String adminCadastro() { return "admin-cadastro"; }
+    public String adminCadastro() { return "admin-veiculo"; }
+
+    @GetMapping("/admin-fornecedor.html")
+    public String adminFornecedor() { return "admin-fornecedor"; }
 
     @GetMapping("/busca-cliente.html")
     public String buscaCliente() { return "busca-cliente"; }

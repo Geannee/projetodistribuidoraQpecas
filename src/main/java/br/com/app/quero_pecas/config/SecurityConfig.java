@@ -29,13 +29,17 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
-                    req.requestMatchers("/auth/**").permitAll();
-                    req.requestMatchers("/usuarios/").permitAll();
-                    req.requestMatchers("/veiculos/**").permitAll();
-                    req.requestMatchers("/pecas/**").permitAll();
-                    req.requestMatchers("/fabricantes/**").permitAll();
-                    req.requestMatchers("/usuarios/me").authenticated();
-                    req.requestMatchers("/veiculos/findByPlaca").authenticated();
+                    req.requestMatchers("/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll();
+                    req.requestMatchers(
+                            "/", "/index.html", "/login.html", "/admin-login.html", "/cadastro.html", // LOGIN SCREEN
+                            "/dashboard.html", "/busca-cliente.html", "/carrinho.html", "/pedidos.html", // PORTAL CLIENTE
+                            "/admin-veiculo.html", "/busca-admin.html", // PORTAL ADMIN
+
+                            "/busca.html" // PAGINA LEGADO
+                    ).permitAll();
+
+                    req.requestMatchers("/auth/**", "/usuarios/").permitAll();
+                    req.requestMatchers("/veiculos/**", "/pecas/**", "/usuarios/me", "/veiculos/findByPlaca").authenticated();
                     req.anyRequest().authenticated();
                 })
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)

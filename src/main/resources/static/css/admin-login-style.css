@@ -36,9 +36,22 @@ body {
   flex-direction: column;
   padding: 48px;
 }
+
+/* Divisor ou */
+.divider {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  align-items: center;
+  gap: 14px;
+  margin: 20px 0;
+  color: var(--gray-text);
+  font-size: 13px;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
 .admin-logo { margin-bottom: 0; }

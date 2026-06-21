@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login – Quero Peças</title>
-  <link rel="stylesheet" href="../static/css/login-style.css"/>
+  <link rel="stylesheet" href="/css/login-style.css"/>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="left-inner">
 
       <div class="logo">
-        <img src="../static/images/logoqueropeças.png" alt="Quero Peças" class="login-logo-img"/>
+        <img src="/images/logoqueropeças.png" alt="Quero Peças" class="login-logo-img"/>
       </div>
 
       <div class="left-body">
@@ -54,7 +54,7 @@
       <div id="view-login">
 
         <div class="form-header">
-          <h2>Bem-vindo de volta! 👋</h2>
+          <h2>Bem-vindo de volta!</h2>
           <p>Faça login para acessar sua conta</p>
         </div>
 
@@ -96,9 +96,7 @@
         <div class="divider"><span>ou</span></div>
 
         <a href="cadastro.html" class="btn-criar">Criar nova conta</a>
-
-        <div class="ssl-badge">🔒 Acesso seguro com criptografia SSL</div>
-        <a href="index.html" class="btn-voltar-inicio">← Voltar ao início</a>
+        <a href="/" class="btn-voltar-inicio">← Voltar ao início</a>
 
       </div>
 
@@ -128,7 +126,7 @@
           </div>
 
           <div id="reset-success" class="success-msg" style="display:none;">
-            ✅ Link de redefinição enviado! Verifique sua caixa de entrada.
+            Link de redefinição enviado! Verifique sua caixa de entrada.
           </div>
 
           <div id="reset-error" class="error-msg" style="display:none;"></div>
@@ -145,8 +143,8 @@
 
 </div>
 
-<script src="../static/js/utils/icons.js"></script>
-<script src="../static/js/utils/auth.js"></script>
-<script src="../static/js/controllers/login.controller.js"></script>
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/controllers/login.controller.js"></script>
 </body>
 </html>

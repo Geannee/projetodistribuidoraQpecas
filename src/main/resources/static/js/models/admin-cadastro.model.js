@@ -62,7 +62,7 @@ const AdminCadastroModel = {
           marca: dados.marca,
           modelo: dados.modelo,
           anoFabricacao: dados.ano,
-          tipoDeCompustivel: dados.combustivel,
+          tipoDeCombustivel: dados.combustivel,
           observacoes: dados.obs || ''
         })
       });
@@ -121,6 +121,19 @@ const AdminCadastroModel = {
     }
   },
 
+  async getFornecedores() {
+    try {
+      const response = await fetch('http://localhost:8080/fabricantes/historico');
+      if (!response.ok) {
+        throw new Error('Erro ao buscar histórico de fabricantes');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Erro no Model (Fornecedores):", error);
+      return [];
+    }
+  },
+
   async salvarPeca(dados) {
     try {
       const response = await fetch('http://localhost:8080/pecas/save', {
@@ -136,7 +149,7 @@ const AdminCadastroModel = {
           estoque:         Number(dados.estoque),
           tipoPeca:        dados.tipo.toUpperCase(),
           precoBase:       parseFloat(dados.preco.toString().replace(',', '.')),
-          marca:           dados.fornecedor,
+          fabricanteId:    Number(dados.fabricanteId),
           veiculosIds:     dados.compatibilidade || []
         })
       });

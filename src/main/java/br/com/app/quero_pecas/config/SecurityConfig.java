@@ -33,6 +33,7 @@ public class SecurityConfig {
                     req.requestMatchers("/usuarios/").permitAll();
                     req.requestMatchers("/veiculos/**").permitAll();
                     req.requestMatchers("/pecas/**").permitAll();
+                    req.requestMatchers("/fabricantes/**").permitAll();
                     req.requestMatchers("/usuarios/me").authenticated();
                     req.requestMatchers("/veiculos/findByPlaca").authenticated();
                     req.anyRequest().authenticated();

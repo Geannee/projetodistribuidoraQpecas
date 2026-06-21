@@ -3,6 +3,7 @@
 const AcessoController = {
 
   init() {
+    Auth.checkAdmin();
     this._render();
   },
 

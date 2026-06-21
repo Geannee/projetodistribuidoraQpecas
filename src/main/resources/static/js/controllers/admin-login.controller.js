@@ -2,14 +2,9 @@
 
 const AdminLoginController = {
 
-  CREDENCIAIS: {
-    email: 'admin@queropecas.com',
-    senha: 'queropecas'
-  },
-
   // ── LOGIN ──────────────────────────────────────────────────────────────────
 
-  handleLogin(e) {
+  async handleLogin(e) {
     e.preventDefault();
     this._limparErros('error-msg');
 
@@ -26,24 +21,46 @@ const AdminLoginController = {
       return;
     }
 
-    if (
-      email.value.trim().toLowerCase() !== this.CREDENCIAIS.email ||
-      senha.value !== this.CREDENCIAIS.senha
-    ) {
-      email.classList.add('error');
-      senha.classList.add('error');
-      this._mostrarErro('error-msg', 'E-mail ou senha incorretos. Tente novamente.');
-      return;
-    }
-
     btn.disabled    = true;
     btn.textContent = 'Entrando...';
 
-    setTimeout(() => {
-      sessionStorage.setItem('qp_admin', 'true');
-      sessionStorage.setItem('qp_usuario', email.value.trim());
+    try {
+      const response = await fetch('http://localhost:8080/auth/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          login: email.value.trim(),
+          senha: senha.value.trim()
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('E-mail ou senha incorretos.');
+      }
+
+      const dados = await response.json();
+
+      if (dados.tipoUsuario !== 'DISTRIBUIDOR') {
+        throw new Error('Acesso negado. Apenas administradores.');
+      }
+
+      sessionStorage.setItem('qp_token', dados.token);
+      sessionStorage.setItem('qp_usuario', dados.email);
+      sessionStorage.setItem('qp_nome', dados.nome);
+      sessionStorage.setItem('qp_perfil', dados.cnpj);
+      sessionStorage.setItem('qp_tipo', dados.tipoUsuario);
+      sessionStorage.setItem('qp_id', dados.id);
+
       window.location.href = 'admin-veiculo.html';
-    }, 700);
+    } catch (error) {
+      email.classList.add('error');
+      senha.classList.add('error');
+      this._mostrarErro('error-msg', error.message || 'Erro ao conectar com o servidor.');
+      btn.disabled    = false;
+      btn.textContent = 'Entrar';
+    }
   },
 
   // ── REDEFINIÇÃO DE SENHA ───────────────────────────────────────────────────

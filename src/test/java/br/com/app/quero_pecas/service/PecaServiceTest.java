@@ -8,6 +8,8 @@ import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaRepository;
 import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
+import br.com.app.quero_pecas.entity.Fabricante;
+import br.com.app.quero_pecas.repository.FabricanteRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,6 +37,9 @@ class PecaServiceTest {
     @Mock
     private VeiculoRepository veiculoRepository;
 
+    @Mock
+    private FabricanteRepository fabricanteRepository;
+
     @InjectMocks
     private PecaService pecaService;
 
@@ -43,13 +48,16 @@ class PecaServiceTest {
     void deveSalvarPecaComSucesso() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Motor", "COD-123", "Motor V8", 5, "Ford", "Motorzão", 5000.0, TipoPeca.ECONOMICO, List.of(1L, 2L)
+                "Motor", "COD-123", "Motor V8", 5, 1L, "Motorzão", 5000.0, TipoPeca.ECONOMICO, List.of(1L, 2L)
         );
 
         Peca pecaSalva = new Peca();
         pecaSalva.setIdPeca(100L);
 
+        Fabricante fabricante = new Fabricante(1L, "12345678000199", "Bosch");
+
         when(pecaRepository.existsByCodigo("COD-123")).thenReturn(false);
+        when(fabricanteRepository.findById(1L)).thenReturn(Optional.of(fabricante));
         when(pecaRepository.save(any(Peca.class))).thenReturn(pecaSalva); // Simula o retorno do ID
         when(veiculoRepository.findById(anyLong())).thenReturn(Optional.of(new Veiculo()));
 
@@ -67,7 +75,7 @@ class PecaServiceTest {
     void deveFalharPorCodigoDuplicado() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Motor", "COD-123", "Desc", 5, "Marca", "Nome", 10.0, TipoPeca.ORIGINAL, List.of(1L)
+                "Motor", "COD-123", "Desc", 5, 1L, "Nome", 10.0, TipoPeca.ORIGINAL, List.of(1L)
         );
 
         when(pecaRepository.existsByCodigo("COD-123")).thenReturn(true);
@@ -83,10 +91,13 @@ class PecaServiceTest {
     void deveFalharPorVeiculoNaoEncontrado() {
         // Arrange
         PecaDTO.Save dto = new PecaDTO.Save(
-                "Freio", "COD-999", "Desc", 5, "Marca", "Nome", 10.0, TipoPeca.PREMIUM, List.of(99L)
+                "Freio", "COD-999", "Desc", 5, 1L, "Nome", 10.0, TipoPeca.PREMIUM, List.of(99L)
         );
 
+        Fabricante fabricante = new Fabricante(1L, "12345678000199", "Bosch");
+
         when(pecaRepository.existsByCodigo("COD-999")).thenReturn(false);
+        when(fabricanteRepository.findById(1L)).thenReturn(Optional.of(fabricante));
         when(pecaRepository.save(any(Peca.class))).thenReturn(new Peca());
         when(veiculoRepository.findById(99L)).thenReturn(Optional.empty()); // Simula veículo inexistente
 

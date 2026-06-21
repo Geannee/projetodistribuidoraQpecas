@@ -52,25 +52,21 @@
 
       <!-- ── TELA DE LOGIN ── -->
       <div id="view-login">
-        <div class="admin-form-header">
-          <div class="admin-avatar">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-            </svg>
-          </div>
-          <h2>Acesso Administrativo</h2>
-          <p>Insira suas credenciais para entrar no painel</p>
+
+        <div class="form-header">
+          <h2>Bem-vindo de volta!</h2>
+          <p>Faça login para acessar sua conta</p>
         </div>
 
-        <form id="form-login" novalidate onsubmit="AdminLoginController.handleLogin(event)">
-
+        <!-- Formulário -->
+        <form id="login-form" onsubmit="handleLogin(event)">
           <div class="field-group">
-            <label class="field-label">E-mail do administrador</label>
+            <label class="field-label">E-mail ou CNPJ</label>
             <input
               class="field-input"
-              id="admin-email"
-              type="email"
-              placeholder="admin@queropecas.com"
+              id="email"
+              type="text"
+              placeholder="empresa@exemplo.com.br"
               autocomplete="username"
             />
           </div>
@@ -80,29 +76,31 @@
             <div class="input-wrap">
               <input
                 class="field-input"
-                id="admin-senha"
+                id="senha"
                 type="password"
                 placeholder="••••••••••"
                 autocomplete="current-password"
               />
-              <button type="button" class="btn-toggle-pw" onclick="AdminLoginController.toggleSenha()" aria-label="Mostrar senha">👁</button>
+              <button type="button" class="btn-toggle-pw" onclick="togglePassword()" aria-label="Mostrar senha">
+                👁
+              </button>
             </div>
-            <a href="#" class="link-esqueci" onclick="AdminLoginController.mostrarReset(event)">Esqueci minha senha →</a>
+            <a href="#" class="link-esqueci" onclick="mostrarReset(event)">Esqueci minha senha →</a>
           </div>
 
           <div id="error-msg" class="error-msg" style="display:none;"></div>
 
-          <button class="btn-entrar" type="submit" id="btn-entrar">Entrar no painel →</button>
-
+          <button class="btn-entrar" type="submit" id="btn-entrar">Entrar na plataforma →</button>
         </form>
-
         <a href="/" class="btn-voltar-inicio">← Voltar ao início</a>
+
       </div>
 
       <!-- ── TELA DE REDEFINIÇÃO ── -->
       <div id="view-reset" style="display:none;">
-        <div class="admin-form-header">
-          <div class="admin-avatar admin-avatar-reset">
+
+        <div class="form-header reset-header">
+          <div class="reset-avatar">
             <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
               <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zM12 17a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 1 1 6.2 0v2z"/>
             </svg>
@@ -111,15 +109,14 @@
           <p>Informe seu e-mail e enviaremos um link de redefinição</p>
         </div>
 
-        <form id="form-reset" novalidate onsubmit="AdminLoginController.handleReset(event)">
-
+        <form id="form-reset" novalidate onsubmit="handleReset(event)">
           <div class="field-group">
-            <label class="field-label">E-mail do administrador</label>
+            <label class="field-label">E-mail da conta</label>
             <input
               class="field-input"
               id="reset-email"
               type="email"
-              placeholder="admin@queropecas.com.br"
+              placeholder="empresa@exemplo.com.br"
               autocomplete="email"
             />
           </div>
@@ -131,17 +128,18 @@
           <div id="reset-error" class="error-msg" style="display:none;"></div>
 
           <button class="btn-entrar" type="submit" id="btn-reset">Enviar link de redefinição →</button>
-
         </form>
 
-        <a href="#" class="btn-voltar-login" onclick="AdminLoginController.mostrarLogin(event)">← Voltar ao login</a>
+        <a href="#" class="btn-voltar-login" onclick="mostrarLogin(event)">← Voltar ao login</a>
+
       </div>
 
     </div>
   </div>
 
 </div>
-
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
 <script src="/js/controllers/admin-login.controller.js"></script>
 </body>
 </html>

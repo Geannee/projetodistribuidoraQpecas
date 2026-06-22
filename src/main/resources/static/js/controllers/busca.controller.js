@@ -18,6 +18,7 @@ const BuscaController = {
         const modelos = await BuscaModel.obterModelosPorMarca(marcaSelecionada);
         BuscaView.popularModelos(modelos);
     },
+
     async lidarComMudancaModelo() {
         const modeloSelecionado = BuscaView.selectModelo.value;
 

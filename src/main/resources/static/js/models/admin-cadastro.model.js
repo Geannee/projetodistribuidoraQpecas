@@ -68,7 +68,7 @@ const AdminCadastroModel = {
           marca: dados.marca,
           modelo: dados.modelo,
           anoFabricacao: dados.ano,
-          tipoDeCombustivel: dados.combustivel,
+          tipoDeCombustivel: dados.combustivel.toUpperCase(),
           observacoes: dados.obs || ''
         })
       });

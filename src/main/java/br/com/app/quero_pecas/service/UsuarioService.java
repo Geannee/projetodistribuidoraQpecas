@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService {
+public class  UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -43,13 +43,10 @@ public class UsuarioService {
         usuario.setRazaoSocial(dados.razaoSocial());
         usuario.setNomeFantasia(dados.nomeFantasia());
         usuario.setRepresentanteLegal(dados.representanteLegal());
-        usuario.setSenha(dados.senha());
         usuario.setMotivoReprovacao(dados.motivoReprovacao());
         usuario.setTipoUsuario(TipoUsuario.MECANICO);
-        usuario.setAtivo(true);
-        usuario.setStatus(StatusUsuario.ATIVO);
-
-        String senhaCriptografada = passwordEncoder.encode(dados.senha());
+        String senha = dados.senha();
+        String senhaCriptografada = passwordEncoder.encode(senha);
         usuario.setSenha(senhaCriptografada);
 
         usuario.setEmail(dados.email().toLowerCase());

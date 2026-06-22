@@ -11,15 +11,17 @@ import lombok.Setter;
 public class Peca {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPeca;
-
+    private String codigo;
     private String descricao;
     private int estoque;
     private String marca;
     private String nome;
-    private String codigo;
-    private float precoBase;
+    private String categoria;
+    private double precoBase;
+    private TipoPeca tipoPeca;
+    private boolean ativo;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
 }

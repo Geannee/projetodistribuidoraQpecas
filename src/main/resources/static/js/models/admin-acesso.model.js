@@ -25,8 +25,17 @@ const AcessoModel = {
 
   async getPendentes() {
     try {
-      // Adicionando a URL completa do servidor Spring
-      const response = await fetch('http://localhost:8080/admin/usuarios/pendentes');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/admin/usuarios/pendentes', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
 
       if (!response.ok) throw new Error('Erro ao buscar pendentes');
 
@@ -39,7 +48,17 @@ const AcessoModel = {
 
   async getRecusados() {
     try {
-      const response = await fetch('http://localhost:8080/admin/usuarios/reprovados');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/admin/usuarios/reprovados', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
 
       if (!response.ok) throw new Error('Erro ao buscar usuários recusados');
 
@@ -52,7 +71,17 @@ const AcessoModel = {
 
   async getAtivos() {
     try {
-      const response = await fetch('http://localhost:8080/admin/usuarios/ativos');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/admin/usuarios/ativos', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
 
       if (!response.ok) throw new Error('Erro ao buscar usuários recusados');
 

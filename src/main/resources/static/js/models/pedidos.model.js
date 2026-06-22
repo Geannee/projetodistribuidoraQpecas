@@ -15,12 +15,11 @@ const PedidosModel = {
   },
 
   statusIcone: {
-    'AGUARDANDO PAGAMENTO': '💳',
-    'EM SEPARAÇÃO':         '📦',
-    'EM VIAGEM':            '🚚',
-    'ENTREGUE':             '✅',
-    'CANCELADO':            '❌',
-    'PAGO':                 '💰'
+    'Em Separação':         () => ICONS.package,
+    'Em Viagem':            () => ICONS.truck,
+    'Aguardando Pagamento': () => ICONS.creditCard,
+    'Entregue':             () => ICONS.checkCircle,
+    'Cancelado':            () => ICONS.xCircle,
   },
 
   statusClasse: {

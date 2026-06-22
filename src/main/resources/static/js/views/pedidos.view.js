@@ -1,44 +1,30 @@
 const PedidosView = {
 
   renderTabela(tbody, pedidos) {
-    tbody.innerHTML = pedidos.map(p => {
-      const dataFormatada = new Date(p.data).toLocaleDateString('pt-BR');
-      const totalFormatado = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.valorTotal);
-
-      // Cria a string legível para a coluna de Itens
-      const textoItens = p.itens && p.itens.length > 0
-          ? p.itens.map(i => `${i.quantidade}x ${i.nomePeca}`).join(', ')
-          : 'Sem itens';
-
-      const statusChave = p.status ? p.status.toUpperCase() : 'EM SEPARAÇÃO';
-      const icone = PedidosModel.statusIcone[statusChave] || '📄';
-      const classeStatus = PedidosModel.statusClasse[statusChave] || 'status-separacao';
-
-      return `
-        <tr class="pedido-row" id="row-${p.idPedido}">
-          <td class="pedido-id">${p.numeroPedido}</td>
-          <td>${dataFormatada}</td>
-          <td class="pedido-itens" title="${textoItens}">${textoItens}</td>
-          <td class="pedido-total">${totalFormatado}</td>
-          <td>
-            <span class="badge-status ${classeStatus}">
-              ${icone} ${p.status}
-            </span>
-          </td>
-          <td class="pedido-previsao">—</td>
-          <td>
-            <button class="btn-detalhes" id="btn-${p.idPedido}" onclick="PedidosController.toggleDetalhe(${p.idPedido})">
-              Ver detalhes ▾
-            </button>
-          </td>
-        </tr>
-        <tr class="detalhe-row" id="detalhe-${p.idPedido}">
-          <td colspan="7" class="detalhe-td">
-            ${this.renderPainel(p, dataFormatada, totalFormatado)}
-          </td>
-        </tr>
-      `;
-    }).join('');
+    tbody.innerHTML = pedidos.map(p => `
+      <tr class="pedido-row" id="row-${p.id.replace('#','')}">
+        <td class="pedido-id">${p.id}</td>
+        <td>${p.data}</td>
+        <td class="pedido-itens">${p.itens}</td>
+        <td class="pedido-total">${p.total}</td>
+        <td>
+          <span class="badge-status ${p.statusClass}">
+            ${(PedidosModel.statusIcone[p.status] || (() => ''))() } ${p.status}
+          </span>
+        </td>
+        <td class="pedido-previsao">${p.previsao !== '—' ? ICONS.calendar + ' ' + p.previsao : '—'}</td>
+        <td>
+          <button class="btn-detalhes" id="btn-${p.id.replace('#','')}" onclick="PedidosController.toggleDetalhe('${p.id}')">
+            Ver detalhes ▾
+          </button>
+        </td>
+      </tr>
+      <tr class="detalhe-row" id="detalhe-${p.id.replace('#','')}">
+        <td colspan="7" class="detalhe-td">
+          ${this.renderPainel(p)}
+        </td>
+      </tr>
+    `).join('');
   },
 
   renderPainel(p, dataFormatada, totalFormatado) {
@@ -48,40 +34,40 @@ const PedidosView = {
     const atual = idxMap[statusChave] ?? 0;
 
     const timeline = passos.map((passo, i) => `
-      <div class="tl-passo ${i <= atual && statusChave !== 'CANCELADO' ? 'tl-ativo' : ''}">
-        <div class="tl-bolinha">${i <= atual && statusChave !== 'CANCELADO' ? '✓' : i + 1}</div>
+      <div class="tl-passo ${i <= atual && p.status !== 'Cancelado' ? 'tl-ativo' : ''}">
+        <div class="tl-bolinha">${i <= atual && p.status !== 'Cancelado' ? ICONS.check : i + 1}</div>
         <span>${passo}</span>
       </div>
     `).join('');
 
     const statusOpcoes = Object.keys(PedidosModel.statusIcone).map(s =>
-        `<option value="${s}" ${s === statusChave ? 'selected' : ''}>${PedidosModel.statusIcone[s]} ${s}</option>`
+      `<option value="${s}" ${s === p.status ? 'selected' : ''}>${s}</option>`
     ).join('');
 
     const itensList = p.itens && p.itens.length > 0 ? p.itens.map(i => `
       <div class="orcamento-item">
-        <span class="oi-icone">⚙️</span>
-        <span class="oi-nome">${i.quantidade}x ${i.nomePeca}</span>
+        <span class="oi-icone">${ICONS.wrench}</span>
+        <span class="oi-nome">${i.trim()}</span>
       </div>
     `).join('') : '<div class="orcamento-item">Nenhum item associado</div>';
 
     return `
       <div class="detalhe-painel">
         <div class="dp-secao">
-          <div class="dp-secao-titulo">📋 Orçamento</div>
+          <div class="dp-secao-titulo">${ICONS.clipboardList} Orçamento</div>
           <div class="orcamento-itens">${itensList}</div>
           <div class="orcamento-total">
             <span>Total do pedido</span>
             <strong>${totalFormatado}</strong>
           </div>
           <div class="orcamento-meta">
-            <span>📅 Data: <strong>${dataFormatada}</strong></span>
-            <span>🚚 Previsão: <strong>A definir</strong></span>
+            <span>${ICONS.calendar} Data: <strong>${p.data}</strong></span>
+            <span>${ICONS.truck} Previsão: <strong>${p.previsao !== '—' ? p.previsao : 'A definir'}</strong></span>
           </div>
         </div>
 
         <div class="dp-secao">
-          <div class="dp-secao-titulo">🔄 Status do Pedido</div>
+          <div class="dp-secao-titulo">${ICONS.rotateCcw} Status do Pedido</div>
           <div class="status-selector">
             <label class="status-sel-label">Alterar status:</label>
             <select class="status-select" id="sel-${p.idPedido}"
@@ -89,10 +75,10 @@ const PedidosView = {
               ${statusOpcoes}
             </select>
           </div>
-          <div class="timeline" id="tl-${p.idPedido}">
-            ${statusChave === 'CANCELADO'
-        ? '<div class="tl-cancelado-msg">❌ Este pedido foi cancelado.</div>'
-        : timeline}
+          <div class="timeline" id="tl-${p.id.replace('#','')}">
+            ${p.status === 'Cancelado'
+              ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.</div>`
+              : timeline}
           </div>
         </div>
       </div>`;

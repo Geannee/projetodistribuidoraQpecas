@@ -12,6 +12,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,9 +27,10 @@ class UsuarioServiceTest {
 
     @InjectMocks
     private UsuarioService usuarioService;
-
     @Mock
     private UsuarioRepository usuarioRepository;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @Test
     @DisplayName("Deve salvar um usuário corretamente convertendo DTO para Entidade")

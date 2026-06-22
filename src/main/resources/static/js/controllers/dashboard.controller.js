@@ -1,14 +1,34 @@
 // ── DASHBOARD CONTROLLER ──────────────────────────────────────────────────────
-// Orquestra a página do dashboard: usuário, tabela de atividades
-// ─────────────────────────────────────────────────────────────────────────────
-
 const DashboardController = {
 
   init() {
-    Auth.check();
-    SharedView.preencherUsuario();
+    // 1º Bloqueia o acesso se o usuário não estiver logado de verdade
+    if (!this.verificarSessao()) {
+      window.location.href = 'login.html';
+      return; // Para a execução aqui
+    }
+
+    // 2º Se passou na verificação, renderiza os dados reais do usuário
+    if (typeof SharedView !== 'undefined' && SharedView.preencherUsuario) {
+      SharedView.preencherUsuario();
+    }
     this.renderSaudacao();
     this.renderTabela();
+  },
+
+  verificarSessao() {
+    const usuario    = Auth.getUsuario();
+    const token      = Auth.getToken();
+    const perfil     = Auth.getPerfil();
+    const navActions = document.getElementById('nav-actions');
+
+    // Se não tiver token ou usuário real, retorna falso para o init barrar o acesso
+    if (!token || !usuario) return false;
+
+    if (navActions) {
+      HomeView.renderNavLogado(navActions, usuario, perfil);
+    }
+    return true;
   },
 
   renderSaudacao() {

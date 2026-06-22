@@ -5,7 +5,7 @@ const AdminFornecedorController = {
   _toastTimer: null,
 
   init() {
-    Auth.checkAdmin();
+    if (!Auth.checkAdmin()) return;
     this.renderizarTabela();
     this.registrarEventos();
   },

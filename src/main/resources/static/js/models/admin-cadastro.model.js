@@ -30,7 +30,17 @@ const AdminCadastroModel = {
 
   async getVeiculos() {
     try {
-      const response = await fetch('http://localhost:8080/veiculos/historico');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/veiculos/historico', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
 
       if (!response.ok) {
         throw new Error('Erro ao buscar histórico de veículos');
@@ -41,21 +51,17 @@ const AdminCadastroModel = {
       console.error("Erro no Model:", error);
       return [];
     }
-    // try {
-    //   return JSON.parse(localStorage.getItem(this.KEYS.veiculos)) || [];
-    // } catch {
-    //   return [];
-    // }
   },
 
   async salvarVeiculo(dados) {
     try {
+      const token = sessionStorage.getItem('qp_token');
       const response = await fetch('http://localhost:8080/veiculos/cadastro', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': token ? `Bearer ${token}` : ''
         },
-        // Transformamos o objeto JS no JSON que o seu VeiculoDTO espera
         body: JSON.stringify({
           placa: dados.placa.toUpperCase(),
           chassi: dados.chassi.toUpperCase(),
@@ -67,27 +73,38 @@ const AdminCadastroModel = {
         })
       });
 
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
+
       if (!response.ok) {
         const errorData = await response.text();
         throw new Error(errorData || 'Erro ao cadastrar veículo');
       }
 
-      // Se o Java retorna texto puro, use .text() em vez de .json()
       return await response.text();
     } catch (error) {
       console.error("Erro no Model:", error);
-      throw error; // Repassa o erro para o Controller exibir um alerta
+      throw error;
     }
   },
 
 
   async excluirVeiculo(id) {
-    // const lista = this.getVeiculos().filter(v => v.id !== id);
-    // localStorage.setItem(this.KEYS.veiculos, JSON.stringify(lista));
     try {
+      const token = sessionStorage.getItem('qp_token');
       const response = await fetch(`http://localhost:8080/veiculos/${id}/deletar`, {
         method: 'PATCH',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
       });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
 
       if (!response.ok) {
         throw new Error('Erro ao excluir o veículo no servidor');
@@ -108,10 +125,20 @@ const AdminCadastroModel = {
 
   async getPecas() {
     try {
-      const response = await fetch('http://localhost:8080/pecas/historico');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/pecas/historico', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
 
       if (!response.ok) {
-        throw new Error('Erro ao buscar histórico de veículos');
+        throw new Error('Erro ao buscar histórico de peças');
       }
 
       return await response.json();
@@ -136,10 +163,12 @@ const AdminCadastroModel = {
 
   async salvarPeca(dados) {
     try {
+      const token = sessionStorage.getItem('qp_token');
       const response = await fetch('http://localhost:8080/pecas/save', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': token ? `Bearer ${token}` : ''
         },
         body: JSON.stringify({
           categoria:       dados.categoria.toUpperCase(),
@@ -153,6 +182,11 @@ const AdminCadastroModel = {
           veiculosIds:     dados.compatibilidade || []
         })
       });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
 
       if (!response.ok) {
         const errorData = await response.text();
@@ -169,9 +203,18 @@ const AdminCadastroModel = {
 
   async excluirPeca(id) {
     try {
+      const token = sessionStorage.getItem('qp_token');
       const response = await fetch(`http://localhost:8080/pecas/${id}/deletar`, {
         method: 'PATCH',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
       });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
 
       if (!response.ok) {
         throw new Error('Erro ao excluir a peça no servidor');

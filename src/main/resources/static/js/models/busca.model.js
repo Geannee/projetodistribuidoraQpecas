@@ -9,7 +9,16 @@ const BuscaModel = {
    */
   async obterModelosPorMarca(marca) {
     try {
-      const response = await fetch(`${this.baseUrl}/veiculos/modelos?marca=${encodeURIComponent(marca)}`);
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch(`${this.baseUrl}/veiculos/modelos?marca=${encodeURIComponent(marca)}`, {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
       if (!response.ok) throw new Error('Erro ao buscar modelos.');
       return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
     } catch (error) {
@@ -20,7 +29,16 @@ const BuscaModel = {
 
   async obterAnoPorModelo(modelo) {
     try {
-      const response = await fetch(`${this.baseUrl}/veiculos/anoDeFabricacao?modelo=${encodeURIComponent(modelo)}`);
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch(`${this.baseUrl}/veiculos/anoDeFabricacao?modelo=${encodeURIComponent(modelo)}`, {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
       if (!response.ok) throw new Error('Erro ao buscar Ano de fabricação.');
       return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
     } catch (error) {
@@ -34,6 +52,7 @@ const BuscaModel = {
    */
   async buscarPecasInteligente(marca, modelo, ano, categoria) {
     try {
+      const token = sessionStorage.getItem('qp_token');
       // Cria dinamicamente os Query Parameters ignorando campos vazios
       const params = new URLSearchParams();
       if (marca) params.append('marca', marca);
@@ -41,7 +60,15 @@ const BuscaModel = {
       if (ano) params.append('ano', ano);
       if (categoria) params.append('categoria', categoria.toUpperCase()); // Enums do back são UPPERCASE
 
-      const response = await fetch(`${this.baseUrl}/pecas/busca-inteligente?${params.toString()}`);
+      const response = await fetch(`${this.baseUrl}/pecas/busca-inteligente?${params.toString()}`, {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
       if (!response.ok) throw new Error('Erro ao buscar peças.');
       return await response.json(); // Retorna a lista de entidades Peca
     } catch (error) {
@@ -64,6 +91,10 @@ const BuscaModel = {
               'Authorization': token ? `Bearer ${token}` : ''
             }
         });
+        if (response.status === 401) {
+            Auth.logout();
+            return null;
+        }
         if (response.status === 404) {
             return null;
         }

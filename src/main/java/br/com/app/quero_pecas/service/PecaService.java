@@ -11,6 +11,7 @@ import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -69,6 +70,51 @@ public class PecaService {
 
     public List<Peca> listActivePeca(){
         return pecaRepository.findAllByAtivoTrue();
+    }
+
+    public List<PecaVeiculo> listActivePairings() {
+        return pecaVeiculoRepository.findAllActivePairings();
+    }
+
+    @Transactional
+    public void update(Long id, PecaDTO.Save dados) {
+        Peca peca = pecaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Peça com ID " + id + " não encontrada"));
+
+        if (!peca.getCodigo().equalsIgnoreCase(dados.codigo()) && pecaRepository.existsByCodigo(dados.codigo())) {
+            throw new RuntimeException("Código da peça já cadastrado");
+        }
+
+        peca.setCategoria(dados.categoria());
+        peca.setCodigo(dados.codigo());
+        peca.setDescricao(dados.descricao());
+        peca.setEstoque(dados.estoque());
+
+        Fabricante fabricante = fabricanteRepository.findById(dados.fabricanteId())
+                .orElseThrow(() -> new RuntimeException("Fabricante com ID " + dados.fabricanteId() + " não encontrado"));
+        peca.setFabricante(fabricante);
+        peca.setMarca(fabricante.getNome());
+
+        peca.setNome(dados.nome());
+        peca.setPrecoBase(dados.precoBase());
+        peca.setTipoPeca(dados.tipoPeca());
+
+        pecaRepository.save(peca);
+
+        pecaVeiculoRepository.deleteByPecaId(peca.getIdPeca());
+
+        if (dados.veiculosIds() == null || dados.veiculosIds().isEmpty()) {
+            throw new IllegalArgumentException("Selecione ao menos um veículo compatível");
+        }
+
+        for (Long idVeiculo : dados.veiculosIds()) {
+            Veiculo veiculo = veiculoRepository.findById(idVeiculo)
+                    .orElseThrow(() -> new RuntimeException("Veículo com ID " + idVeiculo + " não encontrado"));
+            PecaVeiculo pv = new PecaVeiculo();
+            pv.setPeca(peca);
+            pv.setVeiculo(veiculo);
+            pecaVeiculoRepository.save(pv);
+        }
     }
 
     public Peca delete(Long id) {

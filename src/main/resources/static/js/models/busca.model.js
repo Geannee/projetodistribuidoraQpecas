@@ -20,7 +20,7 @@ const BuscaModel = {
         return [];
       }
       if (!response.ok) throw new Error('Erro ao buscar modelos.');
-      return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
+      return await response.json();
     } catch (error) {
       console.error('Erro no Model (obterModelosPorMarca):', error);
       return [];
@@ -40,7 +40,7 @@ const BuscaModel = {
         return [];
       }
       if (!response.ok) throw new Error('Erro ao buscar Ano de fabricação.');
-      return await response.json(); // Retorna array de strings: ["Gol", "Fox", "Golf"]
+      return await response.json();
     } catch (error) {
       console.error('Erro no Model (obterAnoPorModelo):', error);
       return [];

@@ -4,4 +4,5 @@ import br.com.app.quero_pecas.entity.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+    //Commit inicial do novo branch
 }

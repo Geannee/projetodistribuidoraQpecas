@@ -3,7 +3,7 @@
 const AcessoController = {
 
   init() {
-    Auth.checkAdmin();
+    if (!Auth.checkAdmin()) return;
     this._render();
   },
 
@@ -22,10 +22,19 @@ const AcessoController = {
     if (!confirm('Liberar o cadastro deste usuário?')) return;
 
     try {
+      const token = sessionStorage.getItem('qp_token');
       // Faz a chamada para o seu Back-end Java
       const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/aprovar`, {
-        method: 'PATCH'
+        method: 'PATCH',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
       });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
 
       if (response.ok) {
         AcessoView.showToast('Cadastro liberado com sucesso!', 'success');
@@ -65,13 +74,20 @@ const AcessoController = {
     if (!confirm(`Recusar este cadastro?\nMotivo: ${motivo}`)) return;
 
     try {
+      const token = sessionStorage.getItem('qp_token');
       const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/reprovar`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'text/plain' // Como seu Java recebe @RequestBody String
+          'Content-Type': 'text/plain', // Como seu Java recebe @RequestBody String
+          'Authorization': token ? `Bearer ${token}` : ''
         },
         body: motivo
       });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return;
+      }
 
       if (response.ok) {
         AcessoView.showToast('Cadastro recusado.', 'error');

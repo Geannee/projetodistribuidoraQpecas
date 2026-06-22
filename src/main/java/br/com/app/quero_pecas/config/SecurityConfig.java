@@ -33,12 +33,12 @@ public class SecurityConfig {
                     req.requestMatchers(
                             "/", "/index.html", "/login.html", "/admin-login.html", "/cadastro.html", // LOGIN SCREEN
                             "/dashboard.html", "/busca-cliente.html", "/carrinho.html", "/pedidos.html", // PORTAL CLIENTE
-                            "/admin-veiculo.html", "/busca-admin.html", // PORTAL ADMIN
+                            "/admin-veiculo.html", "/busca-admin.html", "/admin-fornecedor.html", "/admin-pecas.html",// PORTAL ADMIN
 
                             "/busca.html" // PAGINA LEGADO
                     ).permitAll();
 
-                    req.requestMatchers("/auth/**", "/usuarios/").permitAll();
+                    req.requestMatchers("/auth/**", "/usuarios/", "/fabricantes/**").permitAll();
                     req.requestMatchers("/veiculos/**", "/pecas/**", "/usuarios/me", "/veiculos/findByPlaca").authenticated();
                     req.anyRequest().authenticated();
                 })

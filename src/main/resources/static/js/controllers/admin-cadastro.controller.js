@@ -5,7 +5,7 @@
 const AdminCadastroController = {
 
   init() {
-    Auth.checkAdmin();
+    if (!Auth.checkAdmin()) return;
     this._bindForms();
     this._renderListas();
   },

@@ -5,7 +5,7 @@ const SolicitacoesController = {
   lista: [],
 
   init() {
-    Auth.checkAdmin();
+    if (!Auth.checkAdmin()) return;
     this.lista = SolicitacoesModel.carregar();
     this.renderizar();
     this.bindFiltros();

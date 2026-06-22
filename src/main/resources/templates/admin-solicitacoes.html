@@ -1,4 +1,4 @@
-git<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
@@ -7,8 +7,8 @@ git<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../static/css/admin-cadastro-style.css"/>
-  <link rel="stylesheet" href="../static/css/admin-solicitacoes-style.css"/>
+  <link rel="stylesheet" href="/css/admin-cadastro-style.css"/>
+  <link rel="stylesheet" href="/css/admin-solicitacoes-style.css"/>
 </head>
 <body>
 
@@ -17,16 +17,20 @@ git<!DOCTYPE html>
   <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <img src="../static/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
     </div>
     <div class="sidebar-user">
-      <div class="user-avatar">AD</div>
+      <div class="user-avatar" id="sidebar-avatar">AD</div>
       <div>
-        <div class="user-name">Admin</div>
+        <div class="user-name" id="sidebar-nome">Admin</div>
         <div class="user-role">Administrador</div>
       </div>
     </div>
     <nav class="sidebar-nav">
+      <a href="busca-admin.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        Buscar Peças
+      </a>
       <a href="admin-veiculo.html" class="nav-item">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H11a1 1 0 001-1v-1h2.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-3-3A1 1 0 0016 4H3z"/></svg>
         Cadastrar Veículo
@@ -133,10 +137,10 @@ git<!DOCTYPE html>
   </div>
 </div>
 
-<script src="../static/js/utils/auth.js"></script>
-<script src="../static/js/utils/icons.js"></script>
-<script src="../static/js/models/admin-solicitacoes.model.js"></script>
-<script src="../static/js/views/admin-solicitacoes.view.js"></script>
-<script src="../static/js/controllers/admin-solicitacoes.controller.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/utils/icons.js"></script>
+<script src="/js/models/admin-solicitacoes.model.js"></script>
+<script src="/js/views/admin-solicitacoes.view.js"></script>
+<script src="/js/controllers/admin-solicitacoes.controller.js"></script>
 </body>
 </html>

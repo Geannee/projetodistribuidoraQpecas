@@ -69,6 +69,7 @@ const AdminLoginController = {
       sessionStorage.setItem('qp_nome', dados.nome);
       sessionStorage.setItem('qp_perfil', dados.cnpj);
       sessionStorage.setItem('qp_id', dados.id);
+      sessionStorage.setItem(`qp_tipo`, dados.tipoUsuario);
 
       window.location.href = 'admin-veiculo.html'
     } catch (error) {
@@ -133,27 +134,27 @@ const AdminLoginController = {
 
 
 function selectProfile(card) {
-    AdminLoginController.selectProfile(card);
+  AdminLoginController.selectProfile(card);
 }
 
 function togglePassword() {
-    AdminLoginController.togglePassword();
+  AdminLoginController.togglePassword();
 }
 
 function handleLogin(e) {
-    AdminLoginController.handleLogin(e);
+  AdminLoginController.handleLogin(e);
 }
 
 function handleReset(e) {
-    AdminLoginController.handleReset(e);
+  AdminLoginController.handleReset(e);
 }
 
 function mostrarReset(e) {
-    AdminLoginController.mostrarReset(e);
+  AdminLoginController.mostrarReset(e);
 }
 
 function mostrarLogin(e) {
-    AdminLoginController.mostrarLogin(e);
+  AdminLoginController.mostrarLogin(e);
 }
 
 AdminLoginController.init();

@@ -24,14 +24,31 @@ const Auth = {
   check() {
     if (!this.getUsuario() || !this.getToken()) {
       window.location.href = 'login.html';
+      return false;
     }
+    return true;
   },
 
   /** Redireciona para login administrativo se não houver sessão admin */
   checkAdmin() {
     if (!this.getUsuario() || !this.getToken() || this.getTipo() !== 'DISTRIBUIDOR') {
       window.location.href = 'admin-login.html';
+      return false;
     }
+
+    const usuario = this.getUsuario();
+    const iniciais = this.getIniciais(usuario);
+    const nome = this.getNomeFormatado(usuario);
+
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+
+    set('sidebar-avatar', iniciais);
+    set('topbar-avatar',  iniciais);
+    set('sidebar-nome',   nome);
+    return true;
   },
 
   /** Encerra a sessão e redireciona para login */

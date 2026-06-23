@@ -1,0 +1,452 @@
+[
+  {
+    "marca": "FORD",
+    "modelo": "KA",
+    "anoFabricacao": 2013,
+    "chassi": "9BFO20816636001",
+    "placa": "XYZ4T51",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 1"
+  },
+  {
+    "marca": "GM",
+    "modelo": "SPIN",
+    "anoFabricacao": 2022,
+    "chassi": "9BGM80895235002",
+    "placa": "ABC3755",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 2"
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "COMPASS",
+    "anoFabricacao": 2013,
+    "chassi": "9BJE42881467003",
+    "placa": "XYZ1X62",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 3"
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "COMPASS",
+    "anoFabricacao": 2023,
+    "chassi": "9BJE95345652004",
+    "placa": "ABC9009",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 4"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "YARIS",
+    "anoFabricacao": 2019,
+    "chassi": "9BTO18543053005",
+    "placa": "XYZ8E59",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 5"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KWID",
+    "anoFabricacao": 2017,
+    "chassi": "9BRE57499037006",
+    "placa": "ABC7975",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 6"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER",
+    "anoFabricacao": 2023,
+    "chassi": "9BRE76468465007",
+    "placa": "XYZ7P98",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 7"
+  },
+  {
+    "marca": "VW",
+    "modelo": "VIRTUS",
+    "anoFabricacao": 2008,
+    "chassi": "9BVW73958565008",
+    "placa": "ABC9276",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 8"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "TORO",
+    "anoFabricacao": 2023,
+    "chassi": "9BFI47244726009",
+    "placa": "XYZ8H25",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 9"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER",
+    "anoFabricacao": 2019,
+    "chassi": "9BRE71275942010",
+    "placa": "ABC5759",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 10"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "HRV",
+    "anoFabricacao": 2013,
+    "chassi": "9BHO98394687011",
+    "placa": "XYZ4H69",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 11"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "COROLLA",
+    "anoFabricacao": 2021,
+    "chassi": "9BTO19787619012",
+    "placa": "ABC9900",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 12"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "MOBI",
+    "anoFabricacao": 2023,
+    "chassi": "9BFI52410394013",
+    "placa": "XYZ8C39",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 13"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "TORO",
+    "anoFabricacao": 2014,
+    "chassi": "9BFI39768220014",
+    "placa": "ABC6995",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 14"
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "TUCSON",
+    "anoFabricacao": 2024,
+    "chassi": "9BHY49611122015",
+    "placa": "XYZ4C10",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 15"
+  },
+  {
+    "marca": "FORD",
+    "modelo": "ECOSPORT",
+    "anoFabricacao": 2019,
+    "chassi": "9BFO73162659016",
+    "placa": "ABC8423",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 16"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "PALIO",
+    "anoFabricacao": 2011,
+    "chassi": "9BFI72277642017",
+    "placa": "XYZ6F61",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 17"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "HRV",
+    "anoFabricacao": 2022,
+    "chassi": "9BHO96020486018",
+    "placa": "ABC9223",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 18"
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "COMMANDER",
+    "anoFabricacao": 2015,
+    "chassi": "9BJE97142132019",
+    "placa": "XYZ8X65",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 19"
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "2008",
+    "anoFabricacao": 2009,
+    "chassi": "9BPE36020345020",
+    "placa": "ABC6196",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 20"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SANDERO",
+    "anoFabricacao": 2019,
+    "chassi": "9BRE80503286021",
+    "placa": "XYZ9W18",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 21"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "ARGO",
+    "anoFabricacao": 2020,
+    "chassi": "9BFI61394324022",
+    "placa": "ABC7693",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 22"
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "COMMANDER",
+    "anoFabricacao": 2010,
+    "chassi": "9BJE25769834023",
+    "placa": "XYZ2W43",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 23"
+  },
+  {
+    "marca": "VW",
+    "modelo": "FOX",
+    "anoFabricacao": 2023,
+    "chassi": "9BVW57996173024",
+    "placa": "ABC9247",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 24"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "TORO",
+    "anoFabricacao": 2018,
+    "chassi": "9BFI74340729025",
+    "placa": "XYZ7S89",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 25"
+  },
+  {
+    "marca": "FORD",
+    "modelo": "FIESTA",
+    "anoFabricacao": 2008,
+    "chassi": "9BFO16016547026",
+    "placa": "ABC8688",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 26"
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "308",
+    "anoFabricacao": 2012,
+    "chassi": "9BPE40833460027",
+    "placa": "XYZ3I61",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 27"
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "HB20",
+    "anoFabricacao": 2023,
+    "chassi": "9BHY11829732028",
+    "placa": "ABC6998",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 28"
+  },
+  {
+    "marca": "GM",
+    "modelo": "TRACKER",
+    "anoFabricacao": 2009,
+    "chassi": "9BGM46662462029",
+    "placa": "XYZ1G34",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 29"
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "TUCSON",
+    "anoFabricacao": 2018,
+    "chassi": "9BHY12202567030",
+    "placa": "ABC1177",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 30"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "CIVIC",
+    "anoFabricacao": 2012,
+    "chassi": "9BHO32115968031",
+    "placa": "XYZ8W70",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 31"
+  },
+  {
+    "marca": "GM",
+    "modelo": "SPIN",
+    "anoFabricacao": 2012,
+    "chassi": "9BGM77915231032",
+    "placa": "ABC9105",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 32"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SANDERO",
+    "anoFabricacao": 2014,
+    "chassi": "9BRE64937276033",
+    "placa": "XYZ7P63",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 33"
+  },
+  {
+    "marca": "VW",
+    "modelo": "POLO",
+    "anoFabricacao": 2010,
+    "chassi": "9BVW24966996034",
+    "placa": "ABC1236",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 34"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "COROLLA",
+    "anoFabricacao": 2011,
+    "chassi": "9BTO90816149035",
+    "placa": "XYZ6X11",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 35"
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "COROLLA",
+    "anoFabricacao": 2018,
+    "chassi": "9BTO48106707036",
+    "placa": "ABC8769",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 36"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "FIT",
+    "anoFabricacao": 2014,
+    "chassi": "9BHO92659474037",
+    "placa": "XYZ7M87",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 37"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "MOBI",
+    "anoFabricacao": 2022,
+    "chassi": "9BFI25479681038",
+    "placa": "ABC8249",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 38"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "STRADA",
+    "anoFabricacao": 2014,
+    "chassi": "9BFI59590168039",
+    "placa": "XYZ7I22",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 39"
+  },
+  {
+    "marca": "FORD",
+    "modelo": "FOCUS",
+    "anoFabricacao": 2013,
+    "chassi": "9BFO26907480040",
+    "placa": "ABC1431",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 40"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "TORO",
+    "anoFabricacao": 2017,
+    "chassi": "9BFI90388609041",
+    "placa": "XYZ9F90",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 41"
+  },
+  {
+    "marca": "VW",
+    "modelo": "NIVUS",
+    "anoFabricacao": 2019,
+    "chassi": "9BVW85619154042",
+    "placa": "ABC3318",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 42"
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "UNO",
+    "anoFabricacao": 2021,
+    "chassi": "9BFI73471513043",
+    "placa": "XYZ4W60",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 43"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KWID",
+    "anoFabricacao": 2009,
+    "chassi": "9BRE39049859044",
+    "placa": "ABC4831",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 44"
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "308",
+    "anoFabricacao": 2022,
+    "chassi": "9BPE75023535045",
+    "placa": "XYZ6C91",
+    "tipoDeCombustivel": "GASOLINA",
+    "observacoes": "Veículo de teste 45"
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER",
+    "anoFabricacao": 2011,
+    "chassi": "9BRE69537887046",
+    "placa": "ABC3065",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 46"
+  },
+  {
+    "marca": "VW",
+    "modelo": "GOL",
+    "anoFabricacao": 2024,
+    "chassi": "9BVW87577293047",
+    "placa": "XYZ4W81",
+    "tipoDeCombustivel": "FLEX",
+    "observacoes": "Veículo de teste 47"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "CITY",
+    "anoFabricacao": 2016,
+    "chassi": "9BHO79848959048",
+    "placa": "ABC8760",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 48"
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "WRV",
+    "anoFabricacao": 2024,
+    "chassi": "9BHO97471784049",
+    "placa": "XYZ2J77",
+    "tipoDeCombustivel": "ETANOL",
+    "observacoes": "Veículo de teste 49"
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "IX35",
+    "anoFabricacao": 2022,
+    "chassi": "9BHY21219707050",
+    "placa": "ABC5286",
+    "tipoDeCombustivel": "DIESEL",
+    "observacoes": "Veículo de teste 50"
+  }
+]

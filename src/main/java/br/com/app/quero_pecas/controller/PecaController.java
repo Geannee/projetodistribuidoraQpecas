@@ -4,6 +4,7 @@ package br.com.app.quero_pecas.controller;
 import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
+import br.com.app.quero_pecas.entity.PecaVeiculo;
 import br.com.app.quero_pecas.service.PecaService;
 import br.com.app.quero_pecas.service.VeiculoService;
 import jakarta.validation.Valid;
@@ -43,6 +44,18 @@ public class PecaController {
     public ResponseEntity<List<Peca>> findAllByAtivoTrue() {
         List<Peca> pecasAtivas = pecaService.listActivePeca();
         return ResponseEntity.ok(pecasAtivas);
+    }
+
+    @GetMapping("/associacoes")
+    public ResponseEntity<List<PecaVeiculo>> obterAssociacoes() {
+        List<PecaVeiculo> associacoes = pecaService.listActivePairings();
+        return ResponseEntity.ok(associacoes);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody @Valid PecaDTO.Save dados) {
+        pecaService.update(id, dados);
+        return ResponseEntity.ok("Peça atualizada com sucesso!");
     }
 
     @PatchMapping("/{id}/deletar")

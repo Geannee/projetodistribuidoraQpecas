@@ -14,7 +14,7 @@ public class Entrega {
     private String prazo;
     private String status;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "destino_endereco_id")
     private Endereco endereco;
 

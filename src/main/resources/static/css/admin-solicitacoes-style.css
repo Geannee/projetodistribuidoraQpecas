@@ -85,7 +85,7 @@
 
 /* ─── PAINEL EXPANDIDO ───────────────────────────────────────────────────── */
 .sol-detalhe-row { display: none; }
-.sol-detalhe-row.aberto { display: table-row; }
+.sol-detalhe-row.aberto { display: table-row;}
 
 .sol-detalhe-td {
   padding: 0 !important;

@@ -1,101 +1,87 @@
 // ── ADMIN ACESSO CONTROLLER ────────────────────────────────────────────────────
 
 const AcessoController = {
+  // Guardamos uma referência local dos pendentes para conseguir achar os dados do usuário na hora de gravar o histórico
+  _cachePendentes: [],
 
   init() {
     if (!Auth.checkAdmin()) return;
     this._render();
   },
 
-   async _render() {
-    const pendentes = await AcessoModel.getPendentes();
-    const recusados = await AcessoModel.getRecusados();
-    const liberados = await AcessoModel.getAtivos();
-    const historico = AcessoModel.getHistorico();
+  async _render() {
+    try {
+      // 1. Buscamos os dados das fontes
+      this._cachePendentes = await AcessoModel.getPendentes();
+      const recusados = await AcessoModel.getRecusados();
+      const liberados = await AcessoModel.getAtivos();
+      const historico = AcessoModel.getHistorico(); // Lê o localStorage local
 
-    AcessoView.renderStats(pendentes.length, recusados.length, liberados.length);
-    AcessoView.renderBloqueados(pendentes);
-    AcessoView.renderHistorico(historico);
+      // 2. Manda a View desenhar tudo na tela
+      AcessoView.renderStats(this._cachePendentes.length, recusados.length, liberados.length);
+      AcessoView.renderBloqueados(this._cachePendentes);
+      AcessoView.renderHistorico(historico);
+    } catch (error) {
+      if (error.status === 401) { Auth.logout(); return; }
+      AcessoView.showToast('Erro ao carregar dados do servidor.', 'error');
+    }
   },
 
   async liberar(id) {
-    if (!confirm('Liberar o cadastro deste usuário?')) return;
+    // Localiza o usuário no cache antes que ele suma da lista de pendentes
+    const usuario = this._cachePendentes.find(u => u.idUsuario === id);
+    if (!confirm(`Liberar o cadastro de "${usuario?.razaoSocial || 'este usuário'}"?`)) return;
 
     try {
-      const token = sessionStorage.getItem('qp_token');
-      // Faz a chamada para o seu Back-end Java
-      const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/aprovar`, {
-        method: 'PATCH',
-        headers: {
-          'Authorization': token ? `Bearer ${token}` : ''
-        }
-      });
+      const sucesso = await AcessoModel.aprovarUsuario(id);
 
-      if (response.status === 401) {
-        Auth.logout();
-        return;
-      }
-
-      if (response.ok) {
+      if (sucesso) {
+        // Grava o log no histórico local usando os dados que capturamos do Java
+        AcessoModel.registrarHistoricoLocal(usuario, 'Cadastro liberado');
         AcessoView.showToast('Cadastro liberado com sucesso!', 'success');
-        // Idealmente, o Model deveria buscar os dados atualizados do banco agora
-        this._render();
+        this._render(); // Recarrega a tela (o usuário vai sumir de pendentes e o histórico vai atualizar)
       } else {
         AcessoView.showToast('Erro ao liberar no servidor.', 'error');
       }
     } catch (error) {
-      console.error("Erro na conexão:", error);
+      if (error.status === 401) { Auth.logout(); return; }
       AcessoView.showToast('Erro de conexão com o servidor.', 'error');
     }
   },
 
   mostrarCampoRecusa(id) {
-    const inline = document.getElementById(`recusa-inline-${id}`);
-    if (inline) inline.style.display = 'block';
+    AcessoView.exibirPainelRecusa(id);
   },
 
   cancelarRecusa(id) {
-    const inline = document.getElementById(`recusa-inline-${id}`);
-    if (inline) inline.style.display = 'none';
-    const input = document.getElementById(`motivo-${id}`);
-    if (input) input.value = '';
+    AcessoView.ocultarPainelRecusa(id);
   },
 
   async confirmarRecusa(id) {
-    const input = document.getElementById(`motivo-${id}`);
-    const motivo = input?.value.trim();
+    const motivo = AcessoView.getMotivoRecusa(id);
+    const usuario = this._cachePendentes.find(u => u.idUsuario === id);
 
     if (!motivo) {
       AcessoView.showToast('Informe o motivo da recusa.', 'error');
-      input?.focus();
+      AcessoView.focarMotivoRecusa(id);
       return;
     }
 
-    if (!confirm(`Recusar este cadastro?\nMotivo: ${motivo}`)) return;
+    if (!confirm(`Recusar o cadastro de "${usuario?.razaoSocial || 'este usuário'}"?\nMotivo: ${motivo}`)) return;
 
     try {
-      const token = sessionStorage.getItem('qp_token');
-      const response = await fetch(`http://localhost:8080/admin/usuarios/${id}/reprovar`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'text/plain', // Como seu Java recebe @RequestBody String
-          'Authorization': token ? `Bearer ${token}` : ''
-        },
-        body: motivo
-      });
+      const sucesso = await AcessoModel.reprovarUsuario(id, motivo);
 
-      if (response.status === 401) {
-        Auth.logout();
-        return;
-      }
-
-      if (response.ok) {
+      if (sucesso) {
+        // Grava o log salvando também o motivo na string da ação
+        AcessoModel.registrarHistoricoLocal(usuario, `Cadastro recusado: ${motivo}`);
         AcessoView.showToast('Cadastro recusado.', 'error');
-        this._render();
+        this._render(); // Atualiza a tela
       } else {
         AcessoView.showToast('Erro ao recusar no servidor.', 'error');
       }
     } catch (error) {
+      if (error.status === 401) { Auth.logout(); return; }
       AcessoView.showToast('Erro de conexão.', 'error');
     }
   }

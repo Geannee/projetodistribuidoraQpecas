@@ -18,6 +18,27 @@ const AcessoView = {
     set('stat-liberados',  liberados);
   },
 
+  // MÉTODOS ADICIONADOS PARA SUPORTAR O CONTROLLER SEM VIOLAR O MVC:
+  exibirPainelRecusa(id) {
+    const inline = document.getElementById(`recusa-inline-${id}`);
+    if (inline) inline.style.display = 'block';
+  },
+
+  ocultarPainelRecusa(id) {
+    const inline = document.getElementById(`recusa-inline-${id}`);
+    if (inline) inline.style.display = 'none';
+    const input = document.getElementById(`motivo-${id}`);
+    if (input) input.value = '';
+  },
+
+  getMotivoRecusa(id) {
+    return document.getElementById(`motivo-${id}`)?.value.trim() || '';
+  },
+
+  focarMotivoRecusa(id) {
+    document.getElementById(`motivo-${id}`)?.focus();
+  },
+
   renderBloqueados(lista) {
     const tbody = document.getElementById('tbody-bloqueados');
     const count = document.getElementById('count-bloqueados');
@@ -32,7 +53,6 @@ const AcessoView = {
 
     tbody.innerHTML = lista.map(u => {
       const id = u.idUsuario;
-
       const enderecoFormatado = u.endereco
           ? `${u.endereco.logradouro}, ${u.endereco.numero} - ${u.endereco.cidade}/${u.endereco.estado}`
           : 'Endereço não informado';
@@ -40,11 +60,13 @@ const AcessoView = {
       return `
       <tr id="row-${id}">
         <td>
-          <div style="font-weight:600">${u.razaoSocial}</div> <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
+          <div style="font-weight:600">${u.razaoSocial}</div> 
+          <div style="font-size:11px;color:var(--gray-text)">${u.email}</div>
         </td>
         <td>${u.cnpj}</td>
         <td>${enderecoFormatado}</td>
-        <td>${u.status}</td> <td>
+        <td>${u.status}</td> 
+        <td>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <button class="btn-liberar" onclick="AcessoController.liberar(${id})">Liberar</button>
             <button class="btn-recusar" onclick="AcessoController.mostrarCampoRecusa(${id})">Recusar</button>

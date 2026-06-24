@@ -3,6 +3,16 @@
  */
 const BuscaController = {
 
+    async init() {
+        try {
+            const veiculos = await BuscaModel.getVeiculos();
+            const marcasUnicas = [...new Set(veiculos.map(v => v.marca))].sort();
+            BuscaView.popularMarcas(marcasUnicas);
+        } catch (error) {
+            console.error("Erro ao inicializar dados de busca:", error);
+        }
+    },
+
     /**
      * Disparado pelo onchange="onMarcaChange()" do select de Marca
      */
@@ -11,16 +21,23 @@ const BuscaController = {
 
         if (!marcaSelecionada) {
             BuscaView.popularModelos([]); // Limpa e desabilita caso selecione a opção padrão
+            BuscaView.popularAno([]); // Limpa e desabilita ano
             return;
         }
 
         // Aciona o Model para buscar e a View para renderizar a mudança do select secundário
         const modelos = await BuscaModel.obterModelosPorMarca(marcaSelecionada);
         BuscaView.popularModelos(modelos);
+        BuscaView.popularAno([]); // Limpa e desabilita ano
     },
 
     async lidarComMudancaModelo() {
         const modeloSelecionado = BuscaView.selectModelo.value;
+
+        if (!modeloSelecionado) {
+            BuscaView.popularAno([]);
+            return;
+        }
 
         // Aciona o Model para buscar e a View para renderizar a mudança do select secundário
         const anos = await BuscaModel.obterAnoPorModelo(modeloSelecionado);
@@ -91,3 +108,6 @@ window.switchTab = function(tabName) {
     if(activeBtn) activeBtn.classList.add('active');
     if(activeContent) activeContent.classList.add('active');
 };
+
+// Inicializa o Controller
+BuscaController.init();

@@ -30,7 +30,8 @@ const PedidosModel = {
     'AGUARDANDO_PAGAMENTO': () => ICONS.creditCard,
     'ENTREGUE':             () => ICONS.checkCircle,
     'CANCELADO':            () => ICONS.xCircle,
-    'PAGO':                 () => ICONS.checkCircle
+    'PAGO':                 () => ICONS.checkCircle,
+    'FATURADO':             () => ICONS.fileText
   },
 
   statusClasse: {
@@ -39,6 +40,7 @@ const PedidosModel = {
     'EM_VIAGEM':            'status-viagem',
     'ENTREGUE':             'status-entregue',
     'CANCELADO':            'status-cancelado',
-    'PAGO':                 'status-entregue'
+    'PAGO':                 'status-entregue',
+    'FATURADO':             'status-entregue'
   }
 };

@@ -41,4 +41,6 @@ public class Pedido {
 
     @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
     private Pagamento pagamento;
+
+    private String motivoCancelamento;
 }

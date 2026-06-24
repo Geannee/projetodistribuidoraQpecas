@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciamento de Pedidos – Admin Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/admin-cadastro-style.css"/>
+  <style>
+    /* Custom Styling for Pedidos Dashboard */
+    .dashboard-counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .counter-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .counter-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+    }
+    .counter-card.pendente::before { background: #EAB308; }
+    .counter-card.separacao::before { background: #3B82F6; }
+    .counter-card.faturado::before { background: #10B981; }
+    .counter-card.cancelado::before { background: #EF4444; }
+
+    .counter-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark-text);
+    }
+    .counter-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-text);
+    }
+
+    .filter-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .filter-grid-pedidos {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: end;
+    }
+    @media (max-width: 1024px) {
+      .filter-grid-pedidos {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .filter-grid-pedidos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modal improvements */
+    .order-modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (max-width: 768px) {
+      .order-modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+    .order-info-section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: #F9FAFB;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .info-label {
+      font-weight: 600;
+      color: var(--gray-text);
+    }
+    .info-value {
+      color: var(--dark-text);
+      font-weight: 500;
+    }
+    .item-qty-input {
+      width: 60px;
+      height: 32px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .btn-action-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-action-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-action-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-action-danger {
+      background: #EF4444;
+      color: var(--white);
+    }
+    .btn-action-danger:hover {
+      background: #DC2626;
+    }
+    .btn-action-secondary {
+      background: #E5E7EB;
+      color: var(--dark-text);
+    }
+    .btn-action-secondary:hover {
+      background: #D1D5DB;
+    }
+    
+    .alert-box {
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #991B1B;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar">AD</div>
+      <div>
+        <div class="user-name" id="sidebar-nome">Admin</div>
+        <div class="user-role">Administrador</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="busca-admin.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        Buscar Peças
+      </a>
+      <a href="admin-estoque.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M4 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H4zm1 2h10v2H5V5zm0 4h10v6H5V9z"/>
+        </svg>
+        Estoque
+      </a>
+      <a href="admin-pedidos.html" class="nav-item active">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"/>
+        </svg>
+        Gerenciar Pedidos
+      </a>
+      <a href="admin-veiculo.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H11a1 1 0 001-1v-1h2.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-3-3A1 1 0 0016 4H3z"/></svg>
+        Cadastrar Veículo
+      </a>
+      <a href="admin-fornecedor.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a7 7 0 00-7 7v1h12v-1a7 7 0 00-7-7z"/></svg>
+        Cadastrar Fornecedor
+      </a>
+      <a href="admin-pecas.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+        Cadastrar Peças
+      </a>
+      <a href="admin-acesso.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+        Liberar Acesso
+      </a>
+      <a href="admin-solicitacoes.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Solicitações
+      </a>
+      <a href="admin-auditoria.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        Auditoria
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" onclick="logout(event)" class="nav-item nav-sair">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Sair da conta
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── CONTEÚDO PRINCIPAL ── -->
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <h1 class="topbar-title">Painel de Pedidos</h1>
+      <div class="topbar-actions">
+        <div class="topbar-avatar" id="topbar-avatar">AD</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- ── CONTADORES DE STATUS ── -->
+      <div class="dashboard-counters">
+        <div class="counter-card pendente">
+          <span class="counter-value" id="count-pendente">0</span>
+          <span class="counter-label">Pendentes</span>
+        </div>
+        <div class="counter-card separacao">
+          <span class="counter-value" id="count-separacao">0</span>
+          <span class="counter-label">Em Separação</span>
+        </div>
+        <div class="counter-card faturado">
+          <span class="counter-value" id="count-faturado">0</span>
+          <span class="counter-label">Faturados</span>
+        </div>
+        <div class="counter-card cancelado">
+          <span class="counter-value" id="count-cancelado">0</span>
+          <span class="counter-label">Cancelados</span>
+        </div>
+      </div>
+
+      <!-- ── FILTROS DE BUSCA ── -->
+      <div class="filter-card">
+        <div class="filter-grid-pedidos">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="search-input">Buscar Pedido</label>
+            <input type="text" id="search-input" class="form-input" placeholder="Número, lojista ou CNPJ..."/>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-status">Status</label>
+            <select id="filter-status" class="form-input form-select">
+              <option value="">Todos os status</option>
+              <option value="PENDENTE">Pendentes</option>
+              <option value="EM_SEPARACAO">Em Separação</option>
+              <option value="FATURADO">Faturados</option>
+              <option value="CANCELADO">Cancelados</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-start-date">De</label>
+            <input type="date" id="filter-start-date" class="form-input"/>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-end-date">Até</label>
+            <input type="date" id="filter-end-date" class="form-input"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TABELA DE PEDIDOS ── -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Listagem Geral de Pedidos</h2>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Pedido #</th>
+                <th>Data / Hora</th>
+                <th>Lojista</th>
+                <th>CNPJ</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th style="text-align:right;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="orders-list">
+              <!-- Renderização via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<!-- ── MODAL DE DETALHES DO PEDIDO ── -->
+<div id="order-modal-overlay" class="modal-overlay">
+  <div class="modal-content-card" style="max-width: 900px; width: 90%;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-order-number">Detalhes do Pedido - QP-XXXXX</h3>
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+    </div>
+    <div class="modal-body" style="padding:24px;">
+
+      <!-- Alerta de quebra de estoque -->
+      <div class="alert-box" id="shortage-alert">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <div class="order-modal-body">
+        <!-- Lado esquerdo: Itens do pedido -->
+        <div>
+          <h4 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--dark-text);">Itens Solicitados</h4>
+          <div class="table-wrap" style="border:1px solid var(--border); border-radius:8px; overflow-x:auto;">
+            <table class="data-table" style="margin:0; font-size:13px; width:100%; border-collapse:collapse;">
+              <thead>
+                <tr style="background:#F9FAFB;">
+                  <th>Peça</th>
+                  <th style="text-align:center;">Qtd</th>
+                  <th>Preço</th>
+                  <th>Subtotal</th>
+                  <th style="text-align:right;">Ação</th>
+                </tr>
+              </thead>
+              <tbody id="modal-order-items">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Lado direito: Informações adicionais & Ações -->
+        <div class="order-info-section">
+          <h4 style="font-size:14px; font-weight:700; margin-bottom:16px; color:var(--dark-text);">Resumo e Ações</h4>
+          <div class="info-row">
+            <span class="info-label">Lojista:</span>
+            <span class="info-value" id="modal-client-name">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">CNPJ:</span>
+            <span class="info-value" id="modal-client-cnpj">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Data:</span>
+            <span class="info-value" id="modal-order-date">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Frete:</span>
+            <span class="info-value" id="modal-order-frete">R$ 0,00</span>
+          </div>
+          <div class="info-row" style="border-top:1px solid var(--border); padding-top:12px; margin-top:12px;">
+            <span class="info-label" style="font-size:15px; color:var(--dark-text);">Valor Total:</span>
+            <span class="info-value" id="modal-order-total" style="font-size:18px; font-weight:800; color:var(--primary);">R$ 0,00</span>
+          </div>
+          
+          <div class="info-row" id="modal-cancel-reason-row" style="display:none; color:var(--error); flex-direction:column; gap:4px; border-top:1px solid var(--border); padding-top:12px; margin-top:12px;">
+            <span class="info-label" style="color:var(--error); font-weight:700;">Motivo do Cancelamento:</span>
+            <span class="info-value" id="modal-cancel-reason" style="text-align:left; font-weight:600; color:var(--error); white-space:normal; word-break:break-word;">-</span>
+          </div>
+          
+          <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;" id="modal-actions-container">
+            <!-- Botões dinâmicos com base no status -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast notifications -->
+<div id="toast" class="toast">Pedido atualizado!</div>
+
+<script src="/js/utils/auth.js"></script>
+<script src="/js/models/admin-pedidos.model.js"></script>
+<script src="/js/views/admin-pedidos.view.js"></script>
+<script src="/js/controllers/admin-pedidos.controller.js"></script>
+</body>
+</html>

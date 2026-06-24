@@ -1,15 +1,47 @@
+// ── ADMIN ACESSO VIEW ──────────────────────────────────────────────────────────
+
 const PedidosView = {
 
   /**
-   * Função auxiliar que transforma "EM SEPARAÇÃO" em "Em Separação"
+   * Transforma "EM_SEPARACAO" em "Em Separacao"
    */
   capitalizarStatus(status) {
     if (!status) return '';
-    return status
+
+    const dicionarioAcentos = {
+      'EM SEPARACAO': 'Em Separação',
+      'AGUARDANDO PAGAMENTO': 'Aguardando Pagamento'
+    };
+
+    const statusLimpo = status.replace(/_/g, ' ').toUpperCase();
+
+    if (dicionarioAcentos[statusLimpo]) {
+      return dicionarioAcentos[statusLimpo];
+    }
+
+    return statusLimpo
         .toLowerCase()
         .split(' ')
         .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1))
         .join(' ');
+  },
+
+  calcularFrete(p) {
+    const valorTotal = p.valorTotal || 0;
+
+    // Soma o total acumulado dos itens (quantidade * precoVenda)
+    const totalItens = p.itens ? p.itens.reduce((acumulado, item) => {
+      const quantidade = item.quantidade || 0;
+      const preco = item.precoVenda || 0;
+      return acumulado + (quantidade * preco);
+    }, 0) : 0;
+
+    // O frete é a diferença
+    const frete = valorTotal - totalItens;
+
+    // Retorna formatado em Reais, ou "Grátis" se for zero/negativo
+    if (frete <= 0) return 'Grátis';
+    return frete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   },
 
   renderTabela(tbody, pedidos) {
@@ -23,15 +55,11 @@ const PedidosView = {
       dataPrevisao.setDate(dataPrevisao.getDate() + 3);
       const previsaoFormatada = dataPrevisao.toLocaleDateString('pt-BR');
 
-      // ── TRATAMENTO DO STATUS EM MAIÚSCULO DO BANCO ──────────────────
-      // Salvamos o status original em caixa alta para a classe do CSS
-      const statusChaveMap = p.status ? p.status.toUpperCase() : '';
-      const statusClass = PedidosModel.statusClasse[statusChaveMap] || '';
-
-      // Formatamos o texto para "Ex: Em Separação" para bater com o statusIcone e Filtros
-      const statusFormatado = this.capitalizarStatus(p.status);
-      // Alteramos a propriedade no objeto temporário para o renderPainel herdar corretamente
-      p.status = statusFormatado;
+      // ── CORREÇÃO: Mantemos a string pura do banco ("EM_SEPARACAO") ──
+      const statusBanco = p.status ? p.status.toUpperCase() : '';
+      const statusClass = PedidosModel.statusClasse[statusBanco] || '';
+      const statusFormatado = this.capitalizarStatus(statusBanco);
+      // Não sobrescrevemos mais p.status aqui para não quebrar o renderPainel
       // ────────────────────────────────────────────────────────────────
 
       return `
@@ -42,7 +70,7 @@ const PedidosView = {
         <td class="pedido-total">${totalFormatado}</td>
         <td>
           <span class="badge-status ${statusClass}">
-            ${(PedidosModel.statusIcone[statusFormatado] || (() => ''))() } ${statusFormatado}
+            ${(PedidosModel.statusIcone[statusBanco] || (() => ''))() } ${statusFormatado}
           </span>
         </td>
         <td class="pedido-previsao">${ICONS.calendar} ${previsaoFormatada}</td>
@@ -62,19 +90,33 @@ const PedidosView = {
 
   renderPainel(p, dataFormatada, totalFormatado, previsaoFormatada) {
     const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Em Separação', 'Em Viagem', 'Entregue'];
-    const idxMap = { 'Aguardando Pagamento': 1, 'Em Separação': 2, 'Em Viagem': 3, 'Entregue': 4, 'Cancelado': -1 };
 
-    const atual = idxMap[p.status] ?? 0;
+    const idxMap = {
+      'AGUARDANDO_PAGAMENTO': 1,
+      'EM_SEPARACAO':         2,
+      'EM_VIAGEM':            3,
+      'ENTREGUE':             4,
+      'CANCELADO':           -1,
+      'PAGO':                 1
+    };
 
-    const timeline = passos.map((passo, i) => `
-    <div class="tl-passo ${i <= atual && p.status !== 'Cancelado' ? 'tl-ativo' : ''}">
-      <div class="tl-bolinha">${i <= atual && p.status !== 'Cancelado' ? ICONS.check : i + 1}</div>
-      <span>${passo}</span>
-    </div>
-  `).join('');
+    // Agora p.status chega aqui como "EM_SEPARACAO", batendo perfeitamente com o idxMap!
+    const statusBanco = p.status ? p.status.toUpperCase() : '';
+    const atual = idxMap[statusBanco] ?? 0;
+
+    const timeline = passos.map((passo, i) => {
+      const estaAtivo = i <= atual && statusBanco !== 'CANCELADO';
+
+      return `
+        <div class="tl-passo ${estaAtivo ? 'tl-ativo' : ''}">
+          <div class="tl-bolinha">${estaAtivo ? ICONS.check : i + 1}</div>
+          <span>${passo}</span>
+        </div>
+      `;
+    }).join('');
 
     const statusOpcoes = Object.keys(PedidosModel.statusIcone).map(s =>
-        `<option value="${s}" ${s === p.status ? 'selected' : ''}>${s}</option>`
+        `<option value="${s}" ${s === statusBanco ? 'selected' : ''}>${this.capitalizarStatus(s)}</option>`
     ).join('');
 
     const itensList = p.itens && p.itens.length > 0 ? p.itens.map(i => {
@@ -92,27 +134,35 @@ const PedidosView = {
     }).join('') : '<div class="orcamento-item">Nenhum item associado</div>';
 
     const safeId = p.numeroPedido.replace(/-/g, '');
+    const freteFormatado = this.calcularFrete(p);
 
     return `
     <div class="detalhe-painel">
       <div class="dp-secao">
         <div class="dp-secao-titulo">Itens:</div>
-        <div class="orcamento-itens">${itensList}</div>
+        <div class="orcamento-itens">${itensList}
+          <div class="orcamento-item frete-row" style="border-top: 1px dashed var(--border-color);">
+              <span class="oi-icone">${ICONS.truck}</span>
+              <span class="oi-nome">1x Frete: <strong>${freteFormatado}</strong></span>
+          </div>
+        </div>
+                
         <div class="orcamento-total">
           <span>${ICONS.clipboardList} Total do pedido</span>
           <strong>${totalFormatado}</strong>
         </div>
+        
         <div class="orcamento-meta">
           <span>${ICONS.calendar} Data: <strong>${dataFormatada}</strong></span>
           <br>
-          <span>${ICONS.truck} Previsão: <strong>${p.status === 'Cancelado' ? 'Cancelada' : previsaoFormatada}</strong></span>
+          <span>${ICONS.truck} Previsão: <strong>${statusBanco === 'CANCELADO' ? 'Cancelada' : previsaoFormatada}</strong></span>
         </div>
       </div>
-        <div class="timeline" id="tl-${safeId}">
-          ${p.status === 'Cancelado'
+      
+      <div class="timeline" id="tl-${safeId}">
+        ${statusBanco === 'CANCELADO'
         ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.</div>`
         : timeline}
-        </div>
       </div>
     </div>`;
   },

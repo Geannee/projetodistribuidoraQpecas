@@ -49,6 +49,16 @@ const BuscaView = {
     this.resultSection.style.display = 'block';
   },
 
+  popularMarcas(marcas) {
+    this.selectMarca.innerHTML = '<option value="">Marca</option>';
+    marcas.forEach(marca => {
+      const option = document.createElement('option');
+      option.value = marca;
+      option.textContent = marca;
+      this.selectMarca.appendChild(option);
+    });
+  },
+
   /**
    * Atualiza o select de modelos com base nos dados do banco
    */
@@ -80,18 +90,8 @@ const BuscaView = {
         this.selectAno.appendChild(option);
       });
       this.selectAno.disabled = false;
-    }
-    // Caso contrário (se veio vazio, nulo ou se o modelo foi desselecionado)
-    else {
-      // Gera o HTML dinamicamente de 2026 até 2008
-      let opcoesPadrao = '<option value="">Ano</option>';
-      for (let ano = 2026; ano >= 2008; ano--) {
-        opcoesPadrao += `<option value="${ano}">${ano}</option>`;
-      }
-
-      this.selectAno.innerHTML = opcoesPadrao;
-      // Garante que o select do ano fique ativo se uma marca já estiver selecionada
-      this.selectAno.disabled = !this.selectMarca.value;
+    } else {
+      this.selectAno.disabled = true;
     }
   },
 
@@ -151,15 +151,19 @@ const BuscaView = {
    */
   criarTemplateAcordeon(id, nomeCategoria, listaDePecas) {
     const nomesAmigaveis = {
-      'ARREFECIMENTO': 'Sistema de Arrefecimento',
-      'ELETRICA': 'Componentes Elétricos',
-      'ESCAPAMENTO': 'Sistema de Escapamento',
+      'OUTROS': 'Outros Componentes',
+      'FILTRO': 'Filtros e Elementos',
       'FILTROS': 'Filtros e Elementos',
+      'FREIO': 'Sistema de Freios',
       'FREIOS': 'Sistema de Freios',
       'MOTOR': 'Componentes do Motor',
+      'ELETRICA': 'Componentes da Elétrica',
+      'ELÉTRICA': 'Componentes da Elétrica',
+      'SUSPENSAO': 'Suspensão e Componentes',
       'SUSPENSÃO': 'Suspensão e Componentes',
-      'TRANSMISSAO': 'Sistema de Transmissão',
-      'OUTROS': 'Outros Componentes'
+      'TRANSMISSÃO': 'Sistema de Transmissão',
+      'ARREFECIMENTO': 'Sistema de Arrefecimento',
+      'ESCAPAMENTO': 'Escapamento'
     };
 
     const categoriaExibicao = nomesAmigaveis[nomeCategoria] || nomeCategoria;

@@ -141,41 +141,26 @@
               <div class="app-row">
                 <select class="app-select" id="appMarca" onchange="onMarcaChange()">
                   <option value="">Marca</option>
-                  <option>Chevrolet</option>
-                  <option>Citroën</option>
-                  <option>Fiat</option>
-                  <option>Ford</option>
-                  <option>Honda</option>
-                  <option>Hyundai</option>
-                  <option>Jeep</option>
-                  <option>Kia</option>
-                  <option>Peugeot</option>
-                  <option>Renault</option>
-                  <option>Toyota</option>
-                  <option>Volkswagen</option>
                 </select>
                 <select class="app-select" id="appModelo" onchange="onModeloChange()" disabled>
                   <option value="">Modelo</option>
                 </select>
               </div>
               <div class="app-row">
-                <select class="app-select" id="appAno">
+                <select class="app-select" id="appAno" disabled>
                   <option value="">Ano</option>
-                  <option>2025</option><option>2024</option><option>2023</option>
-                  <option>2022</option><option>2021</option><option>2020</option>
-                  <option>2019</option><option>2018</option><option>2017</option>
-                  <option>2016</option><option>2015</option><option>2014</option>
-                  <option>2013</option><option>2012</option><option>2011</option>
-                  <option>2010</option><option>2009</option><option>2008</option>
-                  <option>2007</option><option>2006</option>
                 </select>
                 <select class="app-select" id="appCategoria">
                   <option value="">Categoria</option>
                   <option value="FREIOS">Freios</option>
                   <option value="MOTOR">Motor</option>
-                  <option value="SUSPENCAO">Suspensão</option>
+                  <option value="SUSPENSÃO">Suspensão</option>
                   <option value="FILTROS">Filtros</option>
-                  <option value="ELETRICA">Elétrica</option>
+                  <option value="ELÉTRICA">Elétrica</option>
+                  <option value="TRANSMISSÃO">Transmissão</option>
+                  <option value="ARREFECIMENTO">Arrefecimento</option>
+                  <option value="ESCAPAMENTO">Escapamento</option>
+                  <option value="OUTROS">Outros</option>
                 </select>
               </div>
               <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>

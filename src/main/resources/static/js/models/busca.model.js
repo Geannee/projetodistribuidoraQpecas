@@ -77,6 +77,26 @@ const BuscaModel = {
     }
   },
 
+  async getVeiculos() {
+    try {
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch(`${this.baseUrl}/veiculos/historico`, {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
+      if (!response.ok) throw new Error('Erro ao buscar histórico de veículos.');
+      return await response.json();
+    } catch (error) {
+      console.error('Erro no Model (getVeiculos):', error);
+      return [];
+    }
+  },
+
   /**
    * Realiza a busca de veículo e suas respectivas peças através da placa
    */

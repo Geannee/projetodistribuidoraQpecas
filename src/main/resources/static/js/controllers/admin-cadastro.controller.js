@@ -3,15 +3,19 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 const AdminCadastroController = {
+  veiculos: [],
+  selectedVehicleIds: new Set(),
 
   init() {
     if (!Auth.checkAdmin()) return;
+    this.veiculos = [];
+    this.selectedVehicleIds = new Set();
     this._bindForms();
+    this._bindWidgetEvents();
     this._renderListas();
   },
 
   // ── BIND ───────────────────────────────────────────────────────────────────
-
   _bindForms() {
     document.getElementById('form-veiculo')
       ?.addEventListener('submit', e => { e.preventDefault(); this.submeterVeiculo(); });
@@ -25,30 +29,132 @@ const AdminCadastroController = {
         document.getElementById(id)?.classList.remove('error');
       });
     });
-    ['p-nome','p-sku','p-compatibilidade','p-preco','p-estoque','p-fornecedor','p-categoria','p-tipo'].forEach(id => {
+    ['p-nome','p-sku','p-preco','p-estoque','p-fornecedor','p-categoria','p-tipo'].forEach(id => {
       document.getElementById(id)?.addEventListener('input', () => {
         document.getElementById(id)?.classList.remove('error');
       });
     });
   },
 
-  // ── LISTAS ─────────────────────────────────────────────────────────────────
+  _bindWidgetEvents() {
+    const buscaInput = document.getElementById('p-comp-busca');
+    const filtroMarca = document.getElementById('p-comp-filtro-marca');
+    const btnTodos = document.getElementById('p-comp-btn-todos');
+    const btnNenhum = document.getElementById('p-comp-btn-nenhum');
 
+    buscaInput?.addEventListener('input', () => this._filtrarERenderizarWidget());
+    filtroMarca?.addEventListener('change', () => this._filtrarERenderizarWidget());
+
+    btnTodos?.addEventListener('click', () => {
+      const filtered = this._getFilteredVeiculos();
+      filtered.forEach(v => this.selectedVehicleIds.add(v.idVeiculo));
+      this._atualizarWidgetUI();
+    });
+
+    btnNenhum?.addEventListener('click', () => {
+      const filtered = this._getFilteredVeiculos();
+      filtered.forEach(v => this.selectedVehicleIds.delete(v.idVeiculo));
+      this._atualizarWidgetUI();
+    });
+  },
+
+  // ── WIDGET COMPATIBILIDADE DE VEÍCULOS ──────────────────────────────────────
+  _getFilteredVeiculos() {
+    const query = document.getElementById('p-comp-busca')?.value.toLowerCase().trim() || '';
+    const nameFilter = document.getElementById('p-comp-filtro-marca')?.value || '';
+
+    return this.veiculos.filter(v => {
+      if (nameFilter && v.marca !== nameFilter) return false;
+      if (query) {
+        const text = `${v.marca} ${v.modelo} ${v.anoFabricacao} ${v.placa}`.toLowerCase();
+        if (!text.includes(query)) return false;
+      }
+      return true;
+    });
+  },
+
+  _filtrarERenderizarWidget() {
+    const filtered = this._getFilteredVeiculos();
+    const listaContainer = document.getElementById('p-comp-lista');
+    if (!listaContainer) return;
+
+    if (this.veiculos.length === 0) {
+      listaContainer.innerHTML = '<div style="grid-column: span 2; padding: 12px; color: var(--gray-text); text-align: center;">Nenhum veículo cadastrado. Cadastre um veículo primeiro.</div>';
+      return;
+    }
+
+    if (filtered.length === 0) {
+      listaContainer.innerHTML = '<div style="grid-column: span 2; padding: 12px; color: var(--gray-text); text-align: center;">Nenhum veículo correspondente.</div>';
+      return;
+    }
+
+    listaContainer.innerHTML = filtered.map(v => {
+      const isChecked = this.selectedVehicleIds.has(v.idVeiculo);
+      return `
+        <div class="widget-item ${isChecked ? 'checked' : ''}" data-id="${v.idVeiculo}" onclick="AdminCadastroController.toggleWidgetSelection(${v.idVeiculo})">
+          <input type="checkbox" class="widget-item-checkbox" ${isChecked ? 'checked' : ''} onclick="event.stopPropagation(); AdminCadastroController.toggleWidgetSelection(${v.idVeiculo})"/>
+          <div class="widget-item-label">
+            <span class="widget-item-title">${v.marca} ${v.modelo} (${v.anoFabricacao})</span>
+            <span class="widget-item-meta">Placa: ${v.placa}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  },
+
+  toggleWidgetSelection(id) {
+    if (this.selectedVehicleIds.has(id)) {
+      this.selectedVehicleIds.delete(id);
+    } else {
+      this.selectedVehicleIds.add(id);
+    }
+    this._atualizarWidgetUI();
+  },
+
+  _atualizarWidgetUI() {
+    const contador = document.getElementById('p-comp-contador');
+    if (contador) {
+      contador.textContent = `${this.selectedVehicleIds.size} veículo(s) selecionado(s)`;
+    }
+
+    const items = document.querySelectorAll('#p-comp-lista .widget-item');
+    items.forEach(item => {
+      const id = Number(item.dataset.id);
+      const isChecked = this.selectedVehicleIds.has(id);
+      const checkbox = item.querySelector('.widget-item-checkbox');
+
+      if (isChecked) {
+        item.classList.add('checked');
+      } else {
+        item.classList.remove('checked');
+      }
+      if (checkbox) {
+        checkbox.checked = isChecked;
+      }
+    });
+
+    if (this.selectedVehicleIds.size > 0) {
+      document.getElementById('p-compatibilidade-container')?.classList.remove('error');
+    }
+  },
+
+  // ── LISTAS ─────────────────────────────────────────────────────────────────
   async _renderListas() {
     const veiculos = await AdminCadastroModel.getVeiculos();
+    this.veiculos = veiculos;
     AdminCadastroView.renderVeiculos(veiculos);
 
-    // Populate compatibility select dropdown
-    const selectCompatibilidade = document.getElementById('p-compatibilidade');
-    if (selectCompatibilidade) {
-      if (veiculos.length === 0) {
-        selectCompatibilidade.innerHTML = '<option value="" disabled>Nenhum veículo cadastrado. Cadastre um veículo primeiro.</option>';
-      } else {
-        selectCompatibilidade.innerHTML = veiculos.map(v => 
-          `<option value="${v.idVeiculo}">${v.marca} ${v.modelo} (${v.anoFabricacao}) - ${v.placa}</option>`
-        ).join('');
-      }
+    // Popular filtro de marcas do widget
+    const filtroMarca = document.getElementById('p-comp-filtro-marca');
+    if (filtroMarca) {
+      const marcasUnicas = [...new Set(veiculos.map(v => v.marca))].sort();
+      filtroMarca.innerHTML = '<option value="">Todas as Marcas</option>' +
+        marcasUnicas.map(m => `<option value="${m}">${m}</option>`).join('');
     }
+
+    // Renderizar lista inicial do widget
+    this._filtrarERenderizarWidget();
+    this._atualizarWidgetUI();
 
     // Populate manufacturers select dropdown
     const selectFornecedor = document.getElementById('p-fornecedor');
@@ -63,7 +169,9 @@ const AdminCadastroController = {
       }
     }
 
-    AdminCadastroView.renderPecas(await AdminCadastroModel.getPecas());
+    if (document.getElementById('tbody-pecas')) {
+      AdminCadastroView.renderPecas(await AdminCadastroModel.getPecas());
+    }
   },
 
   // ── VEÍCULO ────────────────────────────────────────────────────────────────
@@ -148,15 +256,10 @@ const AdminCadastroController = {
   // ── PEÇA ───────────────────────────────────────────────────────────────────
 
   async submeterPeca() {
-    const compatibilidadeSelect = document.getElementById('p-compatibilidade');
-    let compatibilidadeIds = [];
-    if (compatibilidadeSelect) {
-      compatibilidadeIds = Array.from(compatibilidadeSelect.selectedOptions).map(opt => Number(opt.value));
-    }
     const campos = {
       nome:            document.getElementById('p-nome')?.value.trim(),
       sku:             document.getElementById('p-sku')?.value.trim(),
-      compatibilidade: compatibilidadeIds,
+      compatibilidade: Array.from(this.selectedVehicleIds),
       preco:           document.getElementById('p-preco')?.value.trim(),
       estoque:         document.getElementById('p-estoque')?.value.trim(),
       fabricanteId:    document.getElementById('p-fornecedor')?.value,
@@ -174,15 +277,17 @@ const AdminCadastroController = {
     await AdminCadastroModel.salvarPeca(campos);
     AdminCadastroView.showToast('Peça cadastrada com sucesso!', 'success');
     this.limparPeca();
-    const listaAtualizada = await AdminCadastroModel.getPecas();
-    AdminCadastroView.renderPecas(listaAtualizada);
+    if (document.getElementById('tbody-pecas')) {
+      const listaAtualizada = await AdminCadastroModel.getPecas();
+      AdminCadastroView.renderPecas(listaAtualizada);
+    }
   },
 
   async _validarPeca(c) {
     const erros = [];
     if (!c.nome)            erros.push('p-nome');
     if (!c.sku)             erros.push('p-sku');
-    if (!c.compatibilidade || c.compatibilidade.length === 0) erros.push('p-compatibilidade');
+    if (!c.compatibilidade || c.compatibilidade.length === 0) erros.push('p-compatibilidade-container');
     if (!c.preco || isNaN(parseFloat(c.preco.replace(',', '.')))) erros.push('p-preco');
     if (!c.estoque || isNaN(Number(c.estoque)) || Number(c.estoque) < 0) erros.push('p-estoque');
     if (!c.fabricanteId)    erros.push('p-fornecedor');
@@ -198,11 +303,21 @@ const AdminCadastroController = {
   },
 
   limparPeca() {
-    const ids = ['p-nome','p-sku','p-compatibilidade','p-preco','p-estoque','p-fornecedor','p-categoria','p-tipo'];
+    const ids = ['p-nome','p-sku','p-preco','p-estoque','p-fornecedor','p-categoria','p-tipo'];
     ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) { el.value = ''; el.classList.remove('error'); }
     });
+
+    this.selectedVehicleIds.clear();
+    const buscaInput = document.getElementById('p-comp-busca');
+    if (buscaInput) buscaInput.value = '';
+    const filtroMarca = document.getElementById('p-comp-filtro-marca');
+    if (filtroMarca) filtroMarca.value = '';
+    document.getElementById('p-compatibilidade-container')?.classList.remove('error');
+
+    this._filtrarERenderizarWidget();
+    this._atualizarWidgetUI();
   },
 
   async excluirPeca(id) {
@@ -212,8 +327,10 @@ const AdminCadastroController = {
 
       AdminCadastroView.showToast('Veículo removido com sucesso!', 'success');
 
-      const listaAtualizada = await AdminCadastroModel.getPecas();
-      AdminCadastroView.renderPecas(listaAtualizada);
+      if (document.getElementById('tbody-pecas')) {
+        const listaAtualizada = await AdminCadastroModel.getPecas();
+        AdminCadastroView.renderPecas(listaAtualizada);
+      }
 
     } catch (error) {
       AdminCadastroView.showToast('Não foi possível excluir o veículo.', 'error');
@@ -221,4 +338,5 @@ const AdminCadastroController = {
   }
 };
 
+window.AdminCadastroController = AdminCadastroController;
 AdminCadastroController.init();

@@ -3,9 +3,9 @@
 /* Status badges */
 .status-separacao  { background: #DBEAFE; color: #1D4ED8; }
 .status-viagem     { background: #FEF3C7; color: #B45309; }
-.status-aguardando { background: #FEE2E2; color: #DC2626; }
+.status-aguardando { background: #F3F4F6; color: #6B7280; }
 .status-entregue   { background: #D1FAE5; color: #059669; }
-.status-cancelado  { background: #F3F4F6; color: #6B7280; }
+.status-cancelado  { background: #FEE2E2; color: #DC2626; }
 
 /* Filtros */
 .pedidos-filtros {
@@ -177,4 +177,100 @@
   font-size: 13px;
   font-weight: 600;
   color: #DC2626;
+}
+/* ─── EXPANSÃO DE LINHAS DA TABELA (CORREÇÃO) ────────────────────────────── */
+
+/* 1. Esconde a linha de detalhes por padrão ao carregar a página */
+.detalhe-row {
+  display: none;
+}
+
+/* 2. Mostra a linha apenas quando receber a classe .aberto do JavaScript */
+.detalhe-row.aberto {
+  display: table-row !important;
+}
+
+/* Estilização do fundo da célula expandida */
+.detalhe-td {
+  background: #FAFAFA;
+  padding: 20px !important;
+  border-bottom: 2px solid #E5E7EB;
+}
+
+/* Container flexível que divide os Itens da Timeline */
+.detalhe-painel {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+/* Seções internas (Esquerda: Itens/Orçamento | Direita: Timeline) */
+.dp-secao {
+  flex: 1;
+  min-width: 280px;
+}
+
+.dp-secao-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+/* Lista de Itens do Orçamento */
+.orcamento-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.orcamento-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.orcamento-item strong {
+  color: #111827;
+  margin-left: auto; /* Joga o preço para a direita */
+}
+
+/* Bloco de totais e metas */
+.orcamento-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px dashed #E5E7EB;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4B5563;
+  margin-bottom: 12px;
+}
+
+.orcamento-total strong {
+  font-size: 16px;
+  color: #E85D3A;
+  font-weight: 700;
+}
+
+.orcamento-meta {
+  font-size: 12px;
+  color: #6B7280;
+  line-height: 1.6;
+}
+
+.orcamento-meta strong {
+  color: #111827;
+}
+
+/* Ajuste fino para a sua Timeline vertical dentro da tabela */
+.detalhe-painel .timeline {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
 }

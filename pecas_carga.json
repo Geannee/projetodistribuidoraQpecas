@@ -1,0 +1,1517 @@
+[
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-42267-001",
+    "descricao": "Descrição detalhada para Cilindro Mestre HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 37,
+    "fabricanteId": 2,
+    "nome": "Cilindro Mestre HD",
+    "precoBase": 205.28,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      1,
+      17,
+      39,
+      50
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-70582-002",
+    "descricao": "Descrição detalhada para Cabo de Vela Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 18,
+    "fabricanteId": 2,
+    "nome": "Cabo de Vela Plus",
+    "precoBase": 381.7,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      4,
+      6,
+      9,
+      27
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-41591-003",
+    "descricao": "Descrição detalhada para Bomba de Óleo HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 38,
+    "fabricanteId": 3,
+    "nome": "Bomba de Óleo HD",
+    "precoBase": 265.77,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      38
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-23063-004",
+    "descricao": "Descrição detalhada para Aditivo de Combustível HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 25,
+    "fabricanteId": 1,
+    "nome": "Aditivo de Combustível HD",
+    "precoBase": 294.95,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      39
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-51178-005",
+    "descricao": "Descrição detalhada para Válvula Termostática Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 8,
+    "fabricanteId": 1,
+    "nome": "Válvula Termostática Premium",
+    "precoBase": 92.93,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      14,
+      45,
+      47,
+      48
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-25866-006",
+    "descricao": "Descrição detalhada para Junta Homocinética HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 1,
+    "nome": "Junta Homocinética HD",
+    "precoBase": 468.52,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      30,
+      36,
+      39,
+      46,
+      47
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-82504-007",
+    "descricao": "Descrição detalhada para Filtro de Combustível Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 44,
+    "fabricanteId": 1,
+    "nome": "Filtro de Combustível Class",
+    "precoBase": 383.31,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      7,
+      21,
+      27
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-97908-008",
+    "descricao": "Descrição detalhada para Arruela de Encosto HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 24,
+    "fabricanteId": 3,
+    "nome": "Arruela de Encosto HD",
+    "precoBase": 219.61,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      19,
+      21,
+      23
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-74577-009",
+    "descricao": "Descrição detalhada para Filtro de Combustível Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 45,
+    "fabricanteId": 1,
+    "nome": "Filtro de Combustível Premium",
+    "precoBase": 633.6,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      5,
+      21,
+      38,
+      50
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-96080-010",
+    "descricao": "Descrição detalhada para Bateria 60Ah Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 6,
+    "fabricanteId": 3,
+    "nome": "Bateria 60Ah Class",
+    "precoBase": 435.03,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      32
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-88732-011",
+    "descricao": "Descrição detalhada para Bucha da Bandeja Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 16,
+    "fabricanteId": 3,
+    "nome": "Bucha da Bandeja Class",
+    "precoBase": 620.94,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      23,
+      24,
+      40,
+      42
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-38960-012",
+    "descricao": "Descrição detalhada para Bomba de Óleo Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 38,
+    "fabricanteId": 1,
+    "nome": "Bomba de Óleo Plus",
+    "precoBase": 101.92,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      14
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-58097-013",
+    "descricao": "Descrição detalhada para Cabo de Vela Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 10,
+    "fabricanteId": 1,
+    "nome": "Cabo de Vela Eco",
+    "precoBase": 340.19,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      4,
+      15,
+      34,
+      36
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-44390-014",
+    "descricao": "Descrição detalhada para Aditivo de Radiador Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 23,
+    "fabricanteId": 3,
+    "nome": "Aditivo de Radiador Eco",
+    "precoBase": 377.52,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      2,
+      34
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-24487-015",
+    "descricao": "Descrição detalhada para Bucha da Bandeja HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 27,
+    "fabricanteId": 2,
+    "nome": "Bucha da Bandeja HD",
+    "precoBase": 78.54,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      9,
+      48
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-64836-016",
+    "descricao": "Descrição detalhada para Mola Helicoidal Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 2,
+    "nome": "Mola Helicoidal Plus",
+    "precoBase": 293.8,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      3,
+      6,
+      10,
+      14
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-71894-017",
+    "descricao": "Descrição detalhada para Jogo de Pistões Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 6,
+    "fabricanteId": 2,
+    "nome": "Jogo de Pistões Plus",
+    "precoBase": 795.41,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      5,
+      10,
+      16,
+      26,
+      46
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-32251-018",
+    "descricao": "Descrição detalhada para Kit de Embreagem Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 37,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem Premium",
+    "precoBase": 670.63,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      39,
+      43
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-43403-019",
+    "descricao": "Descrição detalhada para Semieixo Dianteiro Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 42,
+    "fabricanteId": 3,
+    "nome": "Semieixo Dianteiro Class",
+    "precoBase": 136.34,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      18,
+      36,
+      41,
+      47,
+      48
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-94028-020",
+    "descricao": "Descrição detalhada para Silenciador Traseiro HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 44,
+    "fabricanteId": 1,
+    "nome": "Silenciador Traseiro HD",
+    "precoBase": 51.01,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      1,
+      15,
+      24,
+      30,
+      49
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-19103-021",
+    "descricao": "Descrição detalhada para Pivô de Suspensão Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 19,
+    "fabricanteId": 1,
+    "nome": "Pivô de Suspensão Class",
+    "precoBase": 296.5,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      6,
+      18,
+      22
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-77243-022",
+    "descricao": "Descrição detalhada para Silenciador Traseiro Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 35,
+    "fabricanteId": 2,
+    "nome": "Silenciador Traseiro Eco",
+    "precoBase": 99.53,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      28
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-81839-023",
+    "descricao": "Descrição detalhada para Motor de Partida Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 22,
+    "fabricanteId": 1,
+    "nome": "Motor de Partida Eco",
+    "precoBase": 275.98,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      13,
+      26,
+      29
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-55177-024",
+    "descricao": "Descrição detalhada para Amortecedor Traseiro Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 31,
+    "fabricanteId": 1,
+    "nome": "Amortecedor Traseiro Eco",
+    "precoBase": 730.89,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      16,
+      32,
+      33,
+      34,
+      47
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-23331-025",
+    "descricao": "Descrição detalhada para Bucha da Bandeja Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 21,
+    "fabricanteId": 1,
+    "nome": "Bucha da Bandeja Premium",
+    "precoBase": 612.15,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      20
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-14594-026",
+    "descricao": "Descrição detalhada para Disco de Freio Dianteiro Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 41,
+    "fabricanteId": 2,
+    "nome": "Disco de Freio Dianteiro Eco",
+    "precoBase": 383.67,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      8,
+      32
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-89418-027",
+    "descricao": "Descrição detalhada para Bomba de Óleo Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 30,
+    "fabricanteId": 1,
+    "nome": "Bomba de Óleo Class",
+    "precoBase": 613.58,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      24,
+      29,
+      30,
+      33,
+      38
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-23077-028",
+    "descricao": "Descrição detalhada para Bomba de Água HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 22,
+    "fabricanteId": 2,
+    "nome": "Bomba de Água HD",
+    "precoBase": 308.3,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      5,
+      16,
+      24,
+      28,
+      31
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-62343-029",
+    "descricao": "Descrição detalhada para Bomba de Água Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 5,
+    "fabricanteId": 2,
+    "nome": "Bomba de Água Plus",
+    "precoBase": 162.43,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      4,
+      29,
+      35,
+      40
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-41728-030",
+    "descricao": "Descrição detalhada para Bronzina de Biela Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 5,
+    "fabricanteId": 3,
+    "nome": "Bronzina de Biela Premium",
+    "precoBase": 634.04,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      2,
+      12,
+      47
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-21711-031",
+    "descricao": "Descrição detalhada para Válvula Termostática Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 3,
+    "nome": "Válvula Termostática Plus",
+    "precoBase": 424.04,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      20,
+      39,
+      43
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-69350-032",
+    "descricao": "Descrição detalhada para Tubo de Escape Intermediário Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 24,
+    "fabricanteId": 1,
+    "nome": "Tubo de Escape Intermediário Premium",
+    "precoBase": 622.61,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      2,
+      7,
+      14,
+      18
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-61251-033",
+    "descricao": "Descrição detalhada para Arruela de Encosto HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 8,
+    "fabricanteId": 3,
+    "nome": "Arruela de Encosto HD",
+    "precoBase": 647.22,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      3,
+      31
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-99394-034",
+    "descricao": "Descrição detalhada para Correia Dentada Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 2,
+    "fabricanteId": 1,
+    "nome": "Correia Dentada Class",
+    "precoBase": 750.6,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      9
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-95667-035",
+    "descricao": "Descrição detalhada para Terminal de Direção HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 9,
+    "fabricanteId": 1,
+    "nome": "Terminal de Direção HD",
+    "precoBase": 448.88,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      1
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-52521-036",
+    "descricao": "Descrição detalhada para Kit de Embreagem HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 24,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem HD",
+    "precoBase": 612.24,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      20,
+      26,
+      44,
+      50
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-56851-037",
+    "descricao": "Descrição detalhada para Arruela de Encosto Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 16,
+    "fabricanteId": 3,
+    "nome": "Arruela de Encosto Premium",
+    "precoBase": 584.07,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      45
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-99812-038",
+    "descricao": "Descrição detalhada para Pivô de Suspensão Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 34,
+    "fabricanteId": 2,
+    "nome": "Pivô de Suspensão Eco",
+    "precoBase": 615.73,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      8,
+      20,
+      29,
+      49
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-36590-039",
+    "descricao": "Descrição detalhada para Flexível de Freio Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 1,
+    "fabricanteId": 3,
+    "nome": "Flexível de Freio Plus",
+    "precoBase": 613.22,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      27,
+      34,
+      45
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-40404-040",
+    "descricao": "Descrição detalhada para Bobina de Ignição Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 26,
+    "fabricanteId": 3,
+    "nome": "Bobina de Ignição Eco",
+    "precoBase": 339.09,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      14,
+      46
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-58465-041",
+    "descricao": "Descrição detalhada para Filtro de Combustível HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 36,
+    "fabricanteId": 2,
+    "nome": "Filtro de Combustível HD",
+    "precoBase": 245.05,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      12,
+      30,
+      42
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-51925-042",
+    "descricao": "Descrição detalhada para Óleo Lubrificante 5W30 HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 44,
+    "fabricanteId": 1,
+    "nome": "Óleo Lubrificante 5W30 HD",
+    "precoBase": 237.99,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      6,
+      11,
+      25,
+      29,
+      47
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-71080-043",
+    "descricao": "Descrição detalhada para Junta Homocinética Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 2,
+    "fabricanteId": 2,
+    "nome": "Junta Homocinética Plus",
+    "precoBase": 240.35,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      18,
+      19,
+      34,
+      37
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-18005-044",
+    "descricao": "Descrição detalhada para Válvula Termostática Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 6,
+    "fabricanteId": 3,
+    "nome": "Válvula Termostática Eco",
+    "precoBase": 103.97,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      3,
+      10,
+      14,
+      24
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-14177-045",
+    "descricao": "Descrição detalhada para Terminal de Direção Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 37,
+    "fabricanteId": 3,
+    "nome": "Terminal de Direção Eco",
+    "precoBase": 139.28,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      8,
+      10,
+      25
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-39013-046",
+    "descricao": "Descrição detalhada para Kit de Embreagem HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 30,
+    "fabricanteId": 3,
+    "nome": "Kit de Embreagem HD",
+    "precoBase": 423.35,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      5,
+      23,
+      42
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-19139-047",
+    "descricao": "Descrição detalhada para Semieixo Dianteiro HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 20,
+    "fabricanteId": 2,
+    "nome": "Semieixo Dianteiro HD",
+    "precoBase": 80.38,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      11,
+      15
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-29209-048",
+    "descricao": "Descrição detalhada para Palheta de Limpador Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 6,
+    "fabricanteId": 3,
+    "nome": "Palheta de Limpador Premium",
+    "precoBase": 594.19,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      18,
+      47
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-17208-049",
+    "descricao": "Descrição detalhada para Aditivo de Combustível HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 33,
+    "fabricanteId": 3,
+    "nome": "Aditivo de Combustível HD",
+    "precoBase": 232.98,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      20,
+      25,
+      31,
+      47
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-74390-050",
+    "descricao": "Descrição detalhada para Filtro de Ar HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 23,
+    "fabricanteId": 2,
+    "nome": "Filtro de Ar HD",
+    "precoBase": 477.98,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      24,
+      33,
+      42
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-67345-051",
+    "descricao": "Descrição detalhada para Amortecedor Traseiro Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 31,
+    "fabricanteId": 3,
+    "nome": "Amortecedor Traseiro Plus",
+    "precoBase": 252.18,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      3,
+      6,
+      8,
+      10,
+      33
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-91976-052",
+    "descricao": "Descrição detalhada para Flexível de Freio Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 1,
+    "nome": "Flexível de Freio Eco",
+    "precoBase": 321.78,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      6
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-43350-053",
+    "descricao": "Descrição detalhada para Bronzina de Mancal HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 12,
+    "fabricanteId": 2,
+    "nome": "Bronzina de Mancal HD",
+    "precoBase": 402.88,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      29,
+      45
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-37778-054",
+    "descricao": "Descrição detalhada para Arruela de Encosto HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 25,
+    "fabricanteId": 3,
+    "nome": "Arruela de Encosto HD",
+    "precoBase": 397.76,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      11,
+      25,
+      46,
+      50
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-69156-055",
+    "descricao": "Descrição detalhada para Tubo de Escape Intermediário Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 23,
+    "fabricanteId": 3,
+    "nome": "Tubo de Escape Intermediário Premium",
+    "precoBase": 56.13,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      4,
+      16,
+      20,
+      22,
+      38
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-37314-056",
+    "descricao": "Descrição detalhada para Jogo de Pistões Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 19,
+    "fabricanteId": 2,
+    "nome": "Jogo de Pistões Plus",
+    "precoBase": 113.17,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      22,
+      27,
+      47
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-53715-057",
+    "descricao": "Descrição detalhada para Kit de Embreagem Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 44,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem Plus",
+    "precoBase": 721.76,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      31
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-17192-058",
+    "descricao": "Descrição detalhada para Junta Homocinética Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 4,
+    "fabricanteId": 2,
+    "nome": "Junta Homocinética Plus",
+    "precoBase": 123.32,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      16,
+      25,
+      42
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-60350-059",
+    "descricao": "Descrição detalhada para Válvula Termostática Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 42,
+    "fabricanteId": 1,
+    "nome": "Válvula Termostática Premium",
+    "precoBase": 320.0,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      9,
+      25,
+      43,
+      49
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-46332-060",
+    "descricao": "Descrição detalhada para Radiador de Água HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 29,
+    "fabricanteId": 1,
+    "nome": "Radiador de Água HD",
+    "precoBase": 370.8,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      5,
+      11,
+      40,
+      43
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-61184-061",
+    "descricao": "Descrição detalhada para Palheta de Limpador HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 2,
+    "fabricanteId": 2,
+    "nome": "Palheta de Limpador HD",
+    "precoBase": 51.05,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      22,
+      30
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-94888-062",
+    "descricao": "Descrição detalhada para Semieixo Dianteiro HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 6,
+    "fabricanteId": 1,
+    "nome": "Semieixo Dianteiro HD",
+    "precoBase": 640.18,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      34,
+      47
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-35295-063",
+    "descricao": "Descrição detalhada para Cabo de Embreagem Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 12,
+    "fabricanteId": 2,
+    "nome": "Cabo de Embreagem Eco",
+    "precoBase": 513.85,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      36
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-78905-064",
+    "descricao": "Descrição detalhada para Kit de Embreagem Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 23,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem Premium",
+    "precoBase": 378.54,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      18,
+      38,
+      40,
+      44
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-77699-065",
+    "descricao": "Descrição detalhada para Catalisador Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 14,
+    "fabricanteId": 2,
+    "nome": "Catalisador Class",
+    "precoBase": 189.93,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      1,
+      23,
+      37,
+      44,
+      49
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-49461-066",
+    "descricao": "Descrição detalhada para Bronzina de Biela Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 18,
+    "fabricanteId": 1,
+    "nome": "Bronzina de Biela Premium",
+    "precoBase": 231.96,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      24,
+      39,
+      40
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-76458-067",
+    "descricao": "Descrição detalhada para Palheta de Limpador Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 9,
+    "fabricanteId": 1,
+    "nome": "Palheta de Limpador Eco",
+    "precoBase": 336.41,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      1,
+      17,
+      31,
+      43,
+      50
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-81915-068",
+    "descricao": "Descrição detalhada para Bronzina de Mancal HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 36,
+    "fabricanteId": 3,
+    "nome": "Bronzina de Mancal HD",
+    "precoBase": 279.55,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      13,
+      31,
+      38,
+      49
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-81100-069",
+    "descricao": "Descrição detalhada para Cabo de Vela Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 17,
+    "fabricanteId": 2,
+    "nome": "Cabo de Vela Eco",
+    "precoBase": 95.97,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      3,
+      13,
+      22,
+      26,
+      39
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-60545-070",
+    "descricao": "Descrição detalhada para Bronzina de Mancal Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 23,
+    "fabricanteId": 1,
+    "nome": "Bronzina de Mancal Plus",
+    "precoBase": 352.65,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      5,
+      12,
+      14,
+      30,
+      43
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-29921-071",
+    "descricao": "Descrição detalhada para Bronzina de Mancal HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 30,
+    "fabricanteId": 2,
+    "nome": "Bronzina de Mancal HD",
+    "precoBase": 560.94,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      3,
+      13,
+      24,
+      39
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-14766-072",
+    "descricao": "Descrição detalhada para Motor de Partida HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 2,
+    "nome": "Motor de Partida HD",
+    "precoBase": 379.73,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      7,
+      11,
+      25
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-23571-073",
+    "descricao": "Descrição detalhada para Filtro de Combustível Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 41,
+    "fabricanteId": 1,
+    "nome": "Filtro de Combustível Premium",
+    "precoBase": 421.9,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      22,
+      40,
+      41,
+      43
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-94002-074",
+    "descricao": "Descrição detalhada para Vela de Ignição Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 17,
+    "fabricanteId": 1,
+    "nome": "Vela de Ignição Class",
+    "precoBase": 389.84,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      20,
+      30
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-86046-075",
+    "descricao": "Descrição detalhada para Válvula Termostática HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 27,
+    "fabricanteId": 1,
+    "nome": "Válvula Termostática HD",
+    "precoBase": 153.27,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      46
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-55781-076",
+    "descricao": "Descrição detalhada para Silenciador Traseiro Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 7,
+    "fabricanteId": 2,
+    "nome": "Silenciador Traseiro Plus",
+    "precoBase": 60.82,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      2,
+      30,
+      34
+    ]
+  },
+  {
+    "categoria": "FILTROS",
+    "codigo": "SKU-FIL-45173-077",
+    "descricao": "Descrição detalhada para Filtro de Cabine Ar Condicionado Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 3,
+    "fabricanteId": 1,
+    "nome": "Filtro de Cabine Ar Condicionado Class",
+    "precoBase": 61.85,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      4,
+      9,
+      15,
+      50
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-37524-078",
+    "descricao": "Descrição detalhada para Cabo de Vela HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 33,
+    "fabricanteId": 3,
+    "nome": "Cabo de Vela HD",
+    "precoBase": 542.08,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      5,
+      20,
+      25,
+      44,
+      47
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-71126-079",
+    "descricao": "Descrição detalhada para Jogo de Sapatas Traseiras Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 36,
+    "fabricanteId": 3,
+    "nome": "Jogo de Sapatas Traseiras Class",
+    "precoBase": 490.63,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      18
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-16481-080",
+    "descricao": "Descrição detalhada para Motor de Partida HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 30,
+    "fabricanteId": 2,
+    "nome": "Motor de Partida HD",
+    "precoBase": 323.28,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      2,
+      14,
+      18,
+      31,
+      36
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-99361-081",
+    "descricao": "Descrição detalhada para Tubo de Escape Intermediário Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 22,
+    "fabricanteId": 1,
+    "nome": "Tubo de Escape Intermediário Premium",
+    "precoBase": 613.29,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      6,
+      12,
+      14,
+      33,
+      49
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-39994-082",
+    "descricao": "Descrição detalhada para Flexível de Freio Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 40,
+    "fabricanteId": 3,
+    "nome": "Flexível de Freio Plus",
+    "precoBase": 544.43,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      29,
+      30,
+      43
+    ]
+  },
+  {
+    "categoria": "OUTROS",
+    "codigo": "SKU-OUT-14314-083",
+    "descricao": "Descrição detalhada para Aditivo de Combustível HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 16,
+    "fabricanteId": 2,
+    "nome": "Aditivo de Combustível HD",
+    "precoBase": 843.14,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      14
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-18845-084",
+    "descricao": "Descrição detalhada para Cabo de Vela Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 30,
+    "fabricanteId": 1,
+    "nome": "Cabo de Vela Premium",
+    "precoBase": 673.72,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      4,
+      17,
+      21,
+      39,
+      47
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-25632-085",
+    "descricao": "Descrição detalhada para Válvula Termostática Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 34,
+    "fabricanteId": 2,
+    "nome": "Válvula Termostática Plus",
+    "precoBase": 691.8,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      9,
+      19
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-98667-086",
+    "descricao": "Descrição detalhada para Cilindro Mestre Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 29,
+    "fabricanteId": 3,
+    "nome": "Cilindro Mestre Premium",
+    "precoBase": 844.85,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      8,
+      30,
+      40,
+      45,
+      49
+    ]
+  },
+  {
+    "categoria": "ARREFECIMENTO",
+    "codigo": "SKU-ARR-33053-087",
+    "descricao": "Descrição detalhada para Aditivo de Radiador Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 34,
+    "fabricanteId": 2,
+    "nome": "Aditivo de Radiador Premium",
+    "precoBase": 734.35,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      9,
+      11,
+      12,
+      15,
+      18
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-71377-088",
+    "descricao": "Descrição detalhada para Pastilha de Freio Dianteira Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 1,
+    "nome": "Pastilha de Freio Dianteira Class",
+    "precoBase": 119.5,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      12,
+      13,
+      26,
+      36,
+      49
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-22678-089",
+    "descricao": "Descrição detalhada para Jogo de Sapatas Traseiras HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 26,
+    "fabricanteId": 2,
+    "nome": "Jogo de Sapatas Traseiras HD",
+    "precoBase": 575.67,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      21,
+      37,
+      47,
+      49
+    ]
+  },
+  {
+    "categoria": "ELÉTRICA",
+    "codigo": "SKU-ELÉ-77033-090",
+    "descricao": "Descrição detalhada para Vela de Ignição Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 27,
+    "fabricanteId": 2,
+    "nome": "Vela de Ignição Eco",
+    "precoBase": 207.17,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      13
+    ]
+  },
+  {
+    "categoria": "ESCAPAMENTO",
+    "codigo": "SKU-ESC-73200-091",
+    "descricao": "Descrição detalhada para Silenciador Traseiro Premium. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 20,
+    "fabricanteId": 3,
+    "nome": "Silenciador Traseiro Premium",
+    "precoBase": 506.43,
+    "tipoPeca": "ORIGINAL",
+    "veiculosIds": [
+      11,
+      23,
+      36,
+      37
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-93650-092",
+    "descricao": "Descrição detalhada para Kit de Embreagem Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 3,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem Plus",
+    "precoBase": 192.85,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      7,
+      17,
+      48
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-23765-093",
+    "descricao": "Descrição detalhada para Amortecedor Dianteiro Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 10,
+    "fabricanteId": 1,
+    "nome": "Amortecedor Dianteiro Plus",
+    "precoBase": 536.93,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      16,
+      19,
+      33,
+      36,
+      42
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-47725-094",
+    "descricao": "Descrição detalhada para Mola Helicoidal Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 2,
+    "fabricanteId": 3,
+    "nome": "Mola Helicoidal Class",
+    "precoBase": 611.08,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      1,
+      6,
+      38
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-14259-095",
+    "descricao": "Descrição detalhada para Cabo de Embreagem Class. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 27,
+    "fabricanteId": 3,
+    "nome": "Cabo de Embreagem Class",
+    "precoBase": 483.48,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      28
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-73843-096",
+    "descricao": "Descrição detalhada para Bronzina de Biela Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 36,
+    "fabricanteId": 1,
+    "nome": "Bronzina de Biela Plus",
+    "precoBase": 453.88,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      29
+    ]
+  },
+  {
+    "categoria": "FREIOS",
+    "codigo": "SKU-FRE-58354-097",
+    "descricao": "Descrição detalhada para Tambor de Freio Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 3,
+    "nome": "Tambor de Freio Plus",
+    "precoBase": 566.17,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      11,
+      28,
+      36,
+      39,
+      48
+    ]
+  },
+  {
+    "categoria": "SUSPENSÃO",
+    "codigo": "SKU-SUS-90901-098",
+    "descricao": "Descrição detalhada para Terminal de Direção Plus. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 28,
+    "fabricanteId": 3,
+    "nome": "Terminal de Direção Plus",
+    "precoBase": 224.16,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      26
+    ]
+  },
+  {
+    "categoria": "TRANSMISSÃO",
+    "codigo": "SKU-TRA-54429-099",
+    "descricao": "Descrição detalhada para Kit de Embreagem Eco. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 7,
+    "fabricanteId": 2,
+    "nome": "Kit de Embreagem Eco",
+    "precoBase": 233.65,
+    "tipoPeca": "PREMIUM",
+    "veiculosIds": [
+      41
+    ]
+  },
+  {
+    "categoria": "MOTOR",
+    "codigo": "SKU-MOT-82609-100",
+    "descricao": "Descrição detalhada para Arruela de Encosto HD. Alta qualidade e durabilidade testada em laboratório.",
+    "estoque": 38,
+    "fabricanteId": 2,
+    "nome": "Arruela de Encosto HD",
+    "precoBase": 107.34,
+    "tipoPeca": "ECONOMICO",
+    "veiculosIds": [
+      5
+    ]
+  }
+]

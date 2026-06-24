@@ -38,7 +38,7 @@ public class VeiculosServiceTest {
         Peca peca = new Peca();
         peca.setIdPeca(10L);
         peca.setNome("Filtro");
-        peca.setPrecoBase(50.0F);
+        peca.setPreco(50.0F);
 
         when(pecaVeiculoRepository.findPecasByVeiculoId(1L)).thenReturn(List.of(peca));
 

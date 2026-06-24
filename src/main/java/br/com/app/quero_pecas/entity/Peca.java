@@ -1,5 +1,6 @@
 package br.com.app.quero_pecas.entity;
 
+import br.com.app.quero_pecas.utils.TipoPeca;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class Peca {
     private String marca;
     private String nome;
     private String categoria;
-    private double precoBase;
+    private double preco;
     private TipoPeca tipoPeca;
     private boolean ativo;
 

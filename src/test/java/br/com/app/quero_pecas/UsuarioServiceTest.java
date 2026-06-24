@@ -1,10 +1,10 @@
 package br.com.app.quero_pecas;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
-import br.com.app.quero_pecas.entity.StatusUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import br.com.app.quero_pecas.service.UsuarioService;
+import br.com.app.quero_pecas.utils.StatusUsuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,8 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 import java.util.Optional;
 
-import static br.com.app.quero_pecas.entity.StatusUsuario.PENDENTE;
-import static br.com.app.quero_pecas.entity.TipoUsuario.MECANICO;
+import static br.com.app.quero_pecas.utils.StatusUsuario.PENDENTE;
+import static br.com.app.quero_pecas.utils.TipoUsuario.MECANICO;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -36,7 +36,7 @@ class UsuarioServiceTest {
     @DisplayName("Deve salvar um usuário corretamente convertendo DTO para Entidade")
     void save_Sucesso() {
         // Arrange (Preparação)
-        var enderecoDto = new UsuarioDTO.EnderecoCreate("12345678", "Rua A", 10, "Centro", "Cidade", "ST");
+        var enderecoDto = new UsuarioDTO.EnderecoCreate("12345678", "Rua A", "10", "Centro", "Cidade", "ST");
         var telefoneDto = new UsuarioDTO.TelefoneCreate("11999999999", "CELULAR");
         
         var request = new UsuarioDTO.Save(

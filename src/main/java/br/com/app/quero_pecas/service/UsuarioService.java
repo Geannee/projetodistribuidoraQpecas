@@ -2,9 +2,9 @@ package br.com.app.quero_pecas.service;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
 import br.com.app.quero_pecas.entity.Endereco;
-import br.com.app.quero_pecas.entity.StatusUsuario;
+import br.com.app.quero_pecas.utils.StatusUsuario;
 import br.com.app.quero_pecas.entity.Telefone;
-import br.com.app.quero_pecas.entity.TipoUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import br.com.app.quero_pecas.utils.Validacoes;
@@ -57,8 +57,8 @@ public class  UsuarioService {
             endereco.setLogradouro(dados.endereco().logradouro());
             endereco.setNumero(dados.endereco().numero());
             endereco.setBairro(dados.endereco().bairro());
-            endereco.setCidade(dados.endereco().cidade());
-            endereco.setEstado(dados.endereco().estado());
+            endereco.setCidadeUf(dados.endereco().cidadeUF());
+            endereco.setComplemento(dados.endereco().complemento());
             usuario.setEndereco(endereco);
         }
 

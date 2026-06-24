@@ -77,7 +77,6 @@
        ══════════════════════════════════════════════════════ -->
   <div class="panel-right">
 
-    <!-- Resumo do pedido -->
     <div class="order-summary">
       <div class="os-title">Resumo do pedido</div>
       <div class="os-row">
@@ -86,7 +85,7 @@
       </div>
       <div class="os-row">
         <span class="os-label">Frete estimado</span>
-        <span class="os-value os-frete">A calcular</span>
+        <span class="os-value os-frete" id="summaryFrete">R$ 20,00</span>
       </div>
       <div class="os-row os-row-discount" style="display:none;">
         <span class="os-label">Desconto</span>
@@ -94,26 +93,64 @@
       </div>
       <div class="os-row os-total">
         <span>Total estimado</span>
-        <span id="summaryTotal">R$ 353,30</span>
+        <span id="summaryTotal">R$ 373,30</span>
       </div>
     </div>
 
-    <!-- Botões de ação -->
+    <div class="shipping-box">
+      <div class="sb-title">Endereço de Entrega</div>
+
+      <div class="sb-form">
+        <input type="text" id="cepInput" placeholder="00000-000" maxlength="9" />
+        <button id="btnCalcularFrete" onclick="calcularFrete()">Calcular</button>
+      </div>
+
+      <div id="freteFeedback"></div>
+
+      <div id="deliveryAddressForm" class="address-fields-animated" style="display: none;">
+        <div class="form-group-row">
+          <div class="form-control">
+            <label>Logradouro (Rua/Avenida)</label>
+            <input type="text" id="logradouroInput" disabled />
+          </div>
+        </div>
+
+        <div class="form-group-row col-2">
+          <div class="form-control">
+            <label>Número *</label>
+            <input type="text" id="numeroInput" placeholder="Ex: 104" />
+          </div>
+          <div class="form-control">
+            <label>Complemento</label>
+            <input type="text" id="complementoInput" placeholder="Apt, Sala, Lote" />
+          </div>
+        </div>
+
+        <div class="form-group-row col-2">
+          <div class="form-control">
+            <label>Bairro</label>
+            <input type="text" id="bairroInput" disabled />
+          </div>
+          <div class="form-control">
+            <label>Cidade / UF</label>
+            <input type="text" id="cidadeUfInput" disabled />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="action-buttons">
       <button class="btn-finalizar" onclick="finalizarPedido()">
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><polyline points="20 6 9 17 4 12"/></svg> Finalizar Pedido
       </button>
       <div class="action-row">
-        <button class="btn-action-sec" onclick="gerarPedido()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg> Gerar Pedido
-        </button>
-        <button class="btn-action-sec" onclick="gerarPDF()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Gerar PDF
+        <button class="btn-action-sec" onclick="gerarOrcamento()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Gerar Orçamento
         </button>
       </div>
     </div>
 
-  </div><!-- fim panel-right -->
+  </div>```
 </div><!-- fim split-layout -->
 
 <!-- FOOTER -->

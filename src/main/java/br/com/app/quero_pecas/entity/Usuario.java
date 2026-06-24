@@ -1,5 +1,7 @@
 package br.com.app.quero_pecas.entity;
 
+import br.com.app.quero_pecas.utils.StatusUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

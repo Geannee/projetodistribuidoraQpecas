@@ -3,7 +3,7 @@ package br.com.app.quero_pecas.service;
 import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.VeiculoDTO;
 import br.com.app.quero_pecas.entity.Peca;
-import br.com.app.quero_pecas.entity.TipoDeCombustivel;
+import br.com.app.quero_pecas.utils.TipoDeCombustivel;
 import br.com.app.quero_pecas.entity.Veiculo;
 import br.com.app.quero_pecas.repository.PecaVeiculoRepository;
 import br.com.app.quero_pecas.repository.VeiculoRepository;
@@ -136,7 +136,7 @@ class VeiculoServiceTest {
         Peca peca = new Peca();
         peca.setIdPeca(10L);
         peca.setNome("Filtro");
-        peca.setPrecoBase(50.0F);
+        peca.setPreco(50.0F);
 
         when(pecaVeiculoRepository.findPecasByVeiculoId(1L)).thenReturn(List.of(peca));
 

@@ -1,6 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
-import br.com.app.quero_pecas.entity.TipoUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

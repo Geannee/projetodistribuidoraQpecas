@@ -1,8 +1,8 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
-import br.com.app.quero_pecas.entity.TipoUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -62,10 +62,9 @@ public class UsuarioControllerTest {
         Endereco endereco = new Endereco();
         endereco.setCep("04534000");
         endereco.setBairro("Centro");
-        endereco.setCidade("Brasilia");
-        endereco.setEstado("DF");
+        endereco.setCidadeUf("Brasilia / DF");
         endereco.setLogradouro("Ceilandia");
-        endereco.setNumero(123);
+        endereco.setNumero("123");
 
         usuario.setEndereco(endereco);
 

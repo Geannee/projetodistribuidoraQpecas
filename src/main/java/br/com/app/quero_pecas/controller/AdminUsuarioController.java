@@ -1,6 +1,5 @@
 package br.com.app.quero_pecas.controller;
 
-import br.com.app.quero_pecas.entity.StatusUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,6 @@ public class AdminUsuarioController {
         List<Usuario> reprovados = usuarioService.listarAtivos();
         return ResponseEntity.ok(reprovados);
     }
-
 
     @PatchMapping("/{id}/aprovar")
     public ResponseEntity<Void> aprovar(@PathVariable Long id) {

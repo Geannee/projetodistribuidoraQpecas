@@ -97,8 +97,6 @@ function addToCart(btn) {
   // Exibe o toast clássico
   showCartToast(`${brand} adicionado ao carrinho`);
 
-  // Abre e atualiza o carrinho lateral dinamicamente
-  toggleSideCart(true);
 }
 
 // ── Toast de confirmação ─────────────────────────────────────────────────────

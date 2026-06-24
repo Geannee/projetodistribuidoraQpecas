@@ -2,6 +2,7 @@ package br.com.app.quero_pecas.entity;
 
 import br.com.app.quero_pecas.utils.TipoPeca;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,7 @@ public class Peca {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
+
+    public void setPrecoBase(@NotNull Double aDouble) {
+    }
 }

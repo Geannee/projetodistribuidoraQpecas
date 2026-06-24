@@ -43,12 +43,21 @@ const AdminCadastroView = {
       return;
     }
 
+    const mapCombustivel = {
+      'FLEX': 'Flex',
+      'GASOLINA': 'Gasolina',
+      'ETANOL': 'Etanol',
+      'DIESEL': 'Diesel',
+      'ELETRICO': 'Elétrico',
+      'HIBRIDO': 'Híbrido'
+    };
+
     tbody.innerHTML = veiculos.map(v => `
       <tr>
         <td><strong>${v.placa}</strong></td>
         <td>${v.marca} ${v.modelo}</td>
         <td>${v.anoFabricacao}</td>
-        <td>${v.tipoDeCombustivel}</td>
+        <td>${mapCombustivel[v.tipoDeCombustivel] || v.tipoDeCombustivel}</td>
         <td style="font-size:12px;color:var(--gray-text)">${v.chassi}</td>
         <td>
           <button class="btn-excluir" onclick="AdminCadastroController.excluirVeiculo(${v.idVeiculo})">

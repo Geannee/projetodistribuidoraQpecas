@@ -8,6 +8,9 @@ const AdminEstoqueController = {
   fornecedores: [],
   idPecaSendoEditada: null,
   editSelectedVehicleIds: new Set(),
+  sortField: 'nome',
+  sortAsc: true,
+  currentPage: 1,
 
   async init() {
     if (!Auth.checkAdmin()) return;
@@ -24,8 +27,9 @@ const AdminEstoqueController = {
 
       const marcasUnicas = [...new Set(this.veiculos.map(v => v.marca))].sort();
       AdminEstoqueView.popularMarcas(marcasUnicas);
+      AdminEstoqueView.popularFabricantes(this.fornecedores);
 
-      this.filtrarEstoque();
+      this.filtrarEstoque(true);
     } catch (e) {
       console.error("Erro ao inicializar dados de estoque:", e);
       AdminEstoqueView.showToast("Erro ao carregar dados do catálogo.", "error");
@@ -33,20 +37,21 @@ const AdminEstoqueController = {
   },
 
   bindEvents() {
-    AdminEstoqueView.inputBusca?.addEventListener('input', () => this.filtrarEstoque());
+    AdminEstoqueView.inputBusca?.addEventListener('input', () => this.filtrarEstoque(true));
 
     AdminEstoqueView.selectMarca?.addEventListener('change', async () => {
       await this.lidarComMudancaMarca();
-      this.filtrarEstoque();
+      this.filtrarEstoque(true);
     });
 
     AdminEstoqueView.selectModelo?.addEventListener('change', async () => {
       await this.lidarComMudancaModelo();
-      this.filtrarEstoque();
+      this.filtrarEstoque(true);
     });
 
-    AdminEstoqueView.selectAno?.addEventListener('change', () => this.filtrarEstoque());
-    AdminEstoqueView.selectCategoria?.addEventListener('change', () => this.filtrarEstoque());
+    AdminEstoqueView.selectAno?.addEventListener('change', () => this.filtrarEstoque(true));
+    AdminEstoqueView.selectCategoria?.addEventListener('change', () => this.filtrarEstoque(true));
+    AdminEstoqueView.selectFabricante?.addEventListener('change', () => this.filtrarEstoque(true));
 
     // Bind submit de edição
     AdminEstoqueView.formEdit?.addEventListener('submit', (e) => this.submeterEdicao(e));
@@ -106,15 +111,23 @@ const AdminEstoqueController = {
     AdminEstoqueView.popularAnos(anos);
   },
 
-  filtrarEstoque() {
+  filtrarEstoque(resetPage = false) {
+    if (resetPage) {
+      this.currentPage = 1;
+    }
+
     const query = AdminEstoqueView.inputBusca?.value.trim().toLowerCase() || '';
     const marca = AdminEstoqueView.selectMarca?.value || '';
     const modelo = AdminEstoqueView.selectModelo?.value || '';
     const ano = AdminEstoqueView.selectAno?.value || '';
     const categoria = AdminEstoqueView.selectCategoria?.value || '';
+    const fabricanteId = AdminEstoqueView.selectFabricante?.value || '';
 
     const associacoesFiltradas = this.associacoes.filter(assoc => {
       if (categoria && assoc.peca.categoria !== categoria) {
+        return false;
+      }
+      if (fabricanteId && (!assoc.peca.fabricante || assoc.peca.fabricante.idFabricante.toString() !== fabricanteId)) {
         return false;
       }
       if (query) {
@@ -126,6 +139,68 @@ const AdminEstoqueController = {
       }
       return true;
     });
+
+    const ordenarPecas = (pecas) => {
+      return pecas.sort((a, b) => {
+        let valA, valB;
+        if (this.sortField === 'nome') {
+          valA = a.nome || '';
+          valB = b.nome || '';
+          const comp = valA.localeCompare(valB, 'pt-BR');
+          return this.sortAsc ? comp : -comp;
+        } else if (this.sortField === 'sku') {
+          valA = a.codigo || '';
+          valB = b.codigo || '';
+          const comp = valA.localeCompare(valB, 'pt-BR');
+          return this.sortAsc ? comp : -comp;
+        } else if (this.sortField === 'categoria') {
+          valA = a.categoria || '';
+          valB = b.categoria || '';
+          const comp = valA.localeCompare(valB, 'pt-BR');
+          return this.sortAsc ? comp : -comp;
+        } else if (this.sortField === 'fabricante') {
+          valA = a.fabricante ? a.fabricante.nome : (a.marca || '');
+          valB = b.fabricante ? b.fabricante.nome : (b.marca || '');
+          const comp = valA.localeCompare(valB, 'pt-BR');
+          return this.sortAsc ? comp : -comp;
+        } else if (this.sortField === 'tipo') {
+          valA = a.tipoPeca || '';
+          valB = b.tipoPeca || '';
+          const comp = valA.localeCompare(valB, 'pt-BR');
+          return this.sortAsc ? comp : -comp;
+        } else if (this.sortField === 'preco') {
+          valA = a.preco || 0;
+          valB = b.preco || 0;
+          return this.sortAsc ? valA - valB : valB - valA;
+        } else if (this.sortField === 'estoque') {
+          valA = a.estoque || 0;
+          valB = b.estoque || 0;
+          return this.sortAsc ? valA - valB : valB - valA;
+        }
+        return 0;
+      });
+    };
+
+    if (!marca) {
+      // List all pieces without grouping by vehicle
+      const pecasUnicasMap = new Map();
+      associacoesFiltradas.forEach(assoc => {
+        pecasUnicasMap.set(assoc.peca.idPeca, assoc.peca);
+      });
+      const pecasUnicas = Array.from(pecasUnicasMap.values());
+      ordenarPecas(pecasUnicas);
+
+      const totalCount = pecasUnicas.length;
+      const totalPages = Math.ceil(totalCount / 25) || 1;
+      if (this.currentPage > totalPages) {
+        this.currentPage = totalPages;
+      }
+      const start = (this.currentPage - 1) * 25;
+      const exibidas = pecasUnicas.slice(start, start + 25);
+
+      AdminEstoqueView.renderCatalogo(exibidas, true, this.sortField, this.sortAsc, totalCount, this.currentPage);
+      return;
+    }
 
     const pecasPorVeiculo = {};
     associacoesFiltradas.forEach(assoc => {
@@ -140,7 +215,7 @@ const AdminEstoqueController = {
 
     const catalogo = this.veiculos
       .filter(v => {
-        if (marca && v.marca !== marca) return false;
+        if (v.marca !== marca) return false;
         if (modelo && v.modelo !== modelo) return false;
         if (ano && v.anoFabricacao.toString() !== ano) return false;
         if (!pecasPorVeiculo[v.idVeiculo] || pecasPorVeiculo[v.idVeiculo].length === 0) return false;
@@ -148,7 +223,7 @@ const AdminEstoqueController = {
       })
       .map(v => {
         const pecas = [...pecasPorVeiculo[v.idVeiculo]];
-        pecas.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+        ordenarPecas(pecas);
         return {
           ...v,
           pecas
@@ -161,7 +236,22 @@ const AdminEstoqueController = {
       return a.modelo.localeCompare(b.modelo, 'pt-BR');
     });
 
-    AdminEstoqueView.renderCatalogo(catalogo);
+    AdminEstoqueView.renderCatalogo(catalogo, false, this.sortField, this.sortAsc);
+  },
+
+  alterarOrdenacao(campo) {
+    if (this.sortField === campo) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortField = campo;
+      this.sortAsc = true;
+    }
+    this.filtrarEstoque(true); // reset to page 1 on sort change
+  },
+
+  irParaPagina(pagina) {
+    this.currentPage = pagina;
+    this.filtrarEstoque(false); // do not reset page
   },
 
   // ── EDIÇÃO DE PEÇAS ──────────────────────────────────────────────────────────

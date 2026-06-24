@@ -164,7 +164,8 @@ const BuscaView = {
 
     // Transforma os itens internos do grupo em linhas estruturadas
     const linhasPecasHtml = listaDePecas.map(peca => {
-      const precoUnico = peca.precoBase !== undefined ? Number(peca.precoBase) : 0.0;
+      const pecaId = peca.idPeca !== undefined ? peca.idPeca : peca.id;
+      const precoUnico = peca.precoBase !== undefined ? Number(peca.precoBase) : (peca.preco !== undefined ? Number(peca.preco) : 0.0);
 
       let classeEstoque = 'estoque-ok';
       let textoEstoque = '● Em Estoque';
@@ -182,7 +183,7 @@ const BuscaView = {
           <div class="equiv-thumb">⚙️</div>
           <div class="equiv-info">
             <div class="equiv-brand">${peca.marca || 'Genérico'}</div>
-            <div class="equiv-ref">Ref.: ${peca.idPeca || 'N/A'} — ${peca.nome || 'Peça'}</div>
+            <div class="equiv-ref">Ref.: ${pecaId || 'N/A'} — ${peca.nome || 'Peça'}</div>
             <div class="equiv-badges">
               <span class="badge badge-original">Original</span>
               <span class="badge badge-compat">✓ compatível</span>

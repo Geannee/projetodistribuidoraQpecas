@@ -85,18 +85,29 @@
     }
     .filter-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+      .filter-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
       .filter-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
       .filter-grid {
         grid-template-columns: 1fr;
       }
+    }
+    .sortable-header {
+      transition: background-color 0.2s;
+    }
+    .sortable-header:hover {
+      background-color: rgba(0, 0, 0, 0.05) !important;
     }
   </style>
 </head>
@@ -192,7 +203,7 @@
           <div class="form-group">
             <label class="form-label" for="est-marca">Marca do Veículo</label>
             <select id="est-marca" class="form-input form-select">
-              <option value="">Todas as marcas</option>
+              <option value="">Nenhum (Mostrar todas as peças)</option>
             </select>
           </div>
           <div class="form-group">
@@ -220,6 +231,12 @@
               <option value="ARREFECIMENTO">Arrefecimento</option>
               <option value="ESCAPAMENTO">Escapamento</option>
               <option value="OUTROS">Outros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="est-fabricante">Fabricante</label>
+            <select id="est-fabricante" class="form-input form-select">
+              <option value="">Todos os fabricantes</option>
             </select>
           </div>
         </div>

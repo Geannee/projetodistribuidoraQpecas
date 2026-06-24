@@ -4,6 +4,7 @@ import br.com.app.quero_pecas.entity.Endereco;
 import br.com.app.quero_pecas.entity.Telefone;
 import br.com.app.quero_pecas.utils.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
+import br.com.app.quero_pecas.repository.PedidoRepository;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,10 +38,14 @@ public class UsuarioControllerTest {
     private UsuarioRepository repository;
 
     @Autowired
+    private PedidoRepository pedidoRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @BeforeEach
     void setup() {
+        pedidoRepository.deleteAll();
         repository.deleteAll();
 
         Usuario usuario = new Usuario();

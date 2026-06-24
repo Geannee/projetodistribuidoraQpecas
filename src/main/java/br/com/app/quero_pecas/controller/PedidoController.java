@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {
@@ -23,6 +25,12 @@ public class PedidoController {
     @PutMapping("/{id}")
     public ResponseEntity<PedidoDTO.PedidoResponse> update(@PathVariable Long id, @RequestBody PedidoDTO.AtualizarPagamentoRequest request) {
         PedidoDTO.PedidoResponse response = pedidoService.update(id, request);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/historico/{idUsuario}")
+    public ResponseEntity<List<PedidoDTO.PedidoResponse>> getHistorico(@PathVariable Long idUsuario) {
+        List<PedidoDTO.PedidoResponse> response = pedidoService.findByUsuario(idUsuario);
         return ResponseEntity.ok(response);
     }
 

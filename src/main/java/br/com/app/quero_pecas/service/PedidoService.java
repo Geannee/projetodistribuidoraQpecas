@@ -131,6 +131,13 @@ public class PedidoService {
         return new PedidoDTO.PedidoResponse(pedido.getIdPedido(), pedido.getNumeroPedido(), pedido.getData(), pedido.getStatus(), pedido.getValorFrete(), pedido.getValorTotal(), pedido.getEntrega() != null ? pedido.getEntrega().getIdEntrega() : null, itensResponse);
     }
 
+    public List<PedidoDTO.PedidoResponse> findByUsuario(Long idUsuario) {
+        return pedidoRepository.findAllByUsuarioIdUsuarioOrderByDataDesc(idUsuario)
+                .stream()
+                .map(this::convertToResponseDTO)
+                .toList();
+    }
+
     public String generateValue() {
         String letras = UUID.randomUUID().toString().replace("-", "").substring(0, 8).toUpperCase();
 

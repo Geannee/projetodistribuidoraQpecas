@@ -151,34 +151,38 @@ const BuscaView = {
    */
   criarTemplateAcordeon(id, nomeCategoria, listaDePecas) {
     const nomesAmigaveis = {
-      'OUTROS': 'Outros Componentes',
-      'FILTRO': 'Filtros e Elementos',
-      'FREIO': 'Sistema de Freios',
+      'ARREFECIMENTO': 'Sistema de Arrefecimento',
+      'ELETRICA': 'Componentes Elétricos',
+      'ESCAPAMENTO': 'Sistema de Escapamento',
+      'FILTROS': 'Filtros e Elementos',
+      'FREIOS': 'Sistema de Freios',
       'MOTOR': 'Componentes do Motor',
-      'ELETRICA': 'Componentes da Eletrica',
-      'SUSPENSAO': 'Suspensão e Componentes'
-
+      'SUSPENSÃO': 'Suspensão e Componentes',
+      'TRANSMISSAO': 'Sistema de Transmissão',
+      'OUTROS': 'Outros Componentes'
     };
 
     const categoriaExibicao = nomesAmigaveis[nomeCategoria] || nomeCategoria;
 
+    const placaAtual = this.plateInput ? this.plateInput.value.trim() : '';
+
     // Transforma os itens internos do grupo em linhas estruturadas
-    const linhasPecasHtml = listaDePecas.map(peca => {
-      const pecaId = peca.idPeca !== undefined ? peca.idPeca : peca.id;
-      const precoUnico = peca.precoBase !== undefined ? Number(peca.precoBase) : (peca.preco !== undefined ? Number(peca.preco) : 0.0);
+      const linhasPecasHtml = listaDePecas.map(peca => {
+          const pecaId = peca.idPeca !== undefined ? peca.idPeca : peca.id;
+          const precoUnico = peca.precoBase !== undefined ? Number(peca.precoBase) : (peca.preco !== undefined ? Number(peca.preco) : 0.0);
 
-      let classeEstoque = 'estoque-ok';
-      let textoEstoque = '● Em Estoque';
+          let classeEstoque = 'estoque-ok';
+          let textoEstoque = '● Em Estoque';
 
-      if (peca.estoque <= 0) {
-        classeEstoque = 'estoque-out';
-        textoEstoque = '✕ Sem estoque';
-      } else if (peca.estoque <= 3) {
-        classeEstoque = 'estoque-low';
-        textoEstoque = `⚠ Restam ${peca.estoque} unid.`;
-      }
+          if (peca.estoque <= 0) {
+              classeEstoque = 'estoque-out';
+              textoEstoque = '✕ Sem estoque';
+          } else if (peca.estoque <= 3) {
+              classeEstoque = 'estoque-low';
+              textoEstoque = `⚠ Restam ${peca.estoque} unid.`;
+          }
 
-      return `
+          return `
         <div class="equiv-row">
           <div class="equiv-thumb">⚙️</div>
           <div class="equiv-info">
@@ -196,17 +200,25 @@ const BuscaView = {
             <div class="price">R$ ${precoUnico.toFixed(2).replace('.', ',')}</div>
             <div class="label">à vista</div>
           </div>
-          <button class="btn-add" onclick="if(typeof addToCart === 'function') addToCart(this)">+ Add</button>
+          <button class="btn-add" data-vehicle="${placaAtual}" data-stock="${peca.estoque || 0}" onclick="if(typeof addToCart === 'function') addToCart(this)">+ Add</button>
         </div>
       `;
-    }).join('');
+      }).join('');
 
-    const icones = { 'FILTRO': '🔧', 'FREIO': '🛑', 'MOTOR': '⚙️', 'ELETRICA': '⚡', 'OUTROS': '📦' };
-    const iconeSugerido = icones[nomeCategoria] || '🔩';
+      const icones = {
+          'ARREFECIMENTO': '<i class="fas fa-thermometer-half"></i>',
+          'ELETRICA': '<i class="fas fa-bolt"></i>',
+          'ESCAPAMENTO': '<i class="fas fa-wind"></i>',
+          'FILTROS': '<i class="fas fa-tools"></i>',
+          'FREIOS': '<i class="fas fa-disc-drive"></i>',
+          'MOTOR': '<i class="fas fa-cogs"></i>',
+          'SUSPENSÃO': '<i class="fas fa-wrench"></i>',
+          'TRANSMISSAO': '<i class="fas fa-sync"></i>',
+          'OUTROS': '<i class="fas fa-box"></i>'
+      };
+      const iconeSugerido = icones[nomeCategoria] || '<i class="fas fa-screwdriver"></i>';
 
-    // CORREÇÃO AQUI: Retirado o 'style="display: none;"' da div .pa-body
-    // O controle se ela aparece ou some é feito pela classe '.open' colocada em '.pa-item'
-    return `
+      return `
       <div class="pa-item" id="${id}">
         <div class="pa-header" onclick="togglePart('${id}')">
           <span class="pa-icon">${iconeSugerido}</span>

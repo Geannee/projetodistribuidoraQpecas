@@ -14,7 +14,8 @@ public interface BuscarPorPlacaDTO {
             String descricao,
             Double precoBase,
             Integer estoque,
-            String marca
+            String marca,
+            String categoria
     ) {}
 
     public record VeiculoDTO(

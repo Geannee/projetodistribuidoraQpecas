@@ -79,7 +79,7 @@ public class VeiculoService {
 
         List<BuscarPorPlacaDTO.PecaResponse> pecasResponses = pecas.stream().map(
                         peca -> new BuscarPorPlacaDTO.PecaResponse(
-                                peca.getIdPeca(), peca.getNome(), peca.getDescricao(), (double) peca.getPreco(), peca.getEstoque(), peca.getMarca()))
+                                peca.getIdPeca(), peca.getNome(), peca.getDescricao(), (double) peca.getPreco(), peca.getEstoque(), peca.getMarca(), peca.getCategoria()))
                 .toList();
 
         BuscarPorPlacaDTO.VeiculoDTO veiculoDTO = new BuscarPorPlacaDTO.VeiculoDTO(

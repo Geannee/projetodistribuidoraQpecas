@@ -1,12 +1,10 @@
 package br.com.app.quero_pecas.controller;
 
 
-import br.com.app.quero_pecas.dto.BuscarPorPlacaDTO;
 import br.com.app.quero_pecas.dto.PecaDTO;
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.PecaVeiculo;
 import br.com.app.quero_pecas.service.PecaService;
-import br.com.app.quero_pecas.service.VeiculoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

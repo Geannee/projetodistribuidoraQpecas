@@ -1,4 +1,4 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.entity.Peca;
 import br.com.app.quero_pecas.entity.PecaVeiculo;
@@ -53,13 +53,13 @@ public class VeiculoControllerTest {
         // Cria algumas peças
         Peca peca1 = new Peca();
         peca1.setNome("Filtro de Óleo");
-        peca1.setPrecoBase(25.90f);
+        peca1.setPreco(25.90f);
         peca1.setEstoque(10);
         peca1 = pecaRepository.save(peca1);
 
         Peca peca2 = new Peca();
         peca2.setNome("Pastilha de Freio");
-        peca2.setPrecoBase(89.90f);
+        peca2.setPreco(89.90f);
         peca2.setEstoque(5);
         peca2 = pecaRepository.save(peca2);
 

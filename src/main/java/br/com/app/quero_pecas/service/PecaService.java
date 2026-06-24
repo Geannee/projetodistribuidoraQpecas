@@ -48,7 +48,7 @@ public class PecaService {
         peca.setMarca(fabricante.getNome());
 
         peca.setNome(dados.nome());
-        peca.setPrecoBase(dados.precoBase());
+        peca.setPreco(dados.precoBase());
         peca.setTipoPeca(dados.tipoPeca());
         peca.setAtivo(true);
 

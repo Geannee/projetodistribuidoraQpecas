@@ -1,6 +1,7 @@
-package br.com.app.quero_pecas.Controller;
+package br.com.app.quero_pecas.controller;
 
-import br.com.app.quero_pecas.entity.TipoUsuario;
+import br.com.app.quero_pecas.repository.PedidoRepository;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
 import br.com.app.quero_pecas.service.TokenService;
@@ -34,6 +35,8 @@ public class AuthControllerTest {
     @Autowired
     private UsuarioRepository repository;
     @Autowired
+    private PedidoRepository pedidoRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     private static final String JSON_CNPJ_INVALIDO = "{\"login\": \"11.111.111/1111-11\", \"senha\": \"senha111\"}";
@@ -46,6 +49,8 @@ public class AuthControllerTest {
 
     @BeforeEach
     void setup() {
+        pedidoRepository.deleteAll();
+
         repository.deleteAll();
 
         Usuario usuario = new Usuario();

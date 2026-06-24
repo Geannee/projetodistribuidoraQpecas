@@ -1,6 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
-import br.com.app.quero_pecas.entity.TipoUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,17 +22,22 @@ public interface UsuarioDTO {
             EnderecoCreate endereco,
             List<TelefoneCreate> telefone
 
-    ) {}
+    ) {
+    }
+
     record EnderecoCreate(
-           @NotBlank  String cep,
-           @NotBlank  String logradouro,
-           @NotNull int numero,
-           @NotBlank  String bairro,
-           @NotBlank  String cidade,
-           @NotBlank  String estado
-    ) {}
+            @NotBlank String cep,
+            @NotBlank String logradouro,
+            @NotNull String numero,
+            @NotBlank String bairro,
+            @NotBlank String cidadeUF,
+            @NotBlank String complemento
+    ) {
+    }
+
     record TelefoneCreate(
-           @NotBlank String telefone,
+            @NotBlank String telefone,
             String tipo
-    ) {}
+    ) {
+    }
 }

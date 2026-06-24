@@ -1,7 +1,6 @@
 package br.com.app.quero_pecas.controller;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
-import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

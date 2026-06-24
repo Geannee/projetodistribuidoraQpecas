@@ -1,5 +1,7 @@
 package br.com.app.quero_pecas.entity;
 
+import br.com.app.quero_pecas.utils.MetodoPagamento;
+import br.com.app.quero_pecas.utils.StatusPagamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,11 +13,14 @@ import java.time.LocalDateTime;
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Pagamento {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPagamento;
 
     private LocalDateTime dataPagamento;
-    private String tipoPagamento;
+
+    @Enumerated(EnumType.STRING)
+    private MetodoPagamento metodoPagamento;
 
     @Enumerated(EnumType.STRING)
     private StatusPagamento statusPagamento;

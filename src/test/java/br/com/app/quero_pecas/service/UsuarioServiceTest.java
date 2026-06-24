@@ -1,9 +1,10 @@
 package br.com.app.quero_pecas.service;
 
 import br.com.app.quero_pecas.dto.UsuarioDTO;
-import br.com.app.quero_pecas.entity.TipoUsuario;
 import br.com.app.quero_pecas.entity.Usuario;
 import br.com.app.quero_pecas.repository.UsuarioRepository;
+import br.com.app.quero_pecas.utils.StatusUsuario;
+import br.com.app.quero_pecas.utils.TipoUsuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import br.com.app.quero_pecas.entity.StatusUsuario;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -32,15 +32,13 @@ class UsuarioServiceTest {
     @InjectMocks
     private UsuarioService usuarioService;
 
-
-
     @Test
     @DisplayName("Deve salvar usuário com sucesso quando os dados forem válidos")
 
     void deveSalvarUsuarioComSucesso() {
         // Arrange: Dados válidos (CNPJ matematicamente válido para passar no Caelum Stella)
         UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
-                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+                "12345678", "Rua Teste", "1", "Bairro", "Cidade", "SP"
         );
 
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
@@ -72,7 +70,7 @@ class UsuarioServiceTest {
     void naoDeveSalvarCnpjDuplicado() {
         // Arrange
         UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
-                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+                "12345678", "Rua Teste", "1", "Bairro", "Cidade", "SP"
         );
 
         UsuarioDTO.Save dto = new UsuarioDTO.Save(
@@ -95,7 +93,7 @@ class UsuarioServiceTest {
     @DisplayName("Deve falhar ao passar um CNPJ com formato inválido (Caelum Stella)")
     void naoDeveSalvarComCnpjInvalido() {
         UsuarioDTO.EnderecoCreate enderecoFake = new UsuarioDTO.EnderecoCreate(
-                "12345678", "Rua Teste", 1, "Bairro", "Cidade", "SP"
+                "12345678", "Rua Teste", "1", "Bairro", "Cidade", "SP"
         );
         // Arrange: CNPJ com números repetidos (matematicamente inválido)
         UsuarioDTO.Save dto = new UsuarioDTO.Save(

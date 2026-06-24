@@ -1,45 +1,59 @@
 package br.com.app.quero_pecas.dto;
 
+import br.com.app.quero_pecas.utils.StatusPedido;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PedidoDTO {
+    record PedidoRequest(
+            Long idUsuario,
+            Double valorFrete,
+            EnderecoEntregaRequest enderecoEntrega,
+            List<ItemPedidoRequest> itens
+    ) {
+    }
 
-    // ── O RESUMO AGORA CARREGA OS ITENS SIMPLIFICADOS ──────────────────
-    public record Resumo(
+    record ItemPedidoRequest(
+            Long idPeca,
+            Integer quantidade
+    ) {
+    }
+
+    record PedidoResponse(
             Long idPedido,
             String numeroPedido,
             LocalDateTime data,
-            String status,
-            float valorTotal,
-            List<ItemResumo> itens // <── Nova lista adicionada aqui
-    ) {}
+            StatusPedido status,
+            Double valorFrete,
+            Double valorTotal,
+            Long idEntrega,
+            List<ItemPedidoResponse> itens
+    ) {
+    }
 
-    // Record auxiliar para não pesar o histórico principal
-    public record ItemResumo(
-            String nomePeca,
-            int quantidade,
-            float precoVenda
-    ) {}
-
-    // ── DETALHE (Continua igual para o seu Modal) ──────────────────────
-    public record Detalhe(
-            Long idPedido,
-            String numeroPedido,
-            LocalDateTime data,
-            String status,
-            float valorFrete,
-            float valorTotal,
-            String nomeComprador,
-            List<ItemDetalhe> itens
-    ) {}
-
-    public record ItemDetalhe(
+    record ItemPedidoResponse(
             Long idPeca,
             String nomePeca,
-            String sku,
-            int quantidade,
-            float precoVenda,
-            float subtotal
-    ) {}
+            Integer quantidade,
+            Double precoVenda,
+            Double subtotal
+    ) {
+    }
+
+    record AtualizarPagamentoRequest(
+            String metodoPagamento,
+            String statusPagamento
+    ) {
+    }
+
+    record EnderecoEntregaRequest(
+            String cep,
+            String logradouro,
+            String numero,
+            String complemento,
+            String bairro,
+            String cidadeUf
+    ) {
+    }
 }

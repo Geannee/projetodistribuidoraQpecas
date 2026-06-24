@@ -1,6 +1,6 @@
 package br.com.app.quero_pecas.dto;
 
-import br.com.app.quero_pecas.entity.TipoDeCombustivel;
+import br.com.app.quero_pecas.utils.TipoDeCombustivel;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.Year;

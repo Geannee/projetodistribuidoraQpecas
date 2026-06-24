@@ -6,16 +6,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Entity @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class PecaPedido {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPecaPedido;
-    private float precoVenda;
-    private int quantidade;
 
-    @ManyToOne @JoinColumn(name = "pedido_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPecaPedido;
+    private Double precoVenda;
+    private Integer quantidade;
+    private Double subtotal;
+
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
-    @ManyToOne @JoinColumn(name = "peca_id")
+
+    @ManyToOne
+    @JoinColumn(name = "peca_id")
     private Peca peca;
 }

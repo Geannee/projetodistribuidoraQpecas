@@ -22,8 +22,8 @@ public class Endereco {
     private Long idEndereco;
     private String cep;
     private String logradouro;
-    private int numero;
+    private String numero;
     private String bairro;
-    private String cidade;
-    private String estado;
+    private String complemento;
+    private String cidadeUf;
 }

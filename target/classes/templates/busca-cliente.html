@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buscar Peças – Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="/css/dashboard-style.css"/>
+  <link rel="stylesheet" href="/css/busca-style.css"/>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar"></div>
+      <div>
+        <div class="user-name" id="sidebar-nome"></div>
+        <div class="user-cnpj" id="sidebar-cnpj"></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/></svg>
+        Dashboard
+      </a>
+      <a href="busca-cliente.html" class="nav-item active">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        Buscar Peças
+      </a>
+      <a href="pedidos.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
+        Meus Pedidos
+      </a>
+      <a href="orcamento.html" class="nav-item" data-section="pedidos">
+        <span class="material-symbols-outlined nav-svg" style="font-size: 20px; display: inline-flex; align-items: center; justify-content: center;">picture_as_pdf</span>
+        Orçamentos
+      </a>
+      <a href="credito.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2H2V5zm0 4h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm4 3a1 1 0 000 2h2a1 1 0 000-2H6z"/></svg>
+        Solicitação de Crédito
+      </a>
+      <a href="devolucao.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+        Solicitação de Devolução
+      </a>
+      <a href="garantia.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Solicitação de Garantia
+      </a>
+      <a href="boleto.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 3h4v1H8V7zm0 3h4v1H8v-1zm0 3h2v1H8v-1z"/></svg>
+        Emissão de Boleto
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+        Documentos
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item nav-sair" onclick="logout(event)">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Sair da conta
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ── CONTEÚDO PRINCIPAL ── -->
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <h1 class="topbar-title">Buscar Peças</h1>
+      <div class="topbar-actions">
+        <button class="btn-bell" onclick="toggleSideCart(true)" title="Carrinho" style="position:relative;">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C4.354 11.494 5 13 6 13h12a1 1 0 100-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zm16 13.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+          <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+        </button>
+        <button class="btn-bell" title="Notificações">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zm0 16a2 2 0 01-2-2h4a2 2 0 01-2 2z"/></svg>
+          <span class="bell-dot"></span>
+        </button>
+        <div class="topbar-avatar" id="topbar-avatar">OF</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- SPLIT LAYOUT -->
+      <div class="split-layout">
+
+        <!-- ══════════════════════════════════════════════════════
+             PAINEL ESQUERDO — Busca + Confirmação do veículo
+             ══════════════════════════════════════════════════════ -->
+        <div class="panel-left">
+
+          <!-- Cabeçalho -->
+          <div class="pl-header">
+            <div class="pl-badge"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Busca inteligente</div>
+            <h2>Encontre a peça<br>certa para você</h2>
+            <p>Busque por placa, aplicação ou código da peça</p>
+          </div>
+
+          <!-- Abas de tipo de busca -->
+          <div class="stabs">
+            <button class="stab active" id="stab-btn-placa"     onclick="switchTab('placa')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span> Por Placa</button>
+            <button class="stab"        id="stab-btn-aplicacao" onclick="switchTab('aplicacao')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Aplicação</button>
+            <button class="stab"        id="stab-btn-codigo"    onclick="switchTab('codigo')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span> Código</button>
+          </div>
+
+          <!-- TAB: Por Placa -->
+          <div class="stab-content active" id="stab-placa">
+            <label class="tab-label">Placa do veículo</label>
+            <div class="search-wrap">
+              <div class="plate-icon">
+                <div class="brasil">BRASIL</div>
+                <div class="chars">ABC·1234</div>
+              </div>
+              <input class="search-input" id="plateInput" type="text"
+                     placeholder="ABC-1234 ou HGB7F52" maxlength="8"/>
+              <button class="btn-search" onclick="searchPlate()">Buscar →</button>
+            </div>
+            <p class="tab-hint">Compatível com placas antigas e padrão Mercosul</p>
+          </div>
+
+          <!-- TAB: Por Aplicação -->
+          <div class="stab-content" id="stab-aplicacao">
+            <label class="tab-label">Selecione o veículo</label>
+            <div class="app-form">
+              <div class="app-row">
+                <select class="app-select" id="appMarca" onchange="onMarcaChange()">
+                  <option value="">Marca</option>
+                </select>
+                <select class="app-select" id="appModelo" onchange="onModeloChange()" disabled>
+                  <option value="">Modelo</option>
+                </select>
+              </div>
+              <div class="app-row">
+                <select class="app-select" id="appAno" disabled>
+                  <option value="">Ano</option>
+                </select>
+                <select class="app-select" id="appCategoria">
+                  <option value="">Categoria</option>
+                  <option value="FREIOS">Freios</option>
+                  <option value="MOTOR">Motor</option>
+                  <option value="SUSPENSÃO">Suspensão</option>
+                  <option value="FILTROS">Filtros</option>
+                  <option value="ELÉTRICA">Elétrica</option>
+                  <option value="TRANSMISSÃO">Transmissão</option>
+                  <option value="ARREFECIMENTO">Arrefecimento</option>
+                  <option value="ESCAPAMENTO">Escapamento</option>
+                  <option value="OUTROS">Outros</option>
+                </select>
+              </div>
+              <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>
+            </div>
+          </div>
+
+          <!-- TAB: Por Código -->
+          <div class="stab-content" id="stab-codigo">
+            <label class="tab-label">Código ou referência da peça</label>
+            <div class="code-form">
+              <input class="code-input" id="codeInput" type="text"
+                     placeholder="Ex.: GDB 1497, BP 714, ILFR6B..."/>
+              <button class="btn-search-full" onclick="searchCode()">Buscar →</button>
+            </div>
+            <p class="tab-hint">Referência do fabricante ou código interno</p>
+          </div>
+
+          <!-- ── Confirmação do veículo (aparece após busca) ── -->
+          <div class="vehicle-confirm" id="vehicleConfirm" style="display:none;">
+            <div class="vc-divider"></div>
+            <div class="vc-label">✓ Veículo identificado</div>
+            <div class="vc-card" id="vcCard">
+              <div class="vc-plate">
+                <div class="plate-mercosul">
+                  <div class="top-bar">BRASIL</div>
+                  <div class="plate-num" id="plateDisplay">ABC·1234</div>
+                  <div class="plate-estado">SP</div>
+                </div>
+              </div>
+              <div class="vc-info">
+                <div class="vc-model" id="vcModel">Volkswagen Gol 1.0</div>
+                <div class="vc-detail" id="vcDetail1">2019 / 2020</div>
+                <div class="vc-detail" id="vcDetail2">Motor 1.0 · Cor: Branco</div>
+                <div class="vc-chassis" id="vcChassis">Chassis: —</div>
+              </div>
+            </div>
+            <div class="vc-not-found" id="vcNotFound" style="display:none;">
+              <div class="vnf-icon"><span class="icon icon-32"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="32" height="32"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span></div>
+              <div class="vnf-text">Placa não encontrada na base.<br><small>Verifique a placa e tente novamente.</small></div>
+            </div>
+            <span class="not-this" onclick="resetSearch()">Não é este veículo? →</span>
+          </div>
+        </div><!-- fim panel-left -->
+
+        <!-- ══════════════════════════════════════════════════════
+             PAINEL DIREITO — Lista de peças
+             ══════════════════════════════════════════════════════ -->
+        <div class="panel-right">
+
+          <!-- Estado vazio (antes de buscar) -->
+          <div class="empty-state" id="emptyState">
+            <div class="es-icon"><span class="icon icon-40"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"/></svg></span></div>
+            <h3>Pronto para encontrar sua peça?</h3>
+            <p>Use o painel ao lado para buscar por placa, veículo ou código de referência</p>
+            <div class="es-hints">
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span><div><strong>Por Placa</strong><br>Identificamos o veículo automaticamente</div></div>
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span><div><strong>Por Aplicação</strong><br>Selecione marca, modelo e ano</div></div>
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span><div><strong>Por Código</strong><br>Busca direta por referência</div></div>
+            </div>
+          </div>
+
+          <!-- Lista de peças (aparece após busca) -->
+          <div id="resultSection" style="display:none;">
+
+            <div class="r-header">
+              <div class="r-title">Peças compatíveis</div>
+              <div class="r-sub" id="rSub">Gol 1.0 · 2019/2020 · 1.0 MPI Flex — Clique para ver as opções</div>
+            </div>
+
+            <div class="parts-accordion" id="partsAccordion">
+
+              <!-- ── PASTILHA DE FREIO ── -->
+              <div class="pa-item" id="pa-pastilha">
+                <div class="pa-header" onclick="togglePart('pa-pastilha')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Pastilha de Freio</span>
+                    <span class="pa-sub">Dianteira / Traseira</span>
+                  </div>
+                  <span class="pa-count">12 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Econômico</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">TRW</div>
+                        <div class="equiv-ref">Ref.: 1 — GDB 1497</div>
+                        <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendida</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 87,50</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Bosch</div>
+                        <div class="equiv-ref">Ref.: 2 — BP 714</div>
+                        <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Alta durabilidade</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Ferodo</div>
+                        <div class="equiv-ref">Ref.: 3 — FDB 1678</div>
+                        <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 94,90</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Jurid</div>
+                        <div class="equiv-ref">Ref.: 4 — 573 107 J</div>
+                        <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-low"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg> Últimas 3</div>
+                      <div class="equiv-preco"><div class="price">R$ 62,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">ATE</div>
+                        <div class="equiv-ref">Ref.: 5 — 13.0460-2891</div>
+                        <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque">✔ OEM</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 128,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Cofap</div>
+                        <div class="equiv-ref">Ref.: 6 — MPF20345</div>
+                        <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 54,90</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── DISCO DE FREIO ── -->
+              <div class="pa-item" id="pa-disco">
+                <div class="pa-header" onclick="togglePart('pa-disco')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Disco de Freio</span>
+                    <span class="pa-sub">Dianteiro / Traseiro</span>
+                  </div>
+                  <span class="pa-count">8 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 7 — BD 1072</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 198,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Fremax</div><div class="equiv-ref">Ref.: 8 — BD-3701</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 142,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Brembo</div><div class="equiv-ref">Ref.: 9 — 08.9450.21</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Performance</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 264,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── VELA DE IGNIÇÃO ── -->
+              <div class="pa-item" id="pa-vela">
+                <div class="pa-header" onclick="togglePart('pa-vela')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Vela de Ignição</span>
+                    <span class="pa-sub">Simples / Iridium / Platina</span>
+                  </div>
+                  <span class="pa-count">9 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Simples</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Iridium</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Platina</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">NGK</div><div class="equiv-ref">Ref.: 10 — ILFR6B</div><div class="equiv-badges"><span class="badge badge-premium">Iridium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendida</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 196,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 11 — FR 7 KPP 33+</div><div class="equiv-badges"><span class="badge badge-premium">Platina</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 168,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Denso</div><div class="equiv-ref">Ref.: 12 — W20EP-U</div><div class="equiv-badges"><span class="badge badge-original">Simples</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 98,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── CABO DE VELA ── -->
+              <div class="pa-item" id="pa-cabo">
+                <div class="pa-header" onclick="togglePart('pa-cabo')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Cabo de Vela</span>
+                    <span class="pa-sub">Kit completo</span>
+                  </div>
+                  <span class="pa-count">6 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Labo</div><div class="equiv-ref">Ref.: 13 — LB-GN001</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 78,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 14 — B 915</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO DE ÓLEO ── -->
+              <div class="pa-item" id="pa-filtro-oleo">
+                <div class="pa-header" onclick="togglePart('pa-filtro-oleo')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro de Óleo</span>
+                    <span class="pa-sub">Original / Premium</span>
+                  </div>
+                  <span class="pa-count">7 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: 15 — W 811/80</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 34,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 16 — OF 0S7</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 42,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO COMBUSTÍVEL ── -->
+              <div class="pa-item" id="pa-filtro-comb">
+                <div class="pa-header" onclick="togglePart('pa-filtro-comb')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 01-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro Combustível</span>
+                    <span class="pa-sub">Flex</span>
+                  </div>
+                  <span class="pa-count">4 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Tecfil</div><div class="equiv-ref">Ref.: 17 — ARL216</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 24,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Fram</div><div class="equiv-ref">Ref.: 18 — G5860</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 28,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO DE AR ── -->
+              <div class="pa-item" id="pa-filtro-ar">
+                <div class="pa-header" onclick="togglePart('pa-filtro-ar')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 01-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro de Ar</span>
+                    <span class="pa-sub">Painel / Cabine</span>
+                  </div>
+                  <span class="pa-count">5 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: 19 — C 25 114</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 38,50</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 20 — S0062</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 47,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── AMORTECEDOR ── -->
+              <div class="pa-item" id="pa-amortecedor">
+                <div class="pa-header" onclick="togglePart('pa-amortecedor')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Amortecedor</span>
+                    <span class="pa-sub">Dianteiro / Traseiro</span>
+                  </div>
+                  <span class="pa-count">6 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Monroe</div><div class="equiv-ref">Ref.: 21 — G8197</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 187,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Cofap</div><div class="equiv-ref">Ref.: 22 — GF72199</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-low"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg> Últimas 2</div><div class="equiv-preco"><div class="price">R$ 154,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Sachs</div><div class="equiv-ref">Ref.: 23 — 311 479</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Performance</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 248,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- fim parts-accordion -->
+          </div><!-- fim resultSection -->
+
+        </div><!-- fim panel-right -->
+      </div><!-- fim split-layout -->
+
+    </main>
+  </div>
+</div>
+
+<!-- Overlay do Carrinho Lateral -->
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleSideCart(false)"></div>
+
+<!-- Container do Carrinho Lateral (Drawer) -->
+<div id="sideCartDrawer" class="side-cart-drawer">
+  <div class="drawer-header">
+    <div class="drawer-title-row">
+      <span class="drawer-icon">🛒</span>
+      <h3>Seu Carrinho</h3>
+    </div>
+    <button class="btn-close-drawer" onclick="toggleSideCart(false)" title="Fechar">&times;</button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- Lista de itens dinâmicos -->
+    <div id="drawerCartItems" class="drawer-cart-items"></div>
+
+    <!-- Estado vazio -->
+    <div id="drawerCartEmpty" class="drawer-cart-empty" style="display: none;">
+      <div class="empty-icon">🛍️</div>
+      <p>Seu carrinho está vazio</p>
+      <button class="btn-continue-shopping" onclick="toggleSideCart(false)">Continuar comprando</button>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <div class="drawer-totals">
+      <span class="totals-label">Subtotal</span>
+      <span id="drawerCartTotal" class="totals-value">R$ 0,00</span>
+    </div>
+    <div class="drawer-actions">
+      <button class="btn-clear-drawer" onclick="limparCarrinhoDrawer()">Limpar Tudo</button>
+      <a href="carrinho.html" class="btn-checkout-drawer">Ver meu carrinho.</a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/utils/cart.js"></script>
+<script src="/js/models/busca.model.js"></script>
+<script src="/js/views/shared.view.js"></script>
+<script src="/js/views/busca.view.js"></script>
+<script src="/js/controllers/busca.controller.js"></script>
+</body>
+</html>

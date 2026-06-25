@@ -1,0 +1,1929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.205" tests="5" errors="0" skipped="0" failures="0" flakes="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/test-classes:/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/classes:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/4.0.6/spring-boot-starter-data-jpa-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter/4.0.6/spring-boot-starter-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-logging/4.0.6/spring-boot-starter-logging-4.0.6.jar:/home/sunshas/.m2/repository/ch/qos/logback/logback-classic/1.5.32/logback-classic-1.5.32.jar:/home/sunshas/.m2/repository/ch/qos/logback/logback-core/1.5.32/logback-core-1.5.32.jar:/home/sunshas/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.25.4/log4j-to-slf4j-2.25.4.jar:/home/sunshas/.m2/repository/org/apache/logging/log4j/log4j-api/2.25.4/log4j-api-2.25.4.jar:/home/sunshas/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/home/sunshas/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/home/sunshas/.m2/repository/org/yaml/snakeyaml/2.5/snakeyaml-2.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/4.0.6/spring-boot-starter-jdbc-4.0.6.jar:/home/sunshas/.m2/repository/com/zaxxer/HikariCP/7.0.2/HikariCP-7.0.2.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-jpa/4.0.6/spring-boot-data-jpa-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-commons/4.0.6/spring-boot-data-commons-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-persistence/4.0.6/spring-boot-persistence-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/data/spring-data-commons/4.0.5/spring-data-commons-4.0.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-hibernate/4.0.6/spring-boot-hibernate-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jpa/4.0.6/spring-boot-jpa-4.0.6.jar:/home/sunshas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/sunshas/.m2/repository/org/hibernate/orm/hibernate-core/7.2.12.Final/hibernate-core-7.2.12.Final.jar:/home/sunshas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/sunshas/.m2/repository/org/hibernate/models/hibernate-models/1.0.1/hibernate-models-1.0.1.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.6/jaxb-runtime-4.0.6.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.6/jaxb-core-4.0.6.jar:/home/sunshas/.m2/repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/txw2/4.0.6/txw2-4.0.6.jar:/home/sunshas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/sunshas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/sunshas/.m2/repository/org/springframework/spring-orm/7.0.7/spring-orm-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/data/spring-data-jpa/4.0.5/spring-data-jpa-4.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-tx/7.0.7/spring-tx-7.0.7.jar:/home/sunshas/.m2/repository/org/antlr/antlr4-runtime/4.13.2/antlr4-runtime-4.13.2.jar:/home/sunshas/.m2/repository/org/springframework/spring-aspects/7.0.7/spring-aspects-7.0.7.jar:/home/sunshas/.m2/repository/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jdbc/4.0.6/spring-boot-jdbc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-sql/4.0.6/spring-boot-sql-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-transaction/4.0.6/spring-boot-transaction-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-jdbc/7.0.7/spring-jdbc-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc/4.0.6/spring-boot-starter-webmvc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jackson/4.0.6/spring-boot-starter-jackson-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jackson/4.0.6/spring-boot-jackson-4.0.6.jar:/home/sunshas/.m2/repository/tools/jackson/core/jackson-databind/3.1.2/jackson-databind-3.1.2.jar:/home/sunshas/.m2/repository/tools/jackson/core/jackson-core/3.1.2/jackson-core-3.1.2.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/4.0.6/spring-boot-starter-tomcat-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat-runtime/4.0.6/spring-boot-starter-tomcat-runtime-4.0.6.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/11.0.21/tomcat-embed-core-11.0.21.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/11.0.21/tomcat-embed-websocket-11.0.21.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-tomcat/4.0.6/spring-boot-tomcat-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-http-converter/4.0.6/spring-boot-http-converter-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-web/7.0.7/spring-web-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-webmvc/4.0.6/spring-boot-webmvc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-servlet/4.0.6/spring-boot-servlet-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-webmvc/7.0.7/spring-webmvc-7.0.7.jar:/home/sunshas/.m2/repository/org/mariadb/jdbc/mariadb-java-client/3.5.8/mariadb-java-client-3.5.8.jar:/home/sunshas/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa-test/4.0.6/spring-boot-starter-data-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc-test/4.0.6/spring-boot-starter-jdbc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jdbc-test/4.0.6/spring-boot-jdbc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-jpa-test/4.0.6/spring-boot-data-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jpa-test/4.0.6/spring-boot-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc-test/4.0.6/spring-boot-starter-webmvc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jackson-test/4.0.6/spring-boot-starter-jackson-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-webmvc-test/4.0.6/spring-boot-webmvc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-web-server/4.0.6/spring-boot-web-server-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-resttestclient/4.0.6/spring-boot-resttestclient-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/4.0.6/spring-boot-starter-thymeleaf-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-thymeleaf/4.0.6/spring-boot-thymeleaf-4.0.6.jar:/home/sunshas/.m2/repository/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.jar:/home/sunshas/.m2/repository/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.jar:/home/sunshas/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar:/home/sunshas/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-validation/4.0.6/spring-boot-starter-validation-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-validation/4.0.6/spring-boot-validation-4.0.6.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/11.0.21/tomcat-embed-el-11.0.21.jar:/home/sunshas/.m2/repository/org/hibernate/validator/hibernate-validator/9.0.1.Final/hibernate-validator-9.0.1.Final.jar:/home/sunshas/.m2/repository/jakarta/validation/jakarta.validation-api/3.1.1/jakarta.validation-api-3.1.1.jar:/home/sunshas/.m2/repository/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar:/home/sunshas/.m2/repository/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-security/4.0.6/spring-boot-starter-security-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-security/4.0.6/spring-boot-security-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-config/7.0.5/spring-security-config-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-aop/7.0.7/spring-aop-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/spring-beans/7.0.7/spring-beans-7.0.7.jar:/home/sunshas/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.2/jackson-databind-2.21.2.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.2/jackson-core-2.21.2.jar:/home/sunshas/.m2/repository/br/com/caelum/stella/caelum-stella-bean-validation/2.1.2/caelum-stella-bean-validation-2.1.2.jar:/home/sunshas/.m2/repository/br/com/caelum/stella/caelum-stella-core/2.1.2/caelum-stella-core-2.1.2.jar:/home/sunshas/.m2/repository/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar:/home/sunshas/.m2/repository/net/vidageek/mirror/1.5/mirror-1.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-test/4.0.6/spring-boot-starter-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-test/4.0.6/spring-boot-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/4.0.6/spring-boot-test-autoconfigure-4.0.6.jar:/home/sunshas/.m2/repository/com/jayway/jsonpath/json-path/2.10.0/json-path-2.10.0.jar:/home/sunshas/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/home/sunshas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.4/jakarta.xml.bind-api-4.0.4.jar:/home/sunshas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/sunshas/.m2/repository/net/minidev/json-smart/2.6.0/json-smart-2.6.0.jar:/home/sunshas/.m2/repository/net/minidev/accessors-smart/2.6.0/accessors-smart-2.6.0.jar:/home/sunshas/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/sunshas/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/sunshas/.m2/repository/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar:/home/sunshas/.m2/repository/org/awaitility/awaitility/4.3.0/awaitility-4.3.0.jar:/home/sunshas/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/sunshas/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/sunshas/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/sunshas/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/sunshas/.m2/repository/org/mockito/mockito-core/5.20.0/mockito-core-5.20.0.jar:/home/sunshas/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar:/home/sunshas/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/sunshas/.m2/repository/org/mockito/mockito-junit-jupiter/5.20.0/mockito-junit-jupiter-5.20.0.jar:/home/sunshas/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/sunshas/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/sunshas/.m2/repository/org/springframework/spring-core/7.0.7/spring-core-7.0.7.jar:/home/sunshas/.m2/repository/commons-logging/commons-logging/1.3.6/commons-logging-1.3.6.jar:/home/sunshas/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/sunshas/.m2/repository/org/springframework/spring-test/7.0.7/spring-test-7.0.7.jar:/home/sunshas/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:/home/sunshas/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-test/7.0.5/spring-security-test-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-core/7.0.5/spring-security-core-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-crypto/7.0.5/spring-security-crypto-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-context/7.0.7/spring-context-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/spring-expression/7.0.7/spring-expression-7.0.7.jar:/home/sunshas/.m2/repository/io/micrometer/micrometer-observation/1.16.5/micrometer-observation-1.16.5.jar:/home/sunshas/.m2/repository/io/micrometer/micrometer-commons/1.16.5/micrometer-commons-1.16.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-web/7.0.5/spring-security-web-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-devtools/4.0.6/spring-boot-devtools-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot/4.0.6/spring-boot-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.0.6/spring-boot-autoconfigure-4.0.6.jar:/home/sunshas/.m2/repository/com/openhtmltopdf/openhtmltopdf-pdfbox/1.0.10/openhtmltopdf-pdfbox-1.0.10.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/pdfbox/2.0.24/pdfbox-2.0.24.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/fontbox/2.0.24/fontbox-2.0.24.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/xmpbox/2.0.24/xmpbox-2.0.24.jar:/home/sunshas/.m2/repository/com/openhtmltopdf/openhtmltopdf-core/1.0.10/openhtmltopdf-core-1.0.10.jar:/home/sunshas/.m2/repository/de/rototor/pdfbox/graphics2d/0.32/graphics2d-0.32.jar:"/>
+    <property name="java.vm.vendor" value="Arch Linux"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="user.timezone" value="America/Sao_Paulo"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="APPLICATION_NAME" value="quero-pecas"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="BR"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk/lib"/>
+    <property name="sun.java.command" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/surefire/surefirebooter-20260625135354145_3.jar /home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/surefire 2026-06-25T13-53-54_083-jvmRun1 surefire-20260625135354145_1tmp surefire_0-20260625135354145_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/test-classes:/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/classes:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/4.0.6/spring-boot-starter-data-jpa-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter/4.0.6/spring-boot-starter-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-logging/4.0.6/spring-boot-starter-logging-4.0.6.jar:/home/sunshas/.m2/repository/ch/qos/logback/logback-classic/1.5.32/logback-classic-1.5.32.jar:/home/sunshas/.m2/repository/ch/qos/logback/logback-core/1.5.32/logback-core-1.5.32.jar:/home/sunshas/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.25.4/log4j-to-slf4j-2.25.4.jar:/home/sunshas/.m2/repository/org/apache/logging/log4j/log4j-api/2.25.4/log4j-api-2.25.4.jar:/home/sunshas/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/home/sunshas/.m2/repository/jakarta/annotation/jakarta.annotation-api/3.0.0/jakarta.annotation-api-3.0.0.jar:/home/sunshas/.m2/repository/org/yaml/snakeyaml/2.5/snakeyaml-2.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/4.0.6/spring-boot-starter-jdbc-4.0.6.jar:/home/sunshas/.m2/repository/com/zaxxer/HikariCP/7.0.2/HikariCP-7.0.2.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-jpa/4.0.6/spring-boot-data-jpa-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-commons/4.0.6/spring-boot-data-commons-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-persistence/4.0.6/spring-boot-persistence-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/data/spring-data-commons/4.0.5/spring-data-commons-4.0.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-hibernate/4.0.6/spring-boot-hibernate-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jpa/4.0.6/spring-boot-jpa-4.0.6.jar:/home/sunshas/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.2.0/jakarta.persistence-api-3.2.0.jar:/home/sunshas/.m2/repository/org/hibernate/orm/hibernate-core/7.2.12.Final/hibernate-core-7.2.12.Final.jar:/home/sunshas/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/sunshas/.m2/repository/org/hibernate/models/hibernate-models/1.0.1/hibernate-models-1.0.1.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.6/jaxb-runtime-4.0.6.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.6/jaxb-core-4.0.6.jar:/home/sunshas/.m2/repository/org/eclipse/angus/angus-activation/2.0.3/angus-activation-2.0.3.jar:/home/sunshas/.m2/repository/org/glassfish/jaxb/txw2/4.0.6/txw2-4.0.6.jar:/home/sunshas/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/sunshas/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/sunshas/.m2/repository/org/springframework/spring-orm/7.0.7/spring-orm-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/data/spring-data-jpa/4.0.5/spring-data-jpa-4.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-tx/7.0.7/spring-tx-7.0.7.jar:/home/sunshas/.m2/repository/org/antlr/antlr4-runtime/4.13.2/antlr4-runtime-4.13.2.jar:/home/sunshas/.m2/repository/org/springframework/spring-aspects/7.0.7/spring-aspects-7.0.7.jar:/home/sunshas/.m2/repository/org/aspectj/aspectjweaver/1.9.25.1/aspectjweaver-1.9.25.1.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jdbc/4.0.6/spring-boot-jdbc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-sql/4.0.6/spring-boot-sql-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-transaction/4.0.6/spring-boot-transaction-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-jdbc/7.0.7/spring-jdbc-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc/4.0.6/spring-boot-starter-webmvc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jackson/4.0.6/spring-boot-starter-jackson-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jackson/4.0.6/spring-boot-jackson-4.0.6.jar:/home/sunshas/.m2/repository/tools/jackson/core/jackson-databind/3.1.2/jackson-databind-3.1.2.jar:/home/sunshas/.m2/repository/tools/jackson/core/jackson-core/3.1.2/jackson-core-3.1.2.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/4.0.6/spring-boot-starter-tomcat-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat-runtime/4.0.6/spring-boot-starter-tomcat-runtime-4.0.6.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/11.0.21/tomcat-embed-core-11.0.21.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/11.0.21/tomcat-embed-websocket-11.0.21.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-tomcat/4.0.6/spring-boot-tomcat-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-http-converter/4.0.6/spring-boot-http-converter-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-web/7.0.7/spring-web-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-webmvc/4.0.6/spring-boot-webmvc-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-servlet/4.0.6/spring-boot-servlet-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/spring-webmvc/7.0.7/spring-webmvc-7.0.7.jar:/home/sunshas/.m2/repository/org/mariadb/jdbc/mariadb-java-client/3.5.8/mariadb-java-client-3.5.8.jar:/home/sunshas/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa-test/4.0.6/spring-boot-starter-data-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc-test/4.0.6/spring-boot-starter-jdbc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jdbc-test/4.0.6/spring-boot-jdbc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-data-jpa-test/4.0.6/spring-boot-data-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-jpa-test/4.0.6/spring-boot-jpa-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-webmvc-test/4.0.6/spring-boot-starter-webmvc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-jackson-test/4.0.6/spring-boot-starter-jackson-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-webmvc-test/4.0.6/spring-boot-webmvc-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-web-server/4.0.6/spring-boot-web-server-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-resttestclient/4.0.6/spring-boot-resttestclient-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-thymeleaf/4.0.6/spring-boot-starter-thymeleaf-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-thymeleaf/4.0.6/spring-boot-thymeleaf-4.0.6.jar:/home/sunshas/.m2/repository/org/thymeleaf/thymeleaf-spring6/3.1.5.RELEASE/thymeleaf-spring6-3.1.5.RELEASE.jar:/home/sunshas/.m2/repository/org/thymeleaf/thymeleaf/3.1.5.RELEASE/thymeleaf-3.1.5.RELEASE.jar:/home/sunshas/.m2/repository/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE.jar:/home/sunshas/.m2/repository/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-validation/4.0.6/spring-boot-starter-validation-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-validation/4.0.6/spring-boot-validation-4.0.6.jar:/home/sunshas/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/11.0.21/tomcat-embed-el-11.0.21.jar:/home/sunshas/.m2/repository/org/hibernate/validator/hibernate-validator/9.0.1.Final/hibernate-validator-9.0.1.Final.jar:/home/sunshas/.m2/repository/jakarta/validation/jakarta.validation-api/3.1.1/jakarta.validation-api-3.1.1.jar:/home/sunshas/.m2/repository/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar:/home/sunshas/.m2/repository/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-security/4.0.6/spring-boot-starter-security-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-security/4.0.6/spring-boot-security-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-config/7.0.5/spring-security-config-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-aop/7.0.7/spring-aop-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/spring-beans/7.0.7/spring-beans-7.0.7.jar:/home/sunshas/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.2/jackson-databind-2.21.2.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/sunshas/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.2/jackson-core-2.21.2.jar:/home/sunshas/.m2/repository/br/com/caelum/stella/caelum-stella-bean-validation/2.1.2/caelum-stella-bean-validation-2.1.2.jar:/home/sunshas/.m2/repository/br/com/caelum/stella/caelum-stella-core/2.1.2/caelum-stella-core-2.1.2.jar:/home/sunshas/.m2/repository/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar:/home/sunshas/.m2/repository/net/vidageek/mirror/1.5/mirror-1.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-starter-test/4.0.6/spring-boot-starter-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-test/4.0.6/spring-boot-test-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/4.0.6/spring-boot-test-autoconfigure-4.0.6.jar:/home/sunshas/.m2/repository/com/jayway/jsonpath/json-path/2.10.0/json-path-2.10.0.jar:/home/sunshas/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/home/sunshas/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.4/jakarta.xml.bind-api-4.0.4.jar:/home/sunshas/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.4/jakarta.activation-api-2.1.4.jar:/home/sunshas/.m2/repository/net/minidev/json-smart/2.6.0/json-smart-2.6.0.jar:/home/sunshas/.m2/repository/net/minidev/accessors-smart/2.6.0/accessors-smart-2.6.0.jar:/home/sunshas/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/home/sunshas/.m2/repository/org/assertj/assertj-core/3.27.7/assertj-core-3.27.7.jar:/home/sunshas/.m2/repository/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar:/home/sunshas/.m2/repository/org/awaitility/awaitility/4.3.0/awaitility-4.3.0.jar:/home/sunshas/.m2/repository/org/hamcrest/hamcrest/3.0/hamcrest-3.0.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/sunshas/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/sunshas/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/sunshas/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/sunshas/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/sunshas/.m2/repository/org/mockito/mockito-core/5.20.0/mockito-core-5.20.0.jar:/home/sunshas/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar:/home/sunshas/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/sunshas/.m2/repository/org/mockito/mockito-junit-jupiter/5.20.0/mockito-junit-jupiter-5.20.0.jar:/home/sunshas/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/sunshas/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/sunshas/.m2/repository/org/springframework/spring-core/7.0.7/spring-core-7.0.7.jar:/home/sunshas/.m2/repository/commons-logging/commons-logging/1.3.6/commons-logging-1.3.6.jar:/home/sunshas/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/sunshas/.m2/repository/org/springframework/spring-test/7.0.7/spring-test-7.0.7.jar:/home/sunshas/.m2/repository/org/xmlunit/xmlunit-core/2.10.4/xmlunit-core-2.10.4.jar:/home/sunshas/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-test/7.0.5/spring-security-test-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-core/7.0.5/spring-security-core-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-crypto/7.0.5/spring-security-crypto-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/spring-context/7.0.7/spring-context-7.0.7.jar:/home/sunshas/.m2/repository/org/springframework/spring-expression/7.0.7/spring-expression-7.0.7.jar:/home/sunshas/.m2/repository/io/micrometer/micrometer-observation/1.16.5/micrometer-observation-1.16.5.jar:/home/sunshas/.m2/repository/io/micrometer/micrometer-commons/1.16.5/micrometer-commons-1.16.5.jar:/home/sunshas/.m2/repository/org/springframework/security/spring-security-web/7.0.5/spring-security-web-7.0.5.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-devtools/4.0.6/spring-boot-devtools-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot/4.0.6/spring-boot-4.0.6.jar:/home/sunshas/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.0.6/spring-boot-autoconfigure-4.0.6.jar:/home/sunshas/.m2/repository/com/openhtmltopdf/openhtmltopdf-pdfbox/1.0.10/openhtmltopdf-pdfbox-1.0.10.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/pdfbox/2.0.24/pdfbox-2.0.24.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/fontbox/2.0.24/fontbox-2.0.24.jar:/home/sunshas/.m2/repository/org/apache/pdfbox/xmpbox/2.0.24/xmpbox-2.0.24.jar:/home/sunshas/.m2/repository/com/openhtmltopdf/openhtmltopdf-core/1.0.10/openhtmltopdf-core-1.0.10.jar:/home/sunshas/.m2/repository/de/rototor/pdfbox/graphics2d/0.32/graphics2d-0.32.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/sunshas"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-04-21"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas/target/surefire/surefirebooter-20260625135354145_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.19+10"/>
+    <property name="user.name" value="sunshas"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="7.0.11-1-cachyos"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/sunshas/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
+    <property name="java.version" value="17.0.19"/>
+    <property name="user.dir" value="/home/sunshas/IdeaProjects/projetodistribuidoraQpecas"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="87063"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Arch Linux"/>
+    <property name="java.vm.version" value="17.0.19+10"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[quero-pecas] "/>
+  </properties>
+  <testcase name="deveCarregarPaginaBuscaCliente" classname="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.151">
+    <system-out><![CDATA[2026-06-25T13:54:02.564-03:00  INFO 87063 --- [quero-pecas] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.app.quero_pecas.controller.ViewControllerTest]: ViewControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-25T13:54:02.566-03:00  INFO 87063 --- [quero-pecas] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.app.quero_pecas.QueroPecasApplication for test class br.com.app.quero_pecas.controller.ViewControllerTest
+2026-06-25T13:54:02.567-03:00  INFO 87063 --- [quero-pecas] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.app.quero_pecas.controller.ViewControllerTest]: ViewControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-25T13:54:02.570-03:00  INFO 87063 --- [quero-pecas] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.app.quero_pecas.QueroPecasApplication for test class br.com.app.quero_pecas.controller.ViewControllerTest
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /busca-cliente.html
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.app.quero_pecas.controller.ViewController
+           Method = br.com.app.quero_pecas.controller.ViewController#buscaCliente()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = busca-cliente
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buscar Peças – Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="/css/dashboard-style.css"/>
+  <link rel="stylesheet" href="/css/busca-style.css"/>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar"></div>
+      <div>
+        <div class="user-name" id="sidebar-nome"></div>
+        <div class="user-cnpj" id="sidebar-cnpj"></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/></svg>
+        Dashboard
+      </a>
+      <a href="busca-cliente.html" class="nav-item active">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+        Buscar Peças
+      </a>
+      <a href="pedidos.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
+        Meus Pedidos
+      </a>
+      <a href="orcamento.html" class="nav-item" data-section="pedidos">
+        <span class="material-symbols-outlined nav-svg" style="font-size: 20px; display: inline-flex; align-items: center; justify-content: center;">picture_as_pdf</span>
+        Orçamentos
+      </a>
+      <a href="credito.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2H2V5zm0 4h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm4 3a1 1 0 000 2h2a1 1 0 000-2H6z"/></svg>
+        Solicitação de Crédito
+      </a>
+      <a href="devolucao.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+        Solicitação de Devolução
+      </a>
+      <a href="garantia.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Solicitação de Garantia
+      </a>
+      <a href="boleto.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 3h4v1H8V7zm0 3h4v1H8v-1zm0 3h2v1H8v-1z"/></svg>
+        Emissão de Boleto
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+        Documentos
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item nav-sair" onclick="logout(event)">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Sair da conta
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ── CONTEÚDO PRINCIPAL ── -->
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <h1 class="topbar-title">Buscar Peças</h1>
+      <div class="topbar-actions">
+        <button class="btn-bell" onclick="toggleSideCart(true)" title="Carrinho" style="position:relative;">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C4.354 11.494 5 13 6 13h12a1 1 0 100-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zm16 13.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+          <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+        </button>
+        <button class="btn-bell" title="Notificações">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zm0 16a2 2 0 01-2-2h4a2 2 0 01-2 2z"/></svg>
+          <span class="bell-dot"></span>
+        </button>
+        <div class="topbar-avatar" id="topbar-avatar">OF</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- SPLIT LAYOUT -->
+      <div class="split-layout">
+
+        <!-- ══════════════════════════════════════════════════════
+             PAINEL ESQUERDO — Busca + Confirmação do veículo
+             ══════════════════════════════════════════════════════ -->
+        <div class="panel-left">
+
+          <!-- Cabeçalho -->
+          <div class="pl-header">
+            <div class="pl-badge"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Busca inteligente</div>
+            <h2>Encontre a peça<br>certa para você</h2>
+            <p>Busque por placa, aplicação ou código da peça</p>
+          </div>
+
+          <!-- Abas de tipo de busca -->
+          <div class="stabs">
+            <button class="stab active" id="stab-btn-placa"     onclick="switchTab('placa')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span> Por Placa</button>
+            <button class="stab"        id="stab-btn-aplicacao" onclick="switchTab('aplicacao')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Aplicação</button>
+            <button class="stab"        id="stab-btn-codigo"    onclick="switchTab('codigo')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span> Código</button>
+          </div>
+
+          <!-- TAB: Por Placa -->
+          <div class="stab-content active" id="stab-placa">
+            <label class="tab-label">Placa do veículo</label>
+            <div class="search-wrap">
+              <div class="plate-icon">
+                <div class="brasil">BRASIL</div>
+                <div class="chars">ABC·1234</div>
+              </div>
+              <input class="search-input" id="plateInput" type="text"
+                     placeholder="ABC-1234 ou HGB7F52" maxlength="8"/>
+              <button class="btn-search" onclick="searchPlate()">Buscar →</button>
+            </div>
+            <p class="tab-hint">Compatível com placas antigas e padrão Mercosul</p>
+          </div>
+
+          <!-- TAB: Por Aplicação -->
+          <div class="stab-content" id="stab-aplicacao">
+            <label class="tab-label">Selecione o veículo</label>
+            <div class="app-form">
+              <div class="app-row">
+                <select class="app-select" id="appMarca" onchange="onMarcaChange()">
+                  <option value="">Marca</option>
+                </select>
+                <select class="app-select" id="appModelo" onchange="onModeloChange()" disabled>
+                  <option value="">Modelo</option>
+                </select>
+              </div>
+              <div class="app-row">
+                <select class="app-select" id="appAno" disabled>
+                  <option value="">Ano</option>
+                </select>
+                <select class="app-select" id="appCategoria">
+                  <option value="">Categoria</option>
+                  <option value="FREIOS">Freios</option>
+                  <option value="MOTOR">Motor</option>
+                  <option value="SUSPENSÃO">Suspensão</option>
+                  <option value="FILTROS">Filtros</option>
+                  <option value="ELÉTRICA">Elétrica</option>
+                  <option value="TRANSMISSÃO">Transmissão</option>
+                  <option value="ARREFECIMENTO">Arrefecimento</option>
+                  <option value="ESCAPAMENTO">Escapamento</option>
+                  <option value="OUTROS">Outros</option>
+                </select>
+              </div>
+              <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>
+            </div>
+          </div>
+
+          <!-- TAB: Por Código -->
+          <div class="stab-content" id="stab-codigo">
+            <label class="tab-label">Código ou referência da peça</label>
+            <div class="code-form">
+              <input class="code-input" id="codeInput" type="text"
+                     placeholder="Ex.: GDB 1497, BP 714, ILFR6B..."/>
+              <button class="btn-search-full" onclick="searchCode()">Buscar →</button>
+            </div>
+            <p class="tab-hint">Referência do fabricante ou código interno</p>
+          </div>
+
+          <!-- ── Confirmação do veículo (aparece após busca) ── -->
+          <div class="vehicle-confirm" id="vehicleConfirm" style="display:none;">
+            <div class="vc-divider"></div>
+            <div class="vc-label">✓ Veículo identificado</div>
+            <div class="vc-card" id="vcCard">
+              <div class="vc-plate">
+                <div class="plate-mercosul">
+                  <div class="top-bar">BRASIL</div>
+                  <div class="plate-num" id="plateDisplay">ABC·1234</div>
+                  <div class="plate-estado">SP</div>
+                </div>
+              </div>
+              <div class="vc-info">
+                <div class="vc-model" id="vcModel">Volkswagen Gol 1.0</div>
+                <div class="vc-detail" id="vcDetail1">2019 / 2020</div>
+                <div class="vc-detail" id="vcDetail2">Motor 1.0 · Cor: Branco</div>
+                <div class="vc-chassis" id="vcChassis">Chassis: —</div>
+              </div>
+            </div>
+            <div class="vc-not-found" id="vcNotFound" style="display:none;">
+              <div class="vnf-icon"><span class="icon icon-32"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="32" height="32"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span></div>
+              <div class="vnf-text">Placa não encontrada na base.<br><small>Verifique a placa e tente novamente.</small></div>
+            </div>
+            <span class="not-this" onclick="resetSearch()">Não é este veículo? →</span>
+          </div>
+        </div><!-- fim panel-left -->
+
+        <!-- ══════════════════════════════════════════════════════
+             PAINEL DIREITO — Lista de peças
+             ══════════════════════════════════════════════════════ -->
+        <div class="panel-right">
+
+          <!-- Estado vazio (antes de buscar) -->
+          <div class="empty-state" id="emptyState">
+            <div class="es-icon"><span class="icon icon-40"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"/></svg></span></div>
+            <h3>Pronto para encontrar sua peça?</h3>
+            <p>Use o painel ao lado para buscar por placa, veículo ou código de referência</p>
+            <div class="es-hints">
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span><div><strong>Por Placa</strong><br>Identificamos o veículo automaticamente</div></div>
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span><div><strong>Por Aplicação</strong><br>Selecione marca, modelo e ano</div></div>
+              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span><div><strong>Por Código</strong><br>Busca direta por referência</div></div>
+            </div>
+          </div>
+
+          <!-- Lista de peças (aparece após busca) -->
+          <div id="resultSection" style="display:none;">
+
+            <div class="r-header">
+              <div class="r-title">Peças compatíveis</div>
+              <div class="r-sub" id="rSub">Gol 1.0 · 2019/2020 · 1.0 MPI Flex — Clique para ver as opções</div>
+            </div>
+
+            <div class="parts-accordion" id="partsAccordion">
+
+              <!-- ── PASTILHA DE FREIO ── -->
+              <div class="pa-item" id="pa-pastilha">
+                <div class="pa-header" onclick="togglePart('pa-pastilha')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Pastilha de Freio</span>
+                    <span class="pa-sub">Dianteira / Traseira</span>
+                  </div>
+                  <span class="pa-count">12 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Econômico</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">TRW</div>
+                        <div class="equiv-ref">Ref.: 1 — GDB 1497</div>
+                        <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendida</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 87,50</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Bosch</div>
+                        <div class="equiv-ref">Ref.: 2 — BP 714</div>
+                        <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Alta durabilidade</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Ferodo</div>
+                        <div class="equiv-ref">Ref.: 3 — FDB 1678</div>
+                        <div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 94,90</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Jurid</div>
+                        <div class="equiv-ref">Ref.: 4 — 573 107 J</div>
+                        <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-low"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg> Últimas 3</div>
+                      <div class="equiv-preco"><div class="price">R$ 62,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">ATE</div>
+                        <div class="equiv-ref">Ref.: 5 — 13.0460-2891</div>
+                        <div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque">✔ OEM</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 128,00</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                    <div class="equiv-row">
+                      <div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                      <div class="equiv-info">
+                        <div class="equiv-brand">Cofap</div>
+                        <div class="equiv-ref">Ref.: 6 — MPF20345</div>
+                        <div class="equiv-badges"><span class="badge badge-economico">Econômico</span><span class="badge badge-compat">compatível</span></div>
+                      </div>
+                      <div class="equiv-estoque estoque-ok">Estoque</div>
+                      <div class="equiv-preco"><div class="price">R$ 54,90</div><div class="label">à vista</div></div>
+                      <button class="btn-add" onclick="addToCart(this)">+ Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── DISCO DE FREIO ── -->
+              <div class="pa-item" id="pa-disco">
+                <div class="pa-header" onclick="togglePart('pa-disco')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Disco de Freio</span>
+                    <span class="pa-sub">Dianteiro / Traseiro</span>
+                  </div>
+                  <span class="pa-count">8 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 7 — BD 1072</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 198,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Fremax</div><div class="equiv-ref">Ref.: 8 — BD-3701</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 142,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Brembo</div><div class="equiv-ref">Ref.: 9 — 08.9450.21</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Performance</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 264,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── VELA DE IGNIÇÃO ── -->
+              <div class="pa-item" id="pa-vela">
+                <div class="pa-header" onclick="togglePart('pa-vela')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Vela de Ignição</span>
+                    <span class="pa-sub">Simples / Iridium / Platina</span>
+                  </div>
+                  <span class="pa-count">9 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Simples</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Iridium</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Platina</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">NGK</div><div class="equiv-ref">Ref.: 10 — ILFR6B</div><div class="equiv-badges"><span class="badge badge-premium">Iridium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendida</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 196,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 11 — FR 7 KPP 33+</div><div class="equiv-badges"><span class="badge badge-premium">Platina</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 168,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Denso</div><div class="equiv-ref">Ref.: 12 — W20EP-U</div><div class="equiv-badges"><span class="badge badge-original">Simples</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 98,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── CABO DE VELA ── -->
+              <div class="pa-item" id="pa-cabo">
+                <div class="pa-header" onclick="togglePart('pa-cabo')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Cabo de Vela</span>
+                    <span class="pa-sub">Kit completo</span>
+                  </div>
+                  <span class="pa-count">6 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Labo</div><div class="equiv-ref">Ref.: 13 — LB-GN001</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 78,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 14 — B 915</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 112,00</div><div class="label">kit c/ 4</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO DE ÓLEO ── -->
+              <div class="pa-item" id="pa-filtro-oleo">
+                <div class="pa-header" onclick="togglePart('pa-filtro-oleo')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro de Óleo</span>
+                    <span class="pa-sub">Original / Premium</span>
+                  </div>
+                  <span class="pa-count">7 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: 15 — W 811/80</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 34,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 16 — OF 0S7</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 42,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO COMBUSTÍVEL ── -->
+              <div class="pa-item" id="pa-filtro-comb">
+                <div class="pa-header" onclick="togglePart('pa-filtro-comb')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 01-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro Combustível</span>
+                    <span class="pa-sub">Flex</span>
+                  </div>
+                  <span class="pa-count">4 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Tecfil</div><div class="equiv-ref">Ref.: 17 — ARL216</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 24,90</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Fram</div><div class="equiv-ref">Ref.: 18 — G5860</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 28,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── FILTRO DE AR ── -->
+              <div class="pa-item" id="pa-filtro-ar">
+                <div class="pa-header" onclick="togglePart('pa-filtro-ar')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 01-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Filtro de Ar</span>
+                    <span class="pa-sub">Painel / Cabine</span>
+                  </div>
+                  <span class="pa-count">5 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Mann-Filter</div><div class="equiv-ref">Ref.: 19 — C 25 114</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 38,50</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Bosch</div><div class="equiv-ref">Ref.: 20 — S0062</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 47,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ── AMORTECEDOR ── -->
+              <div class="pa-item" id="pa-amortecedor">
+                <div class="pa-header" onclick="togglePart('pa-amortecedor')">
+                  <span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span>
+                  <div class="pa-info">
+                    <span class="pa-name">Amortecedor</span>
+                    <span class="pa-sub">Dianteiro / Traseiro</span>
+                  </div>
+                  <span class="pa-count">6 opções</span>
+                  <span class="pa-arrow">›</span>
+                </div>
+                <div class="pa-body">
+                  <div class="quick-filters">
+                    <button class="qf-btn active" onclick="filterEquiv(this)">Todas</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Original</button>
+                    <button class="qf-btn" onclick="filterEquiv(this)">Premium</button>
+                  </div>
+                  <div class="equiv-list">
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Monroe</div><div class="equiv-ref">Ref.: 21 — G8197</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005z"/></svg> Mais vendido</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 187,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Cofap</div><div class="equiv-ref">Ref.: 22 — GF72199</div><div class="equiv-badges"><span class="badge badge-original">Original</span><span class="badge badge-compat">compatível</span></div></div><div class="equiv-estoque estoque-low"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg> Últimas 2</div><div class="equiv-preco"><div class="price">R$ 154,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                    <div class="equiv-row"><div class="equiv-thumb"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.781l-.894-.148c-.542-.09-.94-.56-.94-1.11v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="equiv-info"><div class="equiv-brand">Sachs</div><div class="equiv-ref">Ref.: 23 — 311 479</div><div class="equiv-badges"><span class="badge badge-premium">Premium</span><span class="badge badge-compat">compatível</span><span class="badge badge-destaque"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12" style="vertical-align:middle;margin-right:2px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941"/></svg> Performance</span></div></div><div class="equiv-estoque estoque-ok">Estoque</div><div class="equiv-preco"><div class="price">R$ 248,00</div><div class="label">à vista</div></div><button class="btn-add" onclick="addToCart(this)">+ Add</button></div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- fim parts-accordion -->
+          </div><!-- fim resultSection -->
+
+        </div><!-- fim panel-right -->
+      </div><!-- fim split-layout -->
+
+    </main>
+  </div>
+</div>
+
+<!-- Overlay do Carrinho Lateral -->
+<div id="drawerOverlay" class="drawer-overlay" onclick="toggleSideCart(false)"></div>
+
+<!-- Container do Carrinho Lateral (Drawer) -->
+<div id="sideCartDrawer" class="side-cart-drawer">
+  <div class="drawer-header">
+    <div class="drawer-title-row">
+      <span class="drawer-icon">🛒</span>
+      <h3>Seu Carrinho</h3>
+    </div>
+    <button class="btn-close-drawer" onclick="toggleSideCart(false)" title="Fechar">&times;</button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- Lista de itens dinâmicos -->
+    <div id="drawerCartItems" class="drawer-cart-items"></div>
+
+    <!-- Estado vazio -->
+    <div id="drawerCartEmpty" class="drawer-cart-empty" style="display: none;">
+      <div class="empty-icon">🛍️</div>
+      <p>Seu carrinho está vazio</p>
+      <button class="btn-continue-shopping" onclick="toggleSideCart(false)">Continuar comprando</button>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <div class="drawer-totals">
+      <span class="totals-label">Subtotal</span>
+      <span id="drawerCartTotal" class="totals-value">R$ 0,00</span>
+    </div>
+    <div class="drawer-actions">
+      <button class="btn-clear-drawer" onclick="limparCarrinhoDrawer()">Limpar Tudo</button>
+      <a href="carrinho.html" class="btn-checkout-drawer">Ver meu carrinho.</a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/utils/cart.js"></script>
+<script src="/js/models/busca.model.js"></script>
+<script src="/js/views/shared.view.js"></script>
+<script src="/js/views/busca.view.js"></script>
+<script src="/js/controllers/busca.controller.js"></script>
+</body>
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="deveCarregarPaginaCadastro" classname="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.012">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /cadastro.html
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.app.quero_pecas.controller.ViewController
+           Method = br.com.app.quero_pecas.controller.ViewController#cadastro()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = cadastro
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar Conta – Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/cadastro-style.css"/>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="cad-header">
+  <img src="/images/logoqueropeças.png" alt="Quero Peças" class="cad-logo"/>
+  <a href="login.html" class="cad-back">← Voltar ao login</a>
+</header>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div class="cad-layout">
+
+  <!-- FORMULÁRIO -->
+  <div class="cad-form-wrap">
+    <h1 class="cad-title">Dados da sua oficina</h1>
+    <p class="cad-subtitle">Preencha os dados para acessar compras e funcionalidades da plataforma.</p>
+
+    <form id="form-cadastro" onsubmit="enviarCadastro(event)">
+
+      <!-- Identificação -->
+      <div class="form-section-title">Identificação</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">CNPJ *</label>
+          <input class="field-input" id="cnpj" type="text" placeholder="00.000.000/0001-00" oninput="mascaraCNPJ(this)" maxlength="18"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Razão Social *</label>
+          <input class="field-input" id="razao" type="text" placeholder="Oficina Silva e Filhos LTDA"/>
+        </div>
+      </div>
+
+      <!-- Nome da Oficina ocupando a linha inteira -->
+      <div class="field-group">
+        <label class="field-label">Nome Fantasia (Nome da oficina) *</label>
+        <input class="field-input" id="nome-fantasia" type="text" placeholder="Oficina Silva"/>
+      </div>
+
+      <!-- Endereço -->
+      <div class="form-section-title">Endereço</div>
+
+      <div class="field-row field-row-3">
+        <div class="field-group field-cep">
+          <label class="field-label">CEP *</label>
+          <input class="field-input" id="cep" type="text" placeholder="70000-000" oninput="mascaraCEP(this)" maxlength="9"/>
+          <span id="cep-status" style="font-size: 11px; margin-top: 2px; display: none;"></span>
+        </div>
+        <div class="field-group field-logradouro">
+          <label class="field-label">Logradouro *</label>
+          <input class="field-input" id="logradouro" type="text" placeholder="Rua, Avenida, QI..."/>
+        </div>
+        <div class="field-group field-numero">
+          <label class="field-label">Número *</label>
+          <input class="field-input" id="numero" type="text" placeholder="100"/>
+        </div>
+      </div>
+
+      <div class="field-row field-row-3">
+        <div class="field-group">
+          <label class="field-label">Bairro *</label>
+          <input class="field-input" id="bairro" type="text" placeholder="Setor Industrial"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Cidade *</label>
+          <input class="field-input" id="cidade" type="text" placeholder="Brasília"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Estado *</label>
+          <select class="field-input field-select" id="estado">
+            <option value="">UF</option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+            <option>BA</option><option>CE</option><option selected>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+            <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+            <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+            <option>SP</option><option>SE</option><option>TO</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsável e acesso -->
+      <div class="form-section-title">Responsável e acesso</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Representante Legal (Responsável) *</label>
+          <input class="field-input" id="responsavel" type="text" placeholder="João Silva"/>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Telefone / WhatsApp *</label>
+          <input class="field-input" id="telefone" type="text" placeholder="(61) 99999-9999" oninput="mascaraTelefone(this)" maxlength="15"/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">E-mail *</label>
+        <input class="field-input" id="email" type="email" placeholder="contato@oficina.com.br"/>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Senha *</label>
+          <div class="input-wrap">
+            <input class="field-input" id="senha" type="password" placeholder="Mínimo 8 caracteres"/>
+            <button type="button" class="toggle-pw" onclick="toggleSenha('senha', this)"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Confirmar senha *</label>
+          <div class="input-wrap">
+            <input class="field-input" id="confirma-senha" type="password" placeholder="Repita a senha"/>
+            <button type="button" class="toggle-pw" onclick="toggleSenha('confirma-senha', this)"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="termos-wrap">
+        <input type="checkbox" id="termos" class="termos-check"/>
+        <label for="termos">
+          Aceito os <a href="#" class="link-termos">Termos de Uso</a> e a <a href="#" class="link-termos">Política de Privacidade</a>
+        </label>
+      </div>
+
+      <div id="cad-error" class="form-error" style="display:none;"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-voltar" onclick="location.href='login.html'">← Voltar</button>
+        <button type="submit" class="btn-criar" id="btn-criar">Criar minha conta →</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- PAINEL DIREITO -->
+  <div class="cad-panel">
+
+    <div class="plano-card">
+      <div class="plano-info">
+        <div class="plano-nome">Plano Oficina</div>
+        <div class="plano-desc">Acesso completo às funcionalidades<br>de compra e gestão de peças.</div>
+      </div>
+      <span class="plano-badge">Gratuito</span>
+    </div>
+
+    <p class="painel-sub">O que você terá acesso:</p>
+
+    <div class="beneficio-card" style="--accent:#3B82F6;">
+      <div class="ben-icon" style="background:#EFF6FF;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <div class="ben-body">
+        <div class="ben-title">Emissão de Boleto <span class="ben-badge">Incluso</span></div>
+        <p class="ben-desc">Gere boletos bancários para pagamento de pedidos direto na plataforma, sem burocracia.</p>
+        <ul class="ben-list">
+          <li>Boleto para qualquer pedido</li>
+          <li>Vencimento configurável</li>
+          <li>Envio automático por e-mail</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#10B981;">
+      <div class="ben-icon" style="background:#ECFDF5;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="ben-body">
+        <div class="ben-title">Solicitação de Garantia <span class="ben-badge" style="color:#10B981;background:#ECFDF5;">Incluso</span></div>
+        <p class="ben-desc">Abra chamados de garantia para peças com defeito de fábrica de forma simples e rastreável.</p>
+        <ul class="ben-list">
+          <li>Anexe fotos e laudo técnico</li>
+          <li>Acompanhe status em tempo real</li>
+          <li>Prazo de resposta: 3 dias úteis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#8B5CF6;">
+      <div class="ben-icon" style="background:#F5F3FF;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg></div>
+      <div class="ben-body">
+        <div class="ben-title">Solicitação de Devolução <span class="ben-badge" style="color:#8B5CF6;background:#F5F3FF;">Incluso</span></div>
+        <p class="ben-desc">Solicite a devolução de peças dentro do prazo legal com processo 100% digital.</p>
+        <ul class="ben-list">
+          <li>Devolução em até 7 dias</li>
+          <li>Rastreamento de coleta incluso</li>
+          <li>Crédito ou reembolso disponível</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="beneficio-card" style="--accent:#F59E0B;">
+      <div class="ben-icon" style="background:#FFFBEB;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div class="ben-body">
+        <div class="ben-title">Busca por Placa <span class="ben-badge" style="color:#F59E0B;background:#FFFBEB;">Incluso</span></div>
+        <p class="ben-desc">Encontre peças compatíveis pelo número da placa do veículo com equivalências por marca.</p>
+        <ul class="ben-list">
+          <li>Compatibilidade automática</li>
+          <li>Todas as marcas e referências</li>
+          <li>Histórico de buscas salvo</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL SUCESSO -->
+<div class="modal-overlay" id="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 15.01 9 12.01"/></svg></div>
+    <h3 class="modal-title">Conta criada com sucesso!</h3>
+    <p class="modal-sub">Bem-vindo à Quero Peças! Seu cadastro foi realizado. Faça login para acessar sua conta.</p>
+    <div class="modal-actions">
+      <a href="login.html" class="btn-criar">Ir para o login →</a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/masks.js"></script>
+<script src="/js/utils/modal.js"></script>
+<script src="/js/controllers/cadastro.controller.js"></script>
+</body>
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="deveCarregarPaginaLogin" classname="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.008">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /login.html
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.app.quero_pecas.controller.ViewController
+           Method = br.com.app.quero_pecas.controller.ViewController#login()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = login
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Quero Peças</title>
+  <link rel="stylesheet" href="/css/login-style.css"/>
+</head>
+<body>
+
+<div class="login-layout">
+
+  <!-- ── LADO ESQUERDO ── -->
+  <div class="left-panel">
+    <div class="left-inner">
+
+      <div class="logo">
+        <img src="/images/logoqueropeças.png" alt="Quero Peças" class="login-logo-img"/>
+      </div>
+
+      <div class="left-body">
+        <h1>Acesse sua conta e gerencie seus pedidos.</h1>
+        <p>Distribuidoras e oficinas têm acesso a funcionalidades exclusivas.</p>
+
+        <ul class="features">
+          <li>
+            <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <span>Busca por placa Mercosul</span>
+          </li>
+          <li>
+            <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+            <span>Gestão de pedidos em tempo real</span>
+          </li>
+          <li>
+            <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+            <span>Emissão de boletos automática</span>
+          </li>
+          <li>
+            <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+            <span>Garantia e devolução digital</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="left-footer">Mais de 55 mil peças · Entrega nacional</div>
+    </div>
+  </div>
+
+  <!-- ── LADO DIREITO ── -->
+  <div class="right-panel">
+    <div class="right-inner">
+
+      <!-- ── TELA DE LOGIN ── -->
+      <div id="view-login">
+
+        <div class="form-header">
+          <h2>Bem-vindo de volta!</h2>
+          <p>Faça login para acessar sua conta</p>
+        </div>
+
+        <!-- Formulário -->
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="field-group">
+            <label class="field-label">E-mail ou CNPJ</label>
+            <input
+              class="field-input"
+              id="email"
+              type="text"
+              placeholder="empresa@exemplo.com.br"
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Senha</label>
+            <div class="input-wrap">
+              <input
+                class="field-input"
+                id="senha"
+                type="password"
+                placeholder="••••••••••"
+                autocomplete="current-password"
+              />
+              <button type="button" class="btn-toggle-pw" onclick="togglePassword()" aria-label="Mostrar senha">
+                👁
+              </button>
+            </div>
+            <a href="#" class="link-esqueci" onclick="mostrarReset(event)">Esqueci minha senha →</a>
+          </div>
+
+          <div id="error-msg" class="error-msg" style="display:none;"></div>
+
+          <button class="btn-entrar" type="submit" id="btn-entrar">Entrar na plataforma →</button>
+        </form>
+
+        <div class="divider"><span>ou</span></div>
+
+        <a href="cadastro.html" class="btn-criar">Criar nova conta</a>
+        <a href="/" class="btn-voltar-inicio">← Voltar ao início</a>
+
+      </div>
+
+      <!-- ── TELA DE REDEFINIÇÃO ── -->
+      <div id="view-reset" style="display:none;">
+
+        <div class="form-header reset-header">
+          <div class="reset-avatar">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26">
+              <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zM12 17a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 1 1 6.2 0v2z"/>
+            </svg>
+          </div>
+          <h2>Redefinir senha</h2>
+          <p>Informe seu e-mail e enviaremos um link de redefinição</p>
+        </div>
+
+        <form id="form-reset" novalidate onsubmit="handleReset(event)">
+          <div class="field-group">
+            <label class="field-label">E-mail da conta</label>
+            <input
+              class="field-input"
+              id="reset-email"
+              type="email"
+              placeholder="empresa@exemplo.com.br"
+              autocomplete="email"
+            />
+          </div>
+
+          <div id="reset-success" class="success-msg" style="display:none;">
+            Link de redefinição enviado! Verifique sua caixa de entrada.
+          </div>
+
+          <div id="reset-error" class="error-msg" style="display:none;"></div>
+
+          <button class="btn-entrar" type="submit" id="btn-reset">Enviar link de redefinição →</button>
+        </form>
+
+        <a href="#" class="btn-voltar-login" onclick="mostrarLogin(event)">← Voltar ao login</a>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/controllers/login.controller.js"></script>
+</body>
+</html>
+
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="deveCarregarPaginaInicial" classname="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.01">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.app.quero_pecas.controller.ViewController
+           Method = br.com.app.quero_pecas.controller.ViewController#index()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = index
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quero Peças – Distribuidora de Autopeças</title>
+    <link rel="stylesheet" href="/css/home-style.css"/>
+</head>
+<body>
+
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+    <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               style="vertical-align:-2px"><rect x="2" y="4" width="20" height="16" rx="2"/><path
+            d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> compras@queropecas.com</span>
+    <div class="right">
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   style="vertical-align:-2px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> PT</span>
+        <div class="divider"></div>
+        <span>BRA</span>
+        <div class="divider"></div>
+        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                   style="vertical-align:-2px"><circle cx="12" cy="12" r="4"/><path
+                d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+    </div>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="/images/logopreta.png" alt="Quero Peças" class="navbar-logo-img"/>
+    </div>
+    <div class="nav-links">
+        <a href="#" class="active">Início ▾</a>
+        <a href="#loja">Marcas ▾</a>
+        <a href="#contato">Contato</a>
+    </div>
+    <div class="nav-actions" id="nav-actions">
+        <a href="login.html" class="btn-coral">
+            Cliente Login</a>
+        <a href="admin-login.html" class="btn-admin">
+            Admin Login</a>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>
+            Compre Peças?
+            <span class="highlight">Você está no lugar certo.</span>
+        </h1>
+        <p>Encontre peças originais e alternativas para seu veículo com entrega em todo o Brasil.</p>
+        <div class="hero-btns">
+            <button class="btn-hero-main" onclick="location.href='busca-cliente.html'">Comprar Peças →</button>
+            <button class="btn-hero-sec" onclick="location.href='cadastro.html'">Faça seu cadastro com a gente</button>
+        </div>
+        <div class="hero-badges">
+            <div class="hero-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     style="vertical-align:-2px">
+                    <rect x="1" y="3" width="15" height="13"/>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+                Entrega rápida
+            </div>
+            <div class="hero-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     style="vertical-align:-2px">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                Compra segura
+            </div>
+        </div>
+    </div>
+    <div class="app-carros">
+        <img src="/images/amortecedor.png" alt="Amortecedor" class="app-slide active"/>
+        <img src="/images/pistao com anel.png" alt="Pistão" class="app-slide"/>
+        <img src="/images/filtrosMann.png" alt="Filtros" class="app-slide"/>
+        <img src="/images/BobinaIgnição.png" alt="Bobina" class="app-slide"/>
+        <img src="/images/cabovelaNGK.png" alt="Cabo de Vela" class="app-slide"/>
+        <img src="/images/velairidiumNGK.png" alt="Velas Iridium" class="app-slide"/>
+        <img src="/images/kitcoxim.png" alt="Kit Coxim" class="app-slide"/>
+    </div>
+    </div>
+</section>
+
+
+<!-- ── MARCAS PREMIUM ── -->
+<section class="section section-gray" id="loja">
+    <div class="section-title">Marcas Premium</div>
+    <div class="section-sub">Trabalhamos com as melhores marcas do mercado</div>
+    <div class="marcas-grid">
+        <div class="marca-logo-card"><img src="/images/gates.png" alt="Gates"/></div>
+        <div class="marca-logo-card"><img src="/images/frasle.png" alt="Frasle"/></div>
+        <div class="marca-logo-card"><img src="/images/ngk.png" alt="NGK"/></div>
+        <div class="marca-logo-card"><img src="/images/sabo.png" alt="Sabó"/></div>
+        <div class="marca-logo-card"><img src="/images/sachs.png" alt="Sachs"/></div>
+        <div class="marca-logo-card"><img src="/images/metalleve.png" alt="Metalleve"/></div>
+        <div class="marca-logo-card"><img src="/images/cofap.png" alt="Cofap"/></div>
+    </div>
+</section>
+
+<!-- ── DEPOIMENTOS ── -->
+<section class="section section-white">
+    <div class="section-header">
+        <div>
+            <div class="section-title">O que eles dizem sobre nós?</div>
+            <div class="section-sub">Clientes satisfeitos em todo o Brasil</div>
+        </div>
+    </div>
+    <div class="dep-grid">
+        <div class="dep-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-texto">"Excelente atendimento! Recebi as peças no prazo e com ótima qualidade. Recomendo a
+                todos da minha oficina."</p>
+            <div class="dep-autor">
+                <div class="dep-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="dep-nome">Carlos Mendes</div>
+                    <div class="dep-cargo">Mecânico – Brasília</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-texto">"Trabalho com frotas há 10 anos e a Quero Peças é minha parceira principal. Preços
+                justos e entrega garantida."</p>
+            <div class="dep-autor">
+                <div class="dep-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="dep-nome">Ana Lima</div>
+                    <div class="dep-cargo">Gestora de Frota – SP</div>
+                </div>
+            </div>
+        </div>
+        <div class="dep-card">
+            <div class="dep-stars">★★★★☆</div>
+            <p class="dep-texto">"Peças de qualidade e atendimento rápido. A busca por placa economiza muito tempo no
+                meu dia a dia."</p>
+            <div class="dep-autor">
+                <div class="dep-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="dep-nome">João Pedro Silva</div>
+                    <div class="dep-cargo">Proprietário de Oficina</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── BANNER CONTATO ── -->
+<section class="banner-contato" id="contato">
+    <div>
+        <h2>Entre em contato</h2>
+        <p>Nossa equipe está pronta para te ajudar a encontrar a peça certa.</p>
+        <button class="btn-coral" style="padding:13px 26px;font-size:14px;">Fale conosco →</button>
+    </div>
+    <div class="banner-img">
+
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<!-- ── FORMULÁRIO + MAPA ── -->
+<div class="contato-section">
+    <div>
+        <div class="section-title" style="margin-bottom:24px;">Entre em contato</div>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label class="form-label">Nome completo</label>
+                <input class="form-input" type="text" placeholder="Seu nome" required/>
+            </div>
+            <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input class="form-input" type="email" placeholder="seu@email.com" required/>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Telefone</label>
+                <input class="form-input" type="tel" placeholder="(61) 99999-9999"/>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Assunto</label>
+                <input class="form-input" type="text" placeholder="Como podemos ajudar?"/>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Mensagem</label>
+                <textarea class="form-textarea" placeholder="Digite sua mensagem..."></textarea>
+            </div>
+            <button class="btn-enviar" type="submit">Enviar mensagem →</button>
+        </form>
+    </div>
+    <div class="mapa-placeholder">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.4!2d-47.9292!3d-15.8267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUUkgMjUgTG90ZSAxODAwLCBCcmFzw61saWEsIERG!5e0!3m2!1spt-BR!2sbr!4v1"
+                width="100%"
+                height="100%"
+                style="border:0; border-radius:12px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localização Quero Peças">
+        </iframe>
+    </div>
+    <div class="localizacao">
+        <h3>Nossa Localização</h3>
+        <div class="footer-loc">
+            <div class="footer-loc-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     style="vertical-align:-2px">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                QI 25 Lote 1800 A 1890
+            </div>
+            <div class="footer-loc-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     style="vertical-align:-2px">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                Horário: 8:00 – 17:00, Seg – Sexta
+            </div>
+            <div class="footer-loc-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     style="vertical-align:-2px">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                suporte@queropecas.com
+            </div>
+        </div>
+        <div class="footer-tel">+55 61 3356 1515</div>
+    </div>
+</div>
+
+<!-- ── NEWSLETTER ── -->
+<div class="newsletter">
+    <p>Assine para ver ofertas secretas e receber descontos assim que se inscrever!</p>
+    <div class="newsletter-form">
+        <input class="newsletter-input" type="email" placeholder="Digite seu e-mail"/>
+        <button class="btn-inscrever" onclick="handleNewsletter()">Inscrever-se →</button>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo-main">Quero <span>PEÇAS</span></div>
+            <div class="footer-logo-sub">Distribuidora de Autopeças</div>
+            <div class="footer-loc">
+                <div class="footer-loc-item"> QI 25 Lote 1800 A 1890</div>
+                <div class="footer-loc-item"> Horário: 8:00 – 17:00, Seg – Sexta</div>
+                <div class="footer-loc-item"> suporte@queropecas.com</div>
+            </div>
+            <p style="margin-top:12px;font-size:12px;">Precisa de ajuda? Ligue para nós:</p>
+            <div class="footer-tel">+55 61 3356 1515</div>
+        </div>
+        <div>
+            <h4>Links rápidos</h4>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Destaques</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">Depoimentos</a></li>
+                <li><a href="#">Fale conosco</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Institucional</h4>
+            <ul class="footer-links">
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+                <li><a href="#">Trabalhe conosco</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Siga</h4>
+            <div class="social-links">
+                <a href="#" class="social-link">▶ YouTube</a>
+                <a href="#" class="social-link">■ Facebook</a>
+                <a href="#" class="social-link">◈ Instagram</a>
+                <a href="#" class="social-link">X / Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2024 QueroPeças Inc. All rights reserved.</span>
+        <span>Desenvolvido no Brasil</span>
+    </div>
+</footer>
+
+<script src="/js/utils/icons.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/views/home.view.js"></script>
+<script src="/js/controllers/home.controller.js"></script>
+</body>
+</html>
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+  <testcase name="deveCarregarPaginaAdminPedidos" classname="br.com.app.quero_pecas.controller.ViewControllerTest" time="0.01">
+    <system-out><![CDATA[
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /admin-pedidos.html
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = br.com.app.quero_pecas.controller.ViewController
+           Method = br.com.app.quero_pecas.controller.ViewController#adminPedidos()
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = admin-pedidos
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Language:"en", Content-Type:"text/html;charset=UTF-8"]
+     Content type = text/html;charset=UTF-8
+             Body = <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerenciamento de Pedidos – Admin Quero Peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/admin-cadastro-style.css"/>
+  <style>
+    /* Custom Styling for Pedidos Dashboard */
+    .dashboard-counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .counter-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .counter-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+    }
+    .counter-card.pendente::before { background: #EAB308; }
+    .counter-card.separacao::before { background: #3B82F6; }
+    .counter-card.faturado::before { background: #10B981; }
+    .counter-card.cancelado::before { background: #EF4444; }
+
+    .counter-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark-text);
+    }
+    .counter-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-text);
+    }
+
+    .filter-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .filter-grid-pedidos {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: end;
+    }
+    @media (max-width: 1024px) {
+      .filter-grid-pedidos {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .filter-grid-pedidos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modal improvements */
+    .order-modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (max-width: 768px) {
+      .order-modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+    .order-info-section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: #F9FAFB;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .info-label {
+      font-weight: 600;
+      color: var(--gray-text);
+    }
+    .info-value {
+      color: var(--dark-text);
+      font-weight: 500;
+    }
+    .item-qty-input {
+      width: 60px;
+      height: 32px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .btn-action-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-action-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-action-primary:hover {
+      background: var(--primary-hover);
+    }
+    .btn-action-danger {
+      background: #EF4444;
+      color: var(--white);
+    }
+    .btn-action-danger:hover {
+      background: #DC2626;
+    }
+    .btn-action-secondary {
+      background: #E5E7EB;
+      color: var(--dark-text);
+    }
+    .btn-action-secondary:hover {
+      background: #D1D5DB;
+    }
+    
+    .alert-box {
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #991B1B;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+    </div>
+    <div class="sidebar-user">
+      <div class="user-avatar" id="sidebar-avatar">AD</div>
+      <div>
+        <div class="user-name" id="sidebar-nome">Admin</div>
+        <div class="user-role">Administrador</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="admin-estoque.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M4 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H4zm1 2h10v2H5V5zm0 4h10v6H5V9z"/>
+        </svg>
+        Estoque
+      </a>
+      <a href="admin-pedidos.html" class="nav-item active">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6z"/>
+        </svg>
+        Gerenciar Pedidos
+      </a>
+      <a href="admin-veiculo.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H11a1 1 0 001-1v-1h2.05a2.5 2.5 0 014.9 0H19a1 1 0 001-1v-5a1 1 0 00-.293-.707l-3-3A1 1 0 0016 4H3z"/></svg>
+        Cadastrar Veículo
+      </a>
+      <a href="admin-fornecedor.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a7 7 0 00-7 7v1h12v-1a7 7 0 00-7-7z"/></svg>
+        Cadastrar Fornecedor
+      </a>
+      <a href="admin-pecas.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+        Cadastrar Peças
+      </a>
+      <a href="admin-acesso.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd"/></svg>
+        Liberar Acesso
+      </a>
+      <a href="admin-solicitacoes.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Solicitações
+      </a>
+      <a href="admin-auditoria.html" class="nav-item">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        Auditoria
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" onclick="logout(event)" class="nav-item nav-sair">
+        <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Sair da conta
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── CONTEÚDO PRINCIPAL ── -->
+  <div class="main-wrap">
+
+    <header class="topbar">
+      <h1 class="topbar-title">Painel de Pedidos</h1>
+      <div class="topbar-actions">
+        <div class="topbar-avatar" id="topbar-avatar">AD</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- ── CONTADORES DE STATUS ── -->
+      <div class="dashboard-counters">
+        <div class="counter-card pendente">
+          <span class="counter-value" id="count-pendente">0</span>
+          <span class="counter-label">Pendentes</span>
+        </div>
+        <div class="counter-card separacao">
+          <span class="counter-value" id="count-separacao">0</span>
+          <span class="counter-label">Em Separação</span>
+        </div>
+        <div class="counter-card faturado">
+          <span class="counter-value" id="count-faturado">0</span>
+          <span class="counter-label">Faturados</span>
+        </div>
+        <div class="counter-card cancelado">
+          <span class="counter-value" id="count-cancelado">0</span>
+          <span class="counter-label">Cancelados</span>
+        </div>
+      </div>
+
+      <!-- ── FILTROS DE BUSCA ── -->
+      <div class="filter-card">
+        <div class="filter-grid-pedidos">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="search-input">Buscar Pedido</label>
+            <input type="text" id="search-input" class="form-input" placeholder="Número, lojista ou CNPJ..."/>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-status">Status</label>
+            <select id="filter-status" class="form-input form-select">
+              <option value="">Todos os status</option>
+              <option value="PENDENTE">Pendentes</option>
+              <option value="EM_SEPARACAO">Em Separação</option>
+              <option value="FATURADO">Faturados</option>
+              <option value="CANCELADO">Cancelados</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-start-date">De</label>
+            <input type="date" id="filter-start-date" class="form-input"/>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="filter-end-date">Até</label>
+            <input type="date" id="filter-end-date" class="form-input"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TABELA DE PEDIDOS ── -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Listagem Geral de Pedidos</h2>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Pedido #</th>
+                <th>Data / Hora</th>
+                <th>Lojista</th>
+                <th>CNPJ</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th style="text-align:right;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="orders-list">
+              <!-- Renderização via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+<!-- ── MODAL DE DETALHES DO PEDIDO ── -->
+<div id="order-modal-overlay" class="modal-overlay">
+  <div class="modal-content-card" style="max-width: 900px; width: 90%;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-order-number">Detalhes do Pedido - QP-XXXXX</h3>
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+    </div>
+    <div class="modal-body" style="padding:24px;">
+
+      <!-- Alerta de quebra de estoque -->
+      <div class="alert-box" id="shortage-alert">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <div class="order-modal-body">
+        <!-- Lado esquerdo: Itens do pedido -->
+        <div>
+          <h4 style="font-size:14px; font-weight:700; margin-bottom:12px; color:var(--dark-text);">Itens Solicitados</h4>
+          <div class="table-wrap" style="border:1px solid var(--border); border-radius:8px; overflow-x:auto;">
+            <table class="data-table" style="margin:0; font-size:13px; width:100%; border-collapse:collapse;">
+              <thead>
+                <tr style="background:#F9FAFB;">
+                  <th>Peça</th>
+                  <th style="text-align:center;">Qtd</th>
+                  <th>Preço</th>
+                  <th>Subtotal</th>
+                  <th style="text-align:right;">Ação</th>
+                </tr>
+              </thead>
+              <tbody id="modal-order-items">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Lado direito: Informações adicionais & Ações -->
+        <div class="order-info-section">
+          <h4 style="font-size:14px; font-weight:700; margin-bottom:16px; color:var(--dark-text);">Resumo e Ações</h4>
+          <div class="info-row">
+            <span class="info-label">Lojista:</span>
+            <span class="info-value" id="modal-client-name">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">CNPJ:</span>
+            <span class="info-value" id="modal-client-cnpj">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Data:</span>
+            <span class="info-value" id="modal-order-date">-</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Frete:</span>
+            <span class="info-value" id="modal-order-frete">R$ 0,00</span>
+          </div>
+          <div class="info-row" style="border-top:1px solid var(--border); padding-top:12px; margin-top:12px;">
+            <span class="info-label" style="font-size:15px; color:var(--dark-text);">Valor Total:</span>
+            <span class="info-value" id="modal-order-total" style="font-size:18px; font-weight:800; color:var(--primary);">R$ 0,00</span>
+          </div>
+          
+          <div class="info-row" id="modal-cancel-reason-row" style="display:none; color:var(--error); flex-direction:column; gap:4px; border-top:1px solid var(--border); padding-top:12px; margin-top:12px;">
+            <span class="info-label" style="color:var(--error); font-weight:700;">Motivo do Cancelamento:</span>
+            <span class="info-value" id="modal-cancel-reason" style="text-align:left; font-weight:600; color:var(--error); white-space:normal; word-break:break-word;">-</span>
+          </div>
+          
+          <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;" id="modal-actions-container">
+            <!-- Botões dinâmicos com base no status -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast notifications -->
+<div id="toast" class="toast">Pedido atualizado!</div>
+
+<script src="/js/utils/auth.js"></script>
+<script src="/js/models/admin-pedidos.model.js"></script>
+<script src="/js/views/admin-pedidos.view.js"></script>
+<script src="/js/controllers/admin-pedidos.controller.js"></script>
+</body>
+</html>
+
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  </testcase>
+</testsuite>

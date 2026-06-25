@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Área do Cliente – Orçamento</title>
+    <link rel="stylesheet" href="/css/orcamento-style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="/css/busca-style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
+        </div>
+
+        <div class="sidebar-user">
+            <div class="user-avatar" id="sidebar-avatar">OF</div>
+            <div>
+                <div class="user-name" id="sidebar-nome">Oficina Silva</div>
+                <div class="user-cnpj" id="sidebar-cnpj">CNPJ: 12.345.678/0001</div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-section="dashboard">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 4a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2V4zM2 13a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2H4a2 2 0 01-2-2v-3zm9 0a2 2 0 012-2h3a2 2 0 012 2v3a2 2 0 01-2 2h-3a2 2 0 01-2-2v-3z"/>
+                </svg>
+                Dashboard
+            </a>
+            <a href="busca-cliente.html" class="nav-item">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"/>
+                </svg>
+                Buscar Peças
+            </a>
+            <a href="pedidos.html" class="nav-item" data-section="pedidos">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/>
+                </svg>
+                Meus Pedidos
+            </a>
+            <a href="#" class="nav-item active" data-section="pedidos">
+                <span class="material-symbols-outlined nav-svg"
+                      style="font-size: 20px; display: inline-flex; align-items: center; justify-content: center;">picture_as_pdf</span>
+                Orçamentos
+            </a>
+            <a href="credito.html" class="nav-item" data-section="credito">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2H2V5zm0 4h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm4 3a1 1 0 000 2h2a1 1 0 000-2H6z"/>
+                </svg>
+                Solicitação de Crédito
+            </a>
+            <a href="devolucao.html" class="nav-item" data-section="devolucao">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                          clip-rule="evenodd"/>
+                </svg>
+                Solicitação de Devolução
+            </a>
+            <a href="garantia.html" class="nav-item" data-section="garantia">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"/>
+                </svg>
+                Solicitação de Garantia
+            </a>
+            <a href="boleto.html" class="nav-item" data-section="boleto">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 3h4v1H8V7zm0 3h4v1H8v-1zm0 3h2v1H8v-1z"/>
+                </svg>
+                Emissão de Boleto
+            </a>
+            <a href="#" class="nav-item" data-section="documentos">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                          clip-rule="evenodd"/>
+                </svg>
+                Documentos
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="#" class="nav-item nav-sair" onclick="logout(event)">
+                <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                          clip-rule="evenodd"/>
+                </svg>
+                Sair da conta
+            </a>
+        </div>
+    </aside>
+
+    <div class="main-wrap">
+
+        <div class="topbar">
+            <div class="topbar-title">Orçamentos</div>
+            <div class="topbar-actions">
+                <div class="topbar-avatar">OF</div>
+            </div>
+        </div>
+
+        <main class="main-content" style="padding: 28px;">
+            <!-- Lista de Orçamentos -->
+            <div id="orcamentoListContainer" class="orcamento-list-container">
+                <div class="list-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <div>
+                        <h2 style="font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Meus Orçamentos</h2>
+                        <p style="font-size: 14px; color: var(--gray-text);">Consulte os orçamentos criados ou gere um novo.</p>
+                    </div>
+                    <button id="btnNewOrcamento" class="btn-new-doc" onclick="OrcamentoController.showCreateView()" style="display: flex; align-items: center; gap: 8px; font-weight: 600; padding: 10px 18px; border-radius: 6px; font-size: 13px; cursor: pointer; border: none; transition: background-color 0.15s; background: var(--purple); color: var(--white);">
+                        <span class="material-symbols-outlined" style="font-size: 20px; vertical-align: middle;">add</span>
+                        Novo Orçamento
+                    </button>
+                </div>
+
+                <!-- Estado Vazio -->
+                <div id="orcamentoEmptyState" class="empty-state" style="display: none; padding: 48px; text-align: center; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 24px;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">📄</div>
+                    <h3 style="font-size: 18px; font-weight: 700; color: var(--dark-text); margin-bottom: 8px;">Nenhum orçamento encontrado</h3>
+                    <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 24px; max-width: 380px; margin-left: auto; margin-right: auto;">
+                        Você ainda não gerou nenhum orçamento para seus clientes. Crie um orçamento agora utilizando peças do catálogo.
+                    </p>
+                    <button id="btnNewOrcamentoEmpty" class="btn-new-doc" onclick="OrcamentoController.showCreateView()" style="padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; transition: background-color 0.15s; background: var(--purple); color: var(--white);">
+                        Criar Novo Orçamento
+                    </button>
+                </div>
+
+                <!-- Tabela de Orçamentos -->
+                <div id="orcamentoTableContainer" class="activity-section" style="display: none; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 20px;">
+                    <div class="table-wrap">
+                        <table class="orcamento-table">
+                            <thead>
+                                <tr>
+                                    <th align="left">Nº Orçamento</th>
+                                    <th align="left">Cliente</th>
+                                    <th align="left">E-mail</th>
+                                    <th align="left">Data</th>
+                                    <th align="right">Valor Total</th>
+                                    <th align="center">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyOrcamentos">
+                                <!-- Preenchido dinamicamente via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="orcamentoPdfContainer" class="orcamento-pdf-container" style="display: none;">
+                <section class="doc-section">
+                    <h3 class="section-title">Orçamento<p class="num-orcamento">Nº <span id="pdfNumOrcamento">000000/2026</span></p></h3>
+                    <div class="meta-area">
+
+
+                        <p class="data-emissao">Data: <span id="pdfDataEmissao">--/--/----</span></p>
+                    </div>
+                    <div class="grid-2-col">
+                        <div>
+                            <p class="field-label">Razão Social / Nome</p>
+                            <p class="field-value" id="mecanicoNome">Oficina Carregando...</p>
+                        </div>
+                        <div>
+                            <p class="field-label">Contato / E-mail</p>
+                            <p class="field-value" id="mecanicoContato">suporte@queropecas.com.br</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3 class="section-title">Dados do Cliente</h3>
+                    <div class="grid-3-col">
+                        <div class="span-2">
+                            <p class="field-label">Nome / Razão Social</p>
+                            <input type="text" id="nomeCliente" class="input-doc" placeholder="Digite o nome completo do cliente" required>
+                        </div>
+                        <div>
+                            <p class="field-label">Telefone / Celular</p>
+                            <input type="text" id="telefoneCliente" class="input-doc" placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="span-2">
+                            <p class="field-label">Endereço</p>
+                            <input type="text" id="enderecoCliente" class="input-doc" placeholder="Rua, Número, Bairro, Cidade - UF">
+                        </div>
+                        <div>
+                            <p class="field-label">E-mail</p>
+                            <input type="email" id="emailCliente" class="input-doc" placeholder="cliente@email.com" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3 class="section-title">Peças e Componentes</h3>
+
+                    <div id="pecasEscolhidasOrcamento">
+                        <p class="empty-table-msg">Nenhuma peça adicionada do catálogo. Clique em "+ Add" acima para incluir peças.</p>
+                    </div>
+
+                    <div class="totalizadores-container">
+                        <div class="total-row">
+                            <span class="t-label">Subtotal dos Itens:</span>
+                            <span class="t-val" id="totalItens">R$ 0,00</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="t-label">Mão de Obra / Serviços:</span>
+                            <span class="t-val font-editable" contenteditable="true" id="totalServicos">R$ 0,00</span>
+                        </div>
+                        <div class="total-row total-geral">
+                            <span class="t-label">TOTAL GERAL:</span>
+                            <span class="t-val" id="totalGeral">R$ 0,00</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3 class="section-title">Detalhamento / Observações de Garantia</h3>
+                    <div>
+                        <textarea id="detalhesOrcamento" class="textarea-doc" placeholder="Ex: Prazo de entrega das peças é de 3 dias úteis. Garantia de 90 dias conforme fabricante..."></textarea>
+                    </div>
+                </section>
+
+                <div class="actions-area">
+                    <button type="button" class="btn-back-to-list" onclick="OrcamentoController.showListView()" style="border: 1px solid var(--border); margin-right: auto; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background-color 0.15s; background: var(--page-bg); color: var(--dark-text);">
+                        ← Voltar para Lista
+                    </button>
+                    <button type="button" class="btn-export-pdf" onclick="gerarOrcamentoPDF()" style="padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--coral); transition: background-color 0.15s; background: var(--page-bg); color: var(--dark-text);">
+                        Exportar / Imprimir PDF
+                    </button>
+                    <button type="submit" id="btnSaveOrcamento" class="btn-save-doc">
+                        Salvar e Finalizar Orçamento
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <div id="drawerOverlay" class="drawer-overlay" onclick="toggleSideCart(false)"></div>
+    <div id="sideCartDrawer" class="side-cart-drawer">
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="/js/utils/auth.js"></script>
+<script src="/js/views/shared.view.js"></script>
+<script src="/js/utils/cart.js"></script>
+<script src="/js/models/orcamento.model.js"></script>
+<script src="/js/controllers/orcamento.controller.js"></script>
+</body>
+</html>

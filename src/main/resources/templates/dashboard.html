@@ -108,6 +108,19 @@
       <div class="action-cards">
 
         <div class="action-card">
+          <div class="card-icon-wrap icon-blue">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="26" height="26">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Buscar<br>Peças</h3>
+            <p>Consulte o catálogo de peças e realize novos pedidos.</p>
+          </div>
+          <button class="card-btn btn-blue" onclick="location.href='busca-cliente.html'">Buscar Peças →</button>
+        </div>
+
+        <div class="action-card">
           <span class="card-badge badge-blue">3 em aberto</span>
           <div class="card-icon-wrap icon-blue"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
           <div class="card-body">
@@ -176,28 +189,7 @@
         </div>
       </div>
 
-      <!-- Atividade recente -->
-      <div class="activity-section">
-        <h3 class="activity-title">Atividade Recente</h3>
-        <div class="table-wrap">
-          <table class="activity-table">
-            <thead>
-            <tr>
-              <th>Tipo</th>
-              <th>Descrição</th>
-              <th>Data</th>
-              <th>Status</th>
-              <th>Ação</th>
-            </tr>
-            </thead>
-            <tbody id="activity-tbody"></tbody>
-          </table>
-        </div>
-        <div class="table-footer">
-          <span>Mostrando 5 de 24 registros</span>
-          <a href="#" class="link-ver-todos">Ver todos →</a>
-        </div>
-      </div>
+
 
     </main>
   </div>

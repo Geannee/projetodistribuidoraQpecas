@@ -14,7 +14,6 @@
 </head>
 <body>
 <div class="app-layout">
-
     <aside class="sidebar">
         <div class="sidebar-logo">
             <img src="/images/logoqueropeças.png" alt="Quero Peças" class="sidebar-logo-img"/>
@@ -103,23 +102,18 @@
             </a>
         </div>
     </aside>
-
     <div class="main-wrap">
-
         <div class="topbar">
             <div class="topbar-title">Criar Orçamento</div>
             <div class="topbar-actions">
                 <div class="topbar-avatar">OF</div>
             </div>
         </div>
-
         <main class="main-content">
             <div class="orcamento-pdf-container">
                 <section class="doc-section">
                     <h3 class="section-title">Orçamento<p class="num-orcamento">Nº <span id="pdfNumOrcamento">000000/2026</span></p></h3>
                     <div class="meta-area">
-
-
                         <p class="data-emissao">Data: <span id="pdfDataEmissao">--/--/----</span></p>
                     </div>
                     <div class="grid-2-col">
@@ -133,7 +127,6 @@
                         </div>
                     </div>
                 </section>
-
                 <section class="doc-section">
                     <h3 class="section-title">Dados do Cliente</h3>
                     <div class="grid-3-col">
@@ -155,7 +148,6 @@
                         </div>
                     </div>
                 </section>
-
                 <section class="doc-section">
                     <h3 class="section-title">Peças e Componentes</h3>
 
@@ -178,16 +170,14 @@
                         </div>
                     </div>
                 </section>
-
                 <section class="doc-section">
                     <h3 class="section-title">Detalhamento / Observações de Garantia</h3>
                     <div>
                         <textarea id="detalhesOrcamento" class="textarea-doc" placeholder="Ex: Prazo de entrega das peças é de 3 dias úteis. Garantia de 90 dias conforme fabricante..."></textarea>
                     </div>
                 </section>
-
                 <div class="actions-area">
-                    <button type="button" class="btn-print">
+                    <button type="button" class="btn-print" onclick="gerarOrcamentoPDF()">
                         Exportar / Imprimir PDF
                     </button>
                     <button type="submit"  class="btn-save-doc">
@@ -203,8 +193,11 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="/js/utils/auth.js"></script>
 <script src="/js/views/shared.view.js"></script>
 <script src="/js/utils/cart.js"></script>
+<script src="/js/controllers/orcamento.controller.js"></script>
 </body>
 </html>

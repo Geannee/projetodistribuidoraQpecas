@@ -38,7 +38,7 @@ public class SecurityConfig {
                             "/busca.html" // PAGINA LEGADO
                     ).permitAll();
 
-                    req.requestMatchers("/auth/**", "/usuarios/", "/pedidos/**", "/error").permitAll();
+                    req.requestMatchers("/auth/**", "/usuarios/", "/pedidos/**", "/error", "/api/pdf/**").permitAll();
                     req.requestMatchers("/admin/**").hasRole("DISTRIBUIDOR");
                     req.requestMatchers(org.springframework.http.HttpMethod.POST, "/fabricantes/cadastro").hasRole("DISTRIBUIDOR");
                     req.requestMatchers(org.springframework.http.HttpMethod.GET, "/fabricantes/historico").authenticated();

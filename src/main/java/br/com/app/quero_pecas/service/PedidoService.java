@@ -193,7 +193,12 @@ public class PedidoService {
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
 
-        if (status == StatusPedido.FATURADO) {
+        if (status == StatusPedido.EM_SEPARACAO) {
+            if (pedido.getStatus() != StatusPedido.PAGO) {
+                throw new RuntimeException("Não é possível iniciar a separação de um pedido que não foi pago.");
+            }
+            pedido.setStatus(StatusPedido.EM_SEPARACAO);
+        } else if (status == StatusPedido.FATURADO) {
             // Valida se há saldo real no estoque (ou seja, se a peça não está com estoque negativo)
             List<String> shortItems = new ArrayList<>();
             for (PecaPedido item : pedido.getItens()) {
@@ -208,6 +213,11 @@ public class PedidoService {
 
             // Faturou com sucesso -> Altera status da entrega também se houver
             pedido.setStatus(StatusPedido.FATURADO);
+            if (pedido.getEntrega() != null) {
+                pedido.getEntrega().setStatusEntrega(StatusEntrega.PREPARANDO_ENVIO);
+            }
+        } else if (status == StatusPedido.EM_VIAGEM) {
+            pedido.setStatus(StatusPedido.EM_VIAGEM);
             if (pedido.getEntrega() != null) {
                 pedido.getEntrega().setStatusEntrega(StatusEntrega.EM_TRANSPORTE);
             }

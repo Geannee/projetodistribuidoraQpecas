@@ -63,10 +63,15 @@ const AdminPedidosView = {
       const statusLabel = this.getStatusBadge(order.status);
       const isPendente = order.status === 'PAGO' || order.status === 'AGUARDANDO_PAGAMENTO';
       const isSeparacao = order.status === 'EM_SEPARACAO';
+      const isFaturado = order.status === 'FATURADO';
 
       let acoesHtml = '';
       if (isPendente) {
-        acoesHtml = `<button class="btn-action-sm btn-action-primary" onclick="event.stopPropagation(); AdminPedidosController.iniciarSeparacao(${order.idPedido})">Separar</button>`;
+        if (order.status === 'AGUARDANDO_PAGAMENTO') {
+          acoesHtml = `<button class="btn-action-sm btn-action-secondary" style="cursor: not-allowed; opacity: 0.6;" onclick="event.stopPropagation(); alert('Este pedido aguarda pagamento do cliente.');" disabled>Aguardando Pagto</button>`;
+        } else {
+          acoesHtml = `<button class="btn-action-sm btn-action-primary" onclick="event.stopPropagation(); AdminPedidosController.iniciarSeparacao(${order.idPedido})">Separar</button>`;
+        }
       } else if (isSeparacao) {
         acoesHtml = `
           <div style="display:flex; gap:6px; justify-content:flex-end;">
@@ -74,6 +79,8 @@ const AdminPedidosView = {
             <button class="btn-action-sm btn-action-danger" onclick="event.stopPropagation(); AdminPedidosController.cancelarPedido(${order.idPedido})">Cancelar</button>
           </div>
         `;
+      } else if (isFaturado) {
+        acoesHtml = `<button class="btn-action-sm btn-action-primary" style="background:#3B82F6;" onclick="event.stopPropagation(); AdminPedidosController.enviarPedido(${order.idPedido})">Enviar</button>`;
       } else {
         acoesHtml = `<button class="btn-action-sm btn-action-secondary" onclick="event.stopPropagation(); AdminPedidosController.abrirPedido(${order.idPedido})">Ver</button>`;
       }
@@ -98,7 +105,7 @@ const AdminPedidosView = {
       'PAGO': '<span class="catalog-vehicle-badge" style="background:#FEF08A; color:#854D0E;">Pendente</span>',
       'EM_SEPARACAO': '<span class="catalog-vehicle-badge" style="background:#DBEAFE; color:#1E40AF;">Em Separação</span>',
       'FATURADO': '<span class="catalog-vehicle-badge" style="background:#D1FAE5; color:#065F46;">Faturado</span>',
-      'EM_VIAGEM': '<span class="catalog-vehicle-badge" style="background:#D1FAE5; color:#065F46;">Em Viagem</span>',
+      'EM_VIAGEM': '<span class="catalog-vehicle-badge" style="background:#D1FAE5; color:#065F46;">Enviado</span>',
       'ENTREGUE': '<span class="catalog-vehicle-badge" style="background:#D1FAE5; color:#065F46;">Entregue</span>',
       'CANCELADO': '<span class="catalog-vehicle-badge" style="background:#FEE2E2; color:#991B1B;">Cancelado</span>'
     };
@@ -140,13 +147,17 @@ const AdminPedidosView = {
 
     // Actions container in side panel
     let actionsHtml = '';
-    if (order.status === 'PAGO' || order.status === 'AGUARDANDO_PAGAMENTO') {
+    if (order.status === 'PAGO') {
       actionsHtml = `<button class="btn-primary btn-coral" style="width:100%;" onclick="AdminPedidosController.iniciarSeparacao(${order.idPedido})">Iniciar Separação</button>`;
+    } else if (order.status === 'AGUARDANDO_PAGAMENTO') {
+      actionsHtml = `<button class="btn-primary" style="width:100%; background:#9CA3AF; cursor:not-allowed;" onclick="alert('Este pedido aguarda pagamento do cliente.');" disabled>Aguardando Pagamento</button>`;
     } else if (order.status === 'EM_SEPARACAO') {
       actionsHtml = `
         <button class="btn-primary btn-green" style="width:100%;" onclick="AdminPedidosController.faturarPedido(${order.idPedido})">Faturar Pedido</button>
         <button class="btn-primary" style="width:100%; background:#EF4444; margin-top:8px;" onclick="AdminPedidosController.cancelarPedido(${order.idPedido})">Cancelar Pedido</button>
       `;
+    } else if (order.status === 'FATURADO') {
+      actionsHtml = `<button class="btn-primary" style="width:100%; background:#3B82F6;" onclick="AdminPedidosController.enviarPedido(${order.idPedido})">Enviar Produto</button>`;
     }
     this.modalActionsContainer.innerHTML = actionsHtml;
 

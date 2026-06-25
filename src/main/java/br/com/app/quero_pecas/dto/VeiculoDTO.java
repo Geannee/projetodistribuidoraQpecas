@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.Year;
 
-public interface VeiculoDTO {
+public final class VeiculoDTO {
 
     public record Save(
             @NotBlank Year anoFabricacao,

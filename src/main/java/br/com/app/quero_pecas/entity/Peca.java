@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Peca {
@@ -26,7 +28,4 @@ public class Peca {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fabricante_id")
     private Fabricante fabricante;
-
-    public void setPrecoBase(@NotNull Double aDouble) {
-    }
 }

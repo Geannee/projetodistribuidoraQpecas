@@ -38,7 +38,7 @@ public class SecurityConfig {
                             "/busca.html" // PAGINA LEGADO
                     ).permitAll();
 
-                    req.requestMatchers("/auth/**", "/usuarios/", "/fabricantes/**", "/pedidos/**", "/error").permitAll();
+                    req.requestMatchers("/auth/**", "/usuarios/", "/fabricantes/**", "/pedidos/**", "/error","/orcamentos/**").permitAll();
                     req.requestMatchers("/veiculos/**", "/pecas/**", "/usuarios/me", "/veiculos/findByPlaca").authenticated();
                     req.anyRequest().authenticated();
                 })

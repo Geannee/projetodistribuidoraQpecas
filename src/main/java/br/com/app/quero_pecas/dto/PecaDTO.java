@@ -8,7 +8,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.List;
 
-public interface PecaDTO {
+public final class PecaDTO {
 
     public record Save(
             @NotBlank String categoria,

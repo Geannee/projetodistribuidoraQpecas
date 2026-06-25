@@ -4,7 +4,7 @@ import br.com.app.quero_pecas.utils.TipoUsuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public interface AuthDTO {
+public final class AuthDTO {
     public record Request(
       @NotBlank(message = "Preencha o campo com um E-mail ou CNPJ!")
       String login,

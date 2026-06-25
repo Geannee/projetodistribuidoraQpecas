@@ -52,7 +52,7 @@
             <a href="#" class="nav-item active" data-section="pedidos">
                 <span class="material-symbols-outlined nav-svg"
                       style="font-size: 20px; display: inline-flex; align-items: center; justify-content: center;">picture_as_pdf</span>
-                Criar Orçamento
+                Orçamentos
             </a>
             <a href="credito.html" class="nav-item" data-section="credito">
                 <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor">
@@ -107,14 +107,61 @@
     <div class="main-wrap">
 
         <div class="topbar">
-            <div class="topbar-title">Criar Orçamento</div>
+            <div class="topbar-title">Orçamentos</div>
             <div class="topbar-actions">
                 <div class="topbar-avatar">OF</div>
             </div>
         </div>
 
-        <main class="main-content">
-            <div class="orcamento-pdf-container">
+        <main class="main-content" style="padding: 28px;">
+            <!-- Lista de Orçamentos -->
+            <div id="orcamentoListContainer" class="orcamento-list-container">
+                <div class="list-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <div>
+                        <h2 style="font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Meus Orçamentos</h2>
+                        <p style="font-size: 14px; color: var(--gray-text);">Consulte os orçamentos criados ou gere um novo.</p>
+                    </div>
+                    <button class="btn-save-doc" onclick="OrcamentoController.showCreateView()" style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                        <span class="material-symbols-outlined" style="font-size: 20px; vertical-align: middle;">add</span>
+                        Novo Orçamento
+                    </button>
+                </div>
+
+                <!-- Estado Vazio -->
+                <div id="orcamentoEmptyState" class="empty-state" style="display: none; padding: 48px; text-align: center; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 24px;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">📄</div>
+                    <h3 style="font-size: 18px; font-weight: 700; color: var(--dark-text); margin-bottom: 8px;">Nenhum orçamento encontrado</h3>
+                    <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 24px; max-width: 380px; margin-left: auto; margin-right: auto;">
+                        Você ainda não gerou nenhum orçamento para seus clientes. Crie um orçamento agora utilizando peças do catálogo.
+                    </p>
+                    <button class="btn-save-doc" onclick="OrcamentoController.showCreateView()">
+                        Criar Novo Orçamento
+                    </button>
+                </div>
+
+                <!-- Tabela de Orçamentos -->
+                <div id="orcamentoTableContainer" class="activity-section" style="display: none; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); padding: 20px;">
+                    <div class="table-wrap">
+                        <table class="orcamento-table">
+                            <thead>
+                                <tr>
+                                    <th align="left">Nº Orçamento</th>
+                                    <th align="left">Cliente</th>
+                                    <th align="left">E-mail</th>
+                                    <th align="left">Data</th>
+                                    <th align="right">Valor Total</th>
+                                    <th align="center">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyOrcamentos">
+                                <!-- Preenchido dinamicamente via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="orcamentoPdfContainer" class="orcamento-pdf-container" style="display: none;">
                 <section class="doc-section">
                     <h3 class="section-title">Orçamento<p class="num-orcamento">Nº <span id="pdfNumOrcamento">000000/2026</span></p></h3>
                     <div class="meta-area">
@@ -187,6 +234,9 @@
                 </section>
 
                 <div class="actions-area">
+                    <button type="button" class="btn-print" onclick="OrcamentoController.showListView()" style="border: 1px solid var(--border); margin-right: auto;">
+                        ← Voltar para Lista
+                    </button>
                     <button type="button" class="btn-print">
                         Exportar / Imprimir PDF
                     </button>

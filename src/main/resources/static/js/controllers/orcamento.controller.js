@@ -1,21 +1,19 @@
 const OrcamentoController = {
   subtotalItens: 0,
   valorServicos: 0,
+  orcamentosList: [],
 
   init() {
     if (!Auth.check()) return;
 
-    // Preenche dados do usuario logado (SharedView or local check)
+    // Preenche dados do usuario logado
     if (typeof SharedView !== 'undefined' && SharedView.preencherUsuario) {
       SharedView.preencherUsuario();
     }
     this.preencherDadosMecanico();
-    
-    // Inicializa a data de emissao e numero do orcamento
-    this.inicializarCabecalho();
 
-    // Carrega itens do carrinho local
-    this.carregarItens();
+    // Inicializa no modo listagem de orçamentos
+    this.showListView();
 
     // Vincula os eventos
     this.bindEvents();
@@ -47,6 +45,223 @@ const OrcamentoController = {
       const randomNum = Math.floor(100000 + Math.random() * 900000);
       const currentYear = new Date().getFullYear();
       numOrcamentoEl.textContent = `${randomNum}/${currentYear}`;
+    }
+  },
+
+  async carregarOrcamentos() {
+    try {
+      const orcamentos = await OrcamentoModel.getOrcamentos();
+      this.orcamentosList = orcamentos;
+      this.renderOrcamentos();
+    } catch (error) {
+      console.error("Erro ao carregar orçamentos:", error);
+      alert("Erro ao carregar lista de orçamentos: " + error.message);
+    }
+  },
+
+  renderOrcamentos() {
+    const listContainer = document.getElementById('orcamentoListContainer');
+    const emptyState = document.getElementById('orcamentoEmptyState');
+    const tableContainer = document.getElementById('orcamentoTableContainer');
+    const tbody = document.getElementById('tbodyOrcamentos');
+
+    if (!listContainer) return;
+
+    if (!this.orcamentosList || this.orcamentosList.length === 0) {
+      if (emptyState) emptyState.style.display = 'block';
+      if (tableContainer) tableContainer.style.display = 'none';
+      return;
+    }
+
+    if (emptyState) emptyState.style.display = 'none';
+    if (tableContainer) tableContainer.style.display = 'block';
+
+    if (tbody) {
+      tbody.innerHTML = this.orcamentosList.map(o => {
+        const dataFormatted = o.dataHora
+          ? new Date(o.dataHora).toLocaleString('pt-BR')
+          : '--/--/---- --:--';
+        return `
+          <tr>
+            <td><strong>Nº ${String(o.idOrcamento).padStart(6, '0')}</strong></td>
+            <td>${o.nomeCliente || 'N/A'}</td>
+            <td>${o.emailCliente || 'N/A'}</td>
+            <td>${dataFormatted}</td>
+            <td align="right" style="font-weight:600; color:var(--green);">${this.fmt(o.valorTotal || 0)}</td>
+            <td align="center">
+              <button class="btn-print" onclick="OrcamentoController.visualizarOrcamento(${o.idOrcamento})" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--coral); border-radius: 4px; background: transparent; color: var(--coral); cursor: pointer; font-weight: 600;">
+                Visualizar / PDF
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+  },
+
+  showCreateView() {
+    const listContainer = document.getElementById('orcamentoListContainer');
+    const pdfContainer = document.getElementById('orcamentoPdfContainer');
+
+    if (listContainer) listContainer.style.display = 'none';
+    if (pdfContainer) pdfContainer.style.display = 'block';
+
+    // Configura cabeçalho para novo orçamento
+    this.inicializarCabecalho();
+
+    // Habilita os campos
+    this.setCamposReadOnly(false);
+
+    // Carrega itens do carrinho
+    this.carregarItens();
+    this.valorServicos = 0;
+    const totalServicosEl = document.getElementById('totalServicos');
+    if (totalServicosEl) {
+      totalServicosEl.textContent = this.fmt(0);
+    }
+    this.atualizarTotais();
+
+    // Mostra botão de salvar
+    const btnSave = document.querySelector('.btn-save-doc');
+    if (btnSave) {
+      btnSave.style.display = 'inline-block';
+      btnSave.disabled = false;
+      btnSave.textContent = 'Salvar e Finalizar Orçamento';
+    }
+  },
+
+  showListView() {
+    const listContainer = document.getElementById('orcamentoListContainer');
+    const pdfContainer = document.getElementById('orcamentoPdfContainer');
+
+    if (pdfContainer) pdfContainer.style.display = 'none';
+    if (listContainer) listContainer.style.display = 'block';
+
+    // Recarrega a lista
+    this.carregarOrcamentos();
+  },
+
+  setCamposReadOnly(readonly) {
+    const campos = ['nomeCliente', 'telefoneCliente', 'enderecoCliente', 'emailCliente', 'detalhesOrcamento'];
+    campos.forEach(cId => {
+      const el = document.getElementById(cId);
+      if (el) {
+        el.readOnly = readonly;
+        el.disabled = readonly;
+        if (!readonly) {
+          el.value = '';
+        }
+      }
+    });
+
+    const totalServicosEl = document.getElementById('totalServicos');
+    if (totalServicosEl) {
+      totalServicosEl.contentEditable = !readonly;
+      totalServicosEl.style.borderBottom = readonly ? 'none' : '1px dashed var(--coral)';
+    }
+  },
+
+  visualizarOrcamento(id) {
+    const o = this.orcamentosList.find(orc => orc.idOrcamento === id);
+    if (!o) return;
+
+    const listContainer = document.getElementById('orcamentoListContainer');
+    const pdfContainer = document.getElementById('orcamentoPdfContainer');
+
+    if (listContainer) listContainer.style.display = 'none';
+    if (pdfContainer) pdfContainer.style.display = 'block';
+
+    // Preenche cabeçalho
+    const numOrcamentoEl = document.getElementById('pdfNumOrcamento');
+    if (numOrcamentoEl) {
+      numOrcamentoEl.textContent = `Nº ${String(o.idOrcamento).padStart(6, '0')}`;
+    }
+
+    const dataEmissaoEl = document.getElementById('pdfDataEmissao');
+    if (dataEmissaoEl) {
+      const dataFormatted = o.dataHora
+        ? new Date(o.dataHora).toLocaleString('pt-BR')
+        : '--/--/---- --:--';
+      dataEmissaoEl.textContent = dataFormatted;
+    }
+
+    // Preenche dados do cliente
+    const campos = {
+      'nomeCliente': o.nomeCliente || '',
+      'telefoneCliente': o.telefoneCliente || '',
+      'enderecoCliente': o.enderecoCliente || '',
+      'emailCliente': o.emailCliente || '',
+      'detalhesOrcamento': o.detalhes || ''
+    };
+    for (const [cId, val] of Object.entries(campos)) {
+      const el = document.getElementById(cId);
+      if (el) {
+        el.value = val;
+      }
+    }
+
+    this.setCamposReadOnly(true);
+
+    // Renderiza peças do orçamento
+    const container = document.getElementById('pecasEscolhidasOrcamento');
+    if (container) {
+      if (!o.pecas || o.pecas.length === 0) {
+        container.innerHTML = `
+          <p class="empty-table-msg">Nenhuma peça no orçamento.</p>
+        `;
+        this.subtotalItens = 0;
+      } else {
+        this.subtotalItens = o.pecas.reduce((sum, item) => sum + ((item.precoCobrado || 0) * (item.quantidade || 0)), 0);
+
+        let html = `
+          <table class="orcamento-table">
+            <thead>
+              <tr>
+                <th align="left">Peça / Componente</th>
+                <th align="center">Código / Ref.</th>
+                <th align="center">Qtd</th>
+                <th align="right">Preço Unit.</th>
+                <th align="right">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        o.pecas.forEach(item => {
+          html += `
+            <tr>
+              <td>${item.nome || 'Sem nome'}</td>
+              <td align="center">${item.codigo || 'N/A'}</td>
+              <td align="center">${item.quantidade || 0}</td>
+              <td align="right">${this.fmt(item.precoCobrado || 0)}</td>
+              <td align="right">${this.fmt((item.precoCobrado || 0) * (item.quantidade || 0))}</td>
+            </tr>
+          `;
+        });
+
+        html += `
+            </tbody>
+          </table>
+        `;
+        container.innerHTML = html;
+      }
+    }
+
+    // Define totais
+    const totalGeral = o.valorTotal || 0;
+    this.valorServicos = totalGeral - this.subtotalItens;
+    if (this.valorServicos < 0) this.valorServicos = 0;
+
+    const totalServicosEl = document.getElementById('totalServicos');
+    if (totalServicosEl) {
+      totalServicosEl.textContent = this.fmt(this.valorServicos);
+    }
+    this.atualizarTotais();
+
+    // Esconde botão de salvar
+    const btnSave = document.querySelector('.btn-save-doc');
+    if (btnSave) {
+      btnSave.style.display = 'none';
     }
   },
 
@@ -237,7 +452,7 @@ const OrcamentoController = {
 
     try {
       await OrcamentoModel.salvarOrcamento(payload);
-      
+
       // Limpa carrinho local
       if (typeof Cart !== 'undefined') {
         Cart.save([]);
@@ -245,9 +460,9 @@ const OrcamentoController = {
       }
 
       alert('Orçamento criado com sucesso!');
-      
-      // Redireciona para dashboard/pagina principal
-      window.location.href = 'dashboard.html';
+
+      // Retorna para a lista de orçamentos
+      this.showListView();
 
     } catch (error) {
       alert('Erro ao salvar orçamento: ' + error.message);

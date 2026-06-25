@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: br.com.app.quero_pecas.controller.AdminUsuarioControllerTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.924 s -- in br.com.app.quero_pecas.controller.AdminUsuarioControllerTest

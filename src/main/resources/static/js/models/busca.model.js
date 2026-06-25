@@ -126,5 +126,26 @@ const BuscaModel = {
         console.error('Erro no Model (buscarPorPlaca):', error);
         return null;
     }
+  },
+
+  async buscarPorCodigo(codigo) {
+    try {
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch(`${this.baseUrl}/pecas/buscar-por-codigo?codigo=${encodeURIComponent(codigo)}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
+      if (!response.ok) throw new Error('Erro ao buscar peças por código.');
+      return await response.json();
+    } catch (error) {
+      console.error('Erro no Model (buscarPorCodigo):', error);
+      return [];
+    }
   }
 };

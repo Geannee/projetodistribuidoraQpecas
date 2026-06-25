@@ -34,6 +34,8 @@ public interface PecaRepository extends JpaRepository<Peca, Long> {
 
     boolean existsByCodigo(@NotBlank String codigo);
 
+    List<Peca> findByCodigoContainingIgnoreCaseAndAtivoTrue(String codigo);
+
     List<Peca> findAllByAtivoTrue();
 }
 

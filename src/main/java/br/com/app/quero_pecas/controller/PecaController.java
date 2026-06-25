@@ -32,6 +32,12 @@ public class PecaController {
         return ResponseEntity.ok(pecas);
     }
 
+    @GetMapping("/buscar-por-codigo")
+    public ResponseEntity<List<Peca>> buscarPorCodigo(@RequestParam String codigo) {
+        List<Peca> pecas = pecaService.buscarPorCodigo(codigo);
+        return ResponseEntity.ok(pecas);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody @Valid PecaDTO.Save dados) {
         pecaService.save(dados);

@@ -88,6 +88,27 @@ const BuscaController = {
         };
 
         BuscaView.renderizarPecas(data.pecas, filtroFake);
+    },
+
+    /**
+     * NOVO: Disparado pelo clique no botão de buscar por código de peça
+     */
+    async lidarComBuscaCodigo() {
+        const codigo = BuscaView.codeInput ? BuscaView.codeInput.value.trim() : '';
+
+        if (!codigo) {
+            BuscaView.destacarErroInputCodigo();
+            return;
+        }
+
+        const pecas = await BuscaModel.buscarPorCodigo(codigo);
+
+        const filtroFake = {
+            marca: `Código: "${codigo.toUpperCase()}"`,
+            categoria: 'Resultado da Busca'
+        };
+
+        BuscaView.renderizarPecas(pecas, filtroFake);
     }
 };
 
@@ -96,6 +117,7 @@ window.onMarcaChange = () => BuscaController.lidarComMudancaMarca();
 window.onModeloChange = () => BuscaController.lidarComMudancaModelo();
 window.searchApp = () => BuscaController.lidarComBuscaAplicacao();
 window.searchPlate = () => BuscaController.lidarComBuscaPlaca();
+window.searchCode = () => BuscaController.lidarComBuscaCodigo();
 
 // Função dummy de troca de abas mantida para preservar o comportamento visual do seu painel esquerdo
 window.switchTab = function(tabName) {

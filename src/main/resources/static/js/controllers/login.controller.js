@@ -67,6 +67,10 @@ const LoginController = {
 
             const dados = await response.json();
 
+            if (dados.tipoUsuario !== 'MECANICO') {
+                throw new Error('Acesso restrito para mecânicos. Caso seja distribuidor, utilize o painel correspondente.');
+            }
+
             sessionStorage.setItem('qp_token', dados.token);
             sessionStorage.setItem('qp_usuario', dados.email);
             sessionStorage.setItem('qp_nome', dados.nome);

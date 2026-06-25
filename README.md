@@ -35,7 +35,6 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
           <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin&logoColor=white" />
         </a>
         <br />
-        <sub><b>27 commits</b></sub>
       </td>
       <!-- Geanne Arruda -->
       <td align="center" width="14%">
@@ -49,7 +48,6 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
           <img src="https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github&logoColor=white" />
         </a>
         <br />
-        <sub><b>19 commits</b></sub>
       </td>
       <!-- Luis Eduardo -->
       <td align="center" width="14%">
@@ -63,7 +61,6 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
           <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin&logoColor=white" />
         </a>
         <br />
-        <sub><b>15 commits</b></sub>
       </td>
       <!-- Gilmar-Viriato -->
       <td align="center" width="14%">
@@ -73,11 +70,10 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
           <sub><b>Gilmar Viriato</b></sub>
         </a>
         <br />
-        <a href="https://github.com/Gilmar-Viriato">
-          <img src="https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github&logoColor=white" />
+        <a href="https://www.linkedin.com/in/gilmar-viriato-de-queiroz-junior-6736b0254/">
+          <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin&logoColor=white" />
         </a>
         <br />
-        <sub><b>8 commits</b></sub>
       </td>
       <!-- lidiankelly21 -->
       <td align="center" width="14%">
@@ -91,7 +87,6 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
           <img src="https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github&logoColor=white" />
         </a>
         <br />
-        <sub><b>1 commit</b></sub>
       </td>
     </tr>
   </tbody>

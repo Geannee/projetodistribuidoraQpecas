@@ -74,7 +74,7 @@ const HomeView = {
           <div class="nav-user-perfil">${perfil}</div>
         </div>
       </div>
-      <a href="dashboard.html" class="btn-outline" style="text-decoration:none;display:flex;align-items:center;">Minha conta</a>
+      <a href="busca-cliente.html" class="btn-outline" style="text-decoration:none;display:flex;align-items:center;">Minha conta</a>
       <button class="btn-outline" onclick="Auth.logout()">Sair</button>
       <button class="btn-coral">+ Adicionar ao carrinho</button>
     `;

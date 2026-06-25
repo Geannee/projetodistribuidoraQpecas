@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 O **Quero-Peças** é uma plataforma inteligente **B2B** (Business-to-Business) projetada para conectar lojas de autopeças e oficinas mecânicas diretamente aos estoques das distribuidoras parceiras. 
@@ -92,34 +92,6 @@ Agradecimentos a todos os membros da equipe e colaboradores que tornaram este pr
         </a>
         <br />
         <sub><b>1 commit</b></sub>
-      </td>
-      <!-- Luiz Gustavo -->
-      <td align="center" width="14%">
-        <a href="https://github.com/gusta-xis">
-          <img src="https://avatars.githubusercontent.com/u/181901272?v=4?s=100" width="100px" alt="Luiz Gustavo"/>
-          <br />
-          <sub><b>Luiz Gustavo</b></sub>
-        </a>
-        <br />
-        <a href="https://www.linkedin.com/in/devdamascena/">
-          <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin&logoColor=white" />
-        </a>
-        <br />
-        <sub><b>0 commits</b></sub>
-      </td>
-      <!-- Lucas Gabriel -->
-      <td align="center" width="14%">
-        <a href="https://github.com/devlucasl">
-          <img src="https://avatars.githubusercontent.com/u/171864787?v=4?s=100" width="100px" alt="Lucas Gabriel"/>
-          <br />
-          <sub><b>Lucas Gabriel</b></sub>
-        </a>
-        <br />
-        <a href="https://www.linkedin.com/in/lucasgcss/">
-          <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin&logoColor=white" />
-        </a>
-        <br />
-        <sub><b>0 commits</b></sub>
       </td>
     </tr>
   </tbody>

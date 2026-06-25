@@ -108,6 +108,19 @@
       <div class="action-cards">
 
         <div class="action-card">
+          <div class="card-icon-wrap icon-blue">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="26" height="26">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Buscar<br>Peças</h3>
+            <p>Consulte o catálogo de peças e realize novos pedidos.</p>
+          </div>
+          <button class="card-btn btn-blue" onclick="location.href='busca-cliente.html'">Buscar Peças →</button>
+        </div>
+
+        <div class="action-card">
           <span class="card-badge badge-blue">3 em aberto</span>
           <div class="card-icon-wrap icon-blue"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
           <div class="card-body">
@@ -176,146 +189,7 @@
         </div>
       </div>
 
-      <!-- SPLIT LAYOUT -->
-      <div class="split-layout">
 
-        <!-- ══════════════════════════════════════════════════════
-             PAINEL ESQUERDO — Busca + Confirmação do veículo
-             ══════════════════════════════════════════════════════ -->
-        <div class="panel-left">
-
-          <!-- Cabeçalho -->
-          <div class="pl-header">
-            <div class="pl-badge"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Busca inteligente</div>
-            <h2>Encontre a peça<br>certa para você</h2>
-            <p>Busque por placa, aplicação ou código da peça</p>
-          </div>
-
-          <!-- Abas de tipo de busca -->
-          <div class="stabs">
-            <button class="stab active" id="stab-btn-placa"     onclick="switchTab('placa')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span> Por Placa</button>
-            <button class="stab"        id="stab-btn-aplicacao" onclick="switchTab('aplicacao')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span> Aplicação</button>
-            <button class="stab"        id="stab-btn-codigo"    onclick="switchTab('codigo')"><span class="icon icon-16"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span> Código</button>
-          </div>
-
-          <!-- TAB: Por Placa -->
-          <div class="stab-content active" id="stab-placa">
-            <label class="tab-label">Placa do veículo</label>
-            <div class="search-wrap">
-              <div class="plate-icon">
-                <div class="brasil">BRASIL</div>
-                <div class="chars">ABC·1234</div>
-              </div>
-              <input class="search-input" id="plateInput" type="text"
-                     placeholder="ABC-1234 ou HGB7F52" maxlength="8"/>
-              <button class="btn-search" onclick="searchPlate()">Buscar →</button>
-            </div>
-            <p class="tab-hint">Compatível com placas antigas e padrão Mercosul</p>
-          </div>
-
-          <!-- TAB: Por Aplicação -->
-          <div class="stab-content" id="stab-aplicacao">
-            <label class="tab-label">Selecione o veículo</label>
-            <div class="app-form">
-              <div class="app-row">
-                <select class="app-select" id="appMarca" onchange="onMarcaChange()">
-                  <option value="">Marca</option>
-                </select>
-                <select class="app-select" id="appModelo" onchange="onModeloChange()" disabled>
-                  <option value="">Modelo</option>
-                </select>
-              </div>
-              <div class="app-row">
-                <select class="app-select" id="appAno" disabled>
-                  <option value="">Ano</option>
-                </select>
-                <select class="app-select" id="appCategoria">
-                  <option value="">Categoria</option>
-                  <option value="FREIOS">Freios</option>
-                  <option value="MOTOR">Motor</option>
-                  <option value="SUSPENSÃO">Suspensão</option>
-                  <option value="FILTROS">Filtros</option>
-                  <option value="ELÉTRICA">Elétrica</option>
-                  <option value="TRANSMISSÃO">Transmissão</option>
-                  <option value="ARREFECIMENTO">Arrefecimento</option>
-                  <option value="ESCAPAMENTO">Escapamento</option>
-                  <option value="OUTROS">Outros</option>
-                </select>
-              </div>
-              <button class="btn-search-full" onclick="searchApp()">Buscar peças →</button>
-            </div>
-          </div>
-
-          <!-- TAB: Por Código -->
-          <div class="stab-content" id="stab-codigo">
-            <label class="tab-label">Código ou referência da peça</label>
-            <div class="code-form">
-              <input class="code-input" id="codeInput" type="text"
-                     placeholder="Ex.: GDB 1497, BP 714, ILFR6B..."/>
-              <button class="btn-search-full" onclick="searchCode()">Buscar →</button>
-            </div>
-            <p class="tab-hint">Referência do fabricante ou código interno</p>
-          </div>
-
-          <!-- ── Confirmação do veículo (aparece após busca) ── -->
-          <div class="vehicle-confirm" id="vehicleConfirm" style="display:none;">
-            <div class="vc-divider"></div>
-            <div class="vc-label">✓ Veículo identificado</div>
-            <div class="vc-card" id="vcCard">
-              <div class="vc-plate">
-                <div class="plate-mercosul">
-                  <div class="top-bar">BRASIL</div>
-                  <div class="plate-num" id="plateDisplay">ABC·1234</div>
-                  <div class="plate-estado">SP</div>
-                </div>
-              </div>
-              <div class="vc-info">
-                <div class="vc-model" id="vcModel">Volkswagen Gol 1.0</div>
-                <div class="vc-detail" id="vcDetail1">2019 / 2020</div>
-                <div class="vc-detail" id="vcDetail2">Motor 1.0 · Cor: Branco</div>
-                <div class="vc-chassis" id="vcChassis">Chassis: —</div>
-              </div>
-            </div>
-            <div class="vc-not-found" id="vcNotFound" style="display:none;">
-              <div class="vnf-icon"><span class="icon icon-32"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="32" height="32"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span></div>
-              <div class="vnf-text">Placa não encontrada na base.<br><small>Verifique a placa e tente novamente.</small></div>
-            </div>
-            <span class="not-this" onclick="resetSearch()">Não é este veículo? →</span>
-          </div>
-        </div><!-- fim panel-left -->
-
-        <!-- ══════════════════════════════════════════════════════
-             PAINEL DIREITO — Lista de peças
-             ══════════════════════════════════════════════════════ -->
-        <div class="panel-right">
-
-          <!-- Estado vazio (antes de buscar) -->
-          <div class="empty-state" id="emptyState">
-            <div class="es-icon"><span class="icon icon-40"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"/></svg></span></div>
-            <h3>Pronto para encontrar sua peça?</h3>
-            <p>Use o painel ao lado para buscar por placa, veículo ou código de referência</p>
-            <div class="es-hints">
-              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H15m0 0a1.5 1.5 0 013 0m-3 0a1.5 1.5 0 013 0m0 0h1.5a1.5 1.5 0 001.5-1.5V14.25M18.75 18.75V9a2.25 2.25 0 00-2.25-2.25H7.5A2.25 2.25 0 005.25 9v9.75m13.5 0H5.25M9 9.75h6M9.75 12h4.5"/></svg></span><div><strong>Por Placa</strong><br>Identificamos o veículo automaticamente</div></div>
-              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span><div><strong>Por Aplicação</strong><br>Selecione marca, modelo e ano</div></div>
-              <div class="es-hint"><span class="icon icon-20"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></span><div><strong>Por Código</strong><br>Busca direta por referência</div></div>
-            </div>
-          </div>
-
-          <!-- Lista de peças (aparece após busca) -->
-          <div id="resultSection" style="display:none;">
-
-            <div class="r-header">
-              <div class="r-title">Peças compatíveis</div>
-              <div class="r-sub" id="rSub">Gol 1.0 · 2019/2020 · 1.0 MPI Flex — Clique para ver as opções</div>
-            </div>
-
-            <div class="parts-accordion" id="partsAccordion">
-              <!-- As peças buscadas serão renderizadas aqui -->
-            </div>
-          </div>
-
-        </div><!-- fim panel-right -->
-      </div><!-- fim split-layout -->
 
     </main>
   </div>
@@ -360,12 +234,9 @@
 <script src="/js/utils/auth.js"></script>
 <script src="/js/utils/modal.js"></script>
 <script src="/js/models/dashboard.model.js"></script>
-<script src="/js/models/busca.model.js"></script>
 <script src="/js/views/shared.view.js"></script>
 <script src="/js/views/dashboard.view.js"></script>
-<script src="/js/views/busca.view.js"></script>
 <script src="/js/utils/cart.js"></script>
 <script src="/js/controllers/dashboard.controller.js"></script>
-<script src="/js/controllers/busca.controller.js"></script>
 </body>
 </html>

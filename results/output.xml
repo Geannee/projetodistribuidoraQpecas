@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-06-25T17:14:12.600186" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot" source="C:\Users\Capivara azul grafit\Documentos\projetodistribuidoraQpecas\tests\robot">
+<suite id="s1-s1" name="Login Tests" source="C:\Users\Capivara azul grafit\Documentos\projetodistribuidoraQpecas\tests\robot\login_tests.robot">
+<kw name="Open Browser To App" owner="resource" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:13.101477" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8080'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:13.101204" elapsed="1.985147"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-25T17:14:15.088715" elapsed="0.131632"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:13.100507" elapsed="2.121609"/>
+</kw>
+<test id="s1-s1-t1" name="Acessar a home da aplicação" line="7">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:15.228297" level="INFO">Opening url 'http://localhost:8080/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:15.227536" elapsed="1.318169"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Quero Peças</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.548055" elapsed="0.103664"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:16.665402" level="INFO">Page title is 'Quero Peças – Distribuidora de Autopeças'.</msg>
+<arg>Quero Peças – Distribuidora de Autopeças</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.652776" elapsed="0.012842"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:15.222924" elapsed="1.443189"/>
+</test>
+<test id="s1-s1-t2" name="Abrir a página de login" line="12">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:16.667929" level="INFO">Opening url 'http://localhost:8080/login.html'</msg>
+<arg>${BASE_URL}/login.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.667559" elapsed="0.137103"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Bem-vindo de volta!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.805466" elapsed="0.024209"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:16.854051" level="INFO">Current page contains element 'id:login-form'.</msg>
+<arg>id:login-form</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.830419" elapsed="0.023810"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:16.666781" elapsed="0.187935"/>
+</test>
+<test id="s1-s1-t3" name="Abrir a página de cadastro" line="17">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:16.856131" level="INFO">Opening url 'http://localhost:8080/cadastro.html'</msg>
+<arg>${BASE_URL}/cadastro.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:16.855826" elapsed="0.486215"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dados da sua oficina</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.343030" elapsed="0.022527"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.378739" level="INFO">Current page contains element 'id:form-cadastro'.</msg>
+<arg>id:form-cadastro</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.365992" elapsed="0.013093"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:16.855258" elapsed="0.524504"/>
+</test>
+<test id="s1-s1-t4" name="Fazer login com credenciais configuradas" line="22">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${LOGIN_USER}' == ''</arg>
+<arg>Fail</arg>
+<arg>Informe ${LOGIN_USER} e ${LOGIN_PASS} antes de executar este teste.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.382100" elapsed="0.001244"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.384045" level="INFO">Opening url 'http://localhost:8080/login.html'</msg>
+<arg>${BASE_URL}/login.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.383833" elapsed="0.047771"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.433031" level="INFO">Typing text '14138955000114' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>${LOGIN_USER}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.432468" elapsed="0.239621"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.673033" level="INFO">Typing password into text field 'id:senha'.</msg>
+<msg time="2026-06-25T17:14:17.716375" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id:senha</arg>
+<arg>${LOGIN_PASS}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.672573" elapsed="0.114842"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.788835" level="INFO">Clicking button 'id:btn-entrar'.</msg>
+<arg>id:btn-entrar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.788245" elapsed="0.133431"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id:error-msg</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.922461" elapsed="0.017671"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:17.971374" level="INFO">${msg} = </msg>
+<var>${msg}</var>
+<arg>id:error-msg</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.940685" elapsed="0.030789"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-06-25T17:14:17.972342" level="INFO">Mensagem retornada: </msg>
+<arg>Mensagem retornada: ${msg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.971884" elapsed="0.000512"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:17.380709" elapsed="0.591900"/>
+</test>
+<kw name="Close Browser Session" owner="resource" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-06-25T17:14:17.973698" elapsed="2.462204"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:17.973441" elapsed="2.462679"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:12.655395" elapsed="7.780814"/>
+</suite>
+<suite id="s1-s2" name="System Tests" source="C:\Users\Capivara azul grafit\Documentos\projetodistribuidoraQpecas\tests\robot\system_tests.robot">
+<kw name="Open Browser To App" owner="resource" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:20.440831" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8080'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:20.440631" elapsed="2.609961"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-25T17:14:23.051897" elapsed="0.136202"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:20.440443" elapsed="2.748061"/>
+</kw>
+<test id="s1-s2-t1" name="Fluxo público principal" line="7">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:23.202734" level="INFO">Opening url 'http://localhost:8080/'</msg>
+<arg>${BASE_URL}/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:23.201183" elapsed="0.699767"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Quero Peças</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:23.902441" elapsed="0.050845"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.004584" level="INFO">Current page contains element 'xpath://a[contains(text(),'Cliente Login')]'.</msg>
+<arg>xpath://a[contains(text(),'Cliente Login')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:23.954356" elapsed="0.050938"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.057006" level="INFO">Current page contains element 'xpath://a[contains(text(),'Admin Login')]'.</msg>
+<arg>xpath://a[contains(text(),'Admin Login')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.007156" elapsed="0.050109"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.108838" level="INFO">Current page contains element 'xpath://button[contains(text(),'Comprar Peças')]'.</msg>
+<arg>xpath://button[contains(text(),'Comprar Peças')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.058315" elapsed="0.051395"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:23.188718" elapsed="0.923947"/>
+</test>
+<test id="s1-s2-t2" name="Acessar login e cadastro" line="14">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.118927" level="INFO">Opening url 'http://localhost:8080/login.html'</msg>
+<arg>${BASE_URL}/login.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.117484" elapsed="0.157247"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Bem-vindo de volta!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.276029" elapsed="0.063653"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.417321" level="INFO">Element 'id:login-form' is displayed.</msg>
+<arg>id:login-form</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.340462" elapsed="0.077113"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.419074" level="INFO">Opening url 'http://localhost:8080/cadastro.html'</msg>
+<arg>${BASE_URL}/cadastro.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.418415" elapsed="0.472166"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dados da sua oficina</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.891521" elapsed="0.018563"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.939452" level="INFO">Element 'id:form-cadastro' is displayed.</msg>
+<arg>id:form-cadastro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.911382" elapsed="0.028177"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:24.115662" elapsed="0.824166"/>
+</test>
+<test id="s1-s2-t3" name="Abrir páginas de busca e carrinho" line="22">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:24.940774" level="INFO">Opening url 'http://localhost:8080/busca.html'</msg>
+<arg>${BASE_URL}/busca.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:24.940603" elapsed="0.124419"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Busca inteligente</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:25.066585" elapsed="0.033231"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:25.100408" level="INFO">Opening url 'http://localhost:8080/carrinho.html'</msg>
+<arg>${BASE_URL}/carrinho.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:25.100176" elapsed="0.103982"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:30.521049" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-19.png"&gt;&lt;img src="selenium-screenshot-19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-06-25T17:14:30.521382" level="FAIL">Text 'Carrinho de peças' did not appear in 5 seconds.</msg>
+<arg>Carrinho de peças</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2026-06-25T17:14:25.205089" elapsed="5.320149">Text 'Carrinho de peças' did not appear in 5 seconds.</status>
+</kw>
+<status status="FAIL" start="2026-06-25T17:14:24.940200" elapsed="5.585581">Text 'Carrinho de peças' did not appear in 5 seconds.</status>
+</test>
+<test id="s1-s2-t4" name="Abrir páginas administrativas básicas" line="28">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:30.527602" level="INFO">Opening url 'http://localhost:8080/admin-login.html'</msg>
+<arg>${BASE_URL}/admin-login.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:30.527282" elapsed="0.091595"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Bem-vindo de volta!</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-06-25T17:14:30.619883" elapsed="0.015887"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:30.636767" level="INFO">Opening url 'http://localhost:8080/admin-veiculo.html'</msg>
+<arg>${BASE_URL}/admin-veiculo.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-06-25T17:14:30.636396" elapsed="0.100157"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-25T17:14:31.178343" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-20.png"&gt;&lt;img src="selenium-screenshot-20.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-06-25T17:14:31.178632" level="FAIL">Title should have been 'Cadastro de Veículos – Admin Quero Peças' but was 'Acesso Administrativo – Quero Peças'.</msg>
+<arg>Cadastro de Veículos – Admin Quero Peças</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="FAIL" start="2026-06-25T17:14:30.737413" elapsed="0.443038">Title should have been 'Cadastro de Veículos – Admin Quero Peças' but was 'Acesso Administrativo – Quero Peças'.</status>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<arg>xpath://h1[contains(text(),'Cadastro de Veículos')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" start="2026-06-25T17:14:31.180838" elapsed="0.000076"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${BASE_URL}/admin-pecas.html</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2026-06-25T17:14:31.181072" elapsed="0.000026"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<arg>Cadastro de Peças – Admin Quero Peças</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="NOT RUN" start="2026-06-25T17:14:31.181390" elapsed="0.000061"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<arg>xpath://h2[contains(text(),'Cadastrar Nova Peça')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="NOT RUN" start="2026-06-25T17:14:31.181661" elapsed="0.000025"/>
+</kw>
+<status status="FAIL" start="2026-06-25T17:14:30.526664" elapsed="0.655283">Title should have been 'Cadastro de Veículos – Admin Quero Peças' but was 'Acesso Administrativo – Quero Peças'.</status>
+</test>
+<kw name="Close Browser Session" owner="resource" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-06-25T17:14:31.182873" elapsed="2.379172"/>
+</kw>
+<status status="PASS" start="2026-06-25T17:14:31.182654" elapsed="2.379601"/>
+</kw>
+<status status="FAIL" start="2026-06-25T17:14:20.437311" elapsed="13.125042"/>
+</suite>
+<status status="FAIL" start="2026-06-25T17:14:12.602224" elapsed="20.961414"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot" id="s1" pass="6" fail="2" skip="0">Robot</stat>
+<stat name="Login Tests" id="s1-s1" pass="4" fail="0" skip="0">Robot.Login Tests</stat>
+<stat name="System Tests" id="s1-s2" pass="2" fail="2" skip="0">Robot.System Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -56,7 +56,7 @@ public class OrcamentoService {
         }
 
         orcamento.setPecas(pecasDoOrcamento);
-        orcamento.setValorTotal(valorTotal);
+        orcamento.setValorTotal(dados.valorTotal() != null ? dados.valorTotal() : valorTotal);
 
         if (dados.idUsuario() != null) {
             Usuario usuario = usuarioRepository.findById(dados.idUsuario())

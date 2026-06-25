@@ -502,3 +502,31 @@ body {
         background: transparent !important;
     }
 }
+/* Orcamento Table Styling */
+.orcamento-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.orcamento-table th {
+    background: var(--page-bg);
+    padding: 10px 12px;
+    font-weight: 700;
+    color: var(--dark-text);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border);
+}
+
+.orcamento-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark-text);
+}
+
+.orcamento-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}

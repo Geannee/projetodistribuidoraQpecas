@@ -58,7 +58,8 @@ try:
         conn.close()
 
         req_user_data = json.dumps(usuario_payload).encode("utf-8")
-        req_user = urllib.request.Request(f"{API_URL}/usuarios/", data=req_user_data, headers={"Content-Type": "application/json"})
+        req_user = urllib.request.Request(f"{API_URL}/usuarios/", data=req_user_data,
+                                          headers={"Content-Type": "application/json"})
 
         with urllib.request.urlopen(req_user) as res:
             print("✔ Usuário cadastrado via API (Padrão: Mecânico).")
@@ -68,10 +69,11 @@ try:
         cursor = conn.cursor()
 
         query = """
-            UPDATE usuario
-            SET tipo_usuario = 'DISTRIBUIDOR', ativo = 1
-            WHERE email = %s
-        """
+                UPDATE usuario
+                SET tipo_usuario = 'DISTRIBUIDOR',
+                    ativo        = 1
+                WHERE email = %s \
+                """
         cursor.execute(query, (usuario_payload["email"],))
         conn.commit()
 
@@ -89,7 +91,6 @@ except mariadb.Error as db_err:
 except Exception as e:
     print(f"❌ Erro geral ao processar usuário: {e}")
     exit(1)
-
 
 print("\n==================================================")
 print("2. Efetuando login para capturar o token de acesso...")
@@ -128,13 +129,19 @@ mfg_list = [
 ]
 for mfg in mfg_list:
     req_data = json.dumps(mfg).encode("utf-8")
-    req = urllib.request.Request(f"{API_URL}/fabricantes/cadastro", data=req_data, headers={"Content-Type": "application/json"})
+    req = urllib.request.Request(
+        f"{API_URL}/fabricantes/cadastro",
+        data=req_data,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}"
+        }
+    )
     try:
         urllib.request.urlopen(req)
         print(f"✔ Fabricante '{mfg['nome']}' cadastrado.")
     except Exception as e:
         print(f"⚠ Fabricante '{mfg['nome']}' já cadastrado ou erro: {e}")
-
 
 print("\n==================================================")
 print("4. Populando 50 Veículos...")
@@ -162,7 +169,6 @@ for idx, v in enumerate(veiculos, 1):
         print(f"[{idx:02d}/50] ✔ Veículo {v['marca']} {v['modelo']} ({v['placa']})")
     except Exception as e:
         print(f"[{idx:02d}/50] ❌ Erro ao cadastrar {v['placa']}: {e}")
-
 
 print("\n==================================================")
 print("5. Populando 100 Peças...")

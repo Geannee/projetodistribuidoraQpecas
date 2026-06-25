@@ -4,6 +4,7 @@
 const BuscaController = {
 
     async init() {
+        if (!Auth.check()) return;
         try {
             const veiculos = await BuscaModel.getVeiculos();
             const marcasUnicas = [...new Set(veiculos.map(v => v.marca))].sort();

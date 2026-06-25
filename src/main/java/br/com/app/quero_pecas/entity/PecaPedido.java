@@ -16,6 +16,7 @@ public class PecaPedido {
     private Integer quantidade;
     private Double subtotal;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;

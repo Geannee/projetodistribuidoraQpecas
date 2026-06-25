@@ -163,4 +163,70 @@ class PedidoServiceTest {
         verify(pedidoRepository, times(1)).save(pedidoExemplo);
         log.info("--- TESTE FINALIZADO COM SUCESSO: Pedido faturado e enviado para a logística ---");
     }
+
+    @Test
+    @DisplayName("Deve lançar exceção se tentar iniciar a separação de um pedido não pago")
+    void deveLancarExcecaoAoIniciarSeparacaoSemPagamento() {
+        log.info("--- INICIANDO TESTE: deveLancarExcecaoAoIniciarSeparacaoSemPagamento ---");
+
+        pedidoExemplo.setStatus(StatusPedido.AGUARDANDO_PAGAMENTO);
+        when(pedidoRepository.findById(1L)).thenReturn(Optional.of(pedidoExemplo));
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            pedidoService.updateStatus(1L, StatusPedido.EM_SEPARACAO, "");
+        });
+
+        assertEquals("Não é possível iniciar a separação de um pedido que não foi pago.", exception.getMessage());
+        log.info("--- TESTE FINALIZADO COM SUCESSO: O sistema impediu a separação do pedido pendente de pagamento ---");
+    }
+
+    @Test
+    @DisplayName("Deve permitir iniciar a separação se o pedido estiver PAGO")
+    void devePermitirIniciarSeparacaoSePago() {
+        log.info("--- INICIANDO TESTE: devePermitirIniciarSeparacaoSePago ---");
+
+        pedidoExemplo.setStatus(StatusPedido.PAGO);
+        when(pedidoRepository.findById(1L)).thenReturn(Optional.of(pedidoExemplo));
+        when(pedidoRepository.save(any(Pedido.class))).thenReturn(pedidoExemplo);
+
+        PedidoDTO.PedidoResponse response = pedidoService.updateStatus(1L, StatusPedido.EM_SEPARACAO, "");
+
+        assertNotNull(response);
+        assertEquals(StatusPedido.EM_SEPARACAO, pedidoExemplo.getStatus());
+        log.info("--- TESTE FINALIZADO COM SUCESSO: Pedido colocado em separação com sucesso ---");
+    }
+
+    @Test
+    @DisplayName("Deve faturar pedido e definir status da entrega como PREPARANDO_ENVIO")
+    void deveFaturarPedidoEDefinirEntregaComoPreparandoEnvio() {
+        log.info("--- INICIANDO TESTE: deveFaturarPedidoEDefinirEntregaComoPreparandoEnvio ---");
+
+        pedidoExemplo.setStatus(StatusPedido.EM_SEPARACAO);
+        when(pedidoRepository.findById(1L)).thenReturn(Optional.of(pedidoExemplo));
+        when(pedidoRepository.save(any(Pedido.class))).thenReturn(pedidoExemplo);
+
+        PedidoDTO.PedidoResponse response = pedidoService.updateStatus(1L, StatusPedido.FATURADO, "");
+
+        assertNotNull(response);
+        assertEquals(StatusPedido.FATURADO, pedidoExemplo.getStatus());
+        assertEquals(StatusEntrega.PREPARANDO_ENVIO, pedidoExemplo.getEntrega().getStatusEntrega());
+        log.info("--- TESTE FINALIZADO COM SUCESSO: Pedido faturado e entrega em preparação ---");
+    }
+
+    @Test
+    @DisplayName("Deve enviar o produto e alterar status do pedido para EM_VIAGEM e entrega para EM_TRANSPORTE")
+    void deveEnviarProdutoEAlterarStatusParaEmViagem() {
+        log.info("--- INICIANDO TESTE: deveEnviarProdutoEAlterarStatusParaEmViagem ---");
+
+        pedidoExemplo.setStatus(StatusPedido.FATURADO);
+        when(pedidoRepository.findById(1L)).thenReturn(Optional.of(pedidoExemplo));
+        when(pedidoRepository.save(any(Pedido.class))).thenReturn(pedidoExemplo);
+
+        PedidoDTO.PedidoResponse response = pedidoService.updateStatus(1L, StatusPedido.EM_VIAGEM, "");
+
+        assertNotNull(response);
+        assertEquals(StatusPedido.EM_VIAGEM, pedidoExemplo.getStatus());
+        assertEquals(StatusEntrega.EM_TRANSPORTE, pedidoExemplo.getEntrega().getStatusEntrega());
+        log.info("--- TESTE FINALIZADO COM SUCESSO: Pedido enviado com sucesso ---");
+    }
 }

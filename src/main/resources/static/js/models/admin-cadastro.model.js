@@ -150,7 +150,18 @@ const AdminCadastroModel = {
 
   async getFornecedores() {
     try {
-      const response = await fetch('http://localhost:8080/fabricantes/historico');
+      const token = sessionStorage.getItem('qp_token');
+      const response = await fetch('http://localhost:8080/fabricantes/historico', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : ''
+        }
+      });
+
+      if (response.status === 401) {
+        Auth.logout();
+        return [];
+      }
+
       if (!response.ok) {
         throw new Error('Erro ao buscar histórico de fabricantes');
       }

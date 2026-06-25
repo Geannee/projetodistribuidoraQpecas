@@ -6,17 +6,19 @@ const AdminFornecedorModel = {
         try {
             const token = sessionStorage.getItem('qp_token');
             const response = await fetch('http://localhost:8080/fabricantes/historico', {
-                    method: "GET",
-                    headers: {
-                        ContentType: "application/json",
-                        Authorization: token ? `Bearer ${token}` : ''
-                    }
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token ? `Bearer ${token}` : ''
                 }
-            );
+            });
+
+            if (response.status === 401 || response.status === 403) {
+                Auth.logout();
+                throw new Error('Sessão expirada ou usuário não autorizado');
+            }
+
             if (!response.ok) {
-                if (response.status === 401 || response.status === 403) {
-                    throw new Error('Sessão expirada ou usuário não autorizado');
-                }
                 throw new Error('Erro ao buscar histórico de fornecedores');
             }
             return await response.json();
@@ -28,16 +30,23 @@ const AdminFornecedorModel = {
 
     async salvarFornecedor(dados) {
         try {
+            const token = sessionStorage.getItem('qp_token');
             const response = await fetch('http://localhost:8080/fabricantes/cadastro', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': token ? `Bearer ${token}` : ''
                 },
                 body: JSON.stringify({
                     nome: dados.nome,
                     cnpj: dados.cnpj.replace(/\D/g, '') // Send numeric characters only to backend
                 })
             });
+
+            if (response.status === 401 || response.status === 403) {
+                Auth.logout();
+                throw new Error('Sessão expirada ou usuário não autorizado');
+            }
 
             if (!response.ok) {
                 const errorData = await response.text();

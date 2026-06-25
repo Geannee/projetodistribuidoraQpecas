@@ -36,6 +36,7 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) @JoinColumn(name = "telefone_usuario_id")
     private List<Telefone> telefone;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
 

@@ -169,6 +169,25 @@ const AdminPedidosController = {
     }
   },
 
+  async enviarPedido(id) {
+    try {
+      const order = await AdminPedidosModel.updateStatus(id, 'EM_VIAGEM');
+      if (order) {
+        AdminPedidosView.showToast(`Pedido ${order.numeroPedido} enviado com sucesso!`, 'success');
+        
+        // Add a real-time notification to localStorage for the lojista
+        this.addNotification(order.idUsuario, "Pedido Enviado", `O seu pedido ${order.numeroPedido} foi enviado!`);
+
+        await this.carregarPedidos();
+        AdminPedidosView.fecharModal();
+        this.selectedOrderId = null;
+      }
+    } catch (e) {
+      console.error(e);
+      AdminPedidosView.showToast("Erro ao enviar pedido.", "error");
+    }
+  },
+
   async cancelarPedido(id) {
     const motivo = prompt("Deseja realmente cancelar este pedido? Informe o motivo do cancelamento:");
     if (motivo === null) return; // Clicou em Cancelar

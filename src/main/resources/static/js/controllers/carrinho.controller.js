@@ -311,7 +311,7 @@ const CarrinhoController = {
     },
 
     gerarOrcamento() {
-        window.print();
+        location.href = 'orcamento.html';
     }
 };
 

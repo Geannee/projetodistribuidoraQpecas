@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/dashboard-style.css"/>
   <link rel="stylesheet" href="/css/busca-style.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
 
@@ -42,7 +43,10 @@
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 9a1 1 0 000 2h.893l1.272 5.09A1 1 0 006.13 17h7.74a1 1 0 00.965-.91L16.107 11H17a1 1 0 100-2H3z"/></svg>
         Meus Pedidos
       </a>
-
+      <a href="orcamento.html" class="nav-item" data-section="pedidos">
+        <span class="material-symbols-outlined nav-svg" style="font-size: 20px; display: inline-flex; align-items: center; justify-content: center;">picture_as_pdf</span>
+        Criar Orçamento
+      </a>
       <a href="credito.html" class="nav-item" data-section="credito">
         <svg class="nav-svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2H2V5zm0 4h16v6a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm4 3a1 1 0 000 2h2a1 1 0 000-2H6z"/></svg>
         Solicitação de Crédito
@@ -114,13 +118,16 @@
         </div>
 
         <div class="action-card">
-          <span class="card-badge badge-purple">Limite: R$ 5.000</span>
-          <div class="card-icon-wrap icon-purple"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-          <div class="card-body">
-            <h3>Solicitação<br>de Crédito</h3>
-            <p>Solicite limite de crédito para compras a prazo</p>
+          <div class="card-icon-wrap icon-purple">
+            <span class="material-symbols-outlined">picture_as_pdf</span>
           </div>
-          <button class="card-btn btn-purple" onclick="location.href='credito.html'">Solicitar crédito →</button>
+
+          <div class="card-body">
+            <h3>Criar<br>um orçamento</h3>
+            <p>Crie seus próprios orçamentos para clientes.</p>
+          </div>
+
+          <button class="card-btn btn-purple" onclick="location.href='orcamento.html'">Criar Orçamento →</button>
         </div>
 
         <div class="action-card">

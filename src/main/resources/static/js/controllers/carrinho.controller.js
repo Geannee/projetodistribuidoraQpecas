@@ -208,11 +208,12 @@ const CarrinhoController = {
         };
 
         try {
+            const token = sessionStorage.getItem('qp_token');
             const response = await fetch('http://localhost:8080/pedidos', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    "Content-Type": "application/json",
+                    "Authorization": token ? `Bearer ${token}` : ''
                 },
                 body: JSON.stringify(payload)
             });

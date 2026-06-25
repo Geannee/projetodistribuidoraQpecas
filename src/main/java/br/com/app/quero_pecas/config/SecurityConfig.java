@@ -34,7 +34,7 @@ public class SecurityConfig {
                             "/", "/index.html", "/login.html", "/admin-login.html", "/cadastro.html", // LOGIN SCREEN
                             "/dashboard.html", "/busca-cliente.html", "/carrinho.html", "/pedidos.html", // PORTAL CLIENTE
                             "/admin-veiculo.html", "/admin-fornecedor.html", "/admin-pecas.html", "/admin-acesso.html", "/admin-estoque.html", "/admin-pedidos.html", // PORTAL ADMIN
-                            "/pagamento-simulado.html",
+                            "/pagamento-simulado.html", "/orcamento.html",
                             "/busca.html" // PAGINA LEGADO
                     ).permitAll();
 

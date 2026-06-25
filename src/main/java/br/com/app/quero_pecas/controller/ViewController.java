@@ -69,8 +69,6 @@ public class ViewController {
     @GetMapping("/busca-cliente.html")
     public String buscaCliente() { return "busca-cliente"; }
 
-
-
     @GetMapping("/admin-estoque.html")
     public String adminEstoque() { return "admin-estoque"; }
 
@@ -79,5 +77,8 @@ public class ViewController {
 
     @GetMapping("/pagamento-simulado.html")
     public String pagamentoSimulado() { return "pagamento-simulado"; }
+
+    @GetMapping("/orcamento.html")
+    public String orcamento() { return "orcamento"; }
 
 }

@@ -25,6 +25,7 @@ public class Pagamento {
     @Enumerated(EnumType.STRING)
     private StatusPagamento statusPagamento;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;

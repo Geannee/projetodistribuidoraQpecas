@@ -54,7 +54,7 @@ const AcessoView = {
     tbody.innerHTML = lista.map(u => {
       const id = u.idUsuario;
       const enderecoFormatado = u.endereco
-          ? `${u.endereco.logradouro}, ${u.endereco.numero} - ${u.endereco.cidade}/${u.endereco.estado}`
+          ? `${u.endereco.logradouro}, ${u.endereco.numero} - ${u.endereco.cidadeUf}`
           : 'Endereço não informado';
 
       return `

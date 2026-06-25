@@ -29,6 +29,7 @@ public class Entrega {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @OneToOne(mappedBy = "entrega")
     private Pedido pedido;
 }

@@ -4,6 +4,7 @@ import br.com.app.quero_pecas.entity.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,7 @@ public class TokenService {
                     .withIssuer("quero_pecas_api")
                     .withSubject(usuario.getEmail())
                     .withClaim("id", usuario.getIdUsuario())
+                    .withClaim("role", usuario.getTipoUsuario() != null ? usuario.getTipoUsuario().name() : "MECANICO")
                     .withExpiresAt(expiration)
                     .sign(algorithm);
         } catch (Exception e) {
@@ -49,13 +51,16 @@ public class TokenService {
     }
 
     public String validarToken(String token) {
+        return validarEObterToken(token).getSubject();
+    }
+
+    public DecodedJWT validarEObterToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             var verifier = JWT.require(algorithm)
                     .withIssuer("quero_pecas_api")
                     .build();
-            var decoded = verifier.verify(token);
-            return decoded.getSubject(); // retorna o email (subject)
+            return verifier.verify(token);
         } catch (TokenExpiredException e) {
             throw new RuntimeException("Token expirado", e);
         } catch (Exception e) {

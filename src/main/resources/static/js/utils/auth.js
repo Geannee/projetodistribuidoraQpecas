@@ -22,7 +22,7 @@ const Auth = {
 
   /** Redireciona para login se não houver sessão */
   check() {
-    if (!this.getUsuario() || !this.getToken()) {
+    if (!this.getUsuario() || !this.getToken() || this.getTipo() !== 'MECANICO') {
       window.location.href = 'login.html';
       return false;
     }
@@ -51,17 +51,16 @@ const Auth = {
     return true;
   },
 
-  /** Encerra a sessão e redireciona para login */
+  /** Encerra a sessão e redireciona para a raiz */
   logout(e) {
     if (e) e.preventDefault();
-    const isAdmin = this.getTipo() === 'DISTRIBUIDOR';
     sessionStorage.removeItem('qp_usuario');
     sessionStorage.removeItem('qp_token');
     sessionStorage.removeItem('qp_perfil');
     sessionStorage.removeItem('qp_tipo');
     sessionStorage.removeItem('qp_nome');
     sessionStorage.removeItem('qp_id');
-    window.location.href = isAdmin ? 'admin-login.html' : 'login.html';
+    window.location.href = '/';
   },
 
   /** Retorna as 2 iniciais do usuário */

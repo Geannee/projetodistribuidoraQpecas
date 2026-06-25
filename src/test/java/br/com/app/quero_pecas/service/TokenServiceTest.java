@@ -11,6 +11,8 @@ import java.time.ZoneOffset;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import br.com.app.quero_pecas.utils.TipoUsuario;
+
 class TokenServiceTest {
 
     private static final String SECRET = "meuSegredo";
@@ -21,6 +23,7 @@ class TokenServiceTest {
         usuario = new Usuario();
         usuario.setIdUsuario(1L);
         usuario.setEmail("teste@email.com");
+        usuario.setTipoUsuario(TipoUsuario.MECANICO);
     }
 
     @Test

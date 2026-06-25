@@ -5,8 +5,12 @@ import br.com.app.quero_pecas.utils.StatusPedido;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface PedidoDTO {
-    record PedidoRequest(
+public final class PedidoDTO {
+
+    private PedidoDTO() {
+    }
+
+    public record PedidoRequest(
             Long idUsuario,
             Double valorFrete,
             EnderecoEntregaRequest enderecoEntrega,
@@ -14,13 +18,13 @@ public interface PedidoDTO {
     ) {
     }
 
-    record ItemPedidoRequest(
+    public record ItemPedidoRequest(
             Long idPeca,
             Integer quantidade
     ) {
     }
 
-    record PedidoResponse(
+    public record PedidoResponse(
             Long idPedido,
             String numeroPedido,
             LocalDateTime data,
@@ -35,7 +39,7 @@ public interface PedidoDTO {
     ) {
     }
 
-    record ItemPedidoResponse(
+    public record ItemPedidoResponse(
             Long idPeca,
             String nomePeca,
             Integer quantidade,
@@ -44,13 +48,13 @@ public interface PedidoDTO {
     ) {
     }
 
-    record AtualizarPagamentoRequest(
+    public record AtualizarPagamentoRequest(
             String metodoPagamento,
             String statusPagamento
     ) {
     }
 
-    record EnderecoEntregaRequest(
+    public record EnderecoEntregaRequest(
             String cep,
             String logradouro,
             String numero,

@@ -2,7 +2,7 @@ package br.com.app.quero_pecas.dto;
 
 import java.util.List;
 
-public interface BuscarPorPlacaDTO {
+public final class BuscarPorPlacaDTO {
     public record BuscarPlacaResponseDTO(
             VeiculoDTO veiculo,
             List<PecaResponse> pecas

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-public interface UsuarioDTO {
+public final class UsuarioDTO {
     public record Save(
             @NotBlank @Size(max = 18, min = 14) String cnpj,
             @NotBlank String razaoSocial,
@@ -25,7 +25,7 @@ public interface UsuarioDTO {
     ) {
     }
 
-    record EnderecoCreate(
+    public record EnderecoCreate(
             @NotBlank String cep,
             @NotBlank String logradouro,
             @NotNull String numero,
@@ -35,7 +35,7 @@ public interface UsuarioDTO {
     ) {
     }
 
-    record TelefoneCreate(
+    public record TelefoneCreate(
             @NotBlank String telefone,
             String tipo
     ) {

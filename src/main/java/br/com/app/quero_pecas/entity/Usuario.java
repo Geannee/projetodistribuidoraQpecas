@@ -33,8 +33,11 @@ public class Usuario {
     @OneToOne(cascade = CascadeType.ALL) @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) @JoinColumn(name = "usuario_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) @JoinColumn(name = "telefone_usuario_id")
     private List<Telefone> telefone;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos;
 
     @Enumerated(EnumType.STRING)
     private StatusUsuario status = StatusUsuario.PENDENTE;

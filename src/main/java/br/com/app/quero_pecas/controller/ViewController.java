@@ -74,4 +74,11 @@ public class ViewController {
 
     @GetMapping("/admin-estoque.html")
     public String adminEstoque() { return "admin-estoque"; }
+
+    @GetMapping("/admin-pedidos.html")
+    public String adminPedidos() { return "admin-pedidos"; }
+
+    @GetMapping("/pagamento-simulado.html")
+    public String pagamentoSimulado() { return "pagamento-simulado"; }
+
 }

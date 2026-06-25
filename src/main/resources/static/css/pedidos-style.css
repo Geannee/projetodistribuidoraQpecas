@@ -274,3 +274,87 @@
   padding-top: 0;
   margin-top: 0;
 }
+
+/* Estilo para o botão Pagar */
+.btn-pagar {
+  background: #10B981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-pagar:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+.btn-pagar:active {
+  transform: translateY(0);
+}
+
+/* Estilo para a seção de pagamento no detalhe do pedido */
+.dp-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  border-left: 1.5px solid #E5E7EB;
+  padding-left: 32px;
+  min-width: 240px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .dp-pagamento {
+    border-left: none;
+    border-top: 1.5px solid #E5E7EB;
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+}
+
+.qr-container {
+  background: #fff;
+  padding: 12px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.qr-container:hover {
+  transform: scale(1.03);
+}
+
+.btn-ir-pagamento {
+  background: #10B981;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+  transition: background 0.2s, transform 0.1s;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.btn-ir-pagamento:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+.btn-ir-pagamento:active {
+  transform: translateY(0);
+}

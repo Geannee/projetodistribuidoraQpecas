@@ -75,9 +75,16 @@ const PedidosView = {
         </td>
         <td class="pedido-previsao">${ICONS.calendar} ${previsaoFormatada}</td>
         <td>
-          <button class="btn-detalhes" id="btn-${safeId}" onclick="PedidosController.toggleDetalhe('${safeId}')">
-            Ver detalhes ▾
-          </button>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button class="btn-detalhes" id="btn-${safeId}" onclick="PedidosController.toggleDetalhe('${safeId}')">
+              Ver detalhes ▾
+            </button>
+            ${statusBanco === 'AGUARDANDO_PAGAMENTO' ? `
+              <a href="/pagamento-simulado.html?id=${p.idPedido}" target="_blank" class="btn-pagar">
+                Pagar
+              </a>
+            ` : ''}
+          </div>
         </td>
       </tr>
       <tr class="detalhe-row" id="detalhe-${safeId}">
@@ -89,18 +96,19 @@ const PedidosView = {
   },
 
   renderPainel(p, dataFormatada, totalFormatado, previsaoFormatada) {
-    const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Em Separação', 'Em Viagem', 'Entregue'];
+    const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Pagamento Processado', 'Em Separação', 'Em Viagem', 'Entregue'];
 
     const idxMap = {
       'AGUARDANDO_PAGAMENTO': 1,
-      'EM_SEPARACAO':         2,
-      'EM_VIAGEM':            3,
-      'ENTREGUE':             4,
-      'CANCELADO':           -1,
-      'PAGO':                 1
+      'PAGO':                 2,
+      'EM_SEPARACAO':         3,
+      'FATURADO':             3,
+      'EM_VIAGEM':            4,
+      'ENTREGUE':             5,
+      'CANCELADO':           -1
     };
 
-    // Agora p.status chega aqui como "EM_SEPARACAO", batendo perfeitamente com o idxMap!
+    // Agora p.status chega aqui como "EM_SEPARACAO", batendo perfeitamente com the idxMap!
     const statusBanco = p.status ? p.status.toUpperCase() : '';
     const atual = idxMap[statusBanco] ?? 0;
 
@@ -161,9 +169,24 @@ const PedidosView = {
       
       <div class="timeline" id="tl-${safeId}">
         ${statusBanco === 'CANCELADO'
-        ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.</div>`
+        ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.${p.motivoCancelamento ? ` <br><span style="font-weight:normal;color:#6B7280;">Motivo: ${p.motivoCancelamento}</span>` : ''}</div>`
         : timeline}
       </div>
+
+      ${statusBanco === 'AGUARDANDO_PAGAMENTO' ? `
+      <div class="dp-pagamento">
+        <div class="dp-secao-titulo">Pagamento via Pix</div>
+        <div class="qr-container">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(window.location.origin + '/pagamento-simulado.html?id=' + p.idPedido)}" alt="QR Code Pix" style="width: 150px; height: 150px; display: block;"/>
+        </div>
+        <div style="text-align: center; font-size: 11px; color: #6B7280; max-width: 180px; line-height: 1.4;">
+          Escaneie o QR Code acima para pagar ou clique no botão abaixo.
+        </div>
+        <a href="/pagamento-simulado.html?id=${p.idPedido}" target="_blank" class="btn-ir-pagamento">
+          Pagar Pedido (Simulador)
+        </a>
+      </div>
+      ` : ''}
     </div>`;
   },
 

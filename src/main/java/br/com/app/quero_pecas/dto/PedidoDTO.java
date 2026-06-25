@@ -28,7 +28,10 @@ public interface PedidoDTO {
             Double valorFrete,
             Double valorTotal,
             Long idEntrega,
-            List<ItemPedidoResponse> itens
+            List<ItemPedidoResponse> itens,
+            String nomeCliente,
+            String cnpjCliente,
+            String motivoCancelamento
     ) {
     }
 

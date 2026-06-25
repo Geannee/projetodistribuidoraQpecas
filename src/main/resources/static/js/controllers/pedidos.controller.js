@@ -2,7 +2,11 @@ const PedidosController = {
   pedidosFiltrados: [],
 
   async init() {
-    this.verificarSessao();
+    if (typeof SharedView !== 'undefined' && SharedView.preencherUsuario) {
+      SharedView.preencherUsuario();
+    } else {
+      this.verificarSessao();
+    }
     const pedidosDoBanco = await PedidosModel.carregarPedidos();
     this.pedidosFiltrados = [...pedidosDoBanco];
 
@@ -99,14 +103,22 @@ const PedidosController = {
     }
 
     // Recria a Timeline
-    const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Em Separação', 'Em Viagem', 'Entregue'];
-    const idxMap = { 'Aguardando Pagamento': 1, 'Em Separação': 2, 'Em Viagem': 3, 'Entregue': 4, 'Cancelado': -1 };
+    const passos = ['Pedido Realizado', 'Aguardando Pagamento', 'Pagamento Processado', 'Em Separação', 'Em Viagem', 'Entregue'];
+    const idxMap = {
+      'Aguardando Pagamento': 1,
+      'Pago': 2,
+      'Em Separação': 3,
+      'Faturado': 3,
+      'Em Viagem': 4,
+      'Entregue': 5,
+      'Cancelado': -1
+    };
     const atual = idxMap[novoStatus] ?? 0;
     const tl = document.getElementById('tl-' + safeId);
 
     if (tl) {
       tl.innerHTML = novoStatus === 'Cancelado'
-          ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.</div>`
+          ? `<div class="tl-cancelado-msg">${ICONS.xCircle} Este pedido foi cancelado.${pedido.motivoCancelamento ? ` <br><span style="font-weight:normal;color:#6B7280;">Motivo: ${pedido.motivoCancelamento}</span>` : ''}</div>`
           : passos.map((passo, i) => `
             <div class="tl-passo ${i <= atual ? 'tl-ativo' : ''}">
               <div class="tl-bolinha">${i <= atual ? ICONS.check : i + 1}</div>

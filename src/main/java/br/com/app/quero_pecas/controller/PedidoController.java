@@ -34,4 +34,35 @@ public class PedidoController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping
+    public ResponseEntity<List<PedidoDTO.PedidoResponse>> findAll() {
+        List<PedidoDTO.PedidoResponse> response = pedidoService.findAll();
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<PedidoDTO.PedidoResponse> updateStatus(
+            @PathVariable Long id,
+            @RequestParam br.com.app.quero_pecas.utils.StatusPedido status,
+            @RequestParam(required = false) String motivoCancelamento) {
+        PedidoDTO.PedidoResponse response = pedidoService.updateStatus(id, status, motivoCancelamento);
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/{id}/itens/{idPeca}")
+    public ResponseEntity<PedidoDTO.PedidoResponse> adjustItemQuantity(
+            @PathVariable Long id,
+            @PathVariable Long idPeca,
+            @RequestParam Integer quantidade) {
+        PedidoDTO.PedidoResponse response = pedidoService.adjustItemQuantity(id, idPeca, quantidade);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}/itens/{idPeca}")
+    public ResponseEntity<PedidoDTO.PedidoResponse> removeItem(
+            @PathVariable Long id,
+            @PathVariable Long idPeca) {
+        PedidoDTO.PedidoResponse response = pedidoService.removeItem(id, idPeca);
+        return ResponseEntity.ok(response);
+    }
 }

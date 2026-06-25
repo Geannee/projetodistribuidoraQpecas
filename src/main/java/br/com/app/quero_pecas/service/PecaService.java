@@ -30,6 +30,13 @@ public class PecaService {
         return pecaRepository.buscarPorAplicacao(filtroMarca, filtroModelo, ano, filtroCategoria);
     }
 
+    public List<Peca> buscarPorCodigo(String codigo) {
+        if (codigo == null || codigo.trim().isEmpty()) {
+            return List.of();
+        }
+        return pecaRepository.findByCodigoContainingIgnoreCaseAndAtivoTrue(codigo.trim());
+    }
+
     public void save(PecaDTO.Save dados) {
 
         if (pecaRepository.existsByCodigo(dados.codigo())) {

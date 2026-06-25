@@ -17,6 +17,7 @@ const BuscaView = {
 
   // NOVO: Input de placa
   plateInput: document.getElementById('plateInput'),
+  codeInput: document.getElementById('codeInput'),
 
   /**
    * NOVO: Aplica um feedback visual temporário de erro no input de placa
@@ -27,6 +28,19 @@ const BuscaView = {
       this.plateInput.focus();
       setTimeout(() => {
         this.plateInput.style.borderColor = '';
+      }, 1500);
+    }
+  },
+
+  /**
+   * NOVO: Aplica um feedback visual temporário de erro no input de código
+   */
+  destacarErroInputCodigo() {
+    if (this.codeInput) {
+      this.codeInput.style.borderColor = '#ef4444';
+      this.codeInput.focus();
+      setTimeout(() => {
+        this.codeInput.style.borderColor = '';
       }, 1500);
     }
   },

@@ -105,4 +105,34 @@ class PecaServiceTest {
         assertTrue(exception.getMessage().contains("não encontrado"));
         verify(pecaVeiculoRepository, never()).save(any());
     }
+
+    @Test
+    @DisplayName("Deve buscar peças por código com sucesso")
+    void deveBuscarPecasPorCodigoComSucesso() {
+        // Arrange
+        String codigo = "ILFR6B";
+        Peca peca = new Peca();
+        peca.setCodigo(codigo);
+        peca.setNome("Vela de Ignição");
+
+        when(pecaRepository.findByCodigoContainingIgnoreCaseAndAtivoTrue("ILFR6B")).thenReturn(List.of(peca));
+
+        // Act
+        List<Peca> resultado = pecaService.buscarPorCodigo(codigo);
+
+        // Assert
+        assertNotNull(resultado);
+        assertEquals(1, resultado.size());
+        assertEquals("ILFR6B", resultado.get(0).getCodigo());
+        verify(pecaRepository, times(1)).findByCodigoContainingIgnoreCaseAndAtivoTrue("ILFR6B");
+    }
+
+    @Test
+    @DisplayName("Deve retornar lista vazia se o código de busca for nulo ou em branco")
+    void deveRetornarVazioSeCodigoNuloOuEmBranco() {
+        // Act & Assert
+        assertTrue(pecaService.buscarPorCodigo(null).isEmpty());
+        assertTrue(pecaService.buscarPorCodigo("   ").isEmpty());
+        verify(pecaRepository, never()).findByCodigoContainingIgnoreCaseAndAtivoTrue(any());
+    }
 }

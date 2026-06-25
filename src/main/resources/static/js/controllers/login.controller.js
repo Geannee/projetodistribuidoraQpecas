@@ -78,7 +78,7 @@ const LoginController = {
             sessionStorage.setItem('qp_tipo', dados.tipoUsuario);
             sessionStorage.setItem('qp_id', dados.id);
 
-            window.location.href = 'busca-cliente.html';
+            window.location.href = 'dashboard.html';
 
         } catch (error) {
             this.showError(error.message || 'Erro ao conectar com o servidor.');

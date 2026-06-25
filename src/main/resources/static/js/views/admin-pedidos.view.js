@@ -70,7 +70,7 @@ const AdminPedidosView = {
         if (order.status === 'AGUARDANDO_PAGAMENTO') {
           acoesHtml = `<button class="btn-action-sm btn-action-secondary" style="cursor: not-allowed; opacity: 0.6;" onclick="event.stopPropagation(); alert('Este pedido aguarda pagamento do cliente.');" disabled>Aguardando Pagto</button>`;
         } else {
-          acoesHtml = `<button class="btn-action-sm btn-action-primary" onclick="event.stopPropagation(); AdminPedidosController.iniciarSeparacao(${order.idPedido})">Separar</button>`;
+          acoesHtml = `<button class="btn-action-sm btn-action-primary"  style="background:#E85D3A; onclick="event.stopPropagation(); AdminPedidosController.iniciarSeparacao(${order.idPedido})">Separar</button>`;
         }
       } else if (isSeparacao) {
         acoesHtml = `

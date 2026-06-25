@@ -122,7 +122,7 @@ const OrcamentoController = {
     this.atualizarTotais();
 
     // Mostra botão de salvar
-    const btnSave = document.querySelector('.btn-save-doc');
+    const btnSave = document.getElementById('btnSaveOrcamento');
     if (btnSave) {
       btnSave.style.display = 'inline-block';
       btnSave.disabled = false;
@@ -259,7 +259,7 @@ const OrcamentoController = {
     this.atualizarTotais();
 
     // Esconde botão de salvar
-    const btnSave = document.querySelector('.btn-save-doc');
+    const btnSave = document.getElementById('btnSaveOrcamento');
     if (btnSave) {
       btnSave.style.display = 'none';
     }
@@ -374,16 +374,8 @@ const OrcamentoController = {
       });
     }
 
-    // Botao Imprimir
-    const btnPrint = document.querySelector('.btn-print');
-    if (btnPrint) {
-      btnPrint.addEventListener('click', () => {
-        window.print();
-      });
-    }
-
     // Botao Salvar
-    const btnSave = document.querySelector('.btn-save-doc');
+    const btnSave = document.getElementById('btnSaveOrcamento');
     if (btnSave) {
       btnSave.addEventListener('click', (e) => {
         e.preventDefault();
@@ -418,7 +410,7 @@ const OrcamentoController = {
       return;
     }
 
-    const btnSave = document.querySelector('.btn-save-doc');
+    const btnSave = document.getElementById('btnSaveOrcamento');
     if (btnSave) {
       btnSave.disabled = true;
       btnSave.textContent = 'Salvando...';
@@ -473,6 +465,65 @@ const OrcamentoController = {
     }
   }
 };
+
+/** Função global para geração de PDF utilizando html2canvas e jsPDF */
+async function gerarOrcamentoPDF() {
+  const elemento = document.querySelector('.orcamento-pdf-container');
+
+  const botoes = elemento.querySelector('.actions-area');
+  if (botoes) botoes.style.display = 'none';
+
+  const nome_cliente = document.getElementById('nomeCliente').value || 'Cliente';
+  const data_orcamento = document.getElementById('pdfDataEmissao').textContent || 'Data';
+
+  try {
+    const canvas = await html2canvas(elemento, {
+      scale: 1.5,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#ffffff'
+    });
+
+    if (botoes) botoes.style.display = 'flex';
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.75);
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: 'l',
+      unit: 'mm',
+      format: 'a4',
+      compress: true
+    });
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    const imgWidth = pdfWidth;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+    heightLeft -= pdfHeight;
+
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+      heightLeft -= pdfHeight;
+    }
+
+    const filenameSafe = `orcamento_${nome_cliente.replace(/[^a-zA-Z0-9]/g, '_')}_${data_orcamento.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
+    pdf.save(filenameSafe);
+
+  } catch (error) {
+    console.error('Erro ao gerar PDF:', error);
+    alert('Ocorreu um erro ao gerar o PDF.');
+    if (botoes) botoes.style.display = 'flex';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   OrcamentoController.init();

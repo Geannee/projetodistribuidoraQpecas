@@ -121,7 +121,7 @@
                         <h2 style="font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 4px;">Meus Orçamentos</h2>
                         <p style="font-size: 14px; color: var(--gray-text);">Consulte os orçamentos criados ou gere um novo.</p>
                     </div>
-                    <button class="btn-save-doc" onclick="OrcamentoController.showCreateView()" style="display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                    <button id="btnNewOrcamento" class="btn-new-doc" onclick="OrcamentoController.showCreateView()" style="display: flex; align-items: center; gap: 8px; font-weight: 600; padding: 10px 18px; border-radius: 6px; font-size: 13px; cursor: pointer; border: none; transition: background-color 0.15s; background: var(--purple); color: var(--white);">
                         <span class="material-symbols-outlined" style="font-size: 20px; vertical-align: middle;">add</span>
                         Novo Orçamento
                     </button>
@@ -134,7 +134,7 @@
                     <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 24px; max-width: 380px; margin-left: auto; margin-right: auto;">
                         Você ainda não gerou nenhum orçamento para seus clientes. Crie um orçamento agora utilizando peças do catálogo.
                     </p>
-                    <button class="btn-save-doc" onclick="OrcamentoController.showCreateView()">
+                    <button id="btnNewOrcamentoEmpty" class="btn-new-doc" onclick="OrcamentoController.showCreateView()" style="padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; border: none; transition: background-color 0.15s; background: var(--purple); color: var(--white);">
                         Criar Novo Orçamento
                     </button>
                 </div>
@@ -234,13 +234,13 @@
                 </section>
 
                 <div class="actions-area">
-                    <button type="button" class="btn-print" onclick="OrcamentoController.showListView()" style="border: 1px solid var(--border); margin-right: auto;">
+                    <button type="button" class="btn-back-to-list" onclick="OrcamentoController.showListView()" style="border: 1px solid var(--border); margin-right: auto; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background-color 0.15s; background: var(--page-bg); color: var(--dark-text);">
                         ← Voltar para Lista
                     </button>
-                    <button type="button" class="btn-print">
+                    <button type="button" class="btn-export-pdf" onclick="gerarOrcamentoPDF()" style="padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--coral); transition: background-color 0.15s; background: var(--page-bg); color: var(--dark-text);">
                         Exportar / Imprimir PDF
                     </button>
-                    <button type="submit"  class="btn-save-doc">
+                    <button type="submit" id="btnSaveOrcamento" class="btn-save-doc">
                         Salvar e Finalizar Orçamento
                     </button>
                 </div>
@@ -253,6 +253,8 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="/js/utils/auth.js"></script>
 <script src="/js/views/shared.view.js"></script>
 <script src="/js/utils/cart.js"></script>

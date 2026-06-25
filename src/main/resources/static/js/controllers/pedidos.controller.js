@@ -2,6 +2,7 @@ const PedidosController = {
   pedidosFiltrados: [],
 
   async init() {
+    if (!Auth.check()) return;
     if (typeof SharedView !== 'undefined' && SharedView.preencherUsuario) {
       SharedView.preencherUsuario();
     } else {

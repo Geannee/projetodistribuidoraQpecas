@@ -69,8 +69,7 @@ public class ViewController {
     @GetMapping("/busca-cliente.html")
     public String buscaCliente() { return "busca-cliente"; }
 
-    @GetMapping("/busca-admin.html")
-    public String buscaAdmin() { return "busca-admin"; }
+
 
     @GetMapping("/admin-estoque.html")
     public String adminEstoque() { return "admin-estoque"; }

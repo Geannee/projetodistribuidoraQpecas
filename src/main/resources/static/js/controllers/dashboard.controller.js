@@ -17,13 +17,10 @@ const DashboardController = {
   },
 
   verificarSessao() {
+    if (!Auth.check()) return false;
     const usuario    = Auth.getUsuario();
-    const token      = Auth.getToken();
     const perfil     = Auth.getPerfil();
     const navActions = document.getElementById('nav-actions');
-
-    // Se não tiver token ou usuário real, retorna falso para o init barrar o acesso
-    if (!token || !usuario) return false;
 
     if (navActions) {
       HomeView.renderNavLogado(navActions, usuario, perfil);

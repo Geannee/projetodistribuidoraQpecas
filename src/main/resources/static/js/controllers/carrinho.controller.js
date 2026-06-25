@@ -2,6 +2,7 @@ const CarrinhoController = {
     valorFreteAtual: 20.00,
 
     init() {
+        if (!Auth.check()) return;
         CarrinhoController.renderCart();
         if (typeof Cart !== 'undefined') {
             Cart.updateBadge();
